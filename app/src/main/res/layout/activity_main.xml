@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/content_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/line" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/layoutTab"
+        android:background="#cccccc" />
+
+    <LinearLayout
+        android:id="@+id/layoutTab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtHome"
+                style="@style/ExtraVerySmallGray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="2dp"
+                android:drawableTop="@drawable/nav_home_image"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:text="首页"
+                android:textColor="@color/nav_home_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtSearch"
+                style="@style/ExtraVerySmallGray"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="2dp"
+                android:drawableTop="@drawable/nav_find_image"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:text="发现"
+                android:textColor="@color/nav_find_text" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtFriend"
+                style="@style/ExtraVerySmallGray"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="2dp"
+                android:drawableTop="@drawable/nav_friend_image"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:text="好友"
+                android:textColor="@color/nav_friend_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtMe"
+                style="@style/ExtraVerySmallGray"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:drawablePadding="2dp"
+                android:drawableTop="@drawable/nav_personal_image"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:text="我"
+                android:textColor="@color/nav_personal_text" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/imgAdd"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/publish_btn_bg"
+        android:src="@drawable/publish_add" />
+
+</RelativeLayout>
