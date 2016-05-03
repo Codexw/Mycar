@@ -10,7 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.ahstu.mycar.R;
-import com.ahstu.mycar.ui.MainActivity;
 
 import cn.bmob.v3.Bmob;
 

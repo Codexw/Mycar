@@ -1,4 +1,4 @@
-package com.ahstu.mycar.ui;
+package com.ahstu.mycar.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ahstu.mycar.activity.SplashActivity;
 import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.FriendFragment;
 import com.ahstu.mycar.fragment.HomeFragment;
