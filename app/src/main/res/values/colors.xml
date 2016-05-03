@@ -5,4 +5,12 @@
     <color name="colorAccent">#FF4081</color>
     <!-- 橙色 -->
     <color name="orange_home">#ff9c38</color>
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <!-- line颜色 -->
+    <color name="line">#CBCED2</color>
+    <!-- 蓝色 -->
+    <color name="blue">#499BF7</color>
+
+
 </resources>

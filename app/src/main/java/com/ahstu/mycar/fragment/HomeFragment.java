@@ -1,4 +1,4 @@
-package com.ahstu.mycar.ui;
+package com.ahstu.mycar.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.redowu.mycar.R;
+import com.ahstu.mycar.R;
 
 /**
  * @author 吴天洛 2016,4,25

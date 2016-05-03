@@ -1,4 +1,4 @@
-package com.example.redowu.mycar;
+package com.ahstu.mycar;
 
 import org.junit.Test;
 

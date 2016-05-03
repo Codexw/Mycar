@@ -1,4 +1,4 @@
-package com.example.redowu.mycar;
+package com.ahstu.mycar;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
