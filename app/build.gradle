@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -28,6 +34,11 @@ dependencies {
     compile files('libs/okio-1.4.0.jar')
     compile files('libs/okhttp-2.4.0.jar')
     compile files('libs/org.apache.http.legacy.jar')
-
-
+    compile files('libs/filechoose.jar')
+    compile files('libs/baidumapapi_base_v3_7_3.jar')
+    compile files('libs/baidumapapi_cloud_v3_7_3.jar')
+    compile files('libs/baidumapapi_map_v3_7_3.jar')
+    compile files('libs/baidumapapi_radar_v3_7_3.jar')
+    compile files('libs/baidumapapi_search_v3_7_3.jar')
+    compile files('libs/baidumapapi_util_v3_7_3.jar')
 }
