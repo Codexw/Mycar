@@ -9,16 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.ahstu.mycar.R;
+import com.baidu.location.LocationClient;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-//import com.baidu.mapapi.SDKInitializer;
-//import com.baidu.mapapi.map.BaiduMap;
-//import com.baidu.mapapi.map.MapStatusUpdate;
-//import com.baidu.mapapi.map.MapStatusUpdateFactory;
-//import com.baidu.mapapi.map.MapView;
 
 /**
  * @author 吴天洛 2016,4,25
@@ -30,7 +26,7 @@ public class MapFragment extends Fragment implements View.OnClickListener {
     private Button btn_map_normal;
     private Button btn_map_site;
     private Button btn_map_traffic;
-//    private LocationClient mlocationClient;
+    private LocationClient mlocationClient;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
