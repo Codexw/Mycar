@@ -17,15 +17,23 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 通知震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@drawable/head"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--百度sdk开发秘钥-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
+        
         <activity
             android:name="com.ahstu.mycar.activity.SplashActivity"
             android:launchMode="singleTop">
@@ -47,6 +55,8 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
+        
+
     </application>
 
 </manifest>

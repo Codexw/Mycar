@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.FriendFragment;
-import com.ahstu.mycar.fragment.HomeFragment;
+import com.ahstu.mycar.fragment.MapFragment;
 import com.ahstu.mycar.fragment.MeInfoFragment;
 import com.ahstu.mycar.R;
 
@@ -66,7 +66,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtHome:
-                mainTabUtil(new HomeFragment());
+                mainTabUtil(new MapFragment());
                 setButton(v);
                 break;
             case R.id.txtSearch:
