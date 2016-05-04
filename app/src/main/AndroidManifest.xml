@@ -33,7 +33,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
-        
+
         <activity
             android:name="com.ahstu.mycar.activity.SplashActivity"
             android:launchMode="singleTop">
@@ -55,7 +55,6 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
-        
 
     </application>
 

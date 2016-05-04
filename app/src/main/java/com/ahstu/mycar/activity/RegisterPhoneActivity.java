@@ -122,7 +122,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                         @Override
                         public void done(BmobException e) {
 
-//                            e = null;//默认验证码正确，方便调试，调试结束后删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+                            e = null;//默认验证码正确，方便调试，调试结束后删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
                             if (e == null) {
                                 Intent i = new Intent(RegisterPhoneActivity.this, RegisterUserMsgActivity.class);
