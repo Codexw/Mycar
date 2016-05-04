@@ -18,7 +18,7 @@ import com.ahstu.mycar.fragment.MeInfoFragment;
 import com.ahstu.mycar.R;
 
 /**
- * @author 吴天洛 2016,4,25
+ * @author 吴天洛 2016/4/25
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
@@ -129,5 +129,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
         return super.onKeyDown(keyCode, event);
     }
+
 
 }

@@ -22,6 +22,14 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
     <application
 
         android:allowBackup="true"
@@ -56,6 +64,11 @@
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
 
+        <!--百度地图定位的service-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
     </application>
 
 </manifest>
