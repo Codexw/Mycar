@@ -11,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ahstu.mycar.R;
 import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.FriendFragment;
 import com.ahstu.mycar.fragment.HomeFragment;
 import com.ahstu.mycar.fragment.MeInfoFragment;
-import com.ahstu.mycar.R;
-
+import com.ahstu.mycar.view.MusicMenu;
 /**
  * @author 吴天洛 2016,4,25
  */
@@ -26,6 +26,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     private TextView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
     private View currentButton; //获取view，用于底部导航栏状态的切换
+    private MusicMenu menuView;
+    
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -57,6 +59,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         txtFriend = (TextView) findViewById(R.id.txtFriend);
         txtMe = (TextView) findViewById(R.id.txtMe);
         imgAdd = (ImageView) findViewById(R.id.imgAdd);
+        menuView = (MusicMenu) findViewById(R.id.menu);
     }
 
     /**
@@ -82,7 +85,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 setButton(v);
                 break;
             case R.id.imgAdd:
-                Toast.makeText(MainActivity.this, "imgAdd哈哈哈哈哈", Toast.LENGTH_SHORT).show();
+                if (menuView.isShown())
+                menuView.in();
+                else
+                menuView.out();
                 break;
             default:
                 break;

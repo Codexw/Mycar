@@ -47,6 +47,7 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
+        
     </application>
 
 </manifest>
