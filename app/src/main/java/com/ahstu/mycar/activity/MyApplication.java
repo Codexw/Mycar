@@ -16,7 +16,7 @@ public class MyApplication extends Application {
         //初始化百度地图
         SDKInitializer.initialize(getApplicationContext());
         //初始化聚合数据
-        com.thinkland.sdk.android.JuheSDKInitializer.initialize(getApplicationContext());
+        com.thinkland.sdk.android.SDKInitializer.initialize(getApplicationContext());
     }
 
 }
