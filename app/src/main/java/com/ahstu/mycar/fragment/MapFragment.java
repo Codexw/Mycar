@@ -1,12 +1,20 @@
 package com.ahstu.mycar.fragment;
 
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.ui.MyOrientationListener;
@@ -14,7 +22,6 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -25,17 +32,23 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 
+import static com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
+
 /**
  * @author 吴天洛 2016/4/25
  */
 
-public class MapFragment extends Fragment implements View.OnClickListener {
+public class MapFragment extends Fragment implements OnClickListener {
+    private Context mContext;
     private MapView mMapView;
     private BaiduMap mBaiduMap;
     private Button btn_map_normal;
     private Button btn_map_site;
     private Button btn_map_traffic;
     private Button btn_map_mylocation;
+    private Button btn_map_mode_normal;
+    private Button btn_map_mode_following;
+    private Button btn_map_mode_compass;
 
     //定位相关变量
     private LocationClient mLocationClient;
@@ -43,21 +56,26 @@ public class MapFragment extends Fragment implements View.OnClickListener {
     private boolean isFirstIn = true;
     private double mLatitude;
     private double mLongitude;
-
+    private LocationMode mLocationMode;
     //自定义定位图标
     private BitmapDescriptor mbitmapDescriptor;
     private MyOrientationListener mMyOrientationListener;
     private float mCurrentX;
 
+    //加油站相关变量
+    private ImageView iv_list, iv_loc;
+    private Toast mToast;
+    private TextView tv_title_right, tv_name, tv_distance, tv_price_a, tv_price_b;
+    private LinearLayout ll_summary;
+    private Dialog selectDialog, loadingDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
-        SDKInitializer.initialize(getActivity().getApplicationContext());
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_home, null);
+        this.mContext = getActivity();
         ininView(view);
-        initClick(view);
+        initClick();
         initLocation();
         return view;
     }
@@ -83,16 +101,36 @@ public class MapFragment extends Fragment implements View.OnClickListener {
                 mCurrentX = x;
             }
         });
+
+        //地图模式
+        mLocationMode = LocationMode.NORMAL;
     }
 
-    private void initClick(View view) {
+    private void initClick() {
         btn_map_normal.setOnClickListener(this);
         btn_map_site.setOnClickListener(this);
         btn_map_traffic.setOnClickListener(this);
         btn_map_mylocation.setOnClickListener(this);
+        btn_map_mode_normal.setOnClickListener(this);
+        btn_map_mode_following.setOnClickListener(this);
+        btn_map_mode_compass.setOnClickListener(this);
+
+        iv_list.setOnClickListener(this);
+        iv_loc.setOnClickListener(this);
+        tv_title_right.setOnClickListener(this);
+        ll_summary.setOnClickListener(this);
+
     }
 
     private void ininView(View view) {
+
+        ll_summary = (LinearLayout) view.findViewById(R.id.ll_summary);
+        tv_name = (TextView) view.findViewById(R.id.tv_name);
+        tv_distance = (TextView) view.findViewById(R.id.tv_distance);
+        tv_price_a = (TextView) view.findViewById(R.id.tv_price_a);
+        tv_price_b = (TextView) view.findViewById(R.id.tv_price_b);
+
+        //地图
         mMapView = (MapView) view.findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(17.0f);  //地图比例初始化为100M
@@ -102,9 +140,19 @@ public class MapFragment extends Fragment implements View.OnClickListener {
         btn_map_site = (Button) view.findViewById(R.id.btn_map_site);
         btn_map_traffic = (Button) view.findViewById(R.id.btn_map_traffic);
         btn_map_mylocation = (Button) view.findViewById(R.id.btn_map_mylocation);
+        btn_map_mode_normal = (Button) view.findViewById(R.id.btn_map_mode_normal);
+        btn_map_mode_following = (Button) view.findViewById(R.id.btn_map_mode_following);
+        btn_map_mode_compass = (Button) view.findViewById(R.id.btn_map_mode_compass);
+
+        //布局
+        iv_list = (ImageView) view.findViewById(R.id.iv_list);
+        iv_loc = (ImageView) view.findViewById(R.id.iv_loc);
+        tv_title_right = (TextView) view.findViewById(R.id.tv_title_button);
+        tv_title_right.setText("3km" + " >");
+        tv_title_right.setVisibility(View.VISIBLE);
     }
 
-    //软件开启时判断滴入是否打开，没有打开，则打开
+    //软件开启时判断地图是否打开，没有打开，则打开
     @Override
     public void onStart() {
         super.onStart();
@@ -152,6 +200,27 @@ public class MapFragment extends Fragment implements View.OnClickListener {
         mMyOrientationListener.stop();
     }
 
+
+    /**
+     * dialog点击事件
+     * 选择附近加油站的距离，点击的view
+     */
+    public void onDialogClick(View v) {
+        switch (v.getId()) {
+            case R.id.bt_3km:
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                break;
+            case R.id.bt_5km:
+                break;
+            case R.id.bt_8km:
+                break;
+            case R.id.bt_10km:
+                break;
+            default:
+                break;
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -176,7 +245,72 @@ public class MapFragment extends Fragment implements View.OnClickListener {
                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
                 mBaiduMap.animateMapStatus(msu);
                 break;
+            case R.id.btn_map_mode_normal:
+                mLocationMode = LocationMode.NORMAL;
+                break;
+            case R.id.btn_map_mode_following:
+                mLocationMode = LocationMode.FOLLOWING;
+                break;
+            case R.id.btn_map_mode_compass:
+                mLocationMode = LocationMode.COMPASS;
+                break;
+
+            case R.id.iv_list:
+                break;
+            case R.id.iv_loc:
+                break;
+            case R.id.tv_title_button:
+                showSelectDialog();
+                break;
+            case R.id.ll_summary:
+                break;
+            default:
+                break;
         }
+    }
+
+    /**
+     * 显示范围选择dialog
+     */
+    private void showSelectDialog() {
+        if (selectDialog != null) {
+            selectDialog.show();
+
+            return;
+        }
+        selectDialog = new Dialog(mContext, R.style.dialog);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_distance, null);
+        System.out.println("222222222222222222222222" + view);
+
+        selectDialog.setContentView(view, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT));
+        selectDialog.setCanceledOnTouchOutside(true);
+        selectDialog.show();
+        onDialogClick(this.getView());
+    }
+
+    private void showLoadingDialog() {
+        if (loadingDialog != null) {
+            loadingDialog.show();
+            return;
+        }
+        loadingDialog = new Dialog(mContext, R.style.dialog_loading);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_loading, null);
+        loadingDialog.setContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.FILL_PARENT));
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
+    }
+
+    /**
+     * 显示通知
+     *
+     * @param msg
+     */
+    private void showToast(String msg) {
+        if (mToast == null) {
+            mToast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
+        }
+        mToast.setText(msg);
+        mToast.show();
     }
 
     //地图加载是耗时的，因此采用异步加载
@@ -192,7 +326,7 @@ public class MapFragment extends Fragment implements View.OnClickListener {
                     .build();
 
             mBaiduMap.setMyLocationData(data);
-            MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL, true, mbitmapDescriptor);
+            MyLocationConfiguration config = new MyLocationConfiguration(mLocationMode, true, mbitmapDescriptor);
             mBaiduMap.setMyLocationConfigeration(config);
             mLatitude = location.getLatitude();
             mLongitude = location.getLongitude();

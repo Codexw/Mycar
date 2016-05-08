@@ -58,7 +58,7 @@
                 android:drawableTop="@drawable/nav_find_image"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="发现"
+                android:text="线路"
                 android:textColor="@color/nav_find_text" />
 
         </LinearLayout>
