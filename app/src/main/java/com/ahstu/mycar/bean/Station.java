@@ -13,8 +13,8 @@ public class Station {
     private double lat;
     private double lon;
     private int distance;
-    private ArrayList<Price> gastPriceList;
-    private ArrayList<Price> priceList;
+    private ArrayList<Price> gastPriceList;  //本地油价
+    private ArrayList<Price> priceList; //省控油价
 
     public String getName() {
         return name;
@@ -78,5 +78,13 @@ public class Station {
 
     public void setGastPriceList(ArrayList<Price> gastPriceList) {
         this.gastPriceList = gastPriceList;
+    }
+
+    public ArrayList<Price> getPriceList() {
+        return priceList;
+    }
+
+    public void setPriceList(ArrayList<Price> priceList) {
+        this.priceList = priceList;
     }
 }
