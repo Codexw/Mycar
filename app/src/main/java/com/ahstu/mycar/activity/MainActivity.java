@@ -58,7 +58,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         txtMe = (TextView) findViewById(R.id.txtMe);
         imgAdd = (ImageView) findViewById(R.id.imgAdd);
     }
-
+ 
     /**
      * 处理点击事件，加载fragment
      */
