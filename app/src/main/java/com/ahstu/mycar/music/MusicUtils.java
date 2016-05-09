@@ -1,16 +1,25 @@
 package com.ahstu.mycar.music;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Audio.AudioColumns;
 import android.provider.MediaStore.MediaColumns;
 import android.util.Log;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.music.bean.Album;
+import com.music.bean.Mp3;
 
 public class MusicUtils {
 
@@ -94,11 +103,10 @@ public class MusicUtils {
 			Mp3 song = new Mp3();
 			song.setSqlId(Integer.parseInt(song_id + ""));
 			song.setName(tilte);
-//			song.setSingerName(song_artist);
+			song.setSingerName(song_artist);
 			song.setAllSongIndex(allSongId);
 			song.setUrl(song_url);
 			songs.add(song);
-
 			cursor.moveToNext();
 		}
 		return songs;
@@ -167,7 +175,7 @@ public class MusicUtils {
 				c.moveToNext();
 				mp3.setSqlId(Integer.parseInt(c.getLong(id) + ""));
 				mp3.setName(c.getString(title));
-//				mp3.setSingerName(c.getString(name));
+				mp3.setSingerName(c.getString(name));
 				mp3.setUrl(c.getString(url));
 				list.add(mp3);
 			}
@@ -178,6 +186,234 @@ public class MusicUtils {
 				c.close();
 			}
 		}
+	}
+
+	/**
+	 * 得到所有歌手的名字列表
+	 */
+	public static List<String> MusicSingerList(Context context) {
+		mMusicList.clear();
+		if (mMusicList.size() == 0) {
+			ContentResolver cr = context.getContentResolver();
+			if (cr != null) {
+				// 获取全部歌曲
+				Cursor cursor = cr.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+				if (null == cursor) {
+					return null;
+				}
+				if (cursor.moveToFirst()) {
+					do {
+						String singer = cursor.getString(cursor.getColumnIndex(AudioColumns.ARTIST));
+						if ("<unknown>".equals(singer)) {
+							singer = "unknow artist";
+						}
+						String name = cursor.getString(cursor.getColumnIndex(MediaColumns.DISPLAY_NAME));
+						String sbr = name.substring(name.length() - 3, name.length());
+						// lac也是一种格式
+						if (sbr.equals("mp3") || sbr.endsWith("lac")) {
+							if (!mMusicList.contains(singer)) {
+								mMusicList.add(singer);
+							}
+						}
+					} while (cursor.moveToNext());
+				}
+				cursor.close();
+			}
+		}
+		return mMusicList;
+	}
+	/**
+	 * 通过歌手名字，得到该歌手的所有歌曲
+	 */
+	public static List<Mp3> MusicMp3ListbySinger(Context context, String Name) {
+		List<Mp3> singerMp3 = new ArrayList<Mp3>();
+		if (singerMp3.size() == 0) {
+			ContentResolver cr = context.getContentResolver();
+			if (cr != null) {
+				// 获取全部歌曲
+				Cursor cursor = cr.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+				if (null == cursor) {
+					return null;
+				}
+				if (cursor.moveToFirst()) {
+					do {
+						String singer = cursor.getString(cursor.getColumnIndex(AudioColumns.ARTIST));
+						if ("<unknown>".equals(singer)) {
+							singer = "unknow artist";
+						}
+						if (singer.equals(Name)) {
+							int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+							String title = cursor.getString(cursor.getColumnIndex(MediaColumns.TITLE));
+							String url = cursor.getString(cursor.getColumnIndex(MediaColumns.DATA));
+							String name = cursor.getString(cursor.getColumnIndex(MediaColumns.DISPLAY_NAME));
+							String sbr = name.substring(name.length() - 3, name.length());
+							int duration = cursor.getInt(cursor.getColumnIndex(AudioColumns.DURATION));
+							// Log.e("--------------", sbr);
+							if (sbr.equals("mp3") || sbr.endsWith("lac")) {
+								Mp3 mp3 = new Mp3();
+								mp3.setDuration(duration);
+								mp3.setName(title);
+								mp3.setPictureID(id);
+								mp3.setUrl(url);
+								singerMp3.add(mp3);
+							}
+						}
+					} while (cursor.moveToNext());
+				}
+				cursor.close();
+			}
+		}
+		return singerMp3;
+	}
+
+	/**
+	 * 得到所有专辑
+	 */
+	public static List<Album> MusicAlbumList(Context context) {
+		if (albums.size() == 0) {
+			ContentResolver cr = context.getContentResolver();
+			if (cr != null) {
+				// 获取全部歌曲
+				Cursor cursor = cr.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+				if (null == cursor) {
+					return null;
+				}
+				if (cursor.moveToFirst()) {
+					do {
+						String album = cursor.getString(cursor.getColumnIndex(AudioColumns.ALBUM));
+						if ("<unknown>".equals(album)) {
+							album = "unknow album";
+						}
+						String singer = cursor.getString(cursor.getColumnIndex(AudioColumns.ARTIST));
+						if ("<unknown>".equals(singer)) {
+							singer = "unknow artist";
+						}
+						String name = cursor.getString(cursor.getColumnIndex(MediaColumns.DISPLAY_NAME));
+						int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+						String sbr = name.substring(name.length() - 3, name.length());
+						if (sbr.equals("mp3") || sbr.endsWith("lac")) {
+							Album album2 = new Album();
+							album2.setSingerName(singer);
+							album2.setName(album);
+							album2.setPicture(BitmapFactory.decodeFile(getAlbumArt(context, id)));
+							Log.e("url", getAlbumArt(context, id) + "null");
+							if (!mMusicList.contains(album2.getName())) {
+								albums.add(album2);
+								mMusicList.add(album2.getName());
+							}
+						}
+					} while (cursor.moveToNext());
+				}
+				cursor.close();
+			}
+		}
+		return albums;
+	}
+
+	/**
+	 * 通过歌曲id，找到其所对应的专辑图片路径，这个方法把注释去掉就能用
+	 */
+	public static String getAlbumArt(Context context, int trackId) {// trackId是音乐的id
+	// String mUriTrack = "content://media/external/audio/media/#";
+	// String[] projection = new String[] { "album_id" };
+	// String selection = "_id = ?";
+	// String[] selectionArgs = new String[] { Integer.toString(trackId) };
+	// Cursor cur = context.getContentResolver().query(Uri.parse(mUriTrack),
+	// projection, selection, selectionArgs, null);
+	// int album_id = 0;
+	// if (cur.getCount() > 0 && cur.getColumnCount() > 0) {
+	// cur.moveToNext();
+	// album_id = cur.getInt(0);
+	// }
+	// cur.close();
+	// cur = null;
+	//
+	// if (album_id < 0) {
+	// return null;
+	// }
+	// String mUriAlbums = "content://media/external/audio/albums";
+	// projection = new String[] { "album_art" };
+	// cur = context.getContentResolver().query(Uri.parse(mUriAlbums + "/" +
+	// Integer.toString(album_id)), projection, null, null, null);
+	//
+	// String album_art = null;
+	// if (cur.getCount() > 0 && cur.getColumnCount() > 0) {
+	// cur.moveToNext();
+	// album_art = cur.getString(0);
+	// }
+	// cur.close();
+	// cur = null;
+	// return album_art;
+		return "";
+	}
+
+	/**
+	 * 得到专辑中的所有歌曲
+	 */
+	public static List<Mp3> MusicMp3ListbyAlbum(Context context, String Album) {
+		List<Mp3> albumMp3 = new ArrayList<Mp3>();
+		if (albumMp3.size() == 0) {
+			ContentResolver cr = context.getContentResolver();
+			if (cr != null) {
+				// 获取全部歌曲
+				Cursor cursor = cr.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+				if (null == cursor) {
+					return null;
+				}
+				if (cursor.moveToFirst()) {
+					do {
+						String album = cursor.getString(cursor.getColumnIndex(AudioColumns.ALBUM));
+						if ("<unknown>".equals(album)) {
+							album = "unknow album";
+						}
+						if (album.equals(Album)) {
+							String title = cursor.getString(cursor.getColumnIndex(MediaColumns.TITLE));
+							int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+							String url = cursor.getString(cursor.getColumnIndex(MediaColumns.DATA));
+							String name = cursor.getString(cursor.getColumnIndex(MediaColumns.DISPLAY_NAME));
+							String sbr = name.substring(name.length() - 3, name.length());
+							int duration = cursor.getInt(cursor.getColumnIndex(AudioColumns.DURATION));
+							// Log.e("--------------", sbr);
+							if (sbr.equals("mp3") || sbr.endsWith("lac")) {
+								Mp3 mp3 = new Mp3();
+								mp3.setDuration(duration);
+								mp3.setName(title);
+								mp3.setPictureID(id);
+								mp3.setUrl(url);
+								albumMp3.add(mp3);
+							}
+						}
+					} while (cursor.moveToNext());
+				}
+				cursor.close();
+			}
+		}
+		return albumMp3;
+	}
+
+	/**
+	 * 得到所有歌曲列表的列表名字
+	 */
+	public static List<String> PlaylistList(Context context) {
+
+		List<String> listSongs = new ArrayList<String>();
+		if (listSongs.size() == 0) {
+			ContentResolver cr = context.getContentResolver();
+			Cursor cursor = cr.query(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI, mCols, null, null, MediaStore.Audio.Playlists._ID + " desc");
+			al_playlist.clear();
+			int len = cursor.getCount();
+			int id = cursor.getColumnIndexOrThrow(MediaStore.Audio.Playlists._ID);
+			int name = cursor.getColumnIndexOrThrow(MediaStore.Audio.Playlists.NAME);
+
+			for (int i = 0; i < len; i++) {
+				cursor.moveToNext();
+				long id_temp = cursor.getLong(id);
+				String temp = cursor.getString(name);
+				al_playlist.add(id_temp + "");
+				listSongs.add(temp);
+			}
+		}
+		return listSongs;
 	}
 
 	/**

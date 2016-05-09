@@ -19,7 +19,7 @@ import com.ahstu.mycar.bean.User;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
- * @author redowu 2016/5/2
+ * @author redowu 2016/4/25
  *         功能：登录界面，用于登录
  */
 public class LoginActivity extends Activity implements View.OnClickListener {

@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="你好"
-        android:textSize="100dp" />
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+    <Button
+        android:id="@+id/btn_map_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正常地图"
+        android:background="#0fffffff"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp" />
+
+    <Button
+        android:id="@+id/btn_map_site"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="卫星地图"
+        android:background="#0fffffff"
+        android:layout_below="@id/btn_map_normal"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp" />
+
+    <Button
+        android:id="@+id/btn_map_traffic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="实时交通"
+        android:background="#0fffffff"
+        android:layout_below="@id/btn_map_site"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp" />
+
+    <Button
+        android:id="@+id/btn_map_mylocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我的位置"
+        android:background="#0fffffff"
+        android:layout_below="@id/btn_map_traffic"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp" />
 
 </RelativeLayout>

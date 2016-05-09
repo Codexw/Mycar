@@ -14,11 +14,11 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.FriendFragment;
-import com.ahstu.mycar.fragment.HomeFragment;
+import com.ahstu.mycar.fragment.MapFragment;
 import com.ahstu.mycar.fragment.MeInfoFragment;
 import com.ahstu.mycar.view.MusicMenu;
 /**
- * @author 吴天洛 2016,4,25
+ * @author 吴天洛 2016/4/25
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtHome:
-                mainTabUtil(new HomeFragment());
+                mainTabUtil(new MapFragment());
                 setButton(v);
                 break;
             case R.id.txtSearch:
@@ -135,5 +135,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
         return super.onKeyDown(keyCode, event);
     }
+
 
 }

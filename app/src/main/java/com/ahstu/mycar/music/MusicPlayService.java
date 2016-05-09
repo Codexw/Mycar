@@ -1,5 +1,8 @@
 package com.ahstu.mycar.music;
 
+import java.io.IOException;
+import java.util.List;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +12,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import java.io.IOException;
-import java.util.List;
+import com.music.bean.Mp3;
 
 public class MusicPlayService extends Service {
 
@@ -21,7 +23,6 @@ public class MusicPlayService extends Service {
     private int currentTime = 0;//歌曲播放进度
 	private int currentListItme = -1;//当前播放第几首歌
 	private List<Mp3> songs;//要播放的歌曲集合
-	
     
 	@Override
 	public void onCreate() {
@@ -29,7 +30,6 @@ public class MusicPlayService extends Service {
 		if (mMediaPlayer == null) {
 			mMediaPlayer = new MediaPlayer();
 		}
-		
 	}
     
 	/**
@@ -99,7 +99,6 @@ public class MusicPlayService extends Service {
 	 *	歌曲是否真在播放 
 	 */
 	public boolean isPlay() {
-		
 		return mMediaPlayer.isPlaying();
 	}
 	
@@ -125,9 +124,9 @@ public class MusicPlayService extends Service {
 		return songs.get(currentListItme).getName();
 	}
 	
-//	public String getSingerName(){
-//		return songs.get(currentListItme).getSingerName();
-//	}
+	public String getSingerName(){
+		return songs.get(currentListItme).getSingerName();
+	}
 	
 	/**
 	 *	自定义绑定Service类，通过这里的getService得到Service，之后就可调用Service这里的方法了
