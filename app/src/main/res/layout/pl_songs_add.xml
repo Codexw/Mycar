@@ -14,7 +14,7 @@
         Android:layout_alignParentTop="true"
         Android:background="@drawable/audioplayernoartwork" />
 
-        <!-- 添加图标图片 -->
+        <!-- 图标图片 -->
 
     <ImageView
         Android:id="@+id/icon"
@@ -46,7 +46,13 @@
             Android:textColor="#FFFFFFFF"
             Android:textSize="18sp" />
 
+        <TextView
+            Android:id="@+id/singerName"
+            Android:layout_width="wrap_content"
+            Android:layout_height="wrap_content"
+            Android:textColor="#FFFFFFFF"
+            Android:textSize="12sp" />
     </LinearLayout>
-
+    
 
 </RelativeLayout>

@@ -1,8 +1,5 @@
 package com.ahstu.mycar.music;
 
-import java.io.IOException;
-import java.util.List;
-
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +9,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.music.bean.Mp3;
+import java.io.IOException;
+import java.util.List;
 
 public class MusicPlayService extends Service {
 

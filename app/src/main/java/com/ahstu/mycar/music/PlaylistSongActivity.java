@@ -1,12 +1,5 @@
 package com.ahstu.mycar.music;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,12 +20,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.music.R;
-import com.music.adapter.ListViewAdapter;
-import com.music.application.MyApplication;
-import com.music.bean.Mp3;
-import com.music.service.MusicPlayService;
-import com.music.util.MusicUtils;
+import com.ahstu.mycar.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @SuppressLint("NewApi")
 public class PlaylistSongActivity extends Activity {
@@ -208,7 +203,7 @@ public class PlaylistSongActivity extends Activity {
 
 	public void setAdapter() {
 		listItems = getListItems();//得到适配器数据
-		listViewAdapter = new ListViewAdapter(this, listItems, R.layout.item4playlist_song_activity); // 创建适配�?
+		listViewAdapter = new ListViewAdapter(this, listItems, R.layout.itemplaylist_song_activity); // 创建适配�?
 		listViewAdapter.setPl_songIds(pl_songIds);//传入列表歌曲id
 		listView.setAdapter(listViewAdapter);
 
@@ -238,8 +233,6 @@ public class PlaylistSongActivity extends Activity {
 					mService.setCurrentListItme(position);
 					mService.setSongs(songs);
 					mService.playMusic(songs.get(position).getUrl());
-					Intent it = new Intent(PlaylistSongActivity.this, MusicPlayActivity.class);
-					startActivity(it);
 				}
 
 			}

@@ -5,11 +5,53 @@
     android:background="@drawable/bg2"
     android:orientation="vertical" >
 
+    <RelativeLayout
+        android:id="@+id/rlt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bat_up" >
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_back"
+            android:textColor="@android:color/white"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/nowplay_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            android:background="@drawable/button_start" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/nowplay_btn"
+            android:layout_toRightOf="@+id/back_btn"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="Songs"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/ll_normal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -37,9 +79,21 @@
             android:text="Clear"
             android:textSize="20dp" />
 
-       
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="|"
+            android:textSize="20dp" />
 
-        
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Delete"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +114,13 @@
             android:text="Back"
             android:textSize="20dp" />
         
-       
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="|"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tv_add"
@@ -72,15 +132,10 @@
             android:textSize="20dp" />
     </LinearLayout>
 
-    <ListView
+    <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/rl_control"
-        android:layout_below="@+id/ll_normal" >
-
+        android:layout_height="match_parent" >
     </ListView>
-
-    
 
 </LinearLayout>

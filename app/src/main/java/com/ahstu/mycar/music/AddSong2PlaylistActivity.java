@@ -1,12 +1,5 @@
 package com.ahstu.mycar.music;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,10 +15,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.music.R;
-import com.music.adapter.ListViewAdapter;
-import com.music.bean.Mp3;
-import com.music.util.MusicUtils;
+import com.ahstu.mycar.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 @SuppressLint("NewApi")
 public class AddSong2PlaylistActivity extends Activity {
@@ -58,7 +56,7 @@ public class AddSong2PlaylistActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.addsong2playlist);
+		setContentView(R.layout.addsongtoplaylist);
 		initView();
 		initListener();
 	}
@@ -86,6 +84,7 @@ public class AddSong2PlaylistActivity extends Activity {
 		btn_back = (Button) findViewById(R.id.back_btn);
 	}
 
+	
 	private void initListener() {
 		// 完成添加
 		tv_finish.setOnClickListener(new OnClickListener() {
@@ -148,6 +147,7 @@ public class AddSong2PlaylistActivity extends Activity {
 		});
 	}
 
+	
 	public void setAdapter() {
 
 		listItems = getListItems();

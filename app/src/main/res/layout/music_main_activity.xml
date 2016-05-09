@@ -24,19 +24,7 @@
             android:layout_weight="1"
             android:text="歌曲" />
 
-        <Button
-            android:id="@+id/btn_singers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="歌手" />
-
-        <Button
-            android:id="@+id/btn_albums"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="专辑" />
+        
     </LinearLayout>
 
     <TextView

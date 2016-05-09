@@ -3,15 +3,19 @@ package com.ahstu.mycar.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
+import android.widget.ImageView;
+
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.activity.MainActivity;
+import com.ahstu.mycar.music.MusicPlayService;
+import com.ahstu.mycar.music.MyApplication;
 
 import java.util.ArrayList;
 
@@ -27,18 +31,21 @@ public class MusicMenu extends ViewGroup {
     private int startX, startY;
     private boolean isShown;
 
-    private TextView childOne;
-    private TextView childTwo;
-    private TextView childThree;
-    private TextView childFour;
+    private ImageView childOne;
+    private ImageView childTwo;
+    private ImageView childThree;
+    private ImageView childFour;
+    
+    private MusicPlayService mService;
+    private MyApplication application;
+    private MainActivity mainActivity;
 
-
-    private ArrayList<TextView> views = new ArrayList<TextView>();
+    //强制转换成ImageView
+    private ArrayList<ImageView> views = new ArrayList<>();
 
     public MusicMenu(Context context) {
         super(context);
         SMALL_RADIUS = (int) context.getResources().getDimension(R.dimen.radius);
-
         init(context);
     }
 
@@ -56,26 +63,48 @@ public class MusicMenu extends ViewGroup {
         init(context);
     }
 
-    private void init(Context context) {
-        childOne = new TextView(context);
-        childTwo = new TextView(context);
-        childThree = new TextView(context);
-        childFour = new TextView(context);
+    public interface MusicMenuListener{
+        void dealMusicclick(View v);
+    }
+    public void setOnMusicMenuListener(MusicMenuListener listener){
+        musicMenuListener=listener;
+    }
+    private MusicMenuListener musicMenuListener;
+    
+    
+    private void init(final Context context) {
+        childOne = new ImageView(context);
+        childTwo = new ImageView(context);
+        childThree = new ImageView(context);
+        childFour = new ImageView(context);
+        application = new MyApplication();
+        mService = new MusicPlayService();
+//        childOne.setBackgroundResource(R.drawable.music_menu_bg);
+//        childTwo.setBackgroundResource(R.drawable.music_menu_bg);
+//        childThree.setBackgroundResource(R.drawable.music_menu_bg);
+//        childFour.setBackgroundResource(R.drawable.music_menu_bg);
 
-        childOne.setBackgroundResource(R.drawable.music_menu_bg);
-        childTwo.setBackgroundResource(R.drawable.music_menu_bg);
-        childThree.setBackgroundResource(R.drawable.music_menu_bg);
-        childFour.setBackgroundResource(R.drawable.music_menu_bg);
+        
+        childOne.setImageResource(R.drawable.previous_bt);
+        childTwo.setImageResource(R.drawable.pause_bt);
+        childThree.setImageResource(R.drawable.next_bt);
+        childFour.setImageResource(R.drawable.pause_bt);
+        
+        childOne.setTag("previous");
+        childTwo.setTag("pause");
+        childThree.setTag("next");
+        childFour.setTag("list");
+//        childOne.setText("1");
+//        childTwo.setText("2");
+//        childThree.setText("3");
+//        childFour.setText("4");
 
-        childOne.setText("1");
-        childTwo.setText("2");
-        childThree.setText("3");
-        childFour.setText("4");
-
-        childOne.setGravity(Gravity.CENTER);
-        childTwo.setGravity(Gravity.CENTER);
-        childThree.setGravity(Gravity.CENTER);
-        childFour.setGravity(Gravity.CENTER);
+        
+        
+//        childOne.setGravity(Gravity.CENTER);
+//        childTwo.setGravity(Gravity.CENTER);
+//        childThree.setGravity(Gravity.CENTER);
+//        childFour.setGravity(Gravity.CENTER);
 
         addView(childOne);
         addView(childTwo);
@@ -92,10 +121,22 @@ public class MusicMenu extends ViewGroup {
         childThree.setVisibility(View.INVISIBLE);
         childFour.setVisibility(View.INVISIBLE);
 
+        
+        
+        childOne.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+        
         childOne.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
+//                mainActivity.show();
+//                mService.frontMusic();
+                musicMenuListener.dealMusicclick(childOne);
                 in();
             }
         });
@@ -103,14 +144,53 @@ public class MusicMenu extends ViewGroup {
 
             @Override
             public void onClick(View v) {
+//                mService.pausePlay();
+                musicMenuListener.dealMusicclick(childTwo);
                 in();
             }
         });
         
         childThree.setOnClickListener(new OnClickListener() {
-
+           
             @Override
             public void onClick(View v) {
+//                application = (MyApplication) getApplication();
+//                mService = application.getmService();
+//                mService.nextMusic();
+//                new Thread(){
+//                    public void run(){
+//                        try {
+//                            sleep(1000);
+//                        } catch (InterruptedException e1) {
+//                            // TODO Auto-generated catch block
+//                            e1.printStackTrace();
+//                        }
+//                        if(null == mService){
+//                            mService = application.getmService();
+//                            Log.e("TAG",">>>>>>>>>still null<<<<<<<<<<<<<<");
+//                        }
+//                        if(mService==null){
+//                            Log.e("TT",">>>>>>>>>>not applacation");
+//                        }
+//                        
+//                    }
+//                }.start();
+                
+                
+//                application =  getApplication();
+////                Intent intent;
+////                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                intent=new Intent(MusicMenu.this, MusicActivity.class)
+////                context.startActivity(intent);
+//                try {
+//                    mService = application.getmService();
+//                    mService.nextMusic();
+//                } catch (Exception e) {
+//                    Log.e("mSerice",">>>>>>>>>>>>>>>>>>applacation<<<<<<<<<<<<<<<<<<");
+//                }
+//                if(mService==null)
+//                    Log.e("mSerice",">>>>>>>>>>>>>>>>>>null<<<<<<<<<<<<<<<<<<");
+                musicMenuListener.dealMusicclick(childThree);
                 in();
             }
         });
@@ -118,6 +198,7 @@ public class MusicMenu extends ViewGroup {
 
             @Override
             public void onClick(View v) {
+                musicMenuListener.dealMusicclick(childFour);
                 in();
             }
         });
@@ -330,4 +411,13 @@ public class MusicMenu extends ViewGroup {
         return child_y + radius;
     }
 
+    public MyApplication getApplication() {
+        return application;
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return super.onInterceptTouchEvent(ev);
+        
+    }
 }

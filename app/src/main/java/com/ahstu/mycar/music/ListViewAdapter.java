@@ -1,9 +1,5 @@
 package com.ahstu.mycar.music;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.music.R;
-import com.music.util.ImageLoader;
+import com.ahstu.mycar.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ListViewAdapter extends BaseAdapter {
 	private Context context; // 运行上下文
@@ -23,7 +22,7 @@ public class ListViewAdapter extends BaseAdapter {
 	private ArrayList<String> pl_songIds;// 列表歌曲的id
 	private int res;// 适配器对应的xml文件资源
 	private boolean mBusy = false;
-	private ImageLoader mImageLoader;// 异步加载图片类
+//	private ImageLoader mImageLoader;// 异步加载图片类
 
 	public ListViewAdapter(Context context, List<Map<String, Object>> listItems, int res) {
 		this.context = context;
@@ -32,7 +31,7 @@ public class ListViewAdapter extends BaseAdapter {
 		songIds = new ArrayList<String>();
 		pl_songIds = new ArrayList<String>();
 		this.res = res;
-		mImageLoader = new ImageLoader(context);
+//		mImageLoader = new ImageLoader(context);
 	}
 
 	public int getCount() {
@@ -80,11 +79,11 @@ public class ListViewAdapter extends BaseAdapter {
 			urlId = songIds.get(position);
 		holder.albumPicture.setImageResource(R.drawable.audioplayernoartwork);
 
-		if (!mBusy) {
-			mImageLoader.DisplayImage(urlId, holder.albumPicture, false);
-		} else {
-			mImageLoader.DisplayImage(urlId, holder.albumPicture, true);
-		}
+//		if (!mBusy) {
+//			mImageLoader.DisplayImage(urlId, holder.albumPicture, false);
+//		} else {
+//			mImageLoader.DisplayImage(urlId, holder.albumPicture, true);
+//		}
 
 		return view;
 	}

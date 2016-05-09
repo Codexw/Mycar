@@ -1,11 +1,8 @@
 package com.ahstu.mycar.music;
 
-import android.graphics.Bitmap;
-
 public class Album {
 	public String name;
 	public String singerName;
-	public Bitmap picture;
 
 	public String getSingerName() {
 		return singerName;
@@ -19,16 +16,9 @@ public class Album {
 		return name;
 	}
 
-	public Bitmap getPicture() {
-		return picture;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public void setPicture(Bitmap picture) {
-		this.picture = picture;
-	}
+	
 
 }

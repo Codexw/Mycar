@@ -31,7 +31,7 @@
         android:smallScreens="true" />
 
     <application
-
+        android:name="com.ahstu.mycar.music.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/head"
         android:label="@string/app_name"
@@ -63,12 +63,18 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
-
+        
+        <activity android:name="com.ahstu.mycar.music.MusicMainActivity"/>
+        <activity android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"/>
+        <activity android:name="com.ahstu.mycar.music.PlaylistSongActivity"/>
+        
+        <service android:name="com.ahstu.mycar.music.MusicPlayService"/>
         <!--百度地图定位的service-->
         <service
             android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" />
+            android:enabled="true" />
+
+
     </application>
 
 </manifest>

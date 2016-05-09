@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import android.util.Log;
 
-import com.music.service.MusicPlayService;
-import com.music.service.MusicPlayService.LocalBinder;
+
 
 public class MyApplication extends Application {
 	MusicPlayService mService;
@@ -17,7 +15,7 @@ public class MyApplication extends Application {
 	private ServiceConnection mConnection = new ServiceConnection() {
 		@Override
 		public void onServiceConnected(ComponentName className, IBinder service) {
-			mService = ((LocalBinder) service).getService();//用绑定方法启动service，就是从这里绑定并得到service，然后就可以操作service了
+			mService = ((MusicPlayService.LocalBinder) service).getService();//用绑定方法启动service，就是从这里绑定并得到service，然后就可以操作service了
 			System.out.println("1null?"+(null == mService));
 			mService.setContext(getApplicationContext());
 		}
