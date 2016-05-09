@@ -149,7 +149,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
         setContentView(R.layout.activity_main);
         initView();
         initOnclick();
-
+        startService(new Intent(MainActivity.this, MusicPlayService.class));
+        setAdapter();
         menuView.setOnMusicMenuListener(this);
         listview=(ListView) findViewById(R.id.listView);
         application = (MyApplication) getApplication();
@@ -158,6 +159,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
             public void run(){
                 try {
                     sleep(1000);
+
                 } catch (InterruptedException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
