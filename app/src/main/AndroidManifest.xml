@@ -22,6 +22,19 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <supports-screens
         android:anyDensity="true"
@@ -31,7 +44,7 @@
         android:smallScreens="true" />
 
     <application
-        android:name="com.ahstu.mycar.music.MyApplication"
+        android:name=".activity.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/head"
         android:label="@string/app_name"
@@ -41,7 +54,10 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
-
+        <!-- 聚合openid -->
+        <meta-data
+            android:name="com.thinkland.juheapi.openid"
+            android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
         <activity
             android:name="com.ahstu.mycar.activity.SplashActivity"
             android:launchMode="singleTop">
@@ -63,6 +79,16 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RouteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StationInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StationListActivity"
+            android:screenOrientation="portrait" />
+
         
         <activity android:name="com.ahstu.mycar.music.MusicMainActivity"/>
         <activity android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"/>
@@ -73,8 +99,6 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true" />
-
-
     </application>
 
 </manifest>

@@ -204,7 +204,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
         imgAdd = (ImageView) findViewById(R.id.imgAdd);
         menuView = (MusicMenu) findViewById(R.id.menu);
     }
-
+ 
     /**
      * 处理点击事件，加载fragment
      */

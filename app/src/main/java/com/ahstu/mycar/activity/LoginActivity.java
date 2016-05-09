@@ -66,28 +66,41 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                User user = new User();
-                user.setUsername(et_username.getText().toString());
-                user.setPassword(et_password.getText().toString());
-                user.login(context, new SaveListener() {
-                    @Override
-                    public void onSuccess() {
+                if (et_username.getText().toString().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+                } else if (et_password.getText().toString().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                } else {
+                    User user = new User();
+                    user.setUsername(et_username.getText().toString());
+                    user.setPassword(et_password.getText().toString());
+                    user.login(context, new SaveListener() {
+                        @Override
+                        public void onSuccess() {
 
-                        //登录成功就将用户的信息保存到本地数据库中
-                        SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
-                        //存入数据
-                        SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("name", et_username.getText().toString());
-                        editor.putString("password", et_password.getText().toString());
-                        editor.commit();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }
+                            //登录成功就将用户的信息保存到本地数据库中
+                            SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
+                            //存入数据
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("name", et_username.getText().toString());
+                            editor.putString("password", et_password.getText().toString());
+                            editor.commit();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
-                    @Override
-                    public void onFailure(int i, String s) {
-                        Toast.makeText(LoginActivity.this, "登录失败" + s + i, Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+                        }
+
+                        @Override
+                        public void onFailure(int i, String s) {
+                            if (i == 9016) {
+                                Toast.makeText(LoginActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
+                            } else if (i == 101) {
+                                Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+                            } else
+                                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
                 break;
             case R.id.btn_register:
                 startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
