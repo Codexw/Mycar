@@ -14,8 +14,8 @@ import android.widget.ImageView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.MainActivity;
+import com.ahstu.mycar.activity.MyApplication;
 import com.ahstu.mycar.music.MusicPlayService;
-import com.ahstu.mycar.music.MyApplication;
 
 import java.util.ArrayList;
 

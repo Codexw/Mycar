@@ -25,7 +25,6 @@ import com.ahstu.mycar.music.Mp3;
 import com.ahstu.mycar.music.MusicMainActivity;
 import com.ahstu.mycar.music.MusicPlayService;
 import com.ahstu.mycar.music.MusicUtils;
-import com.ahstu.mycar.music.MyApplication;
 import com.ahstu.mycar.view.MusicMenu;
 import com.ahstu.mycar.view.MusicMenu.MusicMenuListener;
 

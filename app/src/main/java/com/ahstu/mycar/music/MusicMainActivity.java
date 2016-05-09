@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.activity.MyApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;
