@@ -21,7 +21,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -53,12 +52,14 @@
         <!--百度sdk开发秘钥-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
+            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
             android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
+
         <activity
+
             android:name="com.ahstu.mycar.activity.SplashActivity"
             android:launchMode="singleTop">
             <intent-filter>
@@ -88,13 +89,17 @@
         <activity
             android:name=".activity.StationListActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.MusicMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.PlaylistSongActivity"
+            android:screenOrientation="portrait" />
 
-        
-        <activity android:name="com.ahstu.mycar.music.MusicMainActivity"/>
-        <activity android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"/>
-        <activity android:name="com.ahstu.mycar.music.PlaylistSongActivity"/>
-        
-        <service android:name="com.ahstu.mycar.music.MusicPlayService"/>
+        <service android:name="com.ahstu.mycar.music.MusicPlayService" />
         <!--百度地图定位的service-->
         <service
             android:name="com.baidu.location.f"

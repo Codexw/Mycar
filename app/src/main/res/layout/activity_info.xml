@@ -97,7 +97,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/dark_grey" />
 
-            <com.juhe.petrolstation.widght.NoScrollListView
+            <com.ahstu.mycar.widght.NoScrollListView
                 android:id="@+id/lv_gast_price"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -133,7 +133,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/dark_grey" />
 
-            <com.juhe.petrolstation.widght.NoScrollListView
+            <com.ahstu.mycar.widght.NoScrollListView
                 android:id="@+id/lv_price"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

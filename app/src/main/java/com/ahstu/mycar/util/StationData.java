@@ -25,6 +25,7 @@ public class StationData {
     public StationData(Handler handler) {
         this.handler = handler;
     }
+
     public void getStationData(Double lat, Double lon, int distance) {
         Parameters mParameters = new Parameters();
         mParameters.add("lat", lat);
@@ -34,6 +35,7 @@ public class StationData {
 
             @Override
             public void resultLoaded(int i, String s, String s1) {
+                //0表示成功
                 if (i == 0) {
                     ArrayList<Station> list = parser(s1);
                     if (list != null && list.size() > 0) {
@@ -49,7 +51,7 @@ public class StationData {
     }
 
     //解析JSON数据
-    private ArrayList<Station> parser(String str) {
+    private ArrayList<Station> parser(String str) {//
         ArrayList<Station> list = null;
         try {
             JSONObject json = new JSONObject(str);
@@ -69,7 +71,7 @@ public class StationData {
                     s.setDistance(dataJSON.getInt("distance"));
 
                     JSONObject priceJson = dataJSON.getJSONObject("price");
-                    ArrayList<Price> priceList = new ArrayList<Price>();
+                    ArrayList<Price> priceList = new ArrayList<Price>();//
                     Iterator<String> priceI = priceJson.keys();
                     while (priceI.hasNext()) {
                         Price p = new Price();

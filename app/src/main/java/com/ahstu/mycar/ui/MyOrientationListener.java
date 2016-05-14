@@ -7,7 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 /**
- * Created by redowu on 2016/5/5.
+ * @author redowu on 2016/5/5.
+ *         功能：方向传感器，用于改变地图上方向图标的状态
  */
 public class MyOrientationListener implements SensorEventListener {
     private SensorManager mSensorManager;

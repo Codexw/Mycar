@@ -59,7 +59,7 @@
             android:layout_marginTop="8dp"
             android:background="@color/dark_grey" />
 
-        <com.juhe.petrolstation.widght.NoScrollGridView
+        <com.ahstu.mycar.widght.NoScrollGridView
             android:id="@+id/gv_price"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

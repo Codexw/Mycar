@@ -83,6 +83,25 @@
             android:paddingRight="10dp"
             android:text="罗盘模式" />
 
+        <Button
+            android:id="@+id/btn_map_search_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="#0fffffff"
+            android:paddingRight="10dp"
+            android:text="查找加油站" />
+
+        <Button
+            android:id="@+id/btn_map_stop_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/btn_map_search_station"
+            android:background="#0fffffff"
+            android:paddingRight="10dp"
+            android:text="关闭加油站" />
+
 
         <ImageView
             android:id="@+id/iv_loc"
@@ -112,8 +131,8 @@
             android:layout_toLeftOf="@id/iv_list"
             android:layout_toRightOf="@id/iv_loc"
             android:background="@drawable/frame"
-            android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="fill_parent"

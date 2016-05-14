@@ -12,7 +12,7 @@ import com.baidu.mapapi.SDKInitializer;
 
 /**
  * @author redowu 2016/5/7
- *         功能：百度地图sdk和聚合数据sdk的初始化
+ *         功能：百度地图sdk和聚合数据sdk的初始化以及音乐的服务
  */
 public class MyApplication extends Application {
 

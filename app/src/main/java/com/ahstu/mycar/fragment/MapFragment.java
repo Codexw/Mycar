@@ -3,6 +3,7 @@ package com.ahstu.mycar.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,12 +15,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.activity.StationInfoActivity;
+import com.ahstu.mycar.activity.StationListActivity;
 import com.ahstu.mycar.bean.Price;
 import com.ahstu.mycar.bean.Station;
 import com.ahstu.mycar.ui.MyOrientationListener;
@@ -29,6 +33,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
@@ -37,6 +42,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
@@ -44,10 +50,9 @@ import com.baidu.mapapi.model.LatLng;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
-
 /**
  * @author 吴天洛 2016/4/25
+ *         功能:地图定位。导航
  */
 
 public class MapFragment extends Fragment implements OnClickListener {
@@ -75,16 +80,19 @@ public class MapFragment extends Fragment implements OnClickListener {
     private float mCurrentX;
 
     //加油站相关变量
+    private Button btn_map_search_station;
+    private Button btn_map_stop_station;
     private ImageView iv_list, iv_loc;
     private Toast mToast;
     private TextView tv_name, tv_distance, tv_price_a, tv_price_b;
     private LinearLayout ll_summary;
     private Dialog loadingDialog;
-    private Station mStation;
     private Marker mLastMaker;
     private ArrayList<Station> mList;
+    private Station mStation = null;
     private StationData mStationData;
     private int mDistance = 80000;
+    private CheckBox animationBox = null;
 
     private BDLocation loc;
 
@@ -115,6 +123,8 @@ public class MapFragment extends Fragment implements OnClickListener {
         iv_list.setOnClickListener(this);
         iv_loc.setOnClickListener(this);
         ll_summary.setOnClickListener(this);
+        btn_map_search_station.setOnClickListener(this);
+        btn_map_stop_station.setOnClickListener(this);
 
     }
 
@@ -140,9 +150,11 @@ public class MapFragment extends Fragment implements OnClickListener {
         btn_map_mode_following = (Button) getActivity().findViewById(R.id.btn_map_mode_following);
         btn_map_mode_compass = (Button) getActivity().findViewById(R.id.btn_map_mode_compass);
 
-        //布局
+        //加油站布局
         iv_list = (ImageView) getActivity().findViewById(R.id.iv_list);
         iv_loc = (ImageView) getActivity().findViewById(R.id.iv_loc);
+        btn_map_search_station = (Button) getActivity().findViewById(R.id.btn_map_search_station);
+        btn_map_stop_station = (Button) getActivity().findViewById(R.id.btn_map_stop_station);
     }
 
     //定位初始化
@@ -161,7 +173,7 @@ public class MapFragment extends Fragment implements OnClickListener {
         option.setScanSpan(1000);
         mLocationClient.setLocOption(option);//将上面option中的设置加载
 
-        //初始化图标
+        //初始化方向指示图标
         mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
         mMyOrientationListener = new MyOrientationListener(getActivity());
         mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
@@ -171,7 +183,7 @@ public class MapFragment extends Fragment implements OnClickListener {
             }
         });
 
-        //地图模式
+        //默认地图模式
         mLocationMode = LocationMode.NORMAL;
     }
 
@@ -180,6 +192,7 @@ public class MapFragment extends Fragment implements OnClickListener {
     public void setMarker(ArrayList<Station> list) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
         final TextView tv = (TextView) view.findViewById(R.id.tv_marker);
+
         for (int i = 0; i < list.size(); i++) {
             Station s = list.get(i);
             tv.setText((i + 1) + "");
@@ -188,9 +201,11 @@ public class MapFragment extends Fragment implements OnClickListener {
             } else {
                 tv.setBackgroundResource(R.drawable.icon_mark);
             }
+
             BitmapDescriptor mBitmap = BitmapDescriptorFactory.fromView(tv);
             LatLng mLatLng = new LatLng(s.getLat(), s.getLon());
             Bundle b = new Bundle();
+            b.putParcelable("s", list.get(i));
             OverlayOptions mOverlayOptions = new MarkerOptions().position(mLatLng).icon(mBitmap).title((i + 1) + "").extraInfo(b);
             if (i == 0) {
                 mLastMaker = (Marker) mBaiduMap.addOverlay(mOverlayOptions);
@@ -202,10 +217,9 @@ public class MapFragment extends Fragment implements OnClickListener {
         }
 
         //点击地图中的加油站图标时，做出相应的响应
-        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
-
+        mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
             @Override
-            public boolean onMarkerClick(Marker marker) {
+            public boolean onMarkerClick(final Marker marker) {
                 //没被选中的maker
                 if (mLastMaker != null) {
                     tv.setText(mLastMaker.getTitle());
@@ -257,6 +271,7 @@ public class MapFragment extends Fragment implements OnClickListener {
                 case 0x01:
                     mList = (ArrayList<Station>) msg.obj;
                     setMarker(mList);
+                    showLayoutInfo("1", mList.get(0));
                     loadingDialog.dismiss();
                     break;
                 case 0x02:
@@ -266,7 +281,6 @@ public class MapFragment extends Fragment implements OnClickListener {
                 default:
                     break;
             }
-
         }
     };
 
@@ -359,20 +373,31 @@ public class MapFragment extends Fragment implements OnClickListener {
             case R.id.btn_map_mode_compass:
                 mLocationMode = LocationMode.COMPASS;
                 break;
-
+            case R.id.btn_map_search_station:
+                searchStation(loc.getLatitude(), loc.getLongitude(), mDistance);
+                break;
+            case R.id.btn_map_stop_station:
+                mBaiduMap.clear();
+                mLastMaker = null;
+                ll_summary.setVisibility(View.GONE);
+                break;
             case R.id.iv_list:
-              /*  Intent listIntent = new Intent(getActivity(), StationListActivity.class);
+                Intent listIntent = new Intent(getActivity(), StationListActivity.class);
                 listIntent.putParcelableArrayListExtra("list", mList);
                 listIntent.putExtra("locLat", loc.getLatitude());
                 listIntent.putExtra("locLon", loc.getLongitude());
-                startActivity(listIntent);*/
+                startActivity(listIntent);
                 break;
             case R.id.iv_loc:
-                searchStation(loc.getLatitude(), loc.getLongitude(), mDistance);
                 break;
             case R.id.tv_title_button:
                 break;
             case R.id.ll_summary:
+                Intent mIntent = new Intent(getActivity(), StationInfoActivity.class);
+                mIntent.putExtra("s", mStation);
+                mIntent.putExtra("locLat", loc.getLatitude());
+                mIntent.putExtra("locLon", loc.getLongitude());
+                startActivity(mIntent);
                 break;
             default:
                 break;
@@ -406,7 +431,7 @@ public class MapFragment extends Fragment implements OnClickListener {
         mToast.show();
     }
 
-    //地图加载是耗时的，因此采用异步加载
+    //地图定位加载是耗时的，因此采用异步加载
     public class MyLocationListener implements BDLocationListener {
 
         @Override
