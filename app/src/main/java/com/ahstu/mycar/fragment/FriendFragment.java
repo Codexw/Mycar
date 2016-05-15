@@ -22,7 +22,7 @@ import com.ahstu.mycar.me.RoundProgressBar;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
 /**
- * @author 吴天洛 2016,4,25
+ * @author 吴天洛 2016/4/25
  */
 
 public class FriendFragment extends Fragment {
@@ -131,12 +131,13 @@ public class FriendFragment extends Fragment {
             carcontrollinearlayout.setVisibility(View.GONE);
             carcontrollinearlayout2.setVisibility(View.VISIBLE);
         }
+        initview();
 
     }
 
     //初始化组件，并且加监听器
     void initview() {
-        //从
+        
         SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
         String s = share.getString("number", "");
         Log.e("TAG", "《《《《《《《《《《《《《《《《《《《" + s);
@@ -261,4 +262,5 @@ public class FriendFragment extends Fragment {
         
         
     }
+    
 }

@@ -58,7 +58,7 @@
                 android:drawableTop="@drawable/nav_find_image"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="发现"
+                android:text="线路"
                 android:textColor="@color/nav_find_text" />
 
         </LinearLayout>
@@ -110,7 +110,12 @@
 
     </LinearLayout>
 
-
+    <com.ahstu.mycar.view.MusicMenu
+        android:id="@+id/menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layoutTab"
+        android:background="#00FFFFFF" />
     <ImageView
         android:id="@+id/imgAdd"
         android:layout_width="60dp"
@@ -118,6 +123,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
+
         android:background="@drawable/publish_btn_bg"
         android:src="@drawable/publish_add" />
 

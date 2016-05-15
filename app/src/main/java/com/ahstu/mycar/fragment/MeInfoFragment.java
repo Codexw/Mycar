@@ -16,6 +16,9 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.activity.LoginActivity;
 
+/**
+ * @author redowu 2016/4/25
+ */
 public class MeInfoFragment extends Fragment {
     private Button btn_exit;
     View view;

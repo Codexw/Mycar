@@ -25,7 +25,7 @@ import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.VerifySMSCodeListener;
 
 /**
- * @author redowu 2016/5/2
+ * @author redowu 2016/4/25
  *         功能:手机号码注册
  */
 public class RegisterPhoneActivity extends Activity implements View.OnClickListener {
@@ -121,8 +121,6 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                     BmobSMS.verifySmsCode(context, et_phoneNum.getText().toString(), et_register_code.getText().toString(), new VerifySMSCodeListener() {
                         @Override
                         public void done(BmobException e) {
-
-//                            e = null;//默认验证码正确，方便调试，调试结束后删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
                             if (e == null) {
                                 Intent i = new Intent(RegisterPhoneActivity.this, RegisterUserMsgActivity.class);

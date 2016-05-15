@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ahstu.mycar"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ahstu.mycar">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 监听网络的变化 -->
@@ -18,6 +18,30 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 通知震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
     <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!--推送所需的权限-->
@@ -27,12 +51,23 @@
     <uses-sdk tools:overrideLibrary="com.xys.libzxing"></uses-sdk>
 
     <application
+        android:name=".activity.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/head"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--百度sdk开发秘钥-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Qz6Axp5sB8Oa6EuL9nFucKHaymrOxEQM" />
+        <!-- 聚合openid -->
+        <meta-data
+            android:name="com.thinkland.juheapi.openid"
+            android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
+
         <activity
+
             android:name="com.ahstu.mycar.activity.SplashActivity"
             android:launchMode="singleTop">
             <intent-filter>
@@ -53,6 +88,30 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RouteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StationInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.MusicMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.PlaylistSongActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.ahstu.mycar.music.MusicPlayService" />
+        <!--百度地图定位的service-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true" />
         <activity android:name=".activity.CarQueryActivity"></activity>
         <activity android:name=".activity.CityListActivity"></activity>
         <activity android:name=".activity.ProvinceListActivity"></activity>
