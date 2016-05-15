@@ -25,7 +25,7 @@ public class MusicMenu extends ViewGroup {
     private static final int PADDING_T_B = 1;
     private static int DURATION = 500;//动画持续时间
     private final int SMALL_RADIUS;
-    
+
     private boolean isAnimating;
     private int currentIndex;
     private int startX, startY;
@@ -35,7 +35,7 @@ public class MusicMenu extends ViewGroup {
     private ImageView childTwo;
     private ImageView childThree;
     private ImageView childFour;
-    
+
     private MusicPlayService mService;
     private MyApplication application;
     private MainActivity mainActivity;
@@ -63,15 +63,17 @@ public class MusicMenu extends ViewGroup {
         init(context);
     }
 
-    public interface MusicMenuListener{
+    public interface MusicMenuListener {
         void dealMusicclick(View v);
     }
-    public void setOnMusicMenuListener(MusicMenuListener listener){
-        musicMenuListener=listener;
+
+    public void setOnMusicMenuListener(MusicMenuListener listener) {
+        musicMenuListener = listener;
     }
+
     private MusicMenuListener musicMenuListener;
-    
-    
+
+
     private void init(final Context context) {
         childOne = new ImageView(context);
         childTwo = new ImageView(context);
@@ -84,12 +86,12 @@ public class MusicMenu extends ViewGroup {
 //        childThree.setBackgroundResource(R.drawable.music_menu_bg);
 //        childFour.setBackgroundResource(R.drawable.music_menu_bg);
 
-        
+
         childOne.setImageResource(R.drawable.previous_bt);
         childTwo.setImageResource(R.drawable.pause_bt);
         childThree.setImageResource(R.drawable.next_bt);
         childFour.setImageResource(R.drawable.pause_bt);
-        
+
         childOne.setTag("previous");
         childTwo.setTag("pause");
         childThree.setTag("next");
@@ -99,8 +101,7 @@ public class MusicMenu extends ViewGroup {
 //        childThree.setText("3");
 //        childFour.setText("4");
 
-        
-        
+
 //        childOne.setGravity(Gravity.CENTER);
 //        childTwo.setGravity(Gravity.CENTER);
 //        childThree.setGravity(Gravity.CENTER);
@@ -121,15 +122,14 @@ public class MusicMenu extends ViewGroup {
         childThree.setVisibility(View.INVISIBLE);
         childFour.setVisibility(View.INVISIBLE);
 
-        
-        
+
         childOne.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return false;
             }
         });
-        
+
         childOne.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -149,9 +149,9 @@ public class MusicMenu extends ViewGroup {
                 in();
             }
         });
-        
+
         childThree.setOnClickListener(new OnClickListener() {
-           
+
             @Override
             public void onClick(View v) {
 //                application = (MyApplication) getApplication();
@@ -175,8 +175,8 @@ public class MusicMenu extends ViewGroup {
 //                        
 //                    }
 //                }.start();
-                
-                
+
+
 //                application =  getApplication();
 ////                Intent intent;
 ////                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -363,7 +363,7 @@ public class MusicMenu extends ViewGroup {
 
                 layout(child, child_x, child_y, radiusSmall);
             } else if (i == 2) {
-                
+
                 int child_x = (int) (width / 2 + radiusBig * Math.cos(Math.PI / 3)) + PADDING_L_R + 40;
                 int child_y = (int) (height - radiusSmall - radiusBig * Math.sin(Math.PI / 3)) + 130;
 
@@ -418,6 +418,6 @@ public class MusicMenu extends ViewGroup {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return super.onInterceptTouchEvent(ev);
-        
+
     }
 }

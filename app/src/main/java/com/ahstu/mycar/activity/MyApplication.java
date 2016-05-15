@@ -30,6 +30,7 @@ public class MyApplication extends Application {
         public void onServiceDisconnected(ComponentName arg0) {
         }
     };
+
     @Override
     public void onCreate() {
         super.onCreate();

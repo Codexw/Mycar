@@ -29,6 +29,7 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
         //初始化BmobSDK
         Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
 
+
         imageView = (ImageView) findViewById(R.id.splash_img);
 
         //欢迎界面动画效果

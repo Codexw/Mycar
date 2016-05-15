@@ -13,5 +13,10 @@
     <color name="blue">#499BF7</color>
     <color name="dark_grey">#B8B8B8</color>
     <color name="translucent">#cc808080</color>
+    <color name="csy_row_on">#fff0f0f0</color>
+    <color name="csy_text">#ff555555</color>
+    <color name="csy_green">#ff3caa0f</color>
+    <color name="csy_label">#ff969696</color>
+    <color name="csy_border">#ffd0d0d0</color>
 
 </resources>
