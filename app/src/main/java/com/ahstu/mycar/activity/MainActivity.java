@@ -38,7 +38,7 @@ import java.util.TimerTask;
  * @author 吴天洛 2016/4/25
  */
 
-public class MainActivity extends FragmentActivity implements OnClickListener,MusicMenuListener {
+public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private TextView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
@@ -69,12 +69,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
             }
         }
     };
+
     public void setAdapter() {
         listItems = getListItems();//得到适配器数据
         listViewAdapter = new ListViewAdapter(this, listItems, R.layout.itemplaylist_song_activity); // 创建适配
         listViewAdapter.setPl_songIds(pl_songIds);//传入列表歌曲id
 //		listview.setAdapter(listViewAdapter);
     }
+
     /**
      * 得到歌曲信息
      */
@@ -82,7 +84,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
         List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         pl_songIds = new ArrayList<String>();//存储列表�?��歌曲id
 //		songs = MusicUtils.getSongListForPlaylist(MusicActivity.this, playlistId);//存储列表歌曲
-        songs= MusicUtils.getAllSongs(MainActivity.this);
+        songs = MusicUtils.getAllSongs(MainActivity.this);
         for (int i = 0; i < songs.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
             if (idEdit) {
@@ -127,13 +129,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
         mService = application.getmService();
         Log.e("TAG", ">>>>>>>>>>>>>>>>>>" + v.getTag().toString());
 
-        switch (v.getTag().toString()){
+        switch (v.getTag().toString()) {
             case "previous":
                 mService.frontMusic();
                 break;
             case "pause":
                 mService.pausePlay();
-                ;   break;
+                ;
+                break;
             case "next":
                 mService.nextMusic();
                 break;
@@ -152,11 +155,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
         startService(new Intent(MainActivity.this, MusicPlayService.class));
         setAdapter();
         menuView.setOnMusicMenuListener(this);
-        listview=(ListView) findViewById(R.id.listView);
+        listview = (ListView) findViewById(R.id.listView);
         application = (MyApplication) getApplication();
         mService = application.getmService();
-        new Thread(){
-            public void run(){
+        new Thread() {
+            public void run() {
                 try {
                     sleep(1000);
 
@@ -164,7 +167,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
-                if(null == mService){
+                if (null == mService) {
                     mService = application.getmService();
 
                 }
@@ -281,10 +284,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener,Mu
     }
 
 
-    public void show(){
-        Toast.makeText(MainActivity.this,">>>>>>>>>>>你好<<<<<<<<<<<<<<",Toast.LENGTH_SHORT).show();
+    public void show() {
+        Toast.makeText(MainActivity.this, ">>>>>>>>>>>你好<<<<<<<<<<<<<<", Toast.LENGTH_SHORT).show();
     }
-
 
 
     protected void onDestroy() {

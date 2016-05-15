@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,15 +17,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" 
+    android:orientation="vertical"
     android:background="@drawable/bg2">
-    
-     <RelativeLayout
+
+    <RelativeLayout
         android:id="@+id/rlt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@drawable/bat_up" >
+        android:background="@drawable/bat_up">
 
         <Button
             android:id="@+id/back_btn"
@@ -50,15 +49,14 @@
             android:text="Songs"
             android:textStyle="bold" />
     </RelativeLayout>
-    
+
     <LinearLayout
         android:id="@+id/ll_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" 
+        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        >
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/tv_back"
@@ -68,6 +66,7 @@
             android:gravity="center"
             android:text="Back"
             android:textSize="20dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +87,6 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

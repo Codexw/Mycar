@@ -182,7 +182,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                                 @Override
                                 public void onError(int i, String s) {
-                                    
+
                                 }
 
                             });
