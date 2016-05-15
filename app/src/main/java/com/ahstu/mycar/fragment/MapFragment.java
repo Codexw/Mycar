@@ -44,7 +44,6 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
-import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
@@ -139,7 +138,7 @@ public class MapFragment extends Fragment implements OnClickListener {
         //地图
         mMapView = (MapView) getActivity().findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
-        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(17.0f);  //地图比例初始化为100M
+        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);  //地图比例初始化为100M
         mBaiduMap.setMapStatus(msu);
 
         btn_map_normal = (Button) getActivity().findViewById(R.id.btn_map_normal);
@@ -206,13 +205,15 @@ public class MapFragment extends Fragment implements OnClickListener {
             LatLng mLatLng = new LatLng(s.getLat(), s.getLon());
             Bundle b = new Bundle();
             b.putParcelable("s", list.get(i));
-            OverlayOptions mOverlayOptions = new MarkerOptions().position(mLatLng).icon(mBitmap).title((i + 1) + "").extraInfo(b);
+            MarkerOptions mMarkerOptions = new MarkerOptions().position(mLatLng).icon(mBitmap).title((i + 1) + "").extraInfo(b);
+            //掉下动画
+            mMarkerOptions.animateType(MarkerOptions.MarkerAnimateType.drop);
             if (i == 0) {
-                mLastMaker = (Marker) mBaiduMap.addOverlay(mOverlayOptions);
+                mLastMaker = (Marker) mBaiduMap.addOverlay(mMarkerOptions);
                 mStation = s;
                 showLayoutInfo((i + 1) + "", mStation);
             } else {
-                mBaiduMap.addOverlay(mOverlayOptions);
+                mBaiduMap.addOverlay(mMarkerOptions);
             }
         }
 
@@ -276,6 +277,7 @@ public class MapFragment extends Fragment implements OnClickListener {
                     break;
                 case 0x02:
                     loadingDialog.dismiss();
+
                     showToast(String.valueOf(msg.obj));
                     break;
                 default:
