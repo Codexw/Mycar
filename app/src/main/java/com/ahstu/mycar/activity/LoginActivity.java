@@ -1,10 +1,14 @@
 package com.ahstu.mycar.activity;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,9 +18,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.bean.User;
-import com.ahstu.mycar.ui.MainActivity;
+import com.ahstu.mycar.sql.DatabaseHelper;
 
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -81,6 +91,95 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         editor.putString("name", et_username.getText().toString());
                         editor.putString("password", et_password.getText().toString());
                         editor.commit();
+                        //用户登录的时候，查询数据库，把数据存放在数据库中。
+                        User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
+                        BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
+                        query.addWhereEqualTo("user", user);
+                        query.order("-updatedAt");
+                        query.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
+                            @Override
+                            public void onSuccess(List<Carinfomation> list) {
+                                //打开数据库，存放在本地数据库
+                                DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+                                SQLiteDatabase db = helper.getWritableDatabase();
+                                for (int i = 0; i < list.size(); i++) {
+                                    Carinfomation carinfomation = list.get(i);
+                                    ContentValues value = new ContentValues();
+                                    value.put("car_number", carinfomation.getCar_number());
+                                    value.put("car_brand", carinfomation.getCar_brand());
+                                    value.put("car_model", carinfomation.getCar_model());
+                                    value.put("car_sign", carinfomation.getCar_sign());
+                                    value.put("car_enginerno", carinfomation.getCar_enginerno());
+                                    value.put("car_level", carinfomation.getCar_level());
+                                    value.put("car_mile", carinfomation.getCar_mile());
+                                    value.put("car_gas", carinfomation.getCar_gas());
+                                    value.put("car_enginerstate", carinfomation.getCar_enginerstate());
+                                    value.put("car_shiftstate", carinfomation.getCar_shiftstate());
+                                    value.put("car_light", carinfomation.getCar_light());
+                                    if (carinfomation.getCar_start() == false) {
+                                        value.put("car_start", 0);
+                                    } else {
+                                        value.put("car_start", 1);
+                                    }
+                                    if (carinfomation.getCar_door() == false) {
+                                        value.put("car_door", 0);
+
+                                    } else {
+                                        value.put("car_door", 1);
+
+                                    }
+                                    if (carinfomation.getCar__lock() == false) {
+
+                                        value.put("car_lock", 0);
+
+                                    } else {
+                                        value.put("car_lock", 1);
+
+                                    }
+
+                                    if (carinfomation.getCar_air() == false) {
+
+                                        value.put("car_air", 0);
+                                    } else {
+                                        value.put("car_air", 1);
+
+                                    }
+                                    db.insert("carinfo", null, value);
+                                }
+                                db.close();
+
+                                SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
+                                DatabaseHelper data = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+                                SQLiteDatabase sql = data.getReadableDatabase();
+                                Cursor cursor = sql.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
+                                if (cursor != null) {
+                                    if (cursor.moveToFirst()) {
+                                        SharedPreferences.Editor editer = share.edit();
+                                        editer.putInt("position", 0);
+                                        editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
+                                        editer.commit();
+                                        Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
+                                    }
+
+                                } else {
+
+
+                                    SharedPreferences.Editor editer = share.edit();
+                                    editer.putInt("position", 0);
+                                    editer.putString("number", "");
+                                    editer.commit();
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+
+                            }
+                        });
+                           
+                        
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
 

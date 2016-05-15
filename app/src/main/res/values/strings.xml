@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyCar</string>
+    <string name="csy_chepai_lab">车牌号</string>
+    <string name="csy_cxdz_lab">查询地</string>
 </resources>

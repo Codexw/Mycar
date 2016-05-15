@@ -1,4 +1,4 @@
-package com.ahstu.mycar.ui;
+package com.ahstu.mycar.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ahstu.mycar.activity.SplashActivity;
+import com.ahstu.mycar.R;
 import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.FriendFragment;
 import com.ahstu.mycar.fragment.HomeFragment;
 import com.ahstu.mycar.fragment.MeInfoFragment;
-import com.ahstu.mycar.R;
 
 /**
  * @author 吴天洛 2016,4,25
@@ -32,6 +31,37 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
+        //将我的车辆里面的车辆信息选择保存在本地share中。
+
+//        SharedPreferences share=getSharedPreferences("text",MODE_PRIVATE);
+//        if(share.getString("number","").equals("")) {
+//            DatabaseHelper helper=new DatabaseHelper(MainActivity.this,"node.db",null,1);
+//            SQLiteDatabase db=helper.getReadableDatabase();
+//            Cursor cursor=db.query("carinfo",new String[]{"car_number"},null,null,null,null,null);
+//           
+//            if(cursor!=null)
+//            {
+//                if(cursor.moveToFirst())
+//                {
+//                    SharedPreferences.Editor editer = share.edit();
+//                    editer.putInt("position", 0);
+//                    editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
+//                    editer.commit();
+//                    Log.e("TAG","SSSSSSSSSSSSSSSSSSSS"+cursor.getString(cursor.getColumnIndex("car_number")).toString());
+//                }
+//                
+//            }
+//            else {
+//                SharedPreferences.Editor editer = share.edit();
+//                editer.putInt("position", 0);
+//                editer.putString("number", "");
+//                editer.commit();
+//            }
+//        }
+//
+//        //Log.e("sss","wwwwwwwwwwwwwwwwwwwwwwww"+share.getString("number","111111111"));
+//        
+//        
         initView();
         initOnclick();
     }
@@ -130,5 +160,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
         return super.onKeyDown(keyCode, event);
     }
+
 
 }

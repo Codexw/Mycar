@@ -10,7 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.ahstu.mycar.R;
-import com.ahstu.mycar.ui.MainActivity;
 
 import cn.bmob.v3.Bmob;
 
@@ -29,6 +28,7 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
 
         //初始化BmobSDK
         Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
+
 
         imageView = (ImageView) findViewById(R.id.splash_img);
 

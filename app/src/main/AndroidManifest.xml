@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ahstu.mycar">
+    package="com.ahstu.mycar"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 监听网络的变化 -->
@@ -19,6 +20,11 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--推送所需的权限-->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--使用开源包-->
+    <uses-sdk tools:overrideLibrary="com.xys.libzxing"></uses-sdk>
 
     <application
         android:allowBackup="true"
@@ -39,7 +45,7 @@
             android:name="com.ahstu.mycar.activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ahstu.mycar.ui.MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.ahstu.mycar.activity.RegisterPhoneActivity"
@@ -47,6 +53,37 @@
         <activity
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.CarQueryActivity"></activity>
+        <activity android:name=".activity.CityListActivity"></activity>
+        <activity android:name=".activity.ProvinceListActivity"></activity>
+        <activity android:name=".activity.WeizhangResultActivity"></activity>
+        <activity android:name=".activity.CarinformationActivity"></activity>
+        <activity android:name=".activity.CarListActivity"></activity>
+        <activity android:name=".activity.MeCarActivity"></activity>
+
+        <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
+        <service
+            android:label="PushService"
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:process="cn.bmob.push"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="cn.bmob.push.PushReceiver">
+            <intent-filter>
+                <!-- 系统启动完成后会调用 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 解锁完成后会调用 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 监听网络连通性 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
