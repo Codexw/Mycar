@@ -4,57 +4,84 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/blue">
 
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
+            android:id="@+id/start_end"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/changeStartEnd"
+            android:orientation="vertical">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="起点：" />
+
+                <EditText
+                    android:id="@+id/start"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ems="10"
+                    android:singleLine="true"
+                    android:text="凤阳县"></EditText>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/dark_grey" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="终点：" />
+
+                <EditText
+                    android:id="@+id/end"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ems="10"
+                    android:singleLine="true"
+                    android:text="蚌埠市" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/changeStartEnd"
+            android:background="@drawable/ic_change_start_end"
+            android:layout_alignParentRight="true"
+            android:paddingRight="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="起点：" />
-
-        <EditText
-            android:id="@+id/start"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:text="龙泽"
-            android:singleLine="false">
-
-            <requestFocus />
-        </EditText>
-    </LinearLayout>
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="终点：" />
-
-        <EditText
-            android:id="@+id/end"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:text="西单"
-            android:singleLine="false">
-
-            <requestFocus />
-        </EditText>
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dip"
-        android:layout_marginTop="5dip"
+        android:background="@color/blue"
         android:orientation="horizontal">
 
         <Button
@@ -64,7 +91,7 @@
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
             android:layout_weight="1.0"
-            android:text="驾车搜索" />
+            android:text="驾车" />
 
         <Button
             android:id="@+id/transit"
@@ -73,7 +100,7 @@
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
             android:layout_weight="1.0"
-            android:text="公交搜索" />
+            android:text="公交" />
 
         <Button
             android:id="@+id/walk"
@@ -82,7 +109,7 @@
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
             android:layout_weight="1.0"
-            android:text="步行搜索" />
+            android:text="步行" />
 
         <Button
             android:id="@+id/bike"
@@ -91,6 +118,7 @@
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
             android:layout_weight="1.0"
-            android:text="骑行搜索" />
+            android:text="骑行" />
     </LinearLayout>
+
 </LinearLayout>
