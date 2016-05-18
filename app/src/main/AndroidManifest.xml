@@ -60,7 +60,7 @@
         <!--百度sdk开发秘钥-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
+            android:value="Qz6Axp5sB8Oa6EuL9nFucKHaymrOxEQM" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
@@ -122,10 +122,10 @@
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service
-            android:label="PushService"
             android:name="cn.bmob.push.lib.service.PushService"
-            android:process="cn.bmob.push"
-            android:exported="true">
+            android:exported="true"
+            android:label="PushService"
+            android:process="cn.bmob.push">
             <intent-filter>
                 <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>

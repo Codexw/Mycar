@@ -199,10 +199,10 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             bundle.putString("car_brand", content.getString("car_brand"));
             bundle.putString("car_model", content.getString("car_model"));
             bundle.putString("car_enginerno", content.getString("car_enginerno"));
+            bundle.putString("car_frame", content.getString("car_frame"));
+            bundle.putInt("car_box", content.getInt("car_box"));
             bundle.putString("car_level", content.getString("car_level"));
-            // bundle.putString("car_mile", content.getInt("car_mile"));
             bundle.putInt("car_mile", content.getInt("car_mile"));
-            // bundle.putString("car_gas", content.("car_gas"));
             bundle.putInt("car_gas", content.getInt("car_gas"));
             bundle.putString("car_enginerstate", content.getString("car_enginerstate"));
             bundle.putString("car_shiftstate", content.getString("car_shiftstate"));
@@ -211,16 +211,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             bundle.putBoolean("car_door", content.getBoolean("car_door"));
             bundle.putBoolean("car_air", content.getBoolean("car_air"));
             bundle.putBoolean("car_lock", content.getBoolean("car_lock"));
-            resultIntent.putExtras(bundle);
-            // resultIntent.setClass(CaptureActivity.this,Carinformatio.class);
-            //startActivity(resultIntent);
-            this.setResult(RESULT_OK, resultIntent);
 
-            // CaptureActivity.this.finish();
+            resultIntent.putExtras(bundle);
+            this.setResult(RESULT_OK, resultIntent);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        this.setResult(RESULT_OK, resultIntent);
+        //this.setResult(RESULT_OK, resultIntent);
         CaptureActivity.this.finish();
     }
 
