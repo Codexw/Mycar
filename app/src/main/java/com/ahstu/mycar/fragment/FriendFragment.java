@@ -50,11 +50,9 @@ public class FriendFragment extends Fragment {
     int car_start_state;
 
     //进度条
-    private RoundProgressBar progressBar;
-    private int progress = 9;
-    private int all = 100;
-    private int youliang = 25;
-    
+    private RoundProgressBar roundProgressBar;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         //初始化时判断本地数据库是否存在车辆信息，存在将第一个视图消失，第二个视图显示出来。
@@ -88,30 +86,32 @@ public class FriendFragment extends Fragment {
         initview();
 
         //进度条
-        progressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
-        progressBar.setMax(100);
-        progressBar.setProgress(progress);
-        if (all / youliang >= 2) {
-            youliang = progress + 40 / 2;
-        } else {
+        roundProgressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
+        roundProgressBar.update();
+//        progressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
+//        progressBar.setMax(100);
+//        progressBar.setProgress(progress);
+//        if (all / youliang >= 2) {
+//            youliang = progress + 40 / 2;
+//        } else {
+//
+//        }
 
-        }
-
-        new Thread(new Runnable() {
-
-            public void run() {
-                while (progress <= youliang) {
-                    progress++;
-                    progressBar.setProgress(progress);
-                    try {
-                        Thread.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//
+//            public void run() {
+//                while (progress <= youliang) {
+//                    progress++;
+//                    progressBar.setProgress(progress);
+//                    try {
+//                        Thread.sleep(30);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//            }
+//        }).start();
         
         return view;
     }

@@ -26,11 +26,12 @@ import java.util.TimerTask;
 
 
 @SuppressLint("NewApi")
-public class AddSong2PlaylistActivity extends Activity {
+public class AddSongtoPlaylistActivity extends Activity {
 
+    private final int SETADAPTER = 111;
+    public Button btn_back;
     private TextView tv_finish, tv_back;
     private ListView listView;
-    public Button btn_back;
     private long playlistId;// 当前播放列表id
     private List<Mp3> songs;// 得到全部歌曲
     private ArrayList<String> addSongIds = new ArrayList<String>();// 将要添加的歌曲的id集合
@@ -38,9 +39,6 @@ public class AddSong2PlaylistActivity extends Activity {
     private ListViewAdapter listViewAdapter;
     private List<Map<String, Object>> listItems;// 传进适配器的数据
     private ArrayList<String> songIds;// 全部歌曲的id
-    private final int SETADAPTER = 111;
-    private Timer timer;
-    private TimerTask myTimerTask;
     Handler handler = new Handler() {
         @Override
         public void dispatchMessage(Message msg) {
@@ -52,6 +50,8 @@ public class AddSong2PlaylistActivity extends Activity {
             }
         }
     };
+    private Timer timer;
+    private TimerTask myTimerTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +128,7 @@ public class AddSong2PlaylistActivity extends Activity {
                         }
                     }
 
-                    MusicUtils.addToPlaylist(AddSong2PlaylistActivity.this, addSongTemp, playlistId);
+                    MusicUtils.addToPlaylist(AddSongtoPlaylistActivity.this, addSongTemp, playlistId);
                 }
                 finish();
             }
@@ -184,7 +184,7 @@ public class AddSong2PlaylistActivity extends Activity {
      */
     private List<Map<String, Object>> getListItems() {
         List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-        songs = MusicUtils.getAllSongs(AddSong2PlaylistActivity.this);
+        songs = MusicUtils.getAllSongs(AddSongtoPlaylistActivity.this);
         songIds = new ArrayList<String>();
         for (int i = 0; i < songs.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();

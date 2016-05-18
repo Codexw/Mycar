@@ -33,9 +33,10 @@ import java.util.TimerTask;
 @SuppressLint("NewApi")
 public class PlaylistSongActivity extends Activity {
 
+    private final int SETADAPTER = 111;
+    public Button btn_nowplay, btn_back;
     private TextView tv_edit, tv_clear, tv_delete, tv_add, tv_back;
     private LinearLayout ll_normal, ll_edit;
-    public Button btn_nowplay, btn_back;
     private ListView listView;
     private boolean idEdit = false;//判断是不是编辑模式，是的话显示删除图标
     private long playlistId;//当前播放列表id
@@ -45,7 +46,6 @@ public class PlaylistSongActivity extends Activity {
     private ArrayList<String> pl_songIds;// 列表歌曲的id集合
     private Timer timer;//定时器
     private TimerTask myTimerTask;//定时器任务
-    private final int SETADAPTER = 111;
     private MusicPlayService mService;
     Handler handler = new Handler() {
         @Override
@@ -177,7 +177,7 @@ public class PlaylistSongActivity extends Activity {
         tv_add.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(PlaylistSongActivity.this, AddSong2PlaylistActivity.class);
+                Intent intent = new Intent(PlaylistSongActivity.this, AddSongtoPlaylistActivity.class);
                 intent.putExtra("playlistId", playlistId);
                 startActivity(intent);
             }

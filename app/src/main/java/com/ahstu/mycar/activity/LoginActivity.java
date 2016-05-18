@@ -136,7 +136,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                             value.put("car_door", 1);
 
                                         }
-                                        if (carinfomation.getCar__lock() == false) {
+                                        if (carinfomation.getCar_lock() == false) {
 
                                             value.put("car_lock", 0);
 

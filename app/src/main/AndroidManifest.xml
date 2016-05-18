@@ -47,6 +47,7 @@
     <!--推送所需的权限-->
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <!--使用开源包-->
     <uses-sdk tools:overrideLibrary="com.xys.libzxing"></uses-sdk>
 
@@ -60,7 +61,7 @@
         <!--百度sdk开发秘钥-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
+            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
@@ -101,7 +102,7 @@
             android:name="com.ahstu.mycar.music.MusicMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"
+            android:name=".music.AddSongtoPlaylistActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.ahstu.mycar.music.PlaylistSongActivity"
@@ -122,10 +123,10 @@
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service
-            android:label="PushService"
             android:name="cn.bmob.push.lib.service.PushService"
-            android:process="cn.bmob.push"
-            android:exported="true">
+            android:exported="true"
+            android:label="PushService"
+            android:process="cn.bmob.push">
             <intent-filter>
                 <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
@@ -139,6 +140,12 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
                 <!-- 监听网络连通性 -->
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
     </application>

@@ -128,7 +128,7 @@ public class CarinformationActivity extends Activity {
                 carinfomation.setCar_shiftstate(bundle.getString("car_shiftstate"));
                 carinfomation.setCar_light(bundle.getString("car_light"));
                 carinfomation.setCar_door(bundle.getBoolean("car_door"));
-                carinfomation.setCar__lock(bundle.getBoolean("car_lock"));
+                carinfomation.setCar_lock(bundle.getBoolean("car_lock"));
                 carinfomation.setCar_air(bundle.getBoolean("car_air"));
                 carinfomation.setCar_start(bundle.getBoolean("car_start"));
                 carinfomation.setUser(user);
