@@ -194,13 +194,20 @@
                     android:layout_height="50dp">
 
                     <TextView
+                        android:id="@+id/car_control_start"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="汽车启动"
                         android:textSize="20dp"
-
                         />
+
+                    <TextView
+                        android:id="@+id/start_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@+id/car_control_start"
+                        android:gravity="center" />
 
                     <ImageView
                         android:id="@+id/car_start_set_ture"
@@ -240,13 +247,20 @@
                     android:layout_height="50dp">
 
                     <TextView
+                        android:id="@+id/car_control_door"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="车门控制"
                         android:textSize="20dp"
-
                         />
+
+                    <TextView
+                        android:id="@+id/door_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@+id/car_control_door"
+                        android:gravity="center" />
 
                     <ImageView
                         android:id="@+id/car_door_set_ture"
@@ -285,14 +299,20 @@
                     android:layout_height="50dp">
 
                     <TextView
+                        android:id="@+id/car_control_air"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="空调控制"
                         android:textSize="20dp"
-
                         />
 
+                    <TextView
+                        android:id="@+id/air_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@+id/car_control_air"
+                        android:gravity="center" />
                     <ImageView
                         android:id="@+id/car_air_set_ture"
                         android:layout_width="wrap_content"
@@ -329,13 +349,20 @@
                     android:layout_height="50dp">
 
                     <TextView
+                        android:id="@+id/car_control_lock"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="汽车锁定"
                         android:textSize="20dp"
-
                         />
+
+                    <TextView
+                        android:id="@+id/lock_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@+id/car_control_lock"
+                        android:gravity="center" />
 
                     <ImageView
                         android:id="@+id/car_lock_set_ture"

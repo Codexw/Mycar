@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
@@ -40,7 +39,10 @@ public class FriendFragment extends Fragment {
     TextView car_control_enginer;
     TextView car_control_shift;
     TextView car_control_light;
-    
+    TextView start_set;
+    TextView door_set;
+    TextView air_set;
+    TextView lock_set;
     LinearLayout carcontrollinearlayout;
     RelativeLayout carcontrollinearlayout2;
     RelativeLayout car_start_relativelayout;
@@ -199,45 +201,53 @@ public class FriendFragment extends Fragment {
         car_control_enginer = (TextView) view.findViewById(R.id.car_control_enginer);
         car_control_shift = (TextView) view.findViewById(R.id.car_control_shift);
         car_control_light = (TextView) view.findViewById(R.id.car_control_light);
-//        car_control_enginer.setText(car.getCar_enginerstate().toString());
-//        car_control_shift.setText(car.getCar_shiftstate().toString());
-//        car_control_light.setText(car.getCar_light().toString());
+        start_set = (TextView) view.findViewById(R.id.start_set);
+        door_set = (TextView) view.findViewById(R.id.door_set);
+        air_set = (TextView) view.findViewById(R.id.air_set);
+        lock_set = (TextView) view.findViewById(R.id.lock_set);
+        //根据本地数据库的值设置
         while (cursor.moveToNext()) {
             if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
                 car_start_state = 0;
                 car_start_set_false.setVisibility(View.VISIBLE);
+                start_set.setText("关闭");
+                
             } else {
                 car_start_state = 1;
                 car_start_set_true.setVisibility(View.VISIBLE);
+                start_set.setText("开启");
 
             }
             if (cursor.getInt(cursor.getColumnIndex("car_air")) == 0) {
                 car_air_state = 0;
                 car_air_set_false.setVisibility(View.VISIBLE);
+                air_set.setText("关闭");
             } else {
                 car_air_state = 1;
                 car_air_set_true.setVisibility(View.VISIBLE);
+                air_set.setText("开启");
             }
 
             if (cursor.getInt(cursor.getColumnIndex("car_door")) == 0) {
                 car_door_state = 0;
                 car_door_set_false.setVisibility(View.VISIBLE);
+                door_set.setText("关闭");
 
             } else {
                 car_door_state = 1;
                 car_door_set_true.setVisibility(View.VISIBLE);
-
+                door_set.setText("开启");
             }
             if (cursor.getInt(cursor.getColumnIndex("car_lock")) == 0) {
 
                 car_lock_state = 0;
                 car_lock_set_false.setVisibility(View.VISIBLE);
-
+                lock_set.setText("关闭");
 
             } else {
                 car_lock_state = 1;
                 car_lock_set_true.setVisibility(View.VISIBLE);
-
+                lock_set.setText("开启");
 
             }
         }
@@ -257,12 +267,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -271,6 +281,7 @@ public class FriendFragment extends Fragment {
                     value.put("car_air", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
+                    air_set.setText("开启");
                 } else {
                     car_air_set_true.setVisibility(View.INVISIBLE);
                     car_air_set_false.setVisibility(View.VISIBLE);
@@ -280,12 +291,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            //   Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -294,6 +305,7 @@ public class FriendFragment extends Fragment {
                     value.put("car_air", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
+                    air_set.setText("关闭");
                 }
 
 
@@ -313,12 +325,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -327,8 +339,8 @@ public class FriendFragment extends Fragment {
                     value.put("car_door", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    
-                    
+
+                    door_set.setText("开启");
                     
                     
                 } else {
@@ -339,12 +351,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            //   Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -354,8 +366,8 @@ public class FriendFragment extends Fragment {
                     value.put("car_door", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    
-                    
+
+                    door_set.setText("关闭");
                 }
             }
         });
@@ -372,12 +384,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -386,7 +398,7 @@ public class FriendFragment extends Fragment {
                     value.put("car_start", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    
+                    start_set.setText("开启");
                     
                 } else {
                     car_start_set_true.setVisibility(View.INVISIBLE);
@@ -396,12 +408,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -410,7 +422,7 @@ public class FriendFragment extends Fragment {
                     value.put("car_start", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-
+                    start_set.setText("关闭");
                 }
             }
         });
@@ -426,12 +438,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -440,7 +452,7 @@ public class FriendFragment extends Fragment {
                     value.put("car_lock", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    
+                    lock_set.setText("开启");
                 } else {
                     car_lock_set_true.setVisibility(View.INVISIBLE);
                     car_lock_set_false.setVisibility(View.VISIBLE);
@@ -449,12 +461,12 @@ public class FriendFragment extends Fragment {
                     carinfomation.update(getActivity(), objectid, new UpdateListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
-                            Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -463,8 +475,8 @@ public class FriendFragment extends Fragment {
                     value.put("car_lock", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    
-                    
+
+                    lock_set.setText("关闭");
                 }
             }
         });
