@@ -42,7 +42,6 @@ import java.util.List;
  * @author 吴天洛 2016/4/25
  */
 public class FindFragment extends Fragment implements View.OnClickListener {
-    private static final String ACTION = "aaa";
     private TextView mTvSt;
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
@@ -324,6 +323,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         }
     };
 
+    //有可能空指针异常
     public void showToastMsg(final String msg) {
         getActivity().runOnUiThread(new Runnable() {
 
