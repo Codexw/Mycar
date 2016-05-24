@@ -25,6 +25,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ",car_start boolean,car_lock boolean,car_door boolean,car_air boolean)";
 
         db.execSQL(sql);
+        String s = "create table gasorder(id integer primary key autoincrement,username text,carnumber text,stationname text,ctype text,gascount double,gasprice double,countprice double,time text)";
+        db.execSQL(s);
     }
 
 

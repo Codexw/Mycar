@@ -15,37 +15,25 @@ import android.widget.TextView;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.activity.LoginActivity;
+import com.ahstu.mycar.activity.MeorderActivity;
 
 /**
  * @author redowu 2016/4/25
  */
 public class MeInfoFragment extends Fragment {
-    private Button btn_exit;
     View view;
     //LinearLayout weizhang;
     LinearLayout me_mycar;
     LinearLayout me_myform;
     LinearLayout exit;
     TextView username;
+    private Button btn_exit;
+
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
     }
-
-//    private void initClick(View view) {
-//        btn_exit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //清除用户登录记录
-//                SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sp.edit();
-//                editor.clear();
-//                editor.commit();
-//                startActivity(new Intent(getActivity(), LoginActivity.class));
-//            }
-//        });
-//    }
 
 
     @Override
@@ -86,7 +74,14 @@ public class MeInfoFragment extends Fragment {
             }
         });
 
-
+        me_myform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), MeorderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

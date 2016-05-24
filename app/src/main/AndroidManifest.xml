@@ -102,7 +102,7 @@
             android:name=".music.MusicMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".music.AddSong2PlaylistActivity"
+            android:name=".music.AddSongtoPlaylistActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".music.PlaylistSongActivity"
@@ -121,7 +121,9 @@
         <activity android:name=".activity.CarinformationActivity" />
         <activity android:name=".activity.CarListActivity" />
         <activity android:name=".activity.MeCarActivity" />
-
+        <activity android:name=".activity.GasorderActivity"></activity>
+        <activity android:name=".activity.MeorderActivity"></activity>
+        <activity android:name=".activity.OrderItemActivity"></activity>
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service
             android:name="cn.bmob.push.lib.service.PushService"

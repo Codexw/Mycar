@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -24,6 +25,7 @@ public class StationInfoActivity extends Activity implements OnClickListener {
     private Station s;
     private ScrollView sv;
     private ListView lv_gast_price, lv_price;
+    private Button addgas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,18 @@ public class StationInfoActivity extends Activity implements OnClickListener {
         lv_gast_price = (ListView) findViewById(R.id.lv_gast_price);
         lv_price = (ListView) findViewById(R.id.lv_price);
         sv = (ScrollView) findViewById(R.id.sv);
+        addgas = (Button) findViewById(R.id.btn_addgas);
+        addgas.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(StationInfoActivity.this, GasorderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("station", s);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setText() {
