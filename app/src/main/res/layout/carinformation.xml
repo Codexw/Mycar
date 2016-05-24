@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:background="#499BF7">
+        android:background="#499BF7"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,25 +35,25 @@
             >
 
             <RelativeLayout
+                android:id="@+id/CarinfoRelaivelayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/CarinfoRelaivelayout"
 
                 >
 
                 <TextView
+                    android:id="@+id/carpinpai"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车品牌"
                     android:gravity="center_vertical"
-                    android:id="@+id/carpinpai" />
+                    android:text="汽车品牌" />
 
                 <TextView
+                    android:id="@+id/car_brand"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carpinpai"
                     android:gravity="center"
-                    android:id="@+id/car_brand"
 
                     />
 
@@ -71,11 +71,11 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carsign"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车标志"
                     android:gravity="center_vertical"
-                    android:id="@+id/carsign"
+                    android:text="汽车标志"
 
                     />
 
@@ -87,10 +87,10 @@
                     android:gravity="center">
 
                     <ImageView
+                        android:id="@+id/car_sign"
                         android:layout_width="50dp"
-                        android:layout_height="match_parent"
 
-                        android:id="@+id/car_sign" />
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
 
@@ -103,23 +103,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout3"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout3">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carmodel"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车型号"
                     android:gravity="center_vertical"
-                    android:id="@+id/carmodel" />
+                    android:text="汽车型号" />
 
                 <TextView
+                    android:id="@+id/car_model"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carmodel"
-                    android:gravity="center"
-                    android:id="@+id/car_model"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -131,23 +131,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout4"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout4">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carhaoma"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车牌号码"
                     android:gravity="center_vertical"
-                    android:id="@+id/carhaoma" />
+                    android:text="车牌号码" />
 
                 <TextView
+                    android:id="@+id/car_number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carhaoma"
-                    android:gravity="center"
-                    android:id="@+id/car_number"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -159,23 +159,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout5"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout5">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carenginerhao"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="发动机号"
                     android:gravity="center_vertical"
-                    android:id="@+id/carenginerhao" />
+                    android:text="发动机号" />
 
                 <TextView
+                    android:id="@+id/car_enginerno"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carenginerhao"
-                    android:gravity="center"
-                    android:id="@+id/car_enginerno"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -188,22 +188,48 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout6">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carframe"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车身级别"
                     android:gravity="center_vertical"
-                    android:id="@+id/carjibie" />
+                    android:text="车架号码" />
 
                 <TextView
+                    android:id="@+id/car_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/carframe"
+                    android:gravity="center" />
+
+
+            </RelativeLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"></View>
+            <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/carjibie"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="车身级别" />
+
+                <TextView
+                    android:id="@+id/car_level"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carjibie"
-                    android:gravity="center"
-                    android:id="@+id/car_level"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -215,23 +241,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout7"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout7">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carcount"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="里程数量"
                     android:gravity="center_vertical"
-                    android:id="@+id/carcount" />
+                    android:text="里程数量" />
 
                 <TextView
+                    android:id="@+id/car_mile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carcount"
-                    android:gravity="center"
-                    android:id="@+id/car_mile"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -244,22 +270,49 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout8">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carbox"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽油总量"
                     android:gravity="center_vertical"
-                    android:id="@+id/cargas" />
+                    android:text="油箱容量" />
 
                 <TextView
+                    android:id="@+id/car_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/carbox"
+                    android:gravity="center"
+
+                    />
+
+            </RelativeLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"></View>
+            <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/cargas"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="汽油总量" />
+
+                <TextView
+                    android:id="@+id/car_gas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/cargas"
-                    android:gravity="center"
-                    android:id="@+id/car_gas"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -271,23 +324,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout9"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout9">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carenginer"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="发动机性能"
                     android:gravity="center_vertical"
-                    android:id="@+id/carenginer" />
+                    android:text="发动机性能" />
 
                 <TextView
+                    android:id="@+id/car_enginerstate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carenginer"
-                    android:gravity="center"
-                    android:id="@+id/car_enginerstate"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -299,23 +352,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout10"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout10">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carbiansuqi"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="变速器性能"
                     android:gravity="center_vertical"
-                    android:id="@+id/carbiansuqi" />
+                    android:text="变速器性能" />
 
                 <TextView
+                    android:id="@+id/car_shiftstate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carbiansuqi"
-                    android:gravity="center"
-                    android:id="@+id/car_shiftstate"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -327,23 +380,23 @@
                 android:background="@android:color/black"></View>
 
             <RelativeLayout
+                android:id="@+id/carinfoRelativeLayout11"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/carinfoRelativeLayout11">
+                android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carlight"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车灯"
                     android:gravity="center_vertical"
-                    android:id="@+id/carlight" />
+                    android:text="车灯" />
 
                 <TextView
+                    android:id="@+id/car_light"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carlight"
-                    android:gravity="center"
-                    android:id="@+id/car_light"></TextView>
+                    android:gravity="center"></TextView>
 
             </RelativeLayout>
 
@@ -358,19 +411,19 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carstart"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车开启"
-                    android:id="@+id/carstart"
                     android:gravity="center_vertical"
+                    android:text="汽车开启"
 
                     />
 
                 <TextView
+                    android:id="@+id/car_start"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carstart"
-                    android:id="@+id/car_start"
                     android:gravity="center" />
 
 
@@ -387,17 +440,17 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/cardoor"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车门控制"
-                    android:id="@+id/cardoor"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:text="车门控制" />
 
                 <TextView
+                    android:id="@+id/car_door"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/cardoor"
-                    android:id="@+id/car_door"
                     android:gravity="center"
 
                     />
@@ -416,21 +469,21 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carlock"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车锁定"
-                    android:id="@+id/carlock"
-
                     android:gravity="center_vertical"
+
+                    android:text="汽车锁定"
 
 
                     />
 
                 <TextView
+                    android:id="@+id/car_lock"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carlock"
-                    android:id="@+id/car_lock"
                     android:gravity="center" />
 
             </RelativeLayout>
@@ -446,18 +499,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/carair"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="空调控制"
-                    android:id="@+id/carair"
 
                     />
 
                 <TextView
+                    android:id="@+id/car_air"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/car_air"
                     android:layout_toRightOf="@+id/carair"
                     android:gravity="center" />
 
@@ -471,10 +524,10 @@
                 android:background="@android:color/black"></View>
 
             <Button
+                android:id="@+id/car_save"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="保存"
-                android:id="@+id/car_save"
 
                 />
 

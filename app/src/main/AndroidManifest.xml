@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ahstu.mycar">
+    <!-- 使用开源包 -->
+    <uses-sdk tools:overrideLibrary="com.xys.libzxing" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 监听网络的变化 -->
@@ -47,7 +49,6 @@
     <!--推送所需的权限-->
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
     <!--使用开源包-->
     <uses-sdk tools:overrideLibrary="com.xys.libzxing"></uses-sdk>
 
@@ -61,7 +62,7 @@
         <!--百度sdk开发秘钥-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
+            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
@@ -102,7 +103,7 @@
             android:name="com.ahstu.mycar.music.MusicMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".music.AddSongtoPlaylistActivity"
+            android:name="com.ahstu.mycar.music.AddSong2PlaylistActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.ahstu.mycar.music.PlaylistSongActivity"
@@ -123,10 +124,10 @@
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service
-            android:name="cn.bmob.push.lib.service.PushService"
-            android:exported="true"
             android:label="PushService"
-            android:process="cn.bmob.push">
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:process="cn.bmob.push"
+            android:exported="true">
             <intent-filter>
                 <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
@@ -148,6 +149,8 @@
                 <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activity.SearchMapActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />

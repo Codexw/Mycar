@@ -1,5 +1,6 @@
 package com.ahstu.mycar.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.activity.SearchMapActivity;
 import com.baidu.mapapi.search.core.RouteLine;
 import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.route.BikingRoutePlanOption;
@@ -71,11 +73,12 @@ public class FindFragment extends Fragment implements OnGetRoutePlanResultListen
 
     @Override
     public void onClick(View v) {
+        route = null;
         // 设置起终点信息，对于tranist search 来说，城市名无意义 
         PlanNode stNode = PlanNode.withCityNameAndPlaceName("北京", editSt.getText().toString());
         PlanNode enNode = PlanNode.withCityNameAndPlaceName("北京", editEn.getText().toString());
 
-        // 实际使用中请对起点终点城市进行正确的设定
+        // 实际使用中对起点终点城市进行正确的设定
         switch (v.getId()) {
             case R.id.drive:
                 mSearch.drivingSearch((new DrivingRoutePlanOption()).from(stNode).to(enNode));
@@ -105,6 +108,13 @@ public class FindFragment extends Fragment implements OnGetRoutePlanResultListen
         }
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
             route = result.getRouteLines().get(0);
+            Intent i = new Intent(getActivity(), SearchMapActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("key", 1);
+            b.putParcelable("route", route);
+            b.putParcelable("result", result);
+            i.putExtras(b);
+            startActivity(i);
         }
     }
 
@@ -121,6 +131,13 @@ public class FindFragment extends Fragment implements OnGetRoutePlanResultListen
         }
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
             route = result.getRouteLines().get(0);
+            Intent i = new Intent(getActivity(), SearchMapActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("key", 2);
+            b.putParcelable("route", route);
+            b.putParcelable("result", result);
+            i.putExtras(b);
+            startActivity(i);
         }
     }
 
@@ -136,21 +153,35 @@ public class FindFragment extends Fragment implements OnGetRoutePlanResultListen
         }
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
             route = result.getRouteLines().get(0);
+            Intent i = new Intent(getActivity(), SearchMapActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("key", 3);
+            b.putParcelable("route", route);
+            b.putParcelable("result", result);
+            i.putExtras(b);
+            startActivity(i);
         }
     }
 
     @Override
-    public void onGetBikingRouteResult(BikingRouteResult bikingRouteResult) {
-        if (bikingRouteResult == null || bikingRouteResult.error != SearchResult.ERRORNO.NO_ERROR) {
+    public void onGetBikingRouteResult(BikingRouteResult result) {
+        if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             Toast.makeText(getActivity(), "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
-        if (bikingRouteResult.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
+        if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
-            // result.getSuggestAddrInfo()
+            System.out.println(result.getSuggestAddrInfo());
             return;
         }
-        if (bikingRouteResult.error == SearchResult.ERRORNO.NO_ERROR) {
-            route = bikingRouteResult.getRouteLines().get(0);
+        if (result.error == SearchResult.ERRORNO.NO_ERROR) {
+            route = result.getRouteLines().get(0);
+            Intent i = new Intent(getActivity(), SearchMapActivity.class);
+            Bundle b = new Bundle();
+            b.putInt("key", 4);
+            b.putParcelable("route", route);
+            b.putParcelable("result", result);
+            i.putExtras(b);
+            startActivity(i);
         }
     }
 }

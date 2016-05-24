@@ -1,7 +1,6 @@
 package com.ahstu.mycar.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -50,16 +49,17 @@ import cn.bmob.v3.listener.FindListener;
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
-    private final int SETADAPTER = 111;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private TextView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
     private View currentButton; //获取view，用于底部导航栏状态的切换
     private MusicMenu menuView;
+
     private ListView listview;
     private MusicPlayService mService;
     private MyApplication application;
     private ArrayList<Mp3> songs;//储存当前播放列表所有歌曲
+    private final int SETADAPTER = 111;
     private boolean idEdit = false;//判断是不是编辑模式，是的话显示删除图标
     private long playlistId;//当前播放列表id
     private ListViewAdapter listViewAdapter;//适配器
@@ -209,7 +209,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                 }
             }
         }.start();
-
     }
 
     /**
@@ -324,7 +323,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             mService.pausePlay();
         }
 
-        messageThread.isrunning = false;
+       
         Toast.makeText(this, "ondestory", Toast.LENGTH_SHORT).show();
     }
 

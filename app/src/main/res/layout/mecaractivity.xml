@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
+        android:layout_height="50dp"
+        
         android:background="#499BF7">
+
+        <ImageView
+            android:id="@+id/mecar_back"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="汽车信息"
 
             />
 
+        <Button
+            android:id="@+id/medelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="删除" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,25 +45,25 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/mecarRelayout1"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/mecarRelayout1"
 
                 >
 
                 <TextView
+                    android:id="@+id/mecarpinpai"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车品牌"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarpinpai" />
+                    android:text="汽车品牌" />
 
                 <TextView
+                    android:id="@+id/mecar_brand"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarpinpai"
                     android:gravity="center"
-                    android:id="@+id/mecar_brand"
 
                     />
 
@@ -66,11 +81,11 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarsign"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车标志"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarsign"
+                    android:text="汽车标志"
 
                     />
 
@@ -82,10 +97,10 @@
                     android:gravity="center">
 
                     <ImageView
+                        android:id="@+id/mecar_sign"
                         android:layout_width="50dp"
-                        android:layout_height="match_parent"
 
-                        android:id="@+id/mecar_sign" />
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
 
@@ -102,18 +117,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarmodel"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车型号"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarmodel" />
+                    android:text="汽车型号" />
 
                 <TextView
+                    android:id="@+id/mecar_model"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarmodel"
-                    android:gravity="center"
-                    android:id="@+id/mecar_model"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -129,18 +144,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarhaoma"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车牌号码"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarhaoma" />
+                    android:text="车牌号码" />
 
                 <TextView
+                    android:id="@+id/mecar_number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarhaoma"
-                    android:gravity="center"
-                    android:id="@+id/mecar_number"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -156,18 +171,47 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarenginerhao"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="发动机号"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarenginerhao" />
+                    android:text="发动机号" />
 
                 <TextView
+                    android:id="@+id/mecar_enginerno"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarenginerhao"
-                    android:gravity="center"
-                    android:id="@+id/mecar_enginerno"></TextView>
+                    android:gravity="center"></TextView>
+
+
+            </RelativeLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/mecarframe"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="车架号码" />
+
+                <TextView
+                    android:id="@+id/mecar_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/mecarframe"
+                    android:gravity="center">
+
+                </TextView>
 
 
             </RelativeLayout>
@@ -185,18 +229,18 @@
                 >
 
                 <TextView
+                    android:id="@+id/mecarjibie"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车身级别"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarjibie" />
+                    android:text="车身级别" />
 
                 <TextView
+                    android:id="@+id/mecar_level"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarjibie"
-                    android:gravity="center"
-                    android:id="@+id/mecar_level"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -212,18 +256,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarcount"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="里程数量"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarcount" />
+                    android:text="里程数量" />
 
                 <TextView
+                    android:id="@+id/mecar_mile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarcount"
-                    android:gravity="center"
-                    android:id="@+id/mecar_mile"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -239,18 +283,44 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarbox"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽油总量"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecargas" />
+                    android:text="油箱容量" />
 
                 <TextView
+                    android:id="@+id/mecar_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/mecarbox"
+                    android:gravity="center" />
+
+
+            </RelativeLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"></View>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/mecargas"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="汽油总量" />
+
+                <TextView
+                    android:id="@+id/mecar_gas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecargas"
-                    android:gravity="center"
-                    android:id="@+id/mecar_gas"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -266,18 +336,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarenginer"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="发动机性能"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarenginer" />
+                    android:text="发动机性能" />
 
                 <TextView
+                    android:id="@+id/mecar_enginerstate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarenginer"
-                    android:gravity="center"
-                    android:id="@+id/mecar_enginerstate"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -293,18 +363,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarbiansuqi"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="变速器性能"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarbiansuqi" />
+                    android:text="变速器性能" />
 
                 <TextView
+                    android:id="@+id/mecar_shiftstate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarbiansuqi"
-                    android:gravity="center"
-                    android:id="@+id/mecar_shiftstate"></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -320,18 +390,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarlight"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车灯"
                     android:gravity="center_vertical"
-                    android:id="@+id/mecarlight" />
+                    android:text="车灯" />
 
                 <TextView
+                    android:id="@+id/mecar_light"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarlight"
-                    android:gravity="center"
-                    android:id="@+id/mecar_light"></TextView>
+                    android:gravity="center"></TextView>
 
             </RelativeLayout>
 
@@ -346,19 +416,19 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarstart"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车开启"
-                    android:id="@+id/mecarstart"
                     android:gravity="center_vertical"
+                    android:text="汽车开启"
 
                     />
 
                 <TextView
+                    android:id="@+id/mecar_start"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarstart"
-                    android:id="@+id/mecar_start"
                     android:gravity="center" />
 
 
@@ -376,17 +446,17 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecardoor"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="车门控制"
-                    android:id="@+id/mecardoor"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:text="车门控制" />
 
                 <TextView
+                    android:id="@+id/mecar_door"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecardoor"
-                    android:id="@+id/mecar_door"
                     android:gravity="center"
 
                     />
@@ -405,21 +475,21 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarlock"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:text="汽车锁定"
-                    android:id="@+id/mecarlock"
-
                     android:gravity="center_vertical"
+
+                    android:text="汽车锁定"
 
 
                     />
 
                 <TextView
+                    android:id="@+id/mecar_lock"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/mecarlock"
-                    android:id="@+id/mecar_lock"
                     android:gravity="center" />
 
             </RelativeLayout>
@@ -435,18 +505,18 @@
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/mecarair"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="空调控制"
-                    android:id="@+id/mecarair"
 
                     />
 
                 <TextView
+                    android:id="@+id/mecar_air"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/mecar_air"
                     android:layout_toRightOf="@+id/mecarair"
                     android:gravity="center" />
 

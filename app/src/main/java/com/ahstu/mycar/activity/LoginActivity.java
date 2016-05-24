@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -89,7 +88,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void onSuccess() {
 
-                            //登录成功就将用户的信息保存到本地数据库中
+                            //登录成功就将用户的信息保存到本地sharepreference数据库中
                             SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
                             //存入数据
                             SharedPreferences.Editor editor = sp.edit();
@@ -99,7 +98,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
 
-                            //用户登录的时候，查询数据库，把车辆数据存放在数据库中。
+                            //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
                             User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
                             BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
                             query.addWhereEqualTo("user", user);
@@ -110,6 +109,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                     //打开数据库，存放在本地数据库
                                     DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
                                     SQLiteDatabase db = helper.getWritableDatabase();
+
                                     for (int i = 0; i < list.size(); i++) {
                                         Carinfomation carinfomation = list.get(i);
                                         ContentValues value = new ContentValues();
@@ -124,6 +124,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                         value.put("car_enginerstate", carinfomation.getCar_enginerstate());
                                         value.put("car_shiftstate", carinfomation.getCar_shiftstate());
                                         value.put("car_light", carinfomation.getCar_light());
+                                        value.put("car_frame", carinfomation.getCar_frame());
+                                        value.put("car_box", carinfomation.getCar_box());
                                         if (carinfomation.getCar_start() == false) {
                                             value.put("car_start", 0);
                                         } else {
@@ -166,7 +168,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                             editer.putInt("position", 0);
                                             editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
                                             editer.commit();
-                                            Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
+                                            // Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
                                         }
 
                                     } else {
