@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -31,18 +32,18 @@ import java.util.List;
 
 public class StationInfoActivity extends Activity {
 
+    public static final String ROUTE_PLAN_NODE = "routePlanNode";
+    private static final String APP_FOLDER_NAME = "MyCar";
+    public static List<Activity> activityList = new LinkedList<Activity>();
     private Context mContext;
     private TextView tv_name, tv_distance, tv_area, tv_addr;
     private ImageView iv_back;
     private Station s;
     private ScrollView sv;
     private ListView lv_gast_price, lv_price;
-
-    public static List<Activity> activityList = new LinkedList<Activity>();
+    private Button addgas;
     private TextView tv_bd09ll;
-    private static final String APP_FOLDER_NAME = "MyCar";
     private String mSDCardPath = null;
-    public static final String ROUTE_PLAN_NODE = "routePlanNode";
     private double stLat;
     private double stLon;
     private double enLat;
@@ -87,6 +88,18 @@ public class StationInfoActivity extends Activity {
         lv_gast_price = (ListView) findViewById(R.id.lv_gast_price);
         lv_price = (ListView) findViewById(R.id.lv_price);
         sv = (ScrollView) findViewById(R.id.sv);
+        addgas = (Button) findViewById(R.id.btn_addgas);
+        addgas.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(StationInfoActivity.this, GasorderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("station", s);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setText() {

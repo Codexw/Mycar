@@ -23,15 +23,18 @@ import com.baidu.navisdk.adapter.NaviModuleImpl;
  */
 public class BDStationGuideActivity extends Activity {
 
+    private static final int MSG_SHOW = 1;
+    private static final int MSG_HIDE = 2;
+    private static final int MSG_RESET_NODE = 3;
     private final String TAG = BDStationGuideActivity.class.getName();
     private BNRoutePlanNode mBNRoutePlanNode = null;
     private BaiduNaviCommonModule mBaiduNaviCommonModule = null;
-
     /*
      * 对于导航模块有两种方式来实现发起导航 1：使用通用接口来实现 2：使用传统接口来实现
      */
     // 是否使用通用接口
     private boolean useCommonInterface = true;
+    private Handler hd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,10 +100,7 @@ public class BDStationGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onPause();
         }
-
     }
-
-    ;
 
     @Override
     protected void onDestroy() {
@@ -113,7 +113,6 @@ public class BDStationGuideActivity extends Activity {
             BNRouteGuideManager.getInstance().onDestroy();
         }
         StationInfoActivity.activityList.remove(this);
-
     }
 
     @Override
@@ -126,7 +125,6 @@ public class BDStationGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onStop();
         }
-
     }
 
     @Override
@@ -149,7 +147,6 @@ public class BDStationGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onConfigurationChanged(newConfig);
         }
-
     }
 
     private void addCustomizedLayerItems() {
@@ -166,11 +163,6 @@ public class BDStationGuideActivity extends Activity {
         BNRouteGuideManager.getInstance().showCustomizedLayer(true);
     }
 
-    private static final int MSG_SHOW = 1;
-    private static final int MSG_HIDE = 2;
-    private static final int MSG_RESET_NODE = 3;
-    private Handler hd = null;
-
     private void createHandler() {
         if (hd == null) {
             hd = new Handler(getMainLooper()) {
@@ -184,12 +176,9 @@ public class BDStationGuideActivity extends Activity {
                                 new BNRoutePlanNode(116.21142, 40.85087, "百度大厦11", null));
                     }
                 }
-
-                ;
             };
         }
     }
-
     private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
 
         @Override

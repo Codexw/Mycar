@@ -42,6 +42,8 @@ public class MyApplication extends Application {
         startService(intent);
         System.out.println("intent?" + (null == intent));
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
+
     }
 
     public MusicPlayService getmService() {

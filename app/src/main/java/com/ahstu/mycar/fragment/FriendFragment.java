@@ -65,10 +65,8 @@ public class FriendFragment extends Fragment {
     String objectid;
     Carinfomation car;
     //进度条
-    private RoundProgressBar progressBar;
-    private int progress = 9;
-    private int all = 100;
-    private int youliang = 25;
+    private RoundProgressBar roundProgressBar;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -103,30 +101,8 @@ public class FriendFragment extends Fragment {
         initview();
 
         //进度条
-        progressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
-        progressBar.setMax(100);
-        progressBar.setProgress(progress);
-        if (all / youliang >= 2) {
-            youliang = progress + 40 / 2;
-        } else {
-
-        }
-
-        new Thread(new Runnable() {
-
-            public void run() {
-                while (progress <= youliang) {
-                    progress++;
-                    progressBar.setProgress(progress);
-                    try {
-                        Thread.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }).start();
+        roundProgressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
+        roundProgressBar.update();
         
         return view;
     }

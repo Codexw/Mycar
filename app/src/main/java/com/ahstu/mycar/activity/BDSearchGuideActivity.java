@@ -27,6 +27,9 @@ import java.util.List;
  */
 public class BDSearchGuideActivity extends Activity {
 
+    private static final int MSG_SHOW = 1;
+    private static final int MSG_HIDE = 2;
+    private static final int MSG_RESET_NODE = 3;
     private final String TAG = BDSearchGuideActivity.class.getName();
     private BNRoutePlanNode mBNRoutePlanNode = null;
     private BaiduNaviCommonModule mBaiduNaviCommonModule = null;
@@ -36,6 +39,7 @@ public class BDSearchGuideActivity extends Activity {
      */
     // 是否使用通用接口
     private boolean useCommonInterface = true;
+    private Handler hd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,11 +167,6 @@ public class BDSearchGuideActivity extends Activity {
         }
         BNRouteGuideManager.getInstance().showCustomizedLayer(true);
     }
-
-    private static final int MSG_SHOW = 1;
-    private static final int MSG_HIDE = 2;
-    private static final int MSG_RESET_NODE = 3;
-    private Handler hd = null;
 
     private void createHandler() {
         if (hd == null) {

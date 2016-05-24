@@ -33,17 +33,17 @@ import java.util.Map;
 
 public class MusicMainActivity extends Activity {
 
+    public static final int PLAYLIST = 1;//适配器加载的数据是歌曲列表
+    public static final int SONGS_LIST = 2;//适配器加载的数据是歌曲列表
+    boolean isReturePlaylist;
     private ListView listView;
     private Button btn_playlist, btn_allSongs;
     private TextView tv_newPlaylist;
     private SimpleAdapter adapter;
-    boolean isReturePlaylist;
     private int type = -1;
     private List<Mp3> songs;// 歌曲集合
     private List<String> al_playlist;// 播放列表集合
     private MusicPlayService mService;
-    public static final int PLAYLIST = 1;//适配器加载的数据是歌曲列表
-    public static final int SONGS_LIST = 2;//适配器加载的数据是歌曲列表
     private MyApplication application;
 
     @Override
@@ -53,6 +53,7 @@ public class MusicMainActivity extends Activity {
         application = (MyApplication) getApplication();
         initView();
         initListener();
+        playListOnclick();
     }
 
     public void initView() {
@@ -62,6 +63,24 @@ public class MusicMainActivity extends Activity {
         tv_newPlaylist = (TextView) this.findViewById(R.id.tv_newPlaylist);
     }
 
+
+    public void playListOnclick() {
+        tv_newPlaylist.setVisibility(View.VISIBLE);
+        al_playlist = MusicUtils.PlaylistList(MusicMainActivity.this);
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        for (int i = 0; i < al_playlist.size(); i++) {
+            Map<String, Object> map = new HashMap<String, Object>();
+//					map.put("id", "");
+            map.put("songName", al_playlist.get(i));
+            map.put("singerName", "");
+            listItems.add(map);
+        }
+        adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.itemmusic_main_activity, new String[]{"songName", "singerName"}, new int[]{
+                R.id.tv_songName, R.id.tv_singerName});
+        type = PLAYLIST;
+        listView.setAdapter(adapter);
+    }
+    
     public void initListener() {
         //新增列表
         tv_newPlaylist.setOnClickListener(new OnClickListener() {
@@ -74,20 +93,7 @@ public class MusicMainActivity extends Activity {
         btn_playlist.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_newPlaylist.setVisibility(View.VISIBLE);
-                al_playlist = MusicUtils.PlaylistList(MusicMainActivity.this);
-                List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-                for (int i = 0; i < al_playlist.size(); i++) {
-                    Map<String, Object> map = new HashMap<String, Object>();
-//					map.put("id", "");
-                    map.put("songName", al_playlist.get(i));
-                    map.put("singerName", "");
-                    listItems.add(map);
-                }
-                adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.itemmusic_main_activity, new String[]{"songName", "singerName"}, new int[]{
-                        R.id.tv_songName, R.id.tv_singerName});
-                type = PLAYLIST;
-                listView.setAdapter(adapter);
+                playListOnclick();
             }
         });
         //列出所有歌曲
@@ -116,8 +122,8 @@ public class MusicMainActivity extends Activity {
         });
 
         listView.setOnItemClickListener(new OnItemClickListener() {
-            private List<Map<String, Object>> listItems;
             Intent it = new Intent();
+            private List<Map<String, Object>> listItems;
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {

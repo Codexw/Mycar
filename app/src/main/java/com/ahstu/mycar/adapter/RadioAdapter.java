@@ -13,6 +13,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.MeCarActivity;
@@ -69,16 +70,18 @@ public class RadioAdapter extends BaseAdapter {
 
         holder.nameTxt.setText(list.get(position).toString());
         holder.car_list_linearlayout.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent();
                 intent.setClass(content, MeCarActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("car_number", list.get(temp).toString());
+                bundle.putString("car_number", list.get(position).toString());
+                Toast.makeText(content, list.get(position).toString(), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bundle);
                 content.startActivity(intent);
-                
+
             }
         });
 
