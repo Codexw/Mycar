@@ -23,15 +23,38 @@ import com.baidu.navisdk.adapter.NaviModuleImpl;
  */
 public class BDStationGuideActivity extends Activity {
 
+    private static final int MSG_SHOW = 1;
+    private static final int MSG_HIDE = 2;
+    private static final int MSG_RESET_NODE = 3;
     private final String TAG = BDStationGuideActivity.class.getName();
     private BNRoutePlanNode mBNRoutePlanNode = null;
     private BaiduNaviCommonModule mBaiduNaviCommonModule = null;
-
     /*
      * 对于导航模块有两种方式来实现发起导航 1：使用通用接口来实现 2：使用传统接口来实现
      */
     // 是否使用通用接口
     private boolean useCommonInterface = true;
+
+    ;
+    private Handler hd = null;
+    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+
+        @Override
+        public void onNaviGuideEnd() {
+            finish();
+        }
+
+        @Override
+        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
+
+            if (actionType == 0) {
+                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
+            }
+
+            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +123,6 @@ public class BDStationGuideActivity extends Activity {
 
     }
 
-    ;
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -166,11 +187,6 @@ public class BDStationGuideActivity extends Activity {
         BNRouteGuideManager.getInstance().showCustomizedLayer(true);
     }
 
-    private static final int MSG_SHOW = 1;
-    private static final int MSG_HIDE = 2;
-    private static final int MSG_RESET_NODE = 3;
-    private Handler hd = null;
-
     private void createHandler() {
         if (hd == null) {
             hd = new Handler(getMainLooper()) {
@@ -189,23 +205,4 @@ public class BDStationGuideActivity extends Activity {
             };
         }
     }
-
-    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
-
-        @Override
-        public void onNaviGuideEnd() {
-            finish();
-        }
-
-        @Override
-        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
-
-            if (actionType == 0) {
-                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
-            }
-
-            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
-        }
-
-    };
 }

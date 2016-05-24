@@ -34,6 +34,10 @@ import java.util.List;
 
 public class StationInfoActivity extends Activity {
 
+    public static final String ROUTE_PLAN_NODE = "routePlanNode";
+    private static final String APP_FOLDER_NAME = "MyCar";
+    public static List<Activity> activityList = new LinkedList<Activity>();
+    String authinfo = null;
     private Context mContext;
     private TextView tv_name, tv_distance, tv_area, tv_addr;
     private ImageView iv_back;
@@ -41,16 +45,104 @@ public class StationInfoActivity extends Activity {
     private ScrollView sv;
     private ListView lv_gast_price, lv_price;
     private Button addgas;
-
-    public static List<Activity> activityList = new LinkedList<Activity>();
     private TextView tv_bd09ll;
-    private static final String APP_FOLDER_NAME = "MyCar";
     private String mSDCardPath = null;
-    public static final String ROUTE_PLAN_NODE = "routePlanNode";
     private double stLat;
     private double stLon;
     private double enLat;
     private double enLon;
+    /**
+     * 内部TTS播报状态回传handler
+     */
+    private Handler ttsHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            int type = msg.what;
+            switch (type) {
+                case BaiduNaviManager.TTSPlayMsgType.PLAY_START_MSG: {
+                    break;
+                }
+                case BaiduNaviManager.TTSPlayMsgType.PLAY_END_MSG: {
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    };
+    /**
+     * 内部TTS播报状态回调接口
+     */
+    private BaiduNaviManager.TTSPlayStateListener ttsPlayStateListener = new BaiduNaviManager.TTSPlayStateListener() {
+
+        @Override
+        public void playEnd() {
+            // showToastMsg("TTSPlayStateListener : TTS play end");
+        }
+
+        @Override
+        public void playStart() {
+            // showToastMsg("TTSPlayStateListener : TTS play start");
+        }
+    };
+    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
+
+        @Override
+        public void stopTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "stopTTS");
+        }
+
+        @Override
+        public void resumeTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "resumeTTS");
+        }
+
+        @Override
+        public void releaseTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "releaseTTSPlayer");
+        }
+
+        @Override
+        public int playTTSText(String speech, int bPreempt) {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
+
+            return 1;
+        }
+
+        @Override
+        public void phoneHangUp() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneHangUp");
+        }
+
+        @Override
+        public void phoneCalling() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneCalling");
+        }
+
+        @Override
+        public void pauseTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "pauseTTS");
+        }
+
+        @Override
+        public void initTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "initTTSPlayer");
+        }
+
+        @Override
+        public int getTTSState() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "getTTSState");
+            return 1;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,44 +244,6 @@ public class StationInfoActivity extends Activity {
         return true;
     }
 
-
-    String authinfo = null;
-
-    /**
-     * 内部TTS播报状态回传handler
-     */
-    private Handler ttsHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            int type = msg.what;
-            switch (type) {
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_START_MSG: {
-                    break;
-                }
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_END_MSG: {
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-    };
-
-    /**
-     * 内部TTS播报状态回调接口
-     */
-    private BaiduNaviManager.TTSPlayStateListener ttsPlayStateListener = new BaiduNaviManager.TTSPlayStateListener() {
-
-        @Override
-        public void playEnd() {
-            // showToastMsg("TTSPlayStateListener : TTS play end");
-        }
-
-        @Override
-        public void playStart() {
-            // showToastMsg("TTSPlayStateListener : TTS play start");
-        }
-    };
-
     public void showToastMsg(final String msg) {
         StationInfoActivity.this.runOnUiThread(new Runnable() {
 
@@ -264,6 +318,15 @@ public class StationInfoActivity extends Activity {
         }
     }
 
+    private void initSetting() {
+        BNaviSettingManager.setDayNightMode(BNaviSettingManager.DayNightMode.DAY_NIGHT_MODE_DAY);
+        BNaviSettingManager
+                .setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
+        BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
+        BNaviSettingManager.setPowerSaveMode(BNaviSettingManager.PowerSaveMode.DISABLE_MODE);
+        BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
+    }
+
     public class DemoRoutePlanListener implements BaiduNaviManager.RoutePlanListener {
 
         private BNRoutePlanNode mBNRoutePlanNode = null;
@@ -299,74 +362,5 @@ public class StationInfoActivity extends Activity {
 //            Toast.makeText(StationInfoActivity.this, "算路失败", Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void initSetting() {
-        BNaviSettingManager.setDayNightMode(BNaviSettingManager.DayNightMode.DAY_NIGHT_MODE_DAY);
-        BNaviSettingManager
-                .setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
-        BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
-        BNaviSettingManager.setPowerSaveMode(BNaviSettingManager.PowerSaveMode.DISABLE_MODE);
-        BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
-    }
-
-    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
-
-        @Override
-        public void stopTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "stopTTS");
-        }
-
-        @Override
-        public void resumeTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "resumeTTS");
-        }
-
-        @Override
-        public void releaseTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "releaseTTSPlayer");
-        }
-
-        @Override
-        public int playTTSText(String speech, int bPreempt) {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
-
-            return 1;
-        }
-
-        @Override
-        public void phoneHangUp() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneHangUp");
-        }
-
-        @Override
-        public void phoneCalling() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneCalling");
-        }
-
-        @Override
-        public void pauseTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "pauseTTS");
-        }
-
-        @Override
-        public void initTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "initTTSPlayer");
-        }
-
-        @Override
-        public int getTTSState() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "getTTSState");
-            return 1;
-        }
-    };
 
 }

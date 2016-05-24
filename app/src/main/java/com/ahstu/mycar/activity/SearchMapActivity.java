@@ -165,30 +165,6 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
 
     }
 
-    // 定制RouteOverly
-    private class MyDrivingRouteOverlay extends DrivingRouteOverlay {
-
-        public MyDrivingRouteOverlay(BaiduMap baiduMap) {
-            super(baiduMap);
-        }
-
-       /* @Override
-        public BitmapDescriptor getStartMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_st);
-            }
-            return null;
-        }
-
-        @Override
-        public BitmapDescriptor getTerminalMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_en);
-            }
-            return null;
-        }*/
-    }
-
     //定位初始化
     private void initLocation() {
         mLocationClient = new LocationClient(this);
@@ -216,6 +192,30 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
 
         //默认地图模式
         mLocationMode = MyLocationConfiguration.LocationMode.NORMAL;
+    }
+
+    // 定制RouteOverly
+    private class MyDrivingRouteOverlay extends DrivingRouteOverlay {
+
+        public MyDrivingRouteOverlay(BaiduMap baiduMap) {
+            super(baiduMap);
+        }
+
+       /* @Override
+        public BitmapDescriptor getStartMarker() {
+            if (useDefaultIcon) {
+                return BitmapDescriptorFactory.fromResource(R.drawable.icon_st);
+            }
+            return null;
+        }
+
+        @Override
+        public BitmapDescriptor getTerminalMarker() {
+            if (useDefaultIcon) {
+                return BitmapDescriptorFactory.fromResource(R.drawable.icon_en);
+            }
+            return null;
+        }*/
     }
 
     //地图定位加载是耗时的，因此采用异步加载

@@ -89,10 +89,31 @@ public class MapFragment extends Fragment implements OnClickListener {
     private Marker mLastMaker;
     private ArrayList<Station> mList;
     private Station mStation = null;
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            switch (msg.what) {
+                case 0x01:
+                    mList = (ArrayList<Station>) msg.obj;
+                    setMarker(mList);
+                    showLayoutInfo("1", mList.get(0));
+                    loadingDialog.dismiss();
+                    break;
+                case 0x02:
+                    loadingDialog.dismiss();
+
+                    showToast(String.valueOf(msg.obj));
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
     private StationData mStationData;
     private int mDistance = 80000;
     private CheckBox animationBox = null;
-
     private BDLocation loc;
 
     @Override
@@ -187,7 +208,6 @@ public class MapFragment extends Fragment implements OnClickListener {
         mLocationMode = LocationMode.NORMAL;
     }
 
-
     //设置地图中的加油站位置
     public void setMarker(ArrayList<Station> list) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
@@ -263,29 +283,6 @@ public class MapFragment extends Fragment implements OnClickListener {
         }
         ll_summary.setVisibility(View.VISIBLE);
     }
-
-    Handler mHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            // TODO Auto-generated method stub
-            switch (msg.what) {
-                case 0x01:
-                    mList = (ArrayList<Station>) msg.obj;
-                    setMarker(mList);
-                    showLayoutInfo("1", mList.get(0));
-                    loadingDialog.dismiss();
-                    break;
-                case 0x02:
-                    loadingDialog.dismiss();
-
-                    showToast(String.valueOf(msg.obj));
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
     public void searchStation(double lat, double lon, int distance) {
         showLoadingDialog();

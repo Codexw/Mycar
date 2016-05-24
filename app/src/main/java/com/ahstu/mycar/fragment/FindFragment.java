@@ -42,6 +42,10 @@ import java.util.List;
  * @author 吴天洛 2016/4/25
  */
 public class FindFragment extends Fragment implements View.OnClickListener {
+    public static final String ROUTE_PLAN_NODE = "routePlanNode";
+    private static final String APP_FOLDER_NAME = "MyCar";
+    public static List<Activity> activityList = new LinkedList<Activity>();
+    String authinfo = null;
     private TextView mTvSt;
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
@@ -49,19 +53,13 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private double stLon = 0.0;
     private double enLat = 0.0;
     private double enLon = 0.0;
-
     //定位相关变量
     private LocationClient mLocationClient = null;
     private MyLocationListener myLocationListener;
     private double mLatitude;
     private double mLongitude;
-
-    public static List<Activity> activityList = new LinkedList<Activity>();
-    public static final String ROUTE_PLAN_NODE = "routePlanNode";
-    private static final String APP_FOLDER_NAME = "MyCar";
     private Button mBtnSearch = null;
     private String mSDCardPath = null;
-
     //广播变量
     private LocalBroadcastManager broadcastManager1;
     private LocalBroadcastManager broadcastManager2;
@@ -69,6 +67,100 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private IntentFilter intentFilter2;
     private BroadcastReceiver mItemViewListClickReceiver1;
     private BroadcastReceiver mItemViewListClickReceiver2;
+    /**
+     * 内部TTS播报状态回传handler
+     */
+    private Handler ttsHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            int type = msg.what;
+            switch (type) {
+                case BaiduNaviManager.TTSPlayMsgType.PLAY_START_MSG: {
+                    showToastMsg("Handler : TTS play start");
+                    break;
+                }
+                case BaiduNaviManager.TTSPlayMsgType.PLAY_END_MSG: {
+                    showToastMsg("Handler : TTS play end");
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    };
+    /**
+     * 内部TTS播报状态回调接口
+     */
+    private BaiduNaviManager.TTSPlayStateListener ttsPlayStateListener = new BaiduNaviManager.TTSPlayStateListener() {
+
+        @Override
+        public void playEnd() {
+            // showToastMsg("TTSPlayStateListener : TTS play end");
+        }
+
+        @Override
+        public void playStart() {
+            // showToastMsg("TTSPlayStateListener : TTS play start");
+        }
+    };
+    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
+
+        @Override
+        public void stopTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "stopTTS");
+        }
+
+        @Override
+        public void resumeTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "resumeTTS");
+        }
+
+        @Override
+        public void releaseTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "releaseTTSPlayer");
+        }
+
+        @Override
+        public int playTTSText(String speech, int bPreempt) {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
+
+            return 1;
+        }
+
+        @Override
+        public void phoneHangUp() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneHangUp");
+        }
+
+        @Override
+        public void phoneCalling() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneCalling");
+        }
+
+        @Override
+        public void pauseTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "pauseTTS");
+        }
+
+        @Override
+        public void initTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "initTTSPlayer");
+        }
+
+        @Override
+        public int getTTSState() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "getTTSState");
+            return 1;
+        }
+    };
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -253,20 +345,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mLocationClient.stop();
     }
 
-
-    //地图定位加载是耗时的，因此采用异步加载
-    public class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            if (location == null) {
-                return;
-            }
-            mLatitude = location.getLatitude();
-            mLongitude = location.getLongitude();
-        }
-    }
-
     private boolean initDirs() {
         mSDCardPath = getSdcardDir();
         if (mSDCardPath == null) {
@@ -283,45 +361,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         }
         return true;
     }
-
-    String authinfo = null;
-
-    /**
-     * 内部TTS播报状态回传handler
-     */
-    private Handler ttsHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            int type = msg.what;
-            switch (type) {
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_START_MSG: {
-                    showToastMsg("Handler : TTS play start");
-                    break;
-                }
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_END_MSG: {
-                    showToastMsg("Handler : TTS play end");
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-    };
-
-    /**
-     * 内部TTS播报状态回调接口
-     */
-    private BaiduNaviManager.TTSPlayStateListener ttsPlayStateListener = new BaiduNaviManager.TTSPlayStateListener() {
-
-        @Override
-        public void playEnd() {
-            // showToastMsg("TTSPlayStateListener : TTS play end");
-        }
-
-        @Override
-        public void playStart() {
-            // showToastMsg("TTSPlayStateListener : TTS play start");
-        }
-    };
 
     //有可能空指针异常
     public void showToastMsg(final String msg) {
@@ -392,6 +431,28 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void initSetting() {
+        BNaviSettingManager.setDayNightMode(BNaviSettingManager.DayNightMode.DAY_NIGHT_MODE_DAY);
+        BNaviSettingManager
+                .setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
+        BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
+        BNaviSettingManager.setPowerSaveMode(BNaviSettingManager.PowerSaveMode.DISABLE_MODE);
+        BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
+    }
+
+    //地图定位加载是耗时的，因此采用异步加载
+    public class MyLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+    }
+
     public class DemoRoutePlanListener implements BaiduNaviManager.RoutePlanListener {
 
         private BNRoutePlanNode mBNRoutePlanNode = null;
@@ -426,74 +487,5 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getActivity(), "算路失败", Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void initSetting() {
-        BNaviSettingManager.setDayNightMode(BNaviSettingManager.DayNightMode.DAY_NIGHT_MODE_DAY);
-        BNaviSettingManager
-                .setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
-        BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
-        BNaviSettingManager.setPowerSaveMode(BNaviSettingManager.PowerSaveMode.DISABLE_MODE);
-        BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
-    }
-
-    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
-
-        @Override
-        public void stopTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "stopTTS");
-        }
-
-        @Override
-        public void resumeTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "resumeTTS");
-        }
-
-        @Override
-        public void releaseTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "releaseTTSPlayer");
-        }
-
-        @Override
-        public int playTTSText(String speech, int bPreempt) {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
-
-            return 1;
-        }
-
-        @Override
-        public void phoneHangUp() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneHangUp");
-        }
-
-        @Override
-        public void phoneCalling() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneCalling");
-        }
-
-        @Override
-        public void pauseTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "pauseTTS");
-        }
-
-        @Override
-        public void initTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "initTTSPlayer");
-        }
-
-        @Override
-        public int getTTSState() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "getTTSState");
-            return 1;
-        }
-    };
 }
 
