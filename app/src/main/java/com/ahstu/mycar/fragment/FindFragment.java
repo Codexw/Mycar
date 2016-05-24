@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -80,7 +78,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         //获取到经纬度后传入路线规划，开始导航
         activityList.add(getActivity());
         BNOuterLogUtil.setLogSwitcher(true);
-
         if (initDirs()) {
             initNavi();
         }
@@ -137,6 +134,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 };
                 broadcastManager1.registerReceiver(mItemViewListClickReceiver1, intentFilter1);
                 break;
+
             case R.id.end:
                 Intent intent2 = new Intent(getActivity(), SearchLatLonActivity.class);
                 intent2.putExtra("intent", "end");
@@ -187,7 +185,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 } else {
                     mTvEn.setText(str1);
                 }
-
                 break;
 
             case R.id.btn_search:
@@ -212,13 +209,11 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 }
                 if (!str11.isEmpty() && !str22.isEmpty()) {
                     if (BaiduNaviManager.isNaviInited()) {
-                        System.out.println(stLat + "aaa" + stLon + "bbb" + enLat + "ccc" + enLon);
                         routeplanToNavi();
                     }
                 }
                 break;
         }
-
     }
 
     //定位初始化
@@ -233,7 +228,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         option.setOpenGps(true);
         option.setScanSpan(1000);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
         mLocationClient.setLocOption(option);//将上面option中的设置加载
-
     }
 
     @Override
@@ -253,10 +247,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mLocationClient.stop();
     }
 
-
     //地图定位加载是耗时的，因此采用异步加载
     public class MyLocationListener implements BDLocationListener {
-
         @Override
         public void onReceiveLocation(BDLocation location) {
             if (location == null) {
@@ -286,87 +278,35 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
     String authinfo = null;
 
-    /**
-     * 内部TTS播报状态回传handler
-     */
-    private Handler ttsHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            int type = msg.what;
-            switch (type) {
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_START_MSG: {
-                    showToastMsg("Handler : TTS play start");
-                    break;
-                }
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_END_MSG: {
-                    showToastMsg("Handler : TTS play end");
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-    };
-
-    /**
-     * 内部TTS播报状态回调接口
-     */
-    private BaiduNaviManager.TTSPlayStateListener ttsPlayStateListener = new BaiduNaviManager.TTSPlayStateListener() {
-
-        @Override
-        public void playEnd() {
-            // showToastMsg("TTSPlayStateListener : TTS play end");
-        }
-
-        @Override
-        public void playStart() {
-            // showToastMsg("TTSPlayStateListener : TTS play start");
-        }
-    };
-
-    //有可能空指针异常
-    public void showToastMsg(final String msg) {
-        getActivity().runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     private void initNavi() {
-
-        BNOuterTTSPlayerCallback ttsCallback = null;
-
         BaiduNaviManager.getInstance().init(getActivity(), mSDCardPath, APP_FOLDER_NAME, new BaiduNaviManager.NaviInitListener() {
             @Override
             public void onAuthResult(int status, String msg) {
                 if (0 == status) {
-                    authinfo = "key验证成功!";
+//                    authinfo = "key验证成功!";
                 } else {
-                    authinfo = "key验证失败" + msg;
+//                    authinfo = "key验证失败" + msg;
                 }
-                getActivity().runOnUiThread(new Runnable() {
+               /* getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(), authinfo, Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
             }
 
             public void initSuccess() {
-                Toast.makeText(getActivity(), "百度导航引擎初始化成功", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "百度导航引擎初始化成功", Toast.LENGTH_SHORT).show();
             }
 
             public void initStart() {
-                Toast.makeText(getActivity(), "百度导航引擎初始化开始", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "百度导航引擎初始化开始", Toast.LENGTH_SHORT).show();
             }
 
             public void initFailed() {
-                Toast.makeText(getActivity(), "百度导航引擎初始化失败", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "百度导航引擎初始化失败", Toast.LENGTH_SHORT).show();
             }
-        }, null, ttsHandler, null);
-
+        }, null, null, null);
     }
 
     private String getSdcardDir() {
@@ -382,7 +322,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
 
         sNode = new BNRoutePlanNode(stLon, stLat, null, null);
         eNode = new BNRoutePlanNode(enLon, enLat, null, null);
-
 
         if (sNode != null && eNode != null) {
             List<BNRoutePlanNode> list = new ArrayList<BNRoutePlanNode>();
@@ -405,11 +344,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             /*
              * 设置途径点以及resetEndNode会回调该接口
              */
-
             for (Activity ac : activityList) {
-
                 if (ac.getClass().getName().endsWith("BDSearchGuideActivity")) {
-
                     return;
                 }
             }
