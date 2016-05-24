@@ -30,10 +30,6 @@ import com.xys.libzxing.R;
 
 import java.io.Closeable;
 import java.io.IOException;
-
-/**
- * Manages beeps and vibrations for {@link CaptureActivity}.
- */
 public class BeepManager implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, Closeable {
 
     private static final String TAG = BeepManager.class.getSimpleName();

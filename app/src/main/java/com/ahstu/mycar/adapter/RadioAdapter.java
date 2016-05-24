@@ -24,15 +24,14 @@ public class RadioAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayList list;
     private viewHolder holder;
-
-    private int index;
+    private int index, temp;
     private Context content;
-
     public RadioAdapter(Context content, ArrayList list) {
         super();
         this.content = content;
         this.list = list;
         inflater = LayoutInflater.from(content);
+
     }
 
     @Override
@@ -54,6 +53,7 @@ public class RadioAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         final SharedPreferences share = content.getSharedPreferences("text", content.MODE_PRIVATE);
         index = share.getInt("position", 0);
+        temp = position;
         holder = new viewHolder();
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.car_list_item, null);
@@ -71,14 +71,17 @@ public class RadioAdapter extends BaseAdapter {
         holder.car_list_linearlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent();
                 intent.setClass(content, MeCarActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("car_number", list.get(position).toString());
+                bundle.putString("car_number", list.get(temp).toString());
                 intent.putExtras(bundle);
                 content.startActivity(intent);
+                
             }
         });
+
         holder.selectBtn
                 .setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -86,9 +89,6 @@ public class RadioAdapter extends BaseAdapter {
                     public void onCheckedChanged(CompoundButton buttonView,
                                                  boolean isChecked) {
                         if (isChecked) {
-//                            Toast.makeText(content, "您选择的car是：" + list.get(position),
-//                                    Toast.LENGTH_LONG).show();
-
                             index = position;
                             SharedPreferences.Editor editer = share.edit();
                             editer.putInt("position", index);
@@ -116,4 +116,5 @@ public class RadioAdapter extends BaseAdapter {
         public TextView selectstate;
         public LinearLayout car_list_linearlayout;
     }
+
 }

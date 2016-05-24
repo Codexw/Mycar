@@ -5,11 +5,11 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/Melinearlayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center"
         android:background="#499BF7"
-        android:id="@+id/Melinearlayout1">
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,10 +26,10 @@
         android:id="@+id/Metouxiang"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:layout_below="@+id/Melinearlayout1"
         android:background="@color/line"
-        android:orientation="vertical"
         android:gravity="center"
-        android:layout_below="@+id/Melinearlayout1">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -56,30 +56,24 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="用户名"
             android:textSize="20dp"
-            android:id="@+id/username"
 
             />
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@+id/Metouxiang"
-        android:background="@android:color/black"
-        android:id="@+id/backline"></View>
 
     <LinearLayout
+        android:id="@+id/melinear1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/melinear1"
-        android:orientation="vertical"
+        android:layout_below="@+id/Metouxiang"
 
-        android:layout_below="@+id/backline">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,18 +81,18 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/me_mycar"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/me_mycar">
+                android:gravity="center">
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="我的车辆"
                     android:gravity="center"
+                    android:text="我的车辆"
                     android:textSize="16dp" />
 
 
@@ -112,18 +106,18 @@
 
 
             <LinearLayout
+                android:id="@+id/me_myform"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/me_myform">
+                android:gravity="center">
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="我的订单"
                     android:gravity="center"
+                    android:text="我的订单"
                     android:textSize="16dp" />
 
 
@@ -145,8 +139,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -165,11 +159,11 @@
                 android:background="#CBCED2" />
 
             <LinearLayout
+                android:id="@+id/exit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/exit">
+                android:gravity="center">
 
                 <TextView
 
