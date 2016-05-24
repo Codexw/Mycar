@@ -24,7 +24,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_title_button"
+        android:id="@+id/tv_bd09ll"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"

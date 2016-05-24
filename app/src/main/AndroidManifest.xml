@@ -37,6 +37,7 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -90,7 +91,7 @@
             android:name=".activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.RouteActivity"
+            android:name=".activity.SearchLatLonActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.StationInfoActivity"
@@ -107,20 +108,41 @@
         <activity
             android:name=".music.PlaylistSongActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BDSearchGuideActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BDStationGuideActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CarQueryActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CityListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.ProvinceListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.WeizhangResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CarinformationActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CarListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.MeCarActivity"
+            android:screenOrientation="portrait"/>
+
 
         <service android:name=".music.MusicPlayService" />
         <!-- 百度地图定位的service -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true" />
-
-        <activity android:name=".activity.CarQueryActivity" />
-        <activity android:name=".activity.CityListActivity" />
-        <activity android:name=".activity.ProvinceListActivity" />
-        <activity android:name=".activity.WeizhangResultActivity" />
-        <activity android:name=".activity.CarinformationActivity" />
-        <activity android:name=".activity.CarListActivity" />
-        <activity android:name=".activity.MeCarActivity" />
+        
         <activity android:name=".activity.GasorderActivity"></activity>
         <activity android:name=".activity.MeorderActivity"></activity>
         <activity android:name=".activity.OrderItemActivity"></activity>
@@ -137,7 +159,6 @@
 
         <receiver android:name="cn.bmob.push.PushReceiver">
             <intent-filter>
-
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- 解锁完成后会调用 -->
@@ -147,7 +168,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.SearchMapActivity"></activity>
+        <activity
+            android:name=".activity.SearchMapActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
