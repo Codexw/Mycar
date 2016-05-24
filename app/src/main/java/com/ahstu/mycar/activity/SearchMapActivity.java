@@ -204,6 +204,35 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
 
     }
 
+    //定位初始化
+    private void initLocation() {
+        mLocationClient = new LocationClient(this);
+        myLocationListener = new MyLocationListener();
+        mLocationClient.registerLocationListener(myLocationListener);
+
+        LocationClientOption option = new LocationClientOption();
+
+        // 返回国测局经纬度坐标系：gcj02 返回百度墨卡托坐标系 ：bd09
+        // 返回百度经纬度坐标系 ：bd09ll
+        option.setCoorType("bd09ll");
+        option.setIsNeedAddress(true); // 设置是否需要地址信息，默认为无地址
+        option.setOpenGps(true);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
+        option.setScanSpan(1000);
+        mLocationClient.setLocOption(option);//将上面option中的设置加载
+
+        //初始化方向指示图标
+        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
+        mMyOrientationListener = new MyOrientationListener(this);
+        mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
+            @Override
+            public void onOrientationChanged(float x) {
+                mCurrentX = x;
+            }
+        });
+
+        //默认地图模式
+        mLocationMode = MyLocationConfiguration.LocationMode.NORMAL;
+    }
 
     // 定制RouteOverly
     private class MyDrivingRouteOverlay extends DrivingRouteOverlay {
@@ -297,36 +326,6 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
         }
 */
 
-    }
-
-    //定位初始化
-    private void initLocation() {
-        mLocationClient = new LocationClient(this);
-        myLocationListener = new MyLocationListener();
-        mLocationClient.registerLocationListener(myLocationListener);
-
-        LocationClientOption option = new LocationClientOption();
-
-        // 返回国测局经纬度坐标系：gcj02 返回百度墨卡托坐标系 ：bd09
-        // 返回百度经纬度坐标系 ：bd09ll
-        option.setCoorType("bd09ll");
-        option.setIsNeedAddress(true); // 设置是否需要地址信息，默认为无地址
-        option.setOpenGps(true);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
-        option.setScanSpan(1000);
-        mLocationClient.setLocOption(option);//将上面option中的设置加载
-
-        //初始化方向指示图标
-        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
-        mMyOrientationListener = new MyOrientationListener(this);
-        mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
-            @Override
-            public void onOrientationChanged(float x) {
-                mCurrentX = x;
-            }
-        });
-
-        //默认地图模式
-        mLocationMode = MyLocationConfiguration.LocationMode.NORMAL;
     }
 
     //地图定位加载是耗时的，因此采用异步加载

@@ -30,15 +30,14 @@ import com.baidu.mapapi.search.route.WalkingRouteResult;
  * @author 吴天洛 2016/4/25
  */
 public class FindFragment extends Fragment implements OnGetRoutePlanResultListener, View.OnClickListener {
+    RouteLine route = null;
+    RoutePlanSearch mSearch = null;
     private EditText editSt;
     private EditText editEn;
     private Button drive;
     private Button transit;
     private Button walk;
     private Button bike;
-
-    RouteLine route = null;
-    RoutePlanSearch mSearch = null;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

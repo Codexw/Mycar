@@ -1,6 +1,7 @@
 package com.ahstu.mycar.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -49,17 +50,16 @@ import cn.bmob.v3.listener.FindListener;
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
+    private final int SETADAPTER = 111;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private TextView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
     private View currentButton; //获取view，用于底部导航栏状态的切换
     private MusicMenu menuView;
-
     private ListView listview;
     private MusicPlayService mService;
     private MyApplication application;
     private ArrayList<Mp3> songs;//储存当前播放列表所有歌曲
-    private final int SETADAPTER = 111;
     private boolean idEdit = false;//判断是不是编辑模式，是的话显示删除图标
     private long playlistId;//当前播放列表id
     private ListViewAdapter listViewAdapter;//适配器
@@ -134,6 +134,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
     //調用衛星菜單中的接口回調方法，實現衛星菜單監聽事件
     @Override
+
     public void dealMusicclick(View v) {
 //        Toast.makeText(this, "select"+v.getTag(), Toast.LENGTH_SHORT).show();
         application = (MyApplication) getApplication();
@@ -182,9 +183,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         messageThread.start();
 
 
-//        String m=BmobInstallation.getInstallationId(this);
-//        Toast.makeText(this,m,Toast.LENGTH_SHORT).show();
-        
         new Thread() {
             public void run() {
                 try {
@@ -323,13 +321,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             mService.pausePlay();
         }
 
-       
+
         Toast.makeText(this, "ondestory", Toast.LENGTH_SHORT).show();
     }
 
     //消息推送
     public class messageThread extends Thread {
-        public boolean isrunning = true;
+        public boolean isrunning;
         //        User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
         BmobQuery<Carinfomation> carinfomationBmobQuery = new BmobQuery<Carinfomation>();
         BmobPushManager bmobPush = new BmobPushManager(MainActivity.this);
@@ -351,26 +349,32 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                     carinfomationBmobQuery.findObjects(MainActivity.this, new FindListener<Carinfomation>() {
                         @Override
                         public void onSuccess(List<Carinfomation> list) {
+
                             for (Carinfomation car : list) {
                                 if (car.getCar_mile() != 0 && (car.getCar_mile() % 15000) == 0 && (!ex1)) {
                                     ex1 = true;
+                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                     bmobPush.pushMessage("当前里程数:" + car.getCar_mile().toString());
                                 }
                                 if (car.getCar_gas() < 20 && (!ex2)) {
                                     ex2 = true;
+                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                     bmobPush.pushMessage("当前油量:" + car.getCar_gas().toString());
                                 }
                                 if (car.getCar_enginerstate().equals("异常") && (!ex3)) {
                                     ex3 = true;
+                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                     bmobPush.pushMessage("发动机异常");
                                 }
                                 if (car.getCar_shiftstate().equals("异常") && (!ex4)) {
                                     ex4 = true;
+                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                     bmobPush.pushMessage("变速器异常");
 
                                 }
                                 if (car.getCar_light().equals("异常") && (!ex5)) {
                                     ex5 = true;
+                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                     bmobPush.pushMessage("车灯异常");
                                 }
 

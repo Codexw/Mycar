@@ -78,7 +78,7 @@ public class RadioAdapter extends BaseAdapter {
                 bundle.putString("car_number", list.get(temp).toString());
                 intent.putExtras(bundle);
                 content.startActivity(intent);
-                
+
             }
         });
 

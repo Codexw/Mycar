@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,30 +103,6 @@ public class FriendFragment extends Fragment {
         //进度条
         roundProgressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
         roundProgressBar.update();
-//        progressBar = (RoundProgressBar) view.findViewById(R.id.progressBar);
-//        progressBar.setMax(100);
-//        progressBar.setProgress(progress);
-//        if (all / youliang >= 2) {
-//            youliang = progress + 40 / 2;
-//        } else {
-//
-//        }
-
-//        new Thread(new Runnable() {
-//
-//            public void run() {
-//                while (progress <= youliang) {
-//                    progress++;
-//                    progressBar.setProgress(progress);
-//                    try {
-//                        Thread.sleep(30);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//            }
-//        }).start();
         
         return view;
     }
