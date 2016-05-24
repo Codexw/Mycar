@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.bean.User;
+import com.ahstu.mycar.bean.order;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
 import java.util.List;
@@ -99,7 +100,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
                             //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
-                            User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
+                            final User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
                             BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
                             query.addWhereEqualTo("user", user);
                             query.order("-updatedAt");
@@ -189,7 +190,39 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                             });
 
+                            //从服务器获取订单信息
+                            BmobQuery<order> orderquery = new BmobQuery<order>();
+                            orderquery.addWhereEqualTo("user", user);
+                            orderquery.order("-updatedAt");
+                            orderquery.findObjects(LoginActivity.this, new FindListener<order>() {
+                                @Override
+                                public void onSuccess(List<order> list) {
+                                    DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+                                    SQLiteDatabase db = helper.getWritableDatabase();
+                                    for (int i = list.size() - 1; i >= 0; i--) {
+                                        order order = new order();
+                                        order = list.get(i);
+                                        ContentValues values = new ContentValues();
+                                        values.put("stationname", order.getStationname());
+                                        values.put("carnumber", order.getCarnumber());
+                                        values.put("username", user.getUsername().toString());
+                                        values.put("ctype", order.getCtype());
+                                        values.put("gascount", order.getGascount());
+                                        values.put("gasprice", order.getGasprice());
+                                        values.put("countprice", order.getCountprice());
+                                        values.put("time", order.getTime());
+                                        db.insert("gasorder", null, values);
 
+                                    }
+                                    db.close();
+                                }
+
+                                @Override
+                                public void onError(int i, String s) {
+
+                                }
+                            });
+                            
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                         }

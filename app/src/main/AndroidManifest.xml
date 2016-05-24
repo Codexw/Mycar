@@ -37,19 +37,19 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="false"
         android:resizeable="true"
         android:smallScreens="true" />
-    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--推送所需的权限-->
+    <!-- 推送所需的权限 -->
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".activity.MyApplication"
@@ -58,18 +58,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--百度sdk开发秘钥-->
+
+        <!-- 百度sdk开发秘钥 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
+            android:value="Qz6Axp5sB8Oa6EuL9nFucKHaymrOxEQM" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
             android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
 
         <activity
-
-            android:name="com.ahstu.mycar.activity.SplashActivity"
+            android:name=".activity.SplashActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -90,7 +90,7 @@
             android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.RouteActivity"
+            android:name=".activity.SearchLatLonActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.StationInfoActivity"
@@ -107,12 +107,44 @@
         <activity
             android:name="com.ahstu.mycar.music.PlaylistSongActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BDSearchGuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BDStationGuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CarQueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CityListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProvinceListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WeizhangResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CarinformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CarListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MeCarActivity"
+            android:screenOrientation="portrait" />
+
 
         <service android:name="com.ahstu.mycar.music.MusicPlayService" />
         <!--百度地图定位的service-->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true" />
+
+        <activity android:name=".activity.GasorderActivity"></activity>
+        <activity android:name=".activity.MeorderActivity"></activity>
+        <activity android:name=".activity.OrderItemActivity"></activity>
         <activity android:name=".activity.CarQueryActivity"></activity>
         <activity android:name=".activity.CityListActivity"></activity>
         <activity android:name=".activity.ProvinceListActivity"></activity>
@@ -135,6 +167,7 @@
 
         <receiver android:name="cn.bmob.push.PushReceiver">
             <intent-filter>
+
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- 解锁完成后会调用 -->
@@ -144,6 +177,9 @@
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".activity.SearchMapActivity"
+            android:screenOrientation="portrait" />
         <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE" />
@@ -154,6 +190,4 @@
         <activity android:name=".music.MusicDownload"></activity>
     </application>
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

@@ -9,10 +9,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.ahstu.mycar.R;
-import com.ahstu.mycar.overlayutil.BikingRouteOverlay;
 import com.ahstu.mycar.overlayutil.DrivingRouteOverlay;
-import com.ahstu.mycar.overlayutil.TransitRouteOverlay;
-import com.ahstu.mycar.overlayutil.WalkingRouteOverlay;
 import com.ahstu.mycar.ui.MyOrientationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -53,7 +50,6 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
     private BitmapDescriptor mbitmapDescriptor;
     private MyOrientationListener mMyOrientationListener;
     private float mCurrentX;
-    //onResume时注册此listener，onPause时需要Remove,注意此listener不是Android自带的，是百度API中的
     private LocationListener locationListener;
 
     @Override
@@ -80,41 +76,6 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
             overlay.zoomToSpan();
         }
 
-        //公交
-        if (mKey == 2) {
-            route = b.getParcelable("route");
-            TransitRouteResult result = b.getParcelable("result");
-            TransitRouteOverlay overlay = new MyTransitRouteOverlay(mBaiduMap);
-            overlay.setData(result.getRouteLines().get(0));
-            overlay.addToMap();
-            overlay.zoomToSpan();
-        }
-
-        //步行
-        if (mKey == 3) {
-            route = b.getParcelable("route");
-            WalkingRouteResult result = b.getParcelable("result");
-            WalkingRouteOverlay overlay = new MyWalkingRouteOverlay(mBaiduMap);
-            overlay.setData(result.getRouteLines().get(0));
-
-            try {
-                overlay.addToMap();
-                overlay.zoomToSpan();
-            } catch (Exception e) {
-                System.out.println(e + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
-            }
-        }
-
-        //骑车
-        if (mKey == 4) {
-            route = b.getParcelable("route");
-            BikingRouteResult result = b.getParcelable("result");
-            BikingRouteOverlay overlay = new MyBikingRouteOverlay(mBaiduMap);
-            overlay.setData(result.getRouteLines().get(0));
-            overlay.addToMap();
-            overlay.zoomToSpan();
-        }
     }
 
     //初始化地图
@@ -212,7 +173,6 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
 
         LocationClientOption option = new LocationClientOption();
 
-        // 返回国测局经纬度坐标系：gcj02 返回百度墨卡托坐标系 ：bd09
         // 返回百度经纬度坐标系 ：bd09ll
         option.setCoorType("bd09ll");
         option.setIsNeedAddress(true); // 设置是否需要地址信息，默认为无地址
@@ -256,76 +216,6 @@ public class SearchMapActivity extends Activity implements OnGetRoutePlanResultL
             }
             return null;
         }*/
-    }
-
-    private class MyWalkingRouteOverlay extends WalkingRouteOverlay {
-
-        public MyWalkingRouteOverlay(BaiduMap baiduMap) {
-            super(baiduMap);
-        }
-/*
-        @Override
-        public BitmapDescriptor getStartMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_st);
-            }
-            return null;
-        }
-
-        @Override
-        public BitmapDescriptor getTerminalMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_en);
-            }
-            return null;
-        }*/
-    }
-
-    private class MyTransitRouteOverlay extends TransitRouteOverlay {
-
-        public MyTransitRouteOverlay(BaiduMap baiduMap) {
-            super(baiduMap);
-        }
-
-       /* @Override
-        public BitmapDescriptor getStartMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_st);
-            }
-            return null;
-        }
-
-        @Override
-        public BitmapDescriptor getTerminalMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_en);
-            }
-            return null;
-        }*/
-    }
-
-    private class MyBikingRouteOverlay extends BikingRouteOverlay {
-        public MyBikingRouteOverlay(BaiduMap baiduMap) {
-            super(baiduMap);
-        }
-
-      /*  @Override
-        public BitmapDescriptor getStartMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_st);
-            }
-            return null;
-        }
-
-        @Override
-        public BitmapDescriptor getTerminalMarker() {
-            if (useDefaultIcon) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.icon_en);
-            }
-            return null;
-        }
-*/
-
     }
 
     //地图定位加载是耗时的，因此采用异步加载

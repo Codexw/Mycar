@@ -29,14 +29,14 @@
                     android:layout_height="wrap_content"
                     android:text="起点：" />
 
-                <EditText
+                <TextView
                     android:id="@+id/start"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:ems="10"
                     android:singleLine="true"
-                    android:text="凤阳县"></EditText>
+                    android:text="当前位置" />
             </LinearLayout>
 
             <View
@@ -58,14 +58,14 @@
                     android:layout_height="wrap_content"
                     android:text="终点：" />
 
-                <EditText
+                <TextView
                     android:id="@+id/end"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:ems="10"
-                    android:singleLine="true"
-                    android:text="蚌埠市" />
+                    android:hint="输入终点"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -78,47 +78,21 @@
             android:paddingRight="5dp" />
     </RelativeLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dark_grey" />
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:orientation="horizontal">
+        android:text="搜索" />
 
-        <Button
-            android:id="@+id/drive"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginRight="2dip"
-            android:layout_weight="1.0"
-            android:text="驾车" />
-
-        <Button
-            android:id="@+id/transit"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginRight="2dip"
-            android:layout_weight="1.0"
-            android:text="公交" />
-
-        <Button
-            android:id="@+id/walk"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginRight="2dip"
-            android:layout_weight="1.0"
-            android:text="步行" />
-
-        <Button
-            android:id="@+id/bike"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginRight="2dip"
-            android:layout_weight="1.0"
-            android:text="骑行" />
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dark_grey" />
 
 </LinearLayout>

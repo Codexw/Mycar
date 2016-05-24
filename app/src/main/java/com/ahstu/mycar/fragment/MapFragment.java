@@ -137,6 +137,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         ininView();
         initClick();
         initLocation();
+
     }
 
     @Override
@@ -327,6 +328,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         }
         //开启方向传感器
         mMyOrientationListener.start();
+
     }
 
     @Override
@@ -334,6 +336,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
         mMapView.onResume();
+
     }
 
     @Override
@@ -387,6 +390,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 break;
             case R.id.btn_map_mylocation:
                 LatLng latLng = new LatLng(mLatitude, mLongitude);
+
                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
                 mBaiduMap.animateMapStatus(msu);
                 break;
@@ -417,7 +421,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 break;
             case R.id.iv_loc:
                 break;
-            case R.id.tv_title_button:
+            case R.id.tv_bd09ll:
                 break;
             case R.id.ll_summary:
                 Intent mIntent = new Intent(getActivity(), StationInfoActivity.class);
