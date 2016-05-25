@@ -112,9 +112,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         return listItems;
     }
 
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
