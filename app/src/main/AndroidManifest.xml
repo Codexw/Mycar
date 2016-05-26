@@ -62,7 +62,7 @@
         <!-- 百度sdk开发秘钥 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="Qz6Axp5sB8Oa6EuL9nFucKHaymrOxEQM" />
+            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
@@ -134,26 +134,30 @@
         <activity
             android:name=".activity.MeCarActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".activity.GasorderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MeorderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OrderItemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MapMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".music.MusicDownload"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchMapActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.ahstu.mycar.music.MusicPlayService" />
         <!--百度地图定位的service-->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true" />
-
-        <activity android:name=".activity.GasorderActivity"></activity>
-        <activity android:name=".activity.MeorderActivity"></activity>
-        <activity android:name=".activity.OrderItemActivity"></activity>
-        <activity android:name=".activity.CarQueryActivity"></activity>
-        <activity android:name=".activity.CityListActivity"></activity>
-        <activity android:name=".activity.ProvinceListActivity"></activity>
-        <activity android:name=".activity.WeizhangResultActivity"></activity>
-        <activity android:name=".activity.CarinformationActivity"></activity>
-        <activity android:name=".activity.CarListActivity"></activity>
-        <activity android:name=".activity.MeCarActivity"></activity>
-        <activity android:name=".activity.MapMenuActivity"></activity>
-
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service
             android:name="cn.bmob.push.lib.service.PushService"
@@ -177,17 +181,13 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".activity.SearchMapActivity"
-            android:screenOrientation="portrait" />
         <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.SearchMapActivity"></activity>
-        <activity android:name=".music.MusicDownload"></activity>
+
     </application>
 
 </manifest>

@@ -371,12 +371,15 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_map_menu:
+                bt_animation();
                 break;
             case R.id.btn_map_normal:
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+                bt_animation();
                 break;
             case R.id.btn_map_site:
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+                bt_animation();
                 break;
             case R.id.btn_map_traffic:
                 if (mBaiduMap.isTrafficEnabled()) {
@@ -387,21 +390,26 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                     mBaiduMap.setTrafficEnabled(true);
                     btn_map_traffic.setText("实时交通(on)");
                 }
+                bt_animation();
                 break;
             case R.id.btn_map_mylocation:
                 LatLng latLng = new LatLng(mLatitude, mLongitude);
 
                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
                 mBaiduMap.animateMapStatus(msu);
+                bt_animation();
                 break;
             case R.id.btn_map_mode_normal:
                 mLocationMode = LocationMode.NORMAL;
+                bt_animation();
                 break;
             case R.id.btn_map_mode_following:
                 mLocationMode = LocationMode.FOLLOWING;
+                bt_animation();
                 break;
             case R.id.btn_map_mode_compass:
                 mLocationMode = LocationMode.COMPASS;
+                bt_animation();
                 break;
 
             case R.id.btn_map_search_station:
@@ -433,6 +441,11 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
             default:
                 break;
         }
+
+    }
+
+    //按钮伸缩动画判断
+    private void bt_animation() {
         if (flag) {
             startAnim();
         } else {
