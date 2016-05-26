@@ -143,7 +143,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);
-
         return view;
     }
 
@@ -220,7 +219,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         mLocationClient.setLocOption(option);//将上面option中的设置加载
 
         //初始化方向指示图标
-        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
+//        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);  //自定义方向图标
         mMyOrientationListener = new MyOrientationListener(getActivity());
         mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
             @Override
@@ -341,18 +340,11 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
     @Override
     public void onPause() {
-        super.onPause();
+//        mMapView.setVisibility(View.INVISIBLE);
 
+        super.onPause();
 //        在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
         mMapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        mMapView.onDestroy();
-        mHandler = null;
     }
 
     //退出程序时关闭地图
@@ -365,6 +357,20 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
         //停止方向传感器
         mMyOrientationListener.stop();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
+        mMapView.onDestroy();
+        mHandler = null;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
     }
 
     @Override

@@ -247,6 +247,20 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mLocationClient.stop();
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden) {
+            stLat = 0.0;
+            stLon = 0.0;
+            enLat = 0.0;
+            enLon = 0.0;
+            mTvSt.setText("当前位置");
+            mTvEn.setText("");
+            mTvEn.setHint("输入终点");
+        }
+        super.onHiddenChanged(hidden);
+    }
+
     //地图定位加载是耗时的，因此采用异步加载
     public class MyLocationListener implements BDLocationListener {
         @Override
