@@ -38,7 +38,7 @@
                 android:drawableTop="@drawable/nav_home_image"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="首页"
+                android:text="地图"
                 android:textColor="@color/nav_home_text" />
         </LinearLayout>
 

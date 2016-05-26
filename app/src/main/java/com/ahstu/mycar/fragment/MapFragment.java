@@ -1,6 +1,8 @@
 package com.ahstu.mycar.fragment;
 
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -9,6 +11,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatCallback;
+import android.support.v7.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -54,7 +60,8 @@ import java.util.List;
  *         功能:地图定位。导航
  */
 
-public class MapFragment extends Fragment implements OnClickListener {
+public class MapFragment extends Fragment implements OnClickListener, AppCompatCallback,
+        TaskStackBuilder.SupportParentable, ActionBarDrawerToggle.DelegateProvider {
     private MapView mMapView;
     private BaiduMap mBaiduMap;
     private Button btn_map_normal;
@@ -64,6 +71,7 @@ public class MapFragment extends Fragment implements OnClickListener {
     private Button btn_map_mode_normal;
     private Button btn_map_mode_following;
     private Button btn_map_mode_compass;
+    private Button btn_map_menu;
 
     //定位相关变量
     private LocationClient mLocationClient;
@@ -115,11 +123,17 @@ public class MapFragment extends Fragment implements OnClickListener {
     private int mDistance = 80000;
     private CheckBox animationBox = null;
     private BDLocation loc;
+    //地图菜单按钮动画
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_traffic, R.id.btn_map_mylocation,
+            R.id.btn_map_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private List<Button> ButtonList = new ArrayList<Button>();
+    private boolean flag = true;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mStationData = new StationData(mHandler);
+        initMapMenu();
         ininView();
         initClick();
         initLocation();
@@ -132,7 +146,16 @@ public class MapFragment extends Fragment implements OnClickListener {
         return view;
     }
 
+    //将按钮放入动画按钮数组
+    private void initMapMenu() {
+        for (int i = 0; i < res.length; i++) {
+            Button map_button = (Button) getActivity().findViewById(res[i]);
+            ButtonList.add(map_button);
+        }
+    }
+
     private void initClick() {
+        btn_map_menu.setOnClickListener(this);
         btn_map_normal.setOnClickListener(this);
         btn_map_site.setOnClickListener(this);
         btn_map_traffic.setOnClickListener(this);
@@ -163,6 +186,7 @@ public class MapFragment extends Fragment implements OnClickListener {
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);  //地图比例初始化为100M
         mBaiduMap.setMapStatus(msu);
 
+        btn_map_menu = (Button) getActivity().findViewById(R.id.btn_map_menu);
         btn_map_normal = (Button) getActivity().findViewById(R.id.btn_map_normal);
         btn_map_site = (Button) getActivity().findViewById(R.id.btn_map_site);
         btn_map_traffic = (Button) getActivity().findViewById(R.id.btn_map_traffic);
@@ -195,7 +219,7 @@ public class MapFragment extends Fragment implements OnClickListener {
         mLocationClient.setLocOption(option);//将上面option中的设置加载
 
         //初始化方向指示图标
-        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
+//        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);  //自定义方向图标
         mMyOrientationListener = new MyOrientationListener(getActivity());
         mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
             @Override
@@ -316,18 +340,11 @@ public class MapFragment extends Fragment implements OnClickListener {
 
     @Override
     public void onPause() {
-        super.onPause();
+//        mMapView.setVisibility(View.INVISIBLE);
 
+        super.onPause();
 //        在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
         mMapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        mMapView.onDestroy();
-        mHandler = null;
     }
 
     //退出程序时关闭地图
@@ -342,9 +359,25 @@ public class MapFragment extends Fragment implements OnClickListener {
         mMyOrientationListener.stop();
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
+        mMapView.onDestroy();
+        mHandler = null;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_map_menu:
+                break;
             case R.id.btn_map_normal:
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
                 break;
@@ -376,6 +409,7 @@ public class MapFragment extends Fragment implements OnClickListener {
             case R.id.btn_map_mode_compass:
                 mLocationMode = LocationMode.COMPASS;
                 break;
+
             case R.id.btn_map_search_station:
                 searchStation(loc.getLatitude(), loc.getLongitude(), mDistance);
                 break;
@@ -405,6 +439,11 @@ public class MapFragment extends Fragment implements OnClickListener {
             default:
                 break;
         }
+        if (flag) {
+            startAnim();
+        } else {
+            closeAnmi();
+        }
     }
 
     //加油站正在加载。。。
@@ -432,6 +471,66 @@ public class MapFragment extends Fragment implements OnClickListener {
         }
         mToast.setText(msg);
         mToast.show();
+    }
+
+    //菜单的回收
+    private void closeAnmi() {
+        for (int i = 1; i < res.length; i++) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(ButtonList.get(i), "translationY", i * 100, 0F);
+            ObjectAnimator animator2 = ObjectAnimator.ofFloat(ButtonList.get(i), "rotation", 0, 360F);
+            AnimatorSet set = new AnimatorSet();
+            set.playSequentially(animator, animator2);
+            animator.setDuration(300);
+            animator.setStartDelay(i * 100);
+            animator.start();
+            animator.start();
+            animator2.setDuration(300);
+            animator2.setStartDelay(i * 100);
+            animator2.start();
+            flag = true;
+        }
+    }
+
+    private void startAnim() {
+        for (int i = 1; i < res.length; i++) {
+
+            ObjectAnimator animator = ObjectAnimator.ofFloat(ButtonList.get(i), "translationY", 0F, i * 100);
+            AnimatorSet set = new AnimatorSet();
+            set.playSequentially(animator);
+            animator.setDuration(300);
+            animator.setStartDelay(i * 100);
+            animator.start();
+            flag = false;
+        }
+    }
+    //菜单的弹出
+
+    //实现动画接口的抽象方法
+    @Override
+    public void onSupportActionModeStarted(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onSupportActionModeFinished(ActionMode mode) {
+
+    }
+
+    @Nullable
+    @Override
+    public ActionMode onWindowStartingSupportActionMode(ActionMode.Callback callback) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public ActionBarDrawerToggle.Delegate getDrawerToggleDelegate() {
+        return null;
+    }
+
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        return null;
     }
 
     //地图定位加载是耗时的，因此采用异步加载

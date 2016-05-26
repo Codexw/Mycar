@@ -81,7 +81,7 @@ public class RadioAdapter extends BaseAdapter {
                 Toast.makeText(content, list.get(position).toString(), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bundle);
                 content.startActivity(intent);
-                
+
             }
         });
 

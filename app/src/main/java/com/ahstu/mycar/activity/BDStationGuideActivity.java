@@ -34,27 +34,7 @@ public class BDStationGuideActivity extends Activity {
      */
     // 是否使用通用接口
     private boolean useCommonInterface = true;
-
-    ;
     private Handler hd = null;
-    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
-
-        @Override
-        public void onNaviGuideEnd() {
-            finish();
-        }
-
-        @Override
-        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
-
-            if (actionType == 0) {
-                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
-            }
-
-            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +100,6 @@ public class BDStationGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onPause();
         }
-
     }
 
     @Override
@@ -134,7 +113,6 @@ public class BDStationGuideActivity extends Activity {
             BNRouteGuideManager.getInstance().onDestroy();
         }
         StationInfoActivity.activityList.remove(this);
-
     }
 
     @Override
@@ -147,7 +125,6 @@ public class BDStationGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onStop();
         }
-
     }
 
     @Override
@@ -170,7 +147,6 @@ public class BDStationGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onConfigurationChanged(newConfig);
         }
-
     }
 
     private void addCustomizedLayerItems() {
@@ -200,9 +176,25 @@ public class BDStationGuideActivity extends Activity {
                                 new BNRoutePlanNode(116.21142, 40.85087, "百度大厦11", null));
                     }
                 }
-
-                ;
             };
         }
     }
+    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+
+        @Override
+        public void onNaviGuideEnd() {
+            finish();
+        }
+
+        @Override
+        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
+
+            if (actionType == 0) {
+                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
+            }
+
+            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
+        }
+
+    };
 }

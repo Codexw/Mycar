@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +35,6 @@ public class StationInfoActivity extends Activity {
     public static final String ROUTE_PLAN_NODE = "routePlanNode";
     private static final String APP_FOLDER_NAME = "MyCar";
     public static List<Activity> activityList = new LinkedList<Activity>();
-    String authinfo = null;
     private Context mContext;
     private TextView tv_name, tv_distance, tv_area, tv_addr;
     private ImageView iv_back;
@@ -51,98 +48,6 @@ public class StationInfoActivity extends Activity {
     private double stLon;
     private double enLat;
     private double enLon;
-    /**
-     * 内部TTS播报状态回传handler
-     */
-    private Handler ttsHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            int type = msg.what;
-            switch (type) {
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_START_MSG: {
-                    break;
-                }
-                case BaiduNaviManager.TTSPlayMsgType.PLAY_END_MSG: {
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-    };
-    /**
-     * 内部TTS播报状态回调接口
-     */
-    private BaiduNaviManager.TTSPlayStateListener ttsPlayStateListener = new BaiduNaviManager.TTSPlayStateListener() {
-
-        @Override
-        public void playEnd() {
-            // showToastMsg("TTSPlayStateListener : TTS play end");
-        }
-
-        @Override
-        public void playStart() {
-            // showToastMsg("TTSPlayStateListener : TTS play start");
-        }
-    };
-    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
-
-        @Override
-        public void stopTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "stopTTS");
-        }
-
-        @Override
-        public void resumeTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "resumeTTS");
-        }
-
-        @Override
-        public void releaseTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "releaseTTSPlayer");
-        }
-
-        @Override
-        public int playTTSText(String speech, int bPreempt) {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
-
-            return 1;
-        }
-
-        @Override
-        public void phoneHangUp() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneHangUp");
-        }
-
-        @Override
-        public void phoneCalling() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneCalling");
-        }
-
-        @Override
-        public void pauseTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "pauseTTS");
-        }
-
-        @Override
-        public void initTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "initTTSPlayer");
-        }
-
-        @Override
-        public int getTTSState() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "getTTSState");
-            return 1;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,13 +112,10 @@ public class StationInfoActivity extends Activity {
         lv_gast_price.setAdapter(gastPriceAdapter);
         PriceListAdapter priceAdapter = new PriceListAdapter(mContext, s.getPriceList());
         lv_price.setAdapter(priceAdapter);
-
         sv.smoothScrollTo(0, 0);
-
     }
 
     private void initListener() {
-
         if (tv_bd09ll != null) {
             tv_bd09ll.setOnClickListener(new OnClickListener() {
                 @Override
@@ -224,7 +126,6 @@ public class StationInfoActivity extends Activity {
                 }
             });
         }
-
     }
 
     private boolean initDirs() {
@@ -244,20 +145,9 @@ public class StationInfoActivity extends Activity {
         return true;
     }
 
-    public void showToastMsg(final String msg) {
-        StationInfoActivity.this.runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                Toast.makeText(StationInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+    String authinfo = null;
 
     private void initNavi() {
-
-        BNOuterTTSPlayerCallback ttsCallback = null;
-
         BaiduNaviManager.getInstance().init(this, mSDCardPath, APP_FOLDER_NAME, new BaiduNaviManager.NaviInitListener() {
             @Override
             public void onAuthResult(int status, String msg) {
@@ -266,13 +156,13 @@ public class StationInfoActivity extends Activity {
                 } else {
 //                    authinfo = "key验证失败" + msg;
                 }
-                StationInfoActivity.this.runOnUiThread(new Runnable() {
+        /*        StationInfoActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-//                        Toast.makeText(StationInfoActivity.this, authinfo, Toast.LENGTH_LONG).show();
+                        Toast.makeText(StationInfoActivity.this, authinfo, Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
             }
 
             public void initSuccess() {
@@ -286,7 +176,7 @@ public class StationInfoActivity extends Activity {
             public void initFailed() {
 //                Toast.makeText(StationInfoActivity.this, "百度导航引擎初始化失败", Toast.LENGTH_SHORT).show();
             }
-        }, null, ttsHandler, null);
+        }, null, null, null);
 
     }
 
@@ -309,12 +199,42 @@ public class StationInfoActivity extends Activity {
         sNode = new BNRoutePlanNode(stLon, stLat, null, null);
         eNode = new BNRoutePlanNode(enLon, enLat, null, null);
 
-
         if (sNode != null && eNode != null) {
             List<BNRoutePlanNode> list = new ArrayList<BNRoutePlanNode>();
             list.add(sNode);
             list.add(eNode);
             BaiduNaviManager.getInstance().launchNavigator(this, list, 1, true, new DemoRoutePlanListener(sNode));
+        }
+    }
+
+    public class DemoRoutePlanListener implements BaiduNaviManager.RoutePlanListener {
+        private BNRoutePlanNode mBNRoutePlanNode = null;
+
+        public DemoRoutePlanListener(BNRoutePlanNode node) {
+            mBNRoutePlanNode = node;
+        }
+
+        @Override
+        public void onJumpToNavigator() {
+            /*
+             * 设置途径点以及resetEndNode会回调该接口
+             */
+            for (Activity ac : activityList) {
+                if (ac.getClass().getName().endsWith("BDStationGuideActivity")) {
+                    return;
+                }
+            }
+            Intent intent = new Intent(StationInfoActivity.this, BDStationGuideActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(ROUTE_PLAN_NODE, (BNRoutePlanNode) mBNRoutePlanNode);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+        @Override
+        public void onRoutePlanFailed() {
+            // TODO Auto-generated method stub
+            Toast.makeText(StationInfoActivity.this, "算路失败", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -327,40 +247,64 @@ public class StationInfoActivity extends Activity {
         BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
     }
 
-    public class DemoRoutePlanListener implements BaiduNaviManager.RoutePlanListener {
-
-        private BNRoutePlanNode mBNRoutePlanNode = null;
-
-        public DemoRoutePlanListener(BNRoutePlanNode node) {
-            mBNRoutePlanNode = node;
-        }
+    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
 
         @Override
-        public void onJumpToNavigator() {
-            /*
-             * 设置途径点以及resetEndNode会回调该接口
-			 */
-
-            for (Activity ac : activityList) {
-
-                if (ac.getClass().getName().endsWith("BDStationGuideActivity")) {
-
-                    return;
-                }
-            }
-            Intent intent = new Intent(StationInfoActivity.this, BDStationGuideActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable(ROUTE_PLAN_NODE, (BNRoutePlanNode) mBNRoutePlanNode);
-            intent.putExtras(bundle);
-            startActivity(intent);
-
-        }
-
-        @Override
-        public void onRoutePlanFailed() {
+        public void stopTTS() {
             // TODO Auto-generated method stub
-//            Toast.makeText(StationInfoActivity.this, "算路失败", Toast.LENGTH_SHORT).show();
+            Log.e("test_TTS", "stopTTS");
         }
-    }
+
+        @Override
+        public void resumeTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "resumeTTS");
+        }
+
+        @Override
+        public void releaseTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "releaseTTSPlayer");
+        }
+
+        @Override
+        public int playTTSText(String speech, int bPreempt) {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
+
+            return 1;
+        }
+
+        @Override
+        public void phoneHangUp() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneHangUp");
+        }
+
+        @Override
+        public void phoneCalling() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneCalling");
+        }
+
+        @Override
+        public void pauseTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "pauseTTS");
+        }
+
+        @Override
+        public void initTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "initTTSPlayer");
+        }
+
+        @Override
+        public int getTTSState() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "getTTSState");
+            return 1;
+        }
+    };
 
 }

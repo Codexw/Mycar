@@ -125,7 +125,7 @@ public class CarListActivity extends Activity {
                 for (int i = 0; i < list.size(); i++) {
                     Carinfomation carinfomation = list.get(i);
                     ContentValues value = new ContentValues();
-                    //value.put("car_number", carinfomation.getCar_number());
+                    // value.put("car_number", carinfomation.getCar_number());
                     value.put("car_brand", carinfomation.getCar_brand());
                     value.put("car_model", carinfomation.getCar_model());
                     value.put("car_sign", carinfomation.getCar_sign());
@@ -167,7 +167,7 @@ public class CarListActivity extends Activity {
 
                     }
                     db.update("carinfo", value, "car_number=?", new String[]{carinfomation.getCar_number()});
-                    
+
 
                 }
                 db.close();

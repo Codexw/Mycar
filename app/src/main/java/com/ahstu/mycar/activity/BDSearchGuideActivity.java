@@ -2,13 +2,11 @@ package com.ahstu.mycar.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
-import com.ahstu.mycar.R;
 import com.ahstu.mycar.fragment.FindFragment;
 import com.baidu.navisdk.adapter.BNRouteGuideManager;
 import com.baidu.navisdk.adapter.BNRouteGuideManager.CustomizedLayerItem;
@@ -35,32 +33,13 @@ public class BDSearchGuideActivity extends Activity {
     private final String TAG = BDSearchGuideActivity.class.getName();
     private BNRoutePlanNode mBNRoutePlanNode = null;
     private BaiduNaviCommonModule mBaiduNaviCommonModule = null;
+
     /*
      * 对于导航模块有两种方式来实现发起导航 1：使用通用接口来实现 2：使用传统接口来实现
      */
     // 是否使用通用接口
     private boolean useCommonInterface = true;
-
-    ;
     private Handler hd = null;
-    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
-
-        @Override
-        public void onNaviGuideEnd() {
-            finish();
-        }
-
-        @Override
-        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
-
-            if (actionType == 0) {
-                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
-            }
-
-            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +47,6 @@ public class BDSearchGuideActivity extends Activity {
 
         FindFragment.activityList.add(this);
         createHandler();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-        }
         View view = null;
         if (useCommonInterface) {
             // 使用通用接口
@@ -95,7 +72,6 @@ public class BDSearchGuideActivity extends Activity {
             Bundle bundle = intent.getExtras();
             if (bundle != null) {
                 mBNRoutePlanNode = (BNRoutePlanNode) bundle.getSerializable(FindFragment.ROUTE_PLAN_NODE);
-
             }
         }
     }
@@ -116,8 +92,6 @@ public class BDSearchGuideActivity extends Activity {
         }
     }
 
-    ;
-
     protected void onPause() {
         super.onPause();
 
@@ -128,7 +102,6 @@ public class BDSearchGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onPause();
         }
-
     }
 
     @Override
@@ -183,12 +156,12 @@ public class BDSearchGuideActivity extends Activity {
 
     private void addCustomizedLayerItems() {
         List<CustomizedLayerItem> items = new ArrayList<CustomizedLayerItem>();
-        CustomizedLayerItem item1 = null;
+//        CustomizedLayerItem item1 = null;
         if (mBNRoutePlanNode != null) {
-            item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
+           /* item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
                     mBNRoutePlanNode.getCoordinateType(), getResources().getDrawable(R.drawable.ic_launcher),
                     CustomizedLayerItem.ALIGN_CENTER);
-            items.add(item1);
+            items.add(item1);*/
 
             BNRouteGuideManager.getInstance().setCustomizedLayerItems(items);
         }
@@ -211,4 +184,20 @@ public class BDSearchGuideActivity extends Activity {
             };
         }
     }
+
+    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+        @Override
+        public void onNaviGuideEnd() {
+            finish();
+        }
+
+        @Override
+        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
+
+            if (actionType == 0) {
+                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
+            }
+            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
+        }
+    };
 }

@@ -38,7 +38,6 @@
                 android:layout_height="50dp"
                 android:text="请先添加车辆" />
 
-
         </LinearLayout>
 
         <RelativeLayout
@@ -48,35 +47,24 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/centre_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-
-                >
+                android:gravity="center">
 
                 <com.ahstu.mycar.me.RoundProgressBar
                     android:id="@+id/progressBar"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/orange_roundness" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="86dp"
-                    android:text="100%" />
+                    android:layout_centerHorizontal="true"/>
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/set_linear1"
@@ -157,8 +145,8 @@
 
 
                         <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp">
 
                     <TextView
                         android:layout_width="100dp"

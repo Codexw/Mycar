@@ -1,17 +1,14 @@
 package com.ahstu.mycar.me;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-
-import com.ahstu.mycar.R;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 /**
  * 带进度的进度条，线程安全的View，可直接在线程中更新进度
@@ -19,183 +16,151 @@ import com.ahstu.mycar.R;
  * @author
  */
 public class RoundProgressBar extends View {
-    private int top, left;
-    //画笔对象的引用
-    private Paint paint, mPaint;
+    private RectF mColorWheelRectangle = new RectF();
+    private Paint mDefaultWheelPaint;
+    private Paint mColorWheelPaint;
+    private Paint mColorWheelPaintCentre;
+    private Paint mTextnum;//显示油量
 
-    //圆环的颜色
-    private int roundColor;
-    // 圆环进度的颜色
-    private int roundProgressColor;
-    // 中间进度百分比的字符串的颜色
-    private int textColor;
-    // 中间进度百分比的字符串的字体
-    private float textSize;
-    //圆环的宽度
-    private float roundWidth;
-    //最大进度
-    private int max;
-    //当前进度
-    private int progress;
-    //是否显示中间的进度
-    private boolean textIsDisplayable;
-    //进度的风格，实心或者空心
-    private int style;
-
-    public static final int STROKE = 0;
-    public static final int FILL = 1;
+    private float circleStrokeWidth;
+    private float mSweepAnglePer;
+    private int box_point, box_pointnow;
+    private float pressExtraStrokeWidth;
+    private BarAnimation anim;
+    private int box_max = 100;// 默认最大
 
     public RoundProgressBar(Context context) {
-        this(context, null);
+        super(context);
+        init(null, 0);
     }
-
     public RoundProgressBar(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        init(attrs, 0);
     }
 
-    public RoundProgressBar(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        mPaint = new Paint();
-        paint = new Paint();
-        TypedArray mTypedArray = context.obtainStyledAttributes(attrs,
-                R.styleable.RoundProgressBar);
-        //获取自定义属性和默认值
-        roundColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundColor, Color.RED);
-        roundProgressColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgressColor, Color.RED);
-        textColor = mTypedArray.getColor(R.styleable.RoundProgressBar_textColor, Color.GREEN);
-        textSize = mTypedArray.getDimension(R.styleable.RoundProgressBar_textSize, 15);
-        roundWidth = mTypedArray.getDimension(R.styleable.RoundProgressBar_roundWidth, 60);
-        max = mTypedArray.getInteger(R.styleable.RoundProgressBar_max, 100);
-        textIsDisplayable = mTypedArray.getBoolean(R.styleable.RoundProgressBar_textIsDisplayable, true);
-        style = mTypedArray.getInt(R.styleable.RoundProgressBar_style, 0);
-        mTypedArray.recycle();
+    private void init(AttributeSet attrs, int defStyle) {
+
+        mColorWheelPaint = new Paint();
+        mColorWheelPaint.setColor(Color.rgb(249, 135, 49));
+        mColorWheelPaint.setStyle(Paint.Style.STROKE);// 空心
+        mColorWheelPaint.setStrokeCap(Paint.Cap.ROUND);// 圆角画笔
+        mColorWheelPaint.setAntiAlias(true);// 去锯齿
+
+//		mColorWheelPaintCentre = new Paint();
+//		mColorWheelPaintCentre.setColor(Color.rgb(250, 250, 250));
+//		mColorWheelPaintCentre.setStyle(Paint.Style.STROKE);
+//		mColorWheelPaintCentre.setStrokeCap(Paint.Cap.ROUND);
+//		mColorWheelPaintCentre.setAntiAlias(true);
+
+        mDefaultWheelPaint = new Paint();
+        mDefaultWheelPaint.setColor(Color.rgb(127, 127, 127));
+        mDefaultWheelPaint.setStyle(Paint.Style.STROKE);
+        mDefaultWheelPaint.setStrokeCap(Paint.Cap.ROUND);
+        mDefaultWheelPaint.setAntiAlias(true);
+
+        mTextnum = new Paint();
+        mTextnum.setAntiAlias(true);
+        mTextnum.setColor(Color.BLACK);
+
+        anim = new BarAnimation();
     }
 
-
-    @SuppressLint("ResourceAsColor")
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+        canvas.drawArc(mColorWheelRectangle, 0, 360, false, mDefaultWheelPaint);
+//		canvas.drawArc(mColorWheelRectangle, 0, 359, false,
+//				mColorWheelPaintCentre);
+        canvas.drawArc(mColorWheelRectangle, 90, mSweepAnglePer, false,
+                mColorWheelPaint);
+        canvas.drawText(box_pointnow + "%", mColorWheelRectangle.centerX()
+                        - (mTextnum.measureText(String.valueOf(box_pointnow) + "%") / 2),
+                250, mTextnum);
 
-        /**
-         * 画最外层的大圆环
-         */
-        int centre = getWidth() / 2 + 5; //获取圆心的x坐标
-        int radius = (int) (centre - roundWidth / 2) - 70; //圆环的半径
-
-        Log.e("log", centre + "");
-
-
-        //设置进度是实心还是空心
-        paint.setStrokeWidth(roundWidth); //设置圆环的宽度
-        paint.setColor(Color.rgb(250, 250, 250));  //设置进度的颜色
-        paint.setAntiAlias(true);
-        RectF oval = new RectF(centre - radius, centre - radius, centre
-                + radius, centre + radius);  //用于定义的圆弧的形状和大小的界限
-
-        switch (style) {
-            case STROKE: {
-                paint.setStyle(Paint.Style.STROKE);
-
-                canvas.drawArc(oval, 360 * progress / max + 90, 360 - 360 * progress / max, false, paint);  //根据进度画圆弧
-                //canvas.drawArc(oval, 0, 360 * progress / max, false, paint);  //根据进度画圆弧
-                break;
-            }
-            case FILL: {
-                paint.setStyle(Paint.Style.FILL_AND_STROKE);
-                if (progress != 0)
-                    canvas.drawArc(oval, 360 * progress / max + 90, 360 - 360 * progress / max, true, paint);  //根据进度画圆弧
-                break;
-            }
-        }
     }
 
-
-    public synchronized int getMax() {
-        return max;
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int height = getDefaultSize(getSuggestedMinimumHeight(),
+                heightMeasureSpec);
+        int width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
+        int min = Math.min(width, height);// 获取View最短边的长度
+        setMeasuredDimension(min, min);// 强制改View为以最短边为长度的正方形
+        circleStrokeWidth = Textscale(50, min);// 圆弧的宽度
+        pressExtraStrokeWidth = Textscale(2, min);// 圆弧离矩形的距离
+        mColorWheelRectangle.set(circleStrokeWidth + pressExtraStrokeWidth,
+                circleStrokeWidth + pressExtraStrokeWidth, min
+                        - circleStrokeWidth - pressExtraStrokeWidth, min
+                        - circleStrokeWidth - pressExtraStrokeWidth);// 设置矩形
+        mTextnum.setTextSize(Textscale(140, min));
+        mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
+        mDefaultWheelPaint
+                .setStrokeWidth(circleStrokeWidth - Textscale(2, min));
+        mDefaultWheelPaint.setShadowLayer(Textscale(10, min), 0, 0,
+                Color.rgb(127, 127, 127));// 设置阴影
     }
 
     /**
-     * 设置进度的最大值
+     * 根据控件的大小改变绝对位置的比例
      *
-     * @param max
-     */
-    public synchronized void setMax(int max) {
-        if (max < 0) {
-            throw new IllegalArgumentException("max not less than 0");
-        }
-        this.max = max;
-    }
-
-    /**
-     * 获取进度.需要同步
-     *
+     * @param n
+     * @param m
      * @return
      */
-    public synchronized int getProgress() {
-        return progress;
+    public float Textscale(float n, float m) {
+        return n / 500 * m;
     }
 
     /**
-     * 设置进度，此为线程安全控件，由于考虑多线的问题，需要同步
-     * 刷新界面调用postInvalidate()能在非UI线程刷新
-     *
-     * @param progress
+     * 更新步数和设置一圈动画时间
      */
-    public synchronized void setProgress(int progress) {
-        if (progress < 0) {
-            throw new IllegalArgumentException("progress not less than 0");
+    public void update() {
+        box_point = 80;//传入油量百分比
+        anim.setDuration(800);//设置动画加载时间ms
+        //setAnimationTime(time);
+        this.startAnimation(anim);
+    }
+
+    // 设置进度条颜色 
+    public void setColor(int red, int green, int blue) {
+        mColorWheelPaint.setColor(Color.rgb(red, green, blue));
+    }
+
+    //设置动画时间
+    public void setAnimationTime(int time) {
+        anim.setDuration(time * box_point / box_max);// 按照比例设置动画执行时间
+    }
+
+    /**
+     * 进度条动画
+     *
+     * @author Administrator
+     */
+    public class BarAnimation extends Animation {
+        public BarAnimation() {
+
         }
-        if (progress > max) {
-            progress = max;
-        }
-        if (progress <= max) {
-            this.progress = progress;
+
+        /**
+         * 每次系统调用这个方法时， 改变mSweepAnglePer，mPercent，box_pointnow的值，
+         * 然后调用postInvalidate()不停的绘制view。
+         */
+        @Override
+        protected void applyTransformation(float interpolatedTime,
+                                           Transformation t) {
+            super.applyTransformation(interpolatedTime, t);
+            if (interpolatedTime < 1.0f) {
+//				mPercent = Float.parseFloat(fnum.format(interpolatedTime
+//						* box_point * 100f / box_max));// 将浮点值四舍五入保留一位小数
+                mSweepAnglePer = interpolatedTime * box_point * 360
+                        / box_max;
+                box_pointnow = (int) (interpolatedTime * box_point);
+            } else {
+//				mPercent = Float.parseFloat(fnum.format(box_point * 100f
+//						/ box_max));// 将浮点值四舍五入保留一位小数
+                mSweepAnglePer = box_point * 360 / box_max;
+                box_pointnow = box_point;
+            }
             postInvalidate();
         }
-
     }
-
-
-    public int getCricleColor() {
-        return roundColor;
-    }
-
-    public void setCricleColor(int cricleColor) {
-        this.roundColor = cricleColor;
-    }
-
-    public int getCricleProgressColor() {
-        return roundProgressColor;
-    }
-
-    public void setCricleProgressColor(int cricleProgressColor) {
-        this.roundProgressColor = cricleProgressColor;
-    }
-
-    public int getTextColor() {
-        return textColor;
-    }
-
-    public void setTextColor(int textColor) {
-        this.textColor = textColor;
-    }
-
-    public float getTextSize() {
-        return textSize;
-    }
-
-    public void setTextSize(float textSize) {
-        this.textSize = textSize;
-    }
-
-    public float getRoundWidth() {
-        return roundWidth;
-    }
-
-    public void setRoundWidth(float roundWidth) {
-        this.roundWidth = roundWidth;
-    }
-
-
 }

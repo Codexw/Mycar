@@ -212,6 +212,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/black"></View>
+
             <RelativeLayout
                 android:id="@+id/carinfoRelativeLayout6"
                 android:layout_width="match_parent"
@@ -295,6 +296,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/black"></View>
+
             <RelativeLayout
                 android:id="@+id/carinfoRelativeLayout8"
                 android:layout_width="match_parent"
