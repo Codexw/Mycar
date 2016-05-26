@@ -170,6 +170,8 @@ public class FriendFragment extends Fragment {
                     car_control_enginer.setText(car.getCar_enginerstate().toString());
                     car_control_shift.setText(car.getCar_shiftstate().toString());
                     car_control_light.setText(car.getCar_light().toString());
+                    
+
                 }
             }
 
