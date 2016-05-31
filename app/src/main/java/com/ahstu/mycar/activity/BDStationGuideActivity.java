@@ -35,6 +35,24 @@ public class BDStationGuideActivity extends Activity {
     // 是否使用通用接口
     private boolean useCommonInterface = true;
     private Handler hd = null;
+    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+
+        @Override
+        public void onNaviGuideEnd() {
+            finish();
+        }
+
+        @Override
+        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
+
+            if (actionType == 0) {
+                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
+            }
+
+            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,22 +197,4 @@ public class BDStationGuideActivity extends Activity {
             };
         }
     }
-    private OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
-
-        @Override
-        public void onNaviGuideEnd() {
-            finish();
-        }
-
-        @Override
-        public void notifyOtherAction(int actionType, int arg1, int arg2, Object obj) {
-
-            if (actionType == 0) {
-                Log.i(TAG, "notifyOtherAction actionType = " + actionType + ",导航到达目的地！");
-            }
-
-            Log.i(TAG, "actionType:" + actionType + "arg1:" + arg1 + "arg2:" + arg2 + "obj:" + obj.toString());
-        }
-
-    };
 }

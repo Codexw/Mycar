@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
@@ -70,11 +71,14 @@ public class RoundProgressBar extends View {
         canvas.drawArc(mColorWheelRectangle, 0, 360, false, mDefaultWheelPaint);
 //		canvas.drawArc(mColorWheelRectangle, 0, 359, false,
 //				mColorWheelPaintCentre);
+        String str = String.valueOf(box_pointnow) + "%";
+        Rect rect = new Rect();
+        mTextnum.getTextBounds(str, 0, str.length(), rect);
         canvas.drawArc(mColorWheelRectangle, 90, mSweepAnglePer, false,
                 mColorWheelPaint);
         canvas.drawText(box_pointnow + "%", mColorWheelRectangle.centerX()
-                        - (mTextnum.measureText(String.valueOf(box_pointnow) + "%") / 2),
-                250, mTextnum);
+                        - rect.width() / 2,
+                mColorWheelRectangle.centerX() + rect.height() / 2, mTextnum);
 
     }
 
@@ -91,7 +95,7 @@ public class RoundProgressBar extends View {
                 circleStrokeWidth + pressExtraStrokeWidth, min
                         - circleStrokeWidth - pressExtraStrokeWidth, min
                         - circleStrokeWidth - pressExtraStrokeWidth);// 设置矩形
-        mTextnum.setTextSize(Textscale(140, min));
+        mTextnum.setTextSize(Textscale(130, min));
         mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
         mDefaultWheelPaint
                 .setStrokeWidth(circleStrokeWidth - Textscale(2, min));
@@ -114,7 +118,7 @@ public class RoundProgressBar extends View {
      * 更新步数和设置一圈动画时间
      */
     public void update() {
-        box_point = 80;//传入油量百分比
+        box_point = 90;//传入油量百分比
         anim.setDuration(800);//设置动画加载时间ms
         //setAnimationTime(time);
         this.startAnimation(anim);

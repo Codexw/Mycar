@@ -40,6 +40,9 @@
 
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <RelativeLayout
             android:id="@+id/carcontrol"
             android:layout_width="match_parent"
@@ -61,7 +64,7 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true" />
 
 
             </LinearLayout>
@@ -134,11 +137,8 @@
                     android:layout_height="1dp"
                     android:background="@android:color/background_dark"></View>
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
-                    <LinearLayout
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -460,11 +460,11 @@
 
                         </RelativeLayout>
                     </LinearLayout>
-                </ScrollView>
+
             </LinearLayout>
 
         </RelativeLayout>
-
+        </ScrollView>
 
     </LinearLayout>
 </RelativeLayout>

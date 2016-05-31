@@ -42,6 +42,7 @@ public class MusicMenu extends ViewGroup {
 
     //强制转换成ImageView
     private ArrayList<ImageView> views = new ArrayList<>();
+    private MusicMenuListener musicMenuListener;
 
     public MusicMenu(Context context) {
         super(context);
@@ -63,16 +64,9 @@ public class MusicMenu extends ViewGroup {
         init(context);
     }
 
-    public interface MusicMenuListener {
-        void dealMusicclick(View v);
-    }
-
     public void setOnMusicMenuListener(MusicMenuListener listener) {
         musicMenuListener = listener;
     }
-
-    private MusicMenuListener musicMenuListener;
-
 
     private void init(final Context context) {
         childOne = new ImageView(context);
@@ -296,11 +290,6 @@ public class MusicMenu extends ViewGroup {
         }
     }
 
-
-    public boolean isAnimating() {
-        return isAnimating;
-    }
-
     public boolean isShown() {
         return isShown;
     }
@@ -386,7 +375,6 @@ public class MusicMenu extends ViewGroup {
         startY = getHeight() - childOne.getWidth() / 2 - PADDING_T_B;
     }
 
-
     private void layout(View view, int child_x, int child_y, int radiusSmall) {
         int child_l = getChildOffset_l(child_x, child_y, radiusSmall);
         int child_t = getChildOffset_t(child_x, child_y, radiusSmall);
@@ -419,5 +407,9 @@ public class MusicMenu extends ViewGroup {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return super.onInterceptTouchEvent(ev);
 
+    }
+
+    public interface MusicMenuListener {
+        void dealMusicclick(View v);
     }
 }

@@ -22,7 +22,6 @@ public class MyApplication extends Application {
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
             mService = ((MusicPlayService.LocalBinder) service).getService();//用绑定方法启动service，就是从这里绑定并得到service，然后就可以操作service了
-            System.out.println("1null?" + (null == mService));
             mService.setContext(getApplicationContext());
         }
 

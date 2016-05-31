@@ -117,7 +117,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                         value.put("car_number", carinfomation.getCar_number());
                                         value.put("car_brand", carinfomation.getCar_brand());
                                         value.put("car_model", carinfomation.getCar_model());
-                                        value.put("car_sign", carinfomation.getCar_sign());
+                                        value.put("car_sign", carinfomation.getCar_sign()); //圖片加載出現bug，由於網絡問題
                                         value.put("car_enginerno", carinfomation.getCar_enginerno());
                                         value.put("car_level", carinfomation.getCar_level());
                                         value.put("car_mile", carinfomation.getCar_mile());

@@ -129,6 +129,15 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
 
+    //获取地图按钮伸缩状态
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -373,6 +382,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onHiddenChanged(hidden);
     }
 
+    //按钮动画点击监听事件
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -450,6 +460,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
     }
 
+
     //按钮伸缩动画判断
     private void bt_animation() {
         if (flag) {
@@ -487,7 +498,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     }
 
     //菜单的回收
-    private void closeAnmi() {
+    public void closeAnmi() {
         for (int i = 1; i < res.length; i++) {
             ObjectAnimator animator = ObjectAnimator.ofFloat(ButtonList.get(i), "translationY", i * 100, 0F);
             ObjectAnimator animator2 = ObjectAnimator.ofFloat(ButtonList.get(i), "rotation", 0, 360F);

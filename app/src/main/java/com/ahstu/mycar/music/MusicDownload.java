@@ -52,7 +52,7 @@ public class MusicDownload extends Activity implements AdpterOnItemClick {
         bt_music_down = (Button) findViewById(R.id.bt_music_download);
 
 
-        // 下载按钮服务
+        // 下载按钮服务（未解绑定）
         downManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);// 下载服务
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);// 下载完整的行动
@@ -92,23 +92,29 @@ public class MusicDownload extends Activity implements AdpterOnItemClick {
     @Override
     public void onAdpterClick(int postion) {
         int ii = postion;
-        String url = "http://7xtayj.com1.z0.glb.clouddn.com/03000204034DDEA291CF5C0325B227B4C05657-29C8-E939-0CFC-EABBEC081748.flv";
+        String song_url = musicMessageArrayList.get(postion).getSong_url();
         DownloadManager.Request request = new DownloadManager.Request(
-                Uri.parse(url));
-        Toast.makeText(MusicDownload.this, " 视频正在下载。。。",
+                Uri.parse(song_url));
+        Toast.makeText(MusicDownload.this, " 音乐正在下载。。。",
                 Toast.LENGTH_SHORT).show();
 
         // 设置通知栏标题
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);//
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
         // 控制系统通知是否由下载管理器发布，而此下载正在运行或何时完成
-        request.setTitle("zzzzzzzzzzzzz");
+        request.setTitle("mycar");
         request.setDescription("正在下载...");
         request.setAllowedOverRoaming(false);// 是否同意漫游状态下 执行操作
         // 设置文件存放目录
-        request.setDestinationInExternalPublicDir("zzzz", "下载的视频");
+        request.setDestinationInExternalPublicDir("mycarmusic", musicMessageArrayList.get(postion).getSong_name() + ".mp4");
         downManager.enqueue(request);
     }
-    
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
+    }
+
     private class DownLoadCompleteReceiver extends BroadcastReceiver {
 
         @Override
