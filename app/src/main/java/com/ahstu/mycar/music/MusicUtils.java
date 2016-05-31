@@ -14,11 +14,12 @@ import java.util.List;
 
 public class MusicUtils {
 
+    public static ArrayList<String> al_playlist = new ArrayList<String>();
     private static List<String> mMusicList = new ArrayList<String>();
     private static List<Album> albums = new ArrayList<Album>();
-    public static ArrayList<String> al_playlist = new ArrayList<String>();
     private static List<Mp3> playList = new ArrayList<Mp3>();
     private static String[] mCols = new String[]{MediaStore.Audio.Playlists._ID, MediaStore.Audio.Playlists.NAME};
+    private static ContentValues[] sContentValuesCache = null;
 
     /**
      * 清空歌曲列表中的全部歌曲，plid为列表id
@@ -128,8 +129,6 @@ public class MusicUtils {
         }
     }
 
-    private static ContentValues[] sContentValuesCache = null;
-
     private static void makeInsertItems(long[] ids, int offset, int len, int base) {
         if (offset + len > ids.length) {
             len = ids.length - offset;
@@ -150,6 +149,7 @@ public class MusicUtils {
      * 得到媒体库中的全部歌曲
      */
     public static ArrayList<Mp3> getAllSongs(Context context) {
+        //音乐URL读取地址会出现空指针异常
         Cursor c = query(context, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, new String[]{MediaStore.Audio.Media._ID, MediaStore.Audio.Media.TITLE, MediaStore.Audio.Media.ARTIST, MediaColumns.DATA},
                 MediaStore.Audio.Media.IS_MUSIC + "=1", null, null);
         try {

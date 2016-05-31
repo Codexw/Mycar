@@ -129,6 +129,15 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
 
+    //获取地图按钮伸缩状态
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -373,16 +382,20 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onHiddenChanged(hidden);
     }
 
+    //按钮动画点击监听事件
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_map_menu:
+                bt_animation();
                 break;
             case R.id.btn_map_normal:
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+                bt_animation();
                 break;
             case R.id.btn_map_site:
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+                bt_animation();
                 break;
             case R.id.btn_map_traffic:
                 if (mBaiduMap.isTrafficEnabled()) {
@@ -393,21 +406,26 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                     mBaiduMap.setTrafficEnabled(true);
                     btn_map_traffic.setText("实时交通(on)");
                 }
+                bt_animation();
                 break;
             case R.id.btn_map_mylocation:
                 LatLng latLng = new LatLng(mLatitude, mLongitude);
 
                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
                 mBaiduMap.animateMapStatus(msu);
+                bt_animation();
                 break;
             case R.id.btn_map_mode_normal:
                 mLocationMode = LocationMode.NORMAL;
+                bt_animation();
                 break;
             case R.id.btn_map_mode_following:
                 mLocationMode = LocationMode.FOLLOWING;
+                bt_animation();
                 break;
             case R.id.btn_map_mode_compass:
                 mLocationMode = LocationMode.COMPASS;
+                bt_animation();
                 break;
 
             case R.id.btn_map_search_station:
@@ -439,6 +457,12 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
             default:
                 break;
         }
+
+    }
+
+
+    //按钮伸缩动画判断
+    private void bt_animation() {
         if (flag) {
             startAnim();
         } else {
@@ -474,7 +498,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     }
 
     //菜单的回收
-    private void closeAnmi() {
+    public void closeAnmi() {
         for (int i = 1; i < res.length; i++) {
             ObjectAnimator animator = ObjectAnimator.ofFloat(ButtonList.get(i), "translationY", i * 100, 0F);
             ObjectAnimator animator2 = ObjectAnimator.ofFloat(ButtonList.get(i), "rotation", 0, 360F);

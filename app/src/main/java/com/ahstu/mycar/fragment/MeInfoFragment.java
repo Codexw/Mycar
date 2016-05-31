@@ -18,7 +18,10 @@ import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.activity.LoginActivity;
 import com.ahstu.mycar.activity.MeorderActivity;
 import com.ahstu.mycar.bean.User;
+import com.ahstu.mycar.activity.MyApplication;
+import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.music.MusicDownload;
+import com.ahstu.mycar.music.MusicPlayService;
 
 import java.util.List;
 
@@ -27,7 +30,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 /**
- * @author xuning 2016/4/25
+ * @author redowu 2016/4/25
  */
 public class MeInfoFragment extends Fragment {
     View view;
@@ -41,9 +44,14 @@ public class MeInfoFragment extends Fragment {
     String name;
     private Button btn_exit;
 
+    private MyApplication application;
+    private MusicPlayService mService;
+
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        application = (MyApplication) getActivity().getApplication();
+        mService = application.getmService();
     }
 
 //    private void initClick(View view) {
@@ -126,6 +134,9 @@ public class MeInfoFragment extends Fragment {
                 editor.clear();
                 editor.commit();
                 getActivity().deleteDatabase("node.db");
+                if (mService.isPlay()) {
+                    mService.pausePlay();
+                }
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });

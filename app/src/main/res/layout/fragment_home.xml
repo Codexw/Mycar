@@ -85,7 +85,7 @@
             android:layout_alignParentRight="true"
             android:background="#bfffffff"
             android:paddingRight="10dp"
-            android:text="地图菜单"/>
+            android:text="地图菜单" />
 
 
         <Button
