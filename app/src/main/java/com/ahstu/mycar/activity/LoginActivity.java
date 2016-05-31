@@ -24,10 +24,12 @@ import com.ahstu.mycar.sql.DatabaseHelper;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * @author redowu 2016/4/25
@@ -82,21 +84,39 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else if (et_password.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                 } else {
-                    User user = new User();
+                    final User user = new User();
                     user.setUsername(et_username.getText().toString());
                     user.setPassword(et_password.getText().toString());
                     user.login(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
 
-                            //登录成功就将用户的信息保存到本地sharepreference数据库中
-                            SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
-                            //存入数据
-                            SharedPreferences.Editor editor = sp.edit();
-                            editor.putString("name", et_username.getText().toString());
-                            editor.putString("password", et_password.getText().toString());
-                            editor.commit();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            //更新当前登录用户的设备号
+                            BmobQuery<User> queryInstallation = new BmobQuery<User>();
+                            queryInstallation.addWhereEqualTo("username", et_username.getText().toString());
+                            queryInstallation.setLimit(1);
+                            queryInstallation.findObjects(LoginActivity.this, new FindListener<User>() {
+                                @Override
+                                public void onSuccess(List<User> list) {
+                                    for (User userIns : list) {
+                                        userIns.setMyInstallation(BmobInstallation.getInstallationId(LoginActivity.this));
+                                        userIns.update(LoginActivity.this, userIns.getObjectId(), new UpdateListener() {
+                                            @Override
+                                            public void onSuccess() {
+                                            }
+
+                                            @Override
+                                            public void onFailure(int i, String s) {
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onError(int i, String s) {
+
+                                }
+                            });
 
 
                             //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
@@ -190,6 +210,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                             });
 
+
                             //从服务器获取订单信息
                             BmobQuery<order> orderquery = new BmobQuery<order>();
                             orderquery.addWhereEqualTo("user", user);
@@ -222,7 +243,15 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                                 }
                             });
-                            
+
+
+                            //登录成功就将用户的信息保存到本地sharepreference数据库中
+                            SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
+                            //存入数据
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("name", et_username.getText().toString());
+                            editor.putString("password", et_password.getText().toString());
+                            editor.commit();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                         }

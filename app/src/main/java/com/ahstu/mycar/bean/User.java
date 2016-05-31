@@ -7,5 +7,13 @@ import cn.bmob.v3.BmobUser;
  *         功能：用于Bmob注册、获取信息。
  */
 public class User extends BmobUser {
+    private String myInstallation;
 
+    public void setMyInstallation(String myInstallation) {
+        this.myInstallation = myInstallation;
+    }
+
+    public String getMyInstallation() {
+        return myInstallation;
+    }
 }
