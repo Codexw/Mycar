@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -50,6 +51,15 @@ import cn.bmob.v3.listener.FindListener;
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
+    private TextView[] mTabs;
+    private MapFragment mMapFragment;
+    private FindFragment mFindFragment;
+    private FriendFragment mFriendFragment;
+    private MeInfoFragment mMeInfoFragment;
+    private Fragment[] mFragments;
+    private int index;
+    private int intcurrentTabIndex;
+
     private final int SETADAPTER = 111;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private TextView txtHome, txtSearch, txtFriend, txtMe;
@@ -57,6 +67,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private View currentButton; //获取view，用于底部导航栏状态的切换
     private MusicMenu menuView;
     private ListView listview;
+    private Fragment otherFragment;
     private MusicPlayService mService;
     private MyApplication application;
     private ArrayList<Mp3> songs;//储存当前播放列表所有歌曲
@@ -112,9 +123,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         return listItems;
     }
 
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -162,6 +170,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
         initView();
+        initTab();
         initOnclick();
         startService(new Intent(MainActivity.this, MusicPlayService.class));
         setAdapter();
@@ -197,10 +206,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
                 }
                 try {
+                    /*
+                     这里经常报空指针异常
+                     java.lang.NullPointerException
+                     05-26 00:37:39.360 10944-10993/com.ahstu.mycar 
+                     W/System.err: at com.ahstu.mycar.activity.MainActivity$3.run(MainActivity.java:213)
+                     */
                     mService.setCurrentListItme(0);
                     mService.setSongs(songs);
                     mService.playMusic(songs.get(0).getUrl());
-
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -234,6 +248,35 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         menuView = (MusicMenu) findViewById(R.id.menu);
     }
 
+    private void initTab() {
+        mMapFragment = new MapFragment();
+        mFindFragment = new FindFragment();
+        mFriendFragment = new FriendFragment();
+        mMeInfoFragment = new MeInfoFragment();
+        mFragments = new Fragment[]{mMapFragment, mFindFragment, mFriendFragment, mMeInfoFragment};
+        getSupportFragmentManager().beginTransaction().add(R.id.content_fragment, mMapFragment).
+                add(R.id.content_fragment, mFindFragment).
+                add(R.id.content_fragment, mFriendFragment).
+                add(R.id.content_fragment, mMeInfoFragment).
+                hide(mFindFragment).
+                hide(mFriendFragment).
+                hide(mMeInfoFragment).
+                show(mMapFragment).commit();
+    }
+
+
+    private void onTabIndex(int index) {
+        if (intcurrentTabIndex != index) {
+            FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
+            trx.hide(mFragments[intcurrentTabIndex]);
+            if (!mFragments[index].isAdded()) {
+                trx.add(R.id.content_fragment, mFragments[index]);
+            }
+            trx.show(mFragments[index]).commit();
+        }
+        intcurrentTabIndex = index;
+    }
+
     /**
      * 处理点击事件，加载fragment
      */
@@ -241,19 +284,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtHome:
-                mainTabUtil(new MapFragment());
+                index = 0;
                 setButton(v);
                 break;
             case R.id.txtSearch:
-                mainTabUtil(new FindFragment());
+                index = 1;
                 setButton(v);
                 break;
             case R.id.txtFriend:
-                mainTabUtil(new FriendFragment());
+                index = 2;
                 setButton(v);
                 break;
             case R.id.txtMe:
-                mainTabUtil(new MeInfoFragment());
+                index = 3;
                 setButton(v);
                 break;
             case R.id.imgAdd:
@@ -262,9 +305,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                 else
                     menuView.out();
                 break;
-            default:
-                break;
         }
+        onTabIndex(index);
     }
 
     /**
@@ -276,14 +318,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         }
         v.setEnabled(false);
         currentButton = v;
-    }
-
-    /**
-     * 加载fragment
-     */
-    public void mainTabUtil(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_fragment, fragment).commit();
     }
 
     /**
@@ -304,15 +338,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             }
             return true;
         }
-
         return super.onKeyDown(keyCode, event);
     }
-
-
-    public void show() {
-        Toast.makeText(MainActivity.this, ">>>>>>>>>>>你好<<<<<<<<<<<<<<", Toast.LENGTH_SHORT).show();
-    }
-
 
     protected void onDestroy() {
         // TODO Auto-generated method stub
@@ -320,7 +347,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         if (mService.isPlay()) {
             mService.pausePlay();
         }
-
 
         Toast.makeText(this, "ondestory", Toast.LENGTH_SHORT).show();
     }

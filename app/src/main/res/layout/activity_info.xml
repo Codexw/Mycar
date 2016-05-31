@@ -150,7 +150,7 @@
             android:id="@+id/btn_addgas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="预约加油" />
+            android:text="预约加油"/>
 
     </LinearLayout>
 
