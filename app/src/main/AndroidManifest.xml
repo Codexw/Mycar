@@ -181,7 +181,6 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-
         <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE"/>

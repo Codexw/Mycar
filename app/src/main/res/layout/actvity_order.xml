@@ -9,6 +9,17 @@
         android:layout_height="50dp"
         android:background="#499BF7">
 
+        <ImageView
+            android:id="@+id/or_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/back"
+
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

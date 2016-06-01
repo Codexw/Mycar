@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.BDSearchGuideActivity;
+import com.ahstu.mycar.activity.CarQueryActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -40,26 +41,25 @@ import java.util.List;
  * @author 吴天洛 2016/4/25
  */
 public class FindFragment extends Fragment implements View.OnClickListener {
+    public static final String ROUTE_PLAN_NODE = "routePlanNode";
+    private static final String APP_FOLDER_NAME = "MyCar";
+    public static List<Activity> activityList = new LinkedList<Activity>();
+    String authinfo = null;
     private TextView mTvSt;
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
+    private Button weizhangbutton;
     private double stLat = 0.0;
     private double stLon = 0.0;
     private double enLat = 0.0;
     private double enLon = 0.0;
-
     //定位相关变量
     private LocationClient mLocationClient = null;
     private MyLocationListener myLocationListener;
     private double mLatitude;
     private double mLongitude;
-
-    public static List<Activity> activityList = new LinkedList<Activity>();
-    public static final String ROUTE_PLAN_NODE = "routePlanNode";
-    private static final String APP_FOLDER_NAME = "MyCar";
     private Button mBtnSearch = null;
     private String mSDCardPath = null;
-
     //广播变量
     private LocalBroadcastManager broadcastManager1;
     private LocalBroadcastManager broadcastManager2;
@@ -67,6 +67,65 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private IntentFilter intentFilter2;
     private BroadcastReceiver mItemViewListClickReceiver1;
     private BroadcastReceiver mItemViewListClickReceiver2;
+    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
+
+        @Override
+        public void stopTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "stopTTS");
+        }
+
+        @Override
+        public void resumeTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "resumeTTS");
+        }
+
+        @Override
+        public void releaseTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "releaseTTSPlayer");
+        }
+
+        @Override
+        public int playTTSText(String speech, int bPreempt) {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
+
+            return 1;
+        }
+
+        @Override
+        public void phoneHangUp() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneHangUp");
+        }
+
+        @Override
+        public void phoneCalling() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "phoneCalling");
+        }
+
+        @Override
+        public void pauseTTS() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "pauseTTS");
+        }
+
+        @Override
+        public void initTTSPlayer() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "initTTSPlayer");
+        }
+
+        @Override
+        public int getTTSState() {
+            // TODO Auto-generated method stub
+            Log.e("test_TTS", "getTTSState");
+            return 1;
+        }
+    };
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -94,6 +153,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn = (TextView) getActivity().findViewById(R.id.end);
         mIvChangeStEn = (ImageView) getActivity().findViewById(R.id.changeStartEnd);
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
+        weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());
@@ -109,6 +169,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn.setOnClickListener(this);
         mIvChangeStEn.setOnClickListener(this);
         mBtnSearch.setOnClickListener(this);
+        weizhangbutton.setOnClickListener(this);
     }
 
     @Override
@@ -213,6 +274,11 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     }
                 }
                 break;
+            case R.id.weizhangbutton:
+                Intent i = new Intent();
+                i.setClass(getActivity(), CarQueryActivity.class);
+                startActivity(i);
+                break;
         }
     }
 
@@ -261,18 +327,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         super.onHiddenChanged(hidden);
     }
 
-    //地图定位加载是耗时的，因此采用异步加载
-    public class MyLocationListener implements BDLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            if (location == null) {
-                return;
-            }
-            mLatitude = location.getLatitude();
-            mLongitude = location.getLongitude();
-        }
-    }
-
     private boolean initDirs() {
         mSDCardPath = getSdcardDir();
         if (mSDCardPath == null) {
@@ -289,8 +343,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         }
         return true;
     }
-
-    String authinfo = null;
 
     private void initNavi() {
         BaiduNaviManager.getInstance().init(getActivity(), mSDCardPath, APP_FOLDER_NAME, new BaiduNaviManager.NaviInitListener() {
@@ -345,6 +397,27 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void initSetting() {
+        BNaviSettingManager.setDayNightMode(BNaviSettingManager.DayNightMode.DAY_NIGHT_MODE_DAY);
+        BNaviSettingManager
+                .setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
+        BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
+        BNaviSettingManager.setPowerSaveMode(BNaviSettingManager.PowerSaveMode.DISABLE_MODE);
+        BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
+    }
+
+    //地图定位加载是耗时的，因此采用异步加载
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+    }
+
     public class DemoRoutePlanListener implements BaiduNaviManager.RoutePlanListener {
 
         private BNRoutePlanNode mBNRoutePlanNode = null;
@@ -376,74 +449,5 @@ public class FindFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getActivity(), "算路失败", Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void initSetting() {
-        BNaviSettingManager.setDayNightMode(BNaviSettingManager.DayNightMode.DAY_NIGHT_MODE_DAY);
-        BNaviSettingManager
-                .setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
-        BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
-        BNaviSettingManager.setPowerSaveMode(BNaviSettingManager.PowerSaveMode.DISABLE_MODE);
-        BNaviSettingManager.setRealRoadCondition(BNaviSettingManager.RealRoadCondition.NAVI_ITS_ON);
-    }
-
-    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
-
-        @Override
-        public void stopTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "stopTTS");
-        }
-
-        @Override
-        public void resumeTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "resumeTTS");
-        }
-
-        @Override
-        public void releaseTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "releaseTTSPlayer");
-        }
-
-        @Override
-        public int playTTSText(String speech, int bPreempt) {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
-
-            return 1;
-        }
-
-        @Override
-        public void phoneHangUp() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneHangUp");
-        }
-
-        @Override
-        public void phoneCalling() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneCalling");
-        }
-
-        @Override
-        public void pauseTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "pauseTTS");
-        }
-
-        @Override
-        public void initTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "initTTSPlayer");
-        }
-
-        @Override
-        public int getTTSState() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "getTTSState");
-            return 1;
-        }
-    };
 }
 

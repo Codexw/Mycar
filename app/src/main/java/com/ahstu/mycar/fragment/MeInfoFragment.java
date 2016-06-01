@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,13 +22,13 @@ import com.ahstu.mycar.music.MusicDownload;
  */
 public class MeInfoFragment extends Fragment {
     View view;
-    //LinearLayout weizhang;
+
     LinearLayout me_mycar;
     LinearLayout me_myform;
     LinearLayout exit;
     LinearLayout me_music;
     TextView username;
-    private Button btn_exit;
+
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {

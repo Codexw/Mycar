@@ -56,7 +56,7 @@
                 android:id="@+id/gasstation_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="left" />
 
         </LinearLayout>
 
@@ -84,8 +84,11 @@
             <Spinner
                 android:id="@+id/spinner_type"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:spinnerMode="dropdown">
 
-                android:layout_height="match_parent"></Spinner>
+            </Spinner>
 
 
         </LinearLayout>
@@ -116,7 +119,7 @@
                 android:id="@+id/gas_price"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"/>
+                android:gravity="left" />
 
 
         </LinearLayout>

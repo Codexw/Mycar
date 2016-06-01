@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
@@ -74,6 +75,7 @@ public class FriendFragment extends Fragment {
         return view;
     }
 
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
@@ -90,8 +92,12 @@ public class FriendFragment extends Fragment {
             carcontrollinearlayout2 = (RelativeLayout) getActivity().findViewById(R.id.carcontrol);
             //判断count的值，大于0的话，数据库存在值。
             if (count > 0) {
+                Toast.makeText(getActivity(), "值是" + count, Toast.LENGTH_SHORT).show();
                 carcontrollinearlayout.setVisibility(View.GONE);
                 carcontrollinearlayout2.setVisibility(View.VISIBLE);
+            } else {
+                carcontrollinearlayout.setVisibility(View.VISIBLE);
+                carcontrollinearlayout2.setVisibility(View.GONE);
             }
 
             addcar.setOnClickListener(new View.OnClickListener() {
@@ -118,27 +124,32 @@ public class FriendFragment extends Fragment {
         //car=new Carinfomation();
         final BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
         query.addWhereEqualTo("car_number", s);
-        query.findObjects(getActivity(), new FindListener<Carinfomation>() {
-            @Override
-            public void onSuccess(List<Carinfomation> list) {
-                if (list.size() != 0) {
-                    car = new Carinfomation();
-                    objectid = list.get(0).getObjectId();
-                    car = list.get(0);
-                    //Toast.makeText(getActivity(),"查找成功",Toast.LENGTH_SHORT).show();
-                    car_control_enginer.setText(car.getCar_enginerstate().toString());
-                    car_control_shift.setText(car.getCar_shiftstate().toString());
-                    car_control_light.setText(car.getCar_light().toString());
-                    
+        try {
+            query.findObjects(getActivity(), new FindListener<Carinfomation>() {
+                @Override
+                public void onSuccess(List<Carinfomation> list) {
+                    if (list.size() != 0) {
+                        car = new Carinfomation();
+                        objectid = list.get(0).getObjectId();
+                        car = list.get(0);
+                        //Toast.makeText(getActivity(),"查找成功",Toast.LENGTH_SHORT).show();
+                        car_control_enginer.setText(car.getCar_enginerstate().toString());
+                        car_control_shift.setText(car.getCar_shiftstate().toString());
+                        car_control_light.setText(car.getCar_light().toString());
+
+
+                    }
+                }
+
+                @Override
+                public void onError(int i, String s) {
 
                 }
-            }
+            });
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "网速慢请重试", Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onError(int i, String s) {
-
-            }
-        });
+        }
 
 
         //Log.e("TAG", "《《《《《《《《《《《《《《《《《《《" + s);
@@ -170,44 +181,50 @@ public class FriendFragment extends Fragment {
         while (cursor.moveToNext()) {
             if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
                 car_start_state = 0;
-                car_start_set_false.setVisibility(View.VISIBLE);
+                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
                 start_set.setText("关闭");
 
             } else {
                 car_start_state = 1;
-                car_start_set_true.setVisibility(View.VISIBLE);
+                //car_start_set_true.setVisibility(View.VISIBLE);
+                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
                 start_set.setText("开启");
 
             }
             if (cursor.getInt(cursor.getColumnIndex("car_air")) == 0) {
                 car_air_state = 0;
-                car_air_set_false.setVisibility(View.VISIBLE);
+                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+
+//                car_air_set_false.setVisibility(View.VISIBLE);
                 air_set.setText("关闭");
             } else {
                 car_air_state = 1;
-                car_air_set_true.setVisibility(View.VISIBLE);
+                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+
+                // car_air_set_true.setVisibility(View.VISIBLE);
                 air_set.setText("开启");
             }
 
             if (cursor.getInt(cursor.getColumnIndex("car_door")) == 0) {
                 car_door_state = 0;
-                car_door_set_false.setVisibility(View.VISIBLE);
+                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
                 door_set.setText("关闭");
 
             } else {
                 car_door_state = 1;
-                car_door_set_true.setVisibility(View.VISIBLE);
+                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+
                 door_set.setText("开启");
             }
             if (cursor.getInt(cursor.getColumnIndex("car_lock")) == 0) {
 
                 car_lock_state = 0;
-                car_lock_set_false.setVisibility(View.VISIBLE);
+                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
                 lock_set.setText("关闭");
 
             } else {
                 car_lock_state = 1;
-                car_lock_set_true.setVisibility(View.VISIBLE);
+                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
                 lock_set.setText("开启");
 
             }
@@ -221,21 +238,27 @@ public class FriendFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (car_air_state == 0) {
-                    car_air_set_true.setVisibility(View.VISIBLE);
-                    car_air_set_false.setVisibility(View.INVISIBLE);
+//                    car_air_set_true.setVisibility(View.VISIBLE);
+//                    car_air_set_false.setVisibility(View.INVISIBLE);
+                    car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+
                     car_air_state = 1;
                     carinfomation.setValue("car_air", true);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();
@@ -244,22 +267,28 @@ public class FriendFragment extends Fragment {
                     db.close();
                     air_set.setText("开启");
                 } else {
-                    car_air_set_true.setVisibility(View.INVISIBLE);
-                    car_air_set_false.setVisibility(View.VISIBLE);
+//                    car_air_set_true.setVisibility(View.INVISIBLE);
+//                    car_air_set_false.setVisibility(View.VISIBLE);
+                    car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+
                     car_air_state = 0;
 
                     carinfomation.setValue("car_air", false);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            //  Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                //  Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            //   Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                //   Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();
@@ -279,21 +308,27 @@ public class FriendFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (car_door_state == 0) {
-                    car_door_set_true.setVisibility(View.VISIBLE);
-                    car_door_set_false.setVisibility(View.INVISIBLE);
+//                    car_door_set_true.setVisibility(View.VISIBLE);
+//                    car_door_set_false.setVisibility(View.INVISIBLE);
+                    car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+
                     car_door_state = 1;
                     carinfomation.setValue("car_door", true);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();
@@ -305,21 +340,27 @@ public class FriendFragment extends Fragment {
 
 
                 } else {
-                    car_door_set_true.setVisibility(View.INVISIBLE);
-                    car_door_set_false.setVisibility(View.VISIBLE);
+//                    car_door_set_true.setVisibility(View.INVISIBLE);
+//                    car_door_set_false.setVisibility(View.VISIBLE);
+                    car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+
                     car_door_state = 0;
                     carinfomation.setValue("car_door", false);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            //   Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                //   Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
 
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -337,22 +378,28 @@ public class FriendFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (car_start_state == 0) {
-                    car_start_set_true.setVisibility(View.VISIBLE);
-                    car_start_set_false.setVisibility(View.INVISIBLE);
+//                    car_start_set_true.setVisibility(View.VISIBLE);
+//                    car_start_set_false.setVisibility(View.INVISIBLE);
+                    car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+
                     car_start_state = 1;
 
                     carinfomation.setValue("car_start", true);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();
@@ -362,21 +409,27 @@ public class FriendFragment extends Fragment {
                     start_set.setText("开启");
 
                 } else {
-                    car_start_set_true.setVisibility(View.INVISIBLE);
-                    car_start_set_false.setVisibility(View.VISIBLE);
+//                    car_start_set_true.setVisibility(View.INVISIBLE);
+//                    car_start_set_false.setVisibility(View.VISIBLE);
+                    car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+
                     car_start_state = 0;
                     carinfomation.setValue("car_start", false);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                // Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                // Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();
@@ -392,21 +445,27 @@ public class FriendFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (car_lock_state == 0) {
-                    car_lock_set_true.setVisibility(View.VISIBLE);
-                    car_lock_set_false.setVisibility(View.INVISIBLE);
+//                    car_lock_set_true.setVisibility(View.VISIBLE);
+//                    car_lock_set_false.setVisibility(View.INVISIBLE);
+                    car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+
                     car_lock_state = 1;
                     carinfomation.setValue("car_lock", true);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            //  Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                //  Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                //  Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();
@@ -415,21 +474,27 @@ public class FriendFragment extends Fragment {
                     db.close();
                     lock_set.setText("开启");
                 } else {
-                    car_lock_set_true.setVisibility(View.INVISIBLE);
-                    car_lock_set_false.setVisibility(View.VISIBLE);
+//                    car_lock_set_true.setVisibility(View.INVISIBLE);
+//                    car_lock_set_false.setVisibility(View.VISIBLE);
+                    car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+
                     car_lock_state = 0;
                     carinfomation.setValue("car_lock", false);
-                    carinfomation.update(getActivity(), objectid, new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-                            //Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
-                        }
+                    try {
+                        carinfomation.update(getActivity(), objectid, new UpdateListener() {
+                            @Override
+                            public void onSuccess() {
+                                //Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+                            }
 
-                        @Override
-                        public void onFailure(int i, String s) {
-                            //Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int i, String s) {
+                                //Toast.makeText(getActivity(), "保存失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                    }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues value = new ContentValues();

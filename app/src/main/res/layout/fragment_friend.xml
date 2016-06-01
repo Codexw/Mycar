@@ -215,9 +215,8 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_false"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
+
+                        android:scaleType="fitCenter" />
 
                 </RelativeLayout>
 
@@ -268,9 +267,8 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_false"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
+
+                        android:scaleType="fitCenter" />
 
 
                 </RelativeLayout>
@@ -319,9 +317,8 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_false"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
+
+                        android:scaleType="fitCenter" />
 
 
                 </RelativeLayout>
@@ -370,9 +367,8 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_false"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
+
+                        android:scaleType="fitCenter" />
 
 
                 </RelativeLayout>

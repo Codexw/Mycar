@@ -46,8 +46,6 @@ public class WeizhangResponseAdapter extends BaseAdapter {
         TextView wz_money = (TextView) view.findViewById(R.id.wz_money);
         TextView wz_addr = (TextView) view.findViewById(R.id.wz_addr);
         TextView wz_info = (TextView) view.findViewById(R.id.wz_info);
-
-
         wz_time.setText(model.getOccur_date());
         wz_money.setText("计" + model.getFen() + "分, 罚" + model.getMoney() + "元");
         wz_addr.setText(model.getOccur_area());

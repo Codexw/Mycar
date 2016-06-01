@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -23,6 +24,7 @@ import java.util.Map;
  */
 public class MeorderActivity extends Activity {
     ListView meorderlist;
+    ImageView orderback;
     String station[];
     String time[];
     int a[];
@@ -34,6 +36,7 @@ public class MeorderActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actvity_order);
         meorderlist = (ListView) findViewById(R.id.meorderlist);
+        orderback = (ImageView) findViewById(R.id.or_back); 
         getdata();
         SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time"}, new int[]{R.id.order_item_text1, R.id.order_item_text2});
         meorderlist.setAdapter(adapter);
@@ -49,7 +52,12 @@ public class MeorderActivity extends Activity {
 
             }
         });
-
+        orderback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

@@ -51,6 +51,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
+    private final int SETADAPTER = 111;
     private TextView[] mTabs;
     private MapFragment mMapFragment;
     private FindFragment mFindFragment;
@@ -59,8 +60,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private Fragment[] mFragments;
     private int index;
     private int intcurrentTabIndex;
-
-    private final int SETADAPTER = 111;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private TextView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
@@ -351,6 +350,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         Toast.makeText(this, "ondestory", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //  super.onSaveInstanceState(outState);
+    }
+
     //消息推送
     public class messageThread extends Thread {
         public boolean isrunning;
@@ -372,46 +376,50 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
                     moblie_id.addWhereEqualTo("installationId", BmobInstallation.getInstallationId(MainActivity.this));//匹配当前设备的id
                     bmobPush.setQuery(moblie_id);
-                    carinfomationBmobQuery.findObjects(MainActivity.this, new FindListener<Carinfomation>() {
-                        @Override
-                        public void onSuccess(List<Carinfomation> list) {
+                    try {
+                        carinfomationBmobQuery.findObjects(MainActivity.this, new FindListener<Carinfomation>() {
+                            @Override
+                            public void onSuccess(List<Carinfomation> list) {
 
-                            for (Carinfomation car : list) {
-                                if (car.getCar_mile() != 0 && (car.getCar_mile() % 15000) == 0 && (!ex1)) {
-                                    ex1 = true;
-                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                    bmobPush.pushMessage("当前里程数:" + car.getCar_mile().toString());
-                                }
-                                if (car.getCar_gas() < 20 && (!ex2)) {
-                                    ex2 = true;
-                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                    bmobPush.pushMessage("当前油量:" + car.getCar_gas().toString());
-                                }
-                                if (car.getCar_enginerstate().equals("异常") && (!ex3)) {
-                                    ex3 = true;
-                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                    bmobPush.pushMessage("发动机异常");
-                                }
-                                if (car.getCar_shiftstate().equals("异常") && (!ex4)) {
-                                    ex4 = true;
-                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                    bmobPush.pushMessage("变速器异常");
+                                for (Carinfomation car : list) {
+                                    if (car.getCar_mile() != 0 && (car.getCar_mile() % 15000) == 0 && (!ex1)) {
+                                        ex1 = true;
+                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                        bmobPush.pushMessage("当前里程数:" + car.getCar_mile().toString());
+                                    }
+                                    if (car.getCar_gas() < 20 && (!ex2)) {
+                                        ex2 = true;
+                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                        bmobPush.pushMessage("当前油量:" + car.getCar_gas().toString());
+                                    }
+                                    if (car.getCar_enginerstate().equals("异常") && (!ex3)) {
+                                        ex3 = true;
+                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                        bmobPush.pushMessage("发动机异常");
+                                    }
+                                    if (car.getCar_shiftstate().equals("异常") && (!ex4)) {
+                                        ex4 = true;
+                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                        bmobPush.pushMessage("变速器异常");
+
+                                    }
+                                    if (car.getCar_light().equals("异常") && (!ex5)) {
+                                        ex5 = true;
+                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                        bmobPush.pushMessage("车灯异常");
+                                    }
 
                                 }
-                                if (car.getCar_light().equals("异常") && (!ex5)) {
-                                    ex5 = true;
-                                    Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                    bmobPush.pushMessage("车灯异常");
-                                }
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
 
                             }
-                        }
+                        });
+                    } catch (Exception e) {
 
-                        @Override
-                        public void onError(int i, String s) {
-
-                        }
-                    });
+                    }
 
                 } catch (InterruptedException e) {
                     Toast.makeText(MainActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
@@ -422,5 +430,4 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             }
         }
     }
-
 }

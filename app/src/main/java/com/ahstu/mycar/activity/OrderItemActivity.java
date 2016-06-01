@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class OrderItemActivity extends Activity {
     TextView info_countprice;
     TextView info_time;
     ImageView erweima;
+    ImageView meorder_back;
     Bundle bundle;
 
     @Override
@@ -50,6 +52,7 @@ public class OrderItemActivity extends Activity {
         info_countprice = (TextView) findViewById(R.id.info_countprice);
         info_time = (TextView) findViewById(R.id.info_time);
         erweima = (ImageView) findViewById(R.id.info_erweima);
+        meorder_back = (ImageView) findViewById(R.id.meorderback);
     }
 
     void set() {
@@ -98,7 +101,12 @@ public class OrderItemActivity extends Activity {
             Bitmap bitmap = EncodingUtils.createQRCode(conent, 400, 400, null);
             erweima.setImageBitmap(bitmap);
         }
-
+        meorder_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

@@ -96,7 +96,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             editor.putString("name", et_username.getText().toString());
                             editor.putString("password", et_password.getText().toString());
                             editor.commit();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            // startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
 
                             //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
