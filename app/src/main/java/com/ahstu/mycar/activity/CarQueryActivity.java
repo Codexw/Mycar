@@ -3,21 +3,34 @@ package com.ahstu.mycar.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.me.WeizhangResponseAdapter;
 import com.cheshouye.api.client.WeizhangClient;
 import com.cheshouye.api.client.WeizhangIntentService;
 import com.cheshouye.api.client.json.CarInfo;
 import com.cheshouye.api.client.json.InputConfigJson;
+import com.cheshouye.api.client.json.WeizhangResponseHistoryJson;
+import com.cheshouye.api.client.json.WeizhangResponseJson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by xuning on 2016/5/3.
  */
 public class CarQueryActivity extends Activity {
+    final Handler cwjHandler = new Handler();//用来更新ui
     TextView chaxundi;
     String chepainumber = "浙C6RH69";
     String engine_number = "8300861-3F1";
@@ -25,6 +38,18 @@ public class CarQueryActivity extends Activity {
     String s = "";
     Button btn_query;
     TextView chepai;
+    ImageView query_back;
+    WeizhangResponseJson info = null;//违章信息存放类
+    FrameLayout frame;
+    TextView result_null;
+    TextView result_title;
+    ListView result_list;
+    final Runnable mUpdateResults = new Runnable() {
+        public void run() {
+            updateUI();
+        }
+    };
+    private ProgressBar bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +60,22 @@ public class CarQueryActivity extends Activity {
         weizhangIntent.putExtra("appId", 1702);// 您的appId
         weizhangIntent.putExtra("appKey", "62fdfbce0fd98c355994140f850d2353");// 您的appKey
         startService(weizhangIntent);
+        //初始化组件
         chaxundi = (TextView) findViewById(R.id.chaxundi);
         chepai = (TextView) findViewById(R.id.chepai);
+        result_null = (TextView) findViewById(R.id.result_null);
+        result_title = (TextView) findViewById(R.id.result_title);
+        result_list = (ListView) findViewById(R.id.listresult);
+        bar = (ProgressBar) findViewById(R.id.progress);
+        frame = (FrameLayout) findViewById(R.id.frame);
         chepai.setText(chepainumber);
+        query_back = (ImageView) findViewById(R.id.carquery_exit);
+        query_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         //查询地添加监听器进行跳转 
         chaxundi.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -107,18 +145,42 @@ public class CarQueryActivity extends Activity {
                     car.setChepai_no(chepainumber);
 
 
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carInfo", car);
-                    intent.putExtras(bundle);
-                    intent.setClass(CarQueryActivity.this, WeizhangResultActivity.class);
-                    startActivity(intent);
-                    finish();
+//                    Intent intent = new Intent();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("carInfo", car);
+//                    intent.putExtras(bundle);
+//                    intent.setClass(CarQueryActivity.this, WeizhangResultActivity.class);
+//                    startActivity(intent);
+//                    finish();
+
+                    frame.setVisibility(View.VISIBLE);
+                    result_null.setVisibility(View.GONE);
+                    result_list.setVisibility(View.GONE);
+                    result_title.setVisibility(View.GONE);
+                    step4(car);
+                    
 
 
                 }
             }
         });
+
+    }
+
+    public void step4(final CarInfo car) {
+        // 声明一个子线程
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    // 这里写入子线程需要做的工作
+                    info = WeizhangClient.getWeizhang(car);
+                    cwjHandler.post(mUpdateResults); // 高速UI线程可以更新结果了
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
 
     }
 
@@ -138,5 +200,72 @@ public class CarQueryActivity extends Activity {
         chaxundi.setText(cityName);
 
         chaxundi.setTag(cityId);
+    }
+
+
+    private List getData() {
+        List<WeizhangResponseHistoryJson> list = new ArrayList();
+
+        for (WeizhangResponseHistoryJson weizhangResponseHistoryJson : info
+                .getHistorys()) {
+            WeizhangResponseHistoryJson json = new WeizhangResponseHistoryJson();
+            json.setFen(weizhangResponseHistoryJson.getFen());
+            json.setMoney(weizhangResponseHistoryJson.getMoney());
+            json.setOccur_date(weizhangResponseHistoryJson.getOccur_date());
+            json.setOccur_area(weizhangResponseHistoryJson.getOccur_area());
+            json.setInfo(weizhangResponseHistoryJson.getInfo());
+            list.add(json);
+        }
+
+        return list;
+    }
+
+    private void updateUI() {
+
+        frame.setVisibility(View.GONE);
+
+        Log.d("返回数据", info.toJson());
+
+        // 直接将信息限制在 Activity中
+        if (info.getStatus() == 2001) {
+            result_null.setVisibility(View.GONE);
+            result_title.setVisibility(View.VISIBLE);
+            result_list.setVisibility(View.VISIBLE);
+
+            result_title.setText("共违章" + info.getCount() + "次, 计"
+                    + info.getTotal_score() + "分, 罚款 " + info.getTotal_money()
+                    + "元");
+
+            WeizhangResponseAdapter mAdapter = new WeizhangResponseAdapter(
+                    this, getData());
+            result_list.setAdapter(mAdapter);
+
+        } else {
+            // 没有查到为章记录
+
+            if (info.getStatus() == 5000) {
+                result_null.setText("请求超时，请稍后重试");
+            } else if (info.getStatus() == 5001) {
+                result_null.setText("交管局系统连线忙碌中，请稍后再试");
+            } else if (info.getStatus() == 5002) {
+                result_null.setText("恭喜，当前城市交管局暂无您的违章记录");
+            } else if (info.getStatus() == 5003) {
+                result_null.setText("数据异常，请重新查询");
+            } else if (info.getStatus() == 5004) {
+                result_null.setText("系统错误，请稍后重试");
+            } else if (info.getStatus() == 5005) {
+                result_null.setText("车辆查询数量超过限制");
+            } else if (info.getStatus() == 5006) {
+                result_null.setText("你访问的速度过快, 请后再试");
+            } else if (info.getStatus() == 5008) {
+                result_null.setText("输入的车辆信息有误，请查证后重新输入");
+            } else {
+                result_null.setText("恭喜, 没有查到违章记录！");
+            }
+
+            result_title.setVisibility(View.GONE);
+            result_list.setVisibility(View.GONE);
+            result_null.setVisibility(View.VISIBLE);
+        }
     }
 }

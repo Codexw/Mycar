@@ -96,6 +96,14 @@
         android:background="@color/dark_grey" />
 
     <Button
+        android:id="@+id/weizhangbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="违章查询"
+
+        />
+
+    <Button
         android:id="@+id/btn_station"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

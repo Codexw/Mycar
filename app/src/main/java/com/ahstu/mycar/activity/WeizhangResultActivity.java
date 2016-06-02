@@ -32,8 +32,12 @@ import java.util.List;
 public class WeizhangResultActivity extends Activity {
     final Handler cwjHandler = new Handler();//用来更新ui
     WeizhangResponseJson info = null;//违章信息存放类
-
     private View popLoader;
+    final Runnable mUpdateResults = new Runnable() {
+        public void run() {
+            updateUI();
+        }
+    };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,12 +96,6 @@ public class WeizhangResultActivity extends Activity {
         }.start();
 
     }
-
-    final Runnable mUpdateResults = new Runnable() {
-        public void run() {
-            updateUI();
-        }
-    };
 
     private void updateUI() {
         TextView result_null = (TextView) findViewById(R.id.result_null);

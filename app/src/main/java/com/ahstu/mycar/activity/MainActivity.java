@@ -378,6 +378,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         Toast.makeText(this, "ondestory", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //  super.onSaveInstanceState(outState);
+    }
+
     //消息推送
     public class messageThread extends Thread {
         public boolean isrunning;

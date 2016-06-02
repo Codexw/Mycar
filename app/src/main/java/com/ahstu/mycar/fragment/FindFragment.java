@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.BDSearchGuideActivity;
+import com.ahstu.mycar.activity.CarQueryActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
 import com.ahstu.mycar.activity.StationMapActivity;
 import com.baidu.location.BDLocation;
@@ -48,6 +49,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private TextView mTvSt;
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
+    private Button weizhangbutton;
     private Button mBtnStation;
     private double stLat = 0.0;
     private double stLon = 0.0;
@@ -153,6 +155,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn = (TextView) getActivity().findViewById(R.id.end);
         mIvChangeStEn = (ImageView) getActivity().findViewById(R.id.changeStartEnd);
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
+        weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
         mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
 
         //广播
@@ -169,6 +172,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn.setOnClickListener(this);
         mIvChangeStEn.setOnClickListener(this);
         mBtnSearch.setOnClickListener(this);
+        weizhangbutton.setOnClickListener(this);
         mBtnStation.setOnClickListener(this);
     }
 
@@ -273,6 +277,11 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                         routeplanToNavi();
                     }
                 }
+                break;
+            case R.id.weizhangbutton:
+                Intent i = new Intent();
+                i.setClass(getActivity(), CarQueryActivity.class);
+                startActivity(i);
                 break;
 
             case R.id.btn_station:
