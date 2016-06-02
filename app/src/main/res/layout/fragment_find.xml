@@ -36,7 +36,7 @@
                     android:background="@null"
                     android:ems="10"
                     android:singleLine="true"
-                    android:text="当前位置"/>
+                    android:text="当前位置" />
             </LinearLayout>
 
             <View
@@ -65,7 +65,7 @@
                     android:background="@null"
                     android:ems="10"
                     android:hint="输入终点"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -75,25 +75,25 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_change_start_end"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp" />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/dark_grey"/>
+        android:background="@color/dark_grey" />
 
     <Button
         android:id="@+id/btn_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:text="搜索"/>
+        android:text="搜索" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/dark_grey"/>
+        android:background="@color/dark_grey" />
 
     <Button
         android:id="@+id/weizhangbutton"

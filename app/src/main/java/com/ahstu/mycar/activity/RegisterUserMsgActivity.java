@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
 
+import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -77,6 +78,7 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
                     user.setUsername(register_username.getText().toString());
                     user.setPassword(register_password.getText().toString());
                     user.setMobilePhoneNumber(register_phone_num);
+                    user.setMyInstallation(BmobInstallation.getInstallationId(RegisterUserMsgActivity.this));
                     user.signUp(context, new SaveListener() {
                         @Override
                         public void onSuccess() {

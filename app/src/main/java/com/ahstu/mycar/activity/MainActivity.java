@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -60,6 +61,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private Fragment[] mFragments;
     private int index;
     private int intcurrentTabIndex;
+    private boolean song_not_null;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private TextView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
@@ -92,10 +94,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private CarMessage carMessage = new CarMessage();
 
     public void setAdapter() {
-        listItems = getListItems();//得到适配器数据
-        listViewAdapter = new ListViewAdapter(this, listItems, R.layout.itemplaylist_song_activity); // 创建适配
-        listViewAdapter.setPl_songIds(pl_songIds);//传入列表歌曲id
+        if (getListItems() != null) {
+            listItems = getListItems();//得到适配器数据
+            listViewAdapter = new ListViewAdapter(this, listItems, R.layout.itemplaylist_song_activity); // 创建适配
+            listViewAdapter.setPl_songIds(pl_songIds);//传入列表歌曲id
 //		listview.setAdapter(listViewAdapter);
+            song_not_null = true;
+        } else
+            song_not_null = false;
     }
 
     /**
@@ -103,20 +109,23 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
      */
     private List<Map<String, Object>> getListItems() {
         List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-        pl_songIds = new ArrayList<String>();//存储列表�?��歌曲id
+        pl_songIds = new ArrayList<String>();//存储列表歌曲id
 //		songs = MusicUtils.getSongListForPlaylist(MusicActivity.this, playlistId);//存储列表歌曲
         songs = MusicUtils.getAllSongs(MainActivity.this);
-        for (int i = 0; i < songs.size(); i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            if (idEdit) {
-                map.put("deleteIcon", R.drawable.delete_01);// 删除图标
-            } else {
-                map.put("deleteIcon", -1);
-            }
-            map.put("songName", songs.get(i).getName()); // 歌曲
+//        Log.e("TTTT",songs.size()+">>>>>>>>>>>>>>>>>>>>>>");
+        if (songs != null) {
+            for (int i = 0; i < songs.size(); i++) {
+                Map<String, Object> map = new HashMap<String, Object>();
+                if (idEdit) {
+                    map.put("deleteIcon", R.drawable.delete_01);// 删除图标
+                } else {
+                    map.put("deleteIcon", -1);
+                }
+                map.put("songName", songs.get(i).getName()); // 歌曲
 
-            pl_songIds.add(songs.get(i).getAllSongIndex() + "");//存储列表歌曲id
-            listItems.add(map);
+                pl_songIds.add(songs.get(i).getAllSongIndex() + "");//存储列表歌曲id
+                listItems.add(map);
+            }
         }
 
         return listItems;
@@ -147,22 +156,25 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         application = (MyApplication) getApplication();
         mService = application.getmService();
         Log.e("TAG", ">>>>>>>>>>>>>>>>>>" + v.getTag().toString());
-
-        switch (v.getTag().toString()) {
-            case "previous":
-                mService.frontMusic();
-                break;
-            case "pause":
-                mService.pausePlay();
-                break;
-            case "next":
-                mService.nextMusic();
-                break;
-            case "list":
-                startActivity(new Intent(MainActivity.this, MusicMainActivity.class));
-                break;
-        }
+        if (songs != null) {
+            switch (v.getTag().toString()) {
+                case "previous":
+                    mService.frontMusic();
+                    break;
+                case "pause":
+                    mService.pausePlay();
+                    break;
+                case "next":
+                    mService.nextMusic();
+                    break;
+                case "list":
+                    startActivity(new Intent(MainActivity.this, MusicMainActivity.class));
+                    break;
+            }
+        } else
+            Toast.makeText(MainActivity.this, "音乐列表为空，请先下载歌曲！", Toast.LENGTH_SHORT).show();
     }
+
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -190,34 +202,37 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         messageThread.isrunning = true;
         messageThread.start();
 
-
+        //开启音乐服务
         new Thread() {
             public void run() {
-                try {
-                    sleep(1000);
+                if (song_not_null == true) {
+                    try {
+                        sleep(1500);
 
-                } catch (InterruptedException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                if (null == mService) {
-                    mService = application.getmService();
+                    } catch (InterruptedException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    if (null == mService) {
+                        mService = application.getmService();
 
-                }
-                try {
+                    }
+                    try {
                     /*
-                     这里经常报空指针异常
+                    //这里经常报空指针异常
                      java.lang.NullPointerException
                      05-26 00:37:39.360 10944-10993/com.ahstu.mycar 
                      W/System.err: at com.ahstu.mycar.activity.MainActivity$3.run(MainActivity.java:213)
                      */
-                    mService.setCurrentListItme(0);
-                    mService.setSongs(songs);
-                    mService.playMusic(songs.get(0).getUrl());
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                        mService.setCurrentListItme(0);
+                        mService.setSongs(songs);
+                        mService.playMusic(songs.get(0).getUrl());
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
+
             }
         }.start();
     }
@@ -276,11 +291,24 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         intcurrentTabIndex = index;
     }
 
+    //在每个fragment中添加触屏事件让音乐菜单，地图按钮缩回
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (menuView.isShown())
+            menuView.in();
+        if (mMapFragment.isFlag() == false)
+            mMapFragment.closeAnmi();
+        return super.onTouchEvent(event);
+    }
+
+    
     /**
      * 处理点击事件，加载fragment
      */
     @Override
     public void onClick(View v) {
+        if (menuView.isShown())
+            menuView.in();
         switch (v.getId()) {
             case R.id.txtHome:
                 index = 0;
@@ -376,11 +404,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
                     moblie_id.addWhereEqualTo("installationId", BmobInstallation.getInstallationId(MainActivity.this));//匹配当前设备的id
                     bmobPush.setQuery(moblie_id);
-                    try {
-                        carinfomationBmobQuery.findObjects(MainActivity.this, new FindListener<Carinfomation>() {
-                            @Override
-                            public void onSuccess(List<Carinfomation> list) {
-
+                    carinfomationBmobQuery.findObjects(MainActivity.this, new FindListener<Carinfomation>() {
+                        @Override
+                        public void onSuccess(List<Carinfomation> list) {
+                            if (list != null) {
                                 for (Carinfomation car : list) {
                                     if (car.getCar_mile() != 0 && (car.getCar_mile() % 15000) == 0 && (!ex1)) {
                                         ex1 = true;
@@ -406,20 +433,23 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                                     if (car.getCar_light().equals("异常") && (!ex5)) {
                                         ex5 = true;
                                         Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                   
+                                    /*
+                                    *push推送會出現異常
+                                     */
                                         bmobPush.pushMessage("车灯异常");
                                     }
 
                                 }
                             }
 
-                            @Override
-                            public void onError(int i, String s) {
+                        }
 
-                            }
-                        });
-                    } catch (Exception e) {
+                        @Override
+                        public void onError(int i, String s) {
 
-                    }
+                        }
+                    });
 
                 } catch (InterruptedException e) {
                     Toast.makeText(MainActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
@@ -430,4 +460,5 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             }
         }
     }
+
 }
