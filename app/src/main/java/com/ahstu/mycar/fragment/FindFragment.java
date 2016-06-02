@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.BDSearchGuideActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
+import com.ahstu.mycar.activity.StationMapActivity;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -47,6 +48,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private TextView mTvSt;
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
+    private Button mBtnStation;
     private double stLat = 0.0;
     private double stLon = 0.0;
     private double enLat = 0.0;
@@ -151,6 +153,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn = (TextView) getActivity().findViewById(R.id.end);
         mIvChangeStEn = (ImageView) getActivity().findViewById(R.id.changeStartEnd);
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
+        mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());
@@ -166,6 +169,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn.setOnClickListener(this);
         mIvChangeStEn.setOnClickListener(this);
         mBtnSearch.setOnClickListener(this);
+        mBtnStation.setOnClickListener(this);
     }
 
     @Override
@@ -264,11 +268,15 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     enLat = mLatitude;
                     enLon = mLongitude;
                 }
-                if (!str11.isEmpty() && !str22.isEmpty()) {
+                if (!str11.isEmpty() && !str22.isEmpty()) { 
                     if (BaiduNaviManager.isNaviInited()) {
                         routeplanToNavi();
                     }
                 }
+                break;
+
+            case R.id.btn_station:
+                startActivity(new Intent(getActivity(), StationMapActivity.class));
                 break;
         }
     }

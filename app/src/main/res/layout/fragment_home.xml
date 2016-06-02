@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
             android:id="@+id/bmapView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:clickable="true" />
+            android:clickable="true"/>
 
 
         <Button
@@ -22,7 +22,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="正常地图" />
+            android:text="正常地图"/>
 
         <Button
             android:id="@+id/btn_map_site"
@@ -31,7 +31,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="卫星地图" />
+            android:text="卫星地图"/>
 
         <Button
             android:id="@+id/btn_map_traffic"
@@ -40,7 +40,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="实时交通" />
+            android:text="实时交通"/>
 
         <Button
             android:id="@+id/btn_map_mylocation"
@@ -49,7 +49,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="我的位置" />
+            android:text="我的位置"/>
 
         <Button
             android:id="@+id/btn_map_mode_normal"
@@ -58,7 +58,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="普通模式" />
+            android:text="普通模式"/>
 
         <Button
             android:id="@+id/btn_map_mode_following"
@@ -67,7 +67,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="跟随模式" />
+            android:text="跟随模式"/>
 
         <Button
             android:id="@+id/btn_map_mode_compass"
@@ -76,7 +76,7 @@
             android:layout_alignParentRight="true"
             android:background="#0fffffff"
             android:paddingRight="10dp"
-            android:text="罗盘模式" />
+            android:text="罗盘模式"/>
 
         <Button
             android:id="@+id/btn_map_menu"
@@ -85,27 +85,7 @@
             android:layout_alignParentRight="true"
             android:background="#bfffffff"
             android:paddingRight="10dp"
-            android:text="地图菜单" />
-
-
-        <Button
-            android:id="@+id/btn_map_search_station"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="#0fffffff"
-            android:paddingRight="10dp"
-            android:text="查找加油站" />
-
-        <Button
-            android:id="@+id/btn_map_stop_station"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/btn_map_search_station"
-            android:background="#0fffffff"
-            android:paddingRight="10dp"
-            android:text="关闭加油站" />
+            android:text="地图菜单"/>
 
 
         <ImageView
@@ -115,80 +95,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_margin="8dp"
-            android:src="@drawable/location" />
-
-        <ImageView
-            android:id="@+id/iv_list"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="18dp"
-            android:src="@drawable/list" />
-
-        <LinearLayout
-            android:id="@+id/ll_summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:layout_toLeftOf="@id/iv_list"
-            android:layout_toRightOf="@id/iv_loc"
-            android:background="@drawable/frame"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableRight="@drawable/v_dotted_line"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tv_distance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/dark_grey" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_price_a"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tv_price_b"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-        </LinearLayout>
-
+            android:src="@drawable/location"/>
 
     </RelativeLayout>
 

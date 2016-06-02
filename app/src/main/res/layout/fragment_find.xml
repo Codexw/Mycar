@@ -95,4 +95,10 @@
         android:layout_height="0.5dp"
         android:background="@color/dark_grey" />
 
+    <Button
+        android:id="@+id/btn_station"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加油站"/>
+
 </LinearLayout>
