@@ -29,7 +29,6 @@ public class RoundProgressBar extends View {
     private float pressExtraStrokeWidth;
     private BarAnimation anim;
     private int box_max = 100;// 默认最大
-
     public RoundProgressBar(Context context) {
         super(context);
         init(null, 0);
@@ -37,6 +36,14 @@ public class RoundProgressBar extends View {
     public RoundProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
+    }
+
+    public int getBox_point() {
+        return box_point;
+    }
+
+    public void setBox_point(int box_point) {
+        this.box_point = box_point;
     }
 
     private void init(AttributeSet attrs, int defStyle) {
@@ -118,7 +125,7 @@ public class RoundProgressBar extends View {
      * 更新步数和设置一圈动画时间
      */
     public void update() {
-        box_point = 90;//传入油量百分比
+//        box_point = 90;//传入油量百分比
         anim.setDuration(800);//设置动画加载时间ms
         //setAnimationTime(time);
         this.startAnimation(anim);

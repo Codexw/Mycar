@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -208,7 +209,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                 if (song_not_null == true) {
                     try {
                         sleep(1500);
-
+                        Looper.prepare();
                     } catch (InterruptedException e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
@@ -227,6 +228,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                         mService.setCurrentListItme(0);
                         mService.setSongs(songs);
                         mService.playMusic(songs.get(0).getUrl());
+                        Looper.loop();
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -396,6 +398,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             while (isrunning) {
                 try {
                     sleep(3000);
+                    Looper.prepare();
                     SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
                     String s = share.getString("number", "");
                     if (s.equals(""))
@@ -404,6 +407,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
                     moblie_id.addWhereEqualTo("installationId", BmobInstallation.getInstallationId(MainActivity.this));//匹配当前设备的id
                     bmobPush.setQuery(moblie_id);
+
                     carinfomationBmobQuery.findObjects(MainActivity.this, new FindListener<Carinfomation>() {
                         @Override
                         public void onSuccess(List<Carinfomation> list) {
@@ -441,17 +445,18 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                                     }
 
                                 }
-                            }
+                                }
 
-                        }
+                            }
 
                         @Override
                         public void onError(int i, String s) {
 
                         }
-                    });
 
-                } catch (InterruptedException e) {
+                    });
+                    Looper.loop();
+                } catch (Exception e) {
                     Toast.makeText(MainActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
                 }
                 if (ex1 && ex2 && ex3 && ex4 && ex5)

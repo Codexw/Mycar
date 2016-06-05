@@ -17,7 +17,6 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.activity.LoginActivity;
 import com.ahstu.mycar.activity.MeorderActivity;
-import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.activity.MyApplication;
 import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.music.MusicDownload;
@@ -133,6 +132,11 @@ public class MeInfoFragment extends Fragment {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
                 editor.commit();
+                SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor ed = share.edit();
+                ed.clear();
+                ed.commit();
+                
                 getActivity().deleteDatabase("node.db");
                 if (mService.isPlay()) {
                     mService.pausePlay();
