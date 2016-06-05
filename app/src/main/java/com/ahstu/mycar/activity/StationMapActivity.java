@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -67,7 +66,6 @@ public class StationMapActivity extends Activity implements OnClickListener {
     private float mCurrentX;
 
     //加油站相关变量
-    private Button btn_map_search_station;
     private ImageView stop;
     private ImageView iv_list;
     private Toast mToast;
@@ -77,6 +75,7 @@ public class StationMapActivity extends Activity implements OnClickListener {
     private Marker mLastMaker;
     private ArrayList<Station> mList;
     private Station mStation = null;
+    private int stationI = 1;
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -98,7 +97,7 @@ public class StationMapActivity extends Activity implements OnClickListener {
         }
     };
     private StationData mStationData;
-    private int mDistance = 80000;
+    private int mDistance = 100000;
     private BDLocation loc;
 
     @Override
@@ -121,13 +120,11 @@ public class StationMapActivity extends Activity implements OnClickListener {
         //地图
         mMapView = (MapView) findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
-        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);  //地图比例初始化为500M
+        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(14.6f);  //地图比例初始化为1公里
         mBaiduMap.setMapStatus(msu);
-
 
         //加油站布局
         iv_list = (ImageView) findViewById(R.id.iv_list);
-        btn_map_search_station = (Button) findViewById(R.id.btn_map_search_station);
         stop = (ImageView) findViewById(R.id.stop);
 
     }
@@ -135,7 +132,6 @@ public class StationMapActivity extends Activity implements OnClickListener {
     private void initClick() {
         iv_list.setOnClickListener(this);
         ll_summary.setOnClickListener(this);
-        btn_map_search_station.setOnClickListener(this);
         stop.setOnClickListener(this);
     }
 
@@ -151,8 +147,8 @@ public class StationMapActivity extends Activity implements OnClickListener {
         // 返回百度经纬度坐标系 ：bd09ll
         option.setCoorType("bd09ll");
         option.setIsNeedAddress(true); // 设置是否需要地址信息，默认为无地址
-        option.setOpenGps(true);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
-        option.setScanSpan(1000);
+        option.setOpenGps(true);
+        option.setScanSpan(1000);  // 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
         mLocationClient.setLocOption(option);//将上面option中的设置加载
 
         //初始化方向指示图标
@@ -272,7 +268,6 @@ public class StationMapActivity extends Activity implements OnClickListener {
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
         mMapView.onResume();
-
     }
 
     @Override
@@ -306,10 +301,6 @@ public class StationMapActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_map_search_station:
-                searchStation(loc.getLatitude(), loc.getLongitude(), mDistance);
-                break;
-
             case R.id.stop:
                 mBaiduMap.clear();
                 mLastMaker = null;
@@ -371,21 +362,24 @@ public class StationMapActivity extends Activity implements OnClickListener {
             if (location == null) {
                 return;
             }
-            loc = location;
+
             MyLocationData data = new MyLocationData.Builder()//
                     .direction(mCurrentX)//
                     .accuracy(location.getRadius())//
                     .latitude(location.getLatitude())//
                     .longitude(location.getLongitude())//
                     .build();
-
+            loc = location;
             mBaiduMap.setMyLocationData(data);
             MyLocationConfiguration config = new MyLocationConfiguration(mLocationMode, true, mbitmapDescriptor);
             mBaiduMap.setMyLocationConfigeration(config);
             mLatitude = location.getLatitude();
             mLongitude = location.getLongitude();
 
-            System.out.println(loc.getLatitude() + "aaa" + loc.getLongitude() + "bbbbbbbbbbb" + mLatitude + "ccccccccccccc" + mLongitude);
+            if (stationI == 1) {
+                searchStation(loc.getLatitude(), loc.getLongitude(), mDistance);
+                stationI--;
+            }
             if (isFirstIn) {
                 LatLng latLng = new LatLng(mLatitude, mLongitude);
                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);

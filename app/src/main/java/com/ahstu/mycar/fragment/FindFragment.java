@@ -272,7 +272,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     enLat = mLatitude;
                     enLon = mLongitude;
                 }
-                if (!str11.isEmpty() && !str22.isEmpty()) { 
+                if (!str11.isEmpty() && !str22.isEmpty()) {  
                     if (BaiduNaviManager.isNaviInited()) {
                         routeplanToNavi();
                     }
