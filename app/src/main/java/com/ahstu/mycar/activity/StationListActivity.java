@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.adapter.StationListAdapter;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class StationListActivity extends Activity {
 
+    private TextView tvName;
     private Context mContext;
     private ListView lv_station;
     private ImageView iv_back;
@@ -35,6 +37,9 @@ public class StationListActivity extends Activity {
     private void initView() {
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setVisibility(View.VISIBLE);
+        tvName = (TextView) findViewById(R.id.title_name);
+        tvName.setText("加油站列表");
+        
         iv_back.setOnClickListener(new OnClickListener() {
 
             @Override

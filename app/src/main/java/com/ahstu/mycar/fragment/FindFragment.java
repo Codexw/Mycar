@@ -22,6 +22,7 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.BDSearchGuideActivity;
 import com.ahstu.mycar.activity.CarQueryActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
+import com.ahstu.mycar.activity.StationMapActivity;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -49,6 +50,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
     private Button weizhangbutton;
+    private Button mBtnStation;
     private double stLat = 0.0;
     private double stLon = 0.0;
     private double enLat = 0.0;
@@ -154,6 +156,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mIvChangeStEn = (ImageView) getActivity().findViewById(R.id.changeStartEnd);
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
         weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
+        mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());
@@ -170,6 +173,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mIvChangeStEn.setOnClickListener(this);
         mBtnSearch.setOnClickListener(this);
         weizhangbutton.setOnClickListener(this);
+        mBtnStation.setOnClickListener(this);
     }
 
     @Override
@@ -268,7 +272,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     enLat = mLatitude;
                     enLon = mLongitude;
                 }
-                if (!str11.isEmpty() && !str22.isEmpty()) {
+                if (!str11.isEmpty() && !str22.isEmpty()) { 
                     if (BaiduNaviManager.isNaviInited()) {
                         routeplanToNavi();
                     }
@@ -278,6 +282,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 Intent i = new Intent();
                 i.setClass(getActivity(), CarQueryActivity.class);
                 startActivity(i);
+                break;
+
+            case R.id.btn_station:
+                startActivity(new Intent(getActivity(), StationMapActivity.class));
                 break;
         }
     }

@@ -44,6 +44,7 @@ public class StationInfoActivity extends Activity {
     private ListView lv_gast_price, lv_price;
     private Button addgas;
     private TextView tv_bd09ll;
+    private TextView tvName;
     private String mSDCardPath = null;
     private double stLat;
     private double stLon;
@@ -133,7 +134,9 @@ public class StationInfoActivity extends Activity {
         tv_addr = (TextView) findViewById(R.id.tv_addr);
         iv_back = (ImageView) findViewById(R.id.iv_back);
         tv_bd09ll = (TextView) findViewById(R.id.tv_bd09ll);
+        tvName = (TextView) findViewById(R.id.title_name);
 
+        tvName.setText("加油站详情");
         tv_bd09ll.setText("导航 >");
         tv_bd09ll.setVisibility(View.VISIBLE);
         iv_back = (ImageView) findViewById(R.id.iv_back);
