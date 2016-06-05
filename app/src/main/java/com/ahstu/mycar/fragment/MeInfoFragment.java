@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,6 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.activity.LoginActivity;
 import com.ahstu.mycar.activity.MeorderActivity;
-import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.activity.MyApplication;
 import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.music.MusicDownload;
@@ -133,9 +133,19 @@ public class MeInfoFragment extends Fragment {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
                 editor.commit();
+                SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor ed = share.edit();
+                ed.clear();
+                ed.commit();
+                
                 getActivity().deleteDatabase("node.db");
-                if (mService.isPlay()) {
-                    mService.pausePlay();
+                try {
+                    if (mService.isPlay()) {
+                        mService.pausePlay();
+                    }
+                } catch (Exception e) {
+                    Log.e("music", ">>>>>>>>>>>>>>>>>>>>退出异常<<<<<<<<<<<<<<<");
+                    
                 }
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }

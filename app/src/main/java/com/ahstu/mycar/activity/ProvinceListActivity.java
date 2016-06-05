@@ -4,6 +4,7 @@ package com.ahstu.mycar.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -25,7 +26,7 @@ import java.util.List;
 public class ProvinceListActivity extends Activity {
     private ListView lv_list;
     private ListAdapter mAdapter;
-
+    private SwipeRefreshLayout refreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +51,17 @@ public class ProvinceListActivity extends Activity {
 
 
         lv_list = (ListView) findViewById(R.id.lv_1ist);
-
-        mAdapter = new ListAdapter(this, getData2());
-        lv_list.setAdapter(mAdapter);
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);
+        //refreshLayout.setColorSchemeColors(R.color.);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mAdapter = new ListAdapter(ProvinceListActivity.this, getData2());
+                lv_list.setAdapter(mAdapter);
+            }
+        });
+//        mAdapter = new ListAdapter(this, getData2());
+//        lv_list.setAdapter(mAdapter);
         //给Listview添加监听器
         lv_list.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -86,17 +95,22 @@ public class ProvinceListActivity extends Activity {
 
         //开通数量提示
         TextView txtListTip = (TextView) findViewById(R.id.list_tip);
-        txtListTip.setText("全国已开通" + provinceList.size() + "个省份, 其它省将陆续开放");
+        if (provinceList != null) {
+            txtListTip.setText("全国已开通" + provinceList.size() + "个省份, 其它省将陆续开放");
+            for (ProvinceInfoJson provinceInfoJson : provinceList) {
+                String provinceName = provinceInfoJson.getProvinceName();
+                int provinceId = provinceInfoJson.getProvinceId();
+                ListModel model = new ListModel();
+                model.setTextName(provinceName);
+                model.setNameId(provinceId);
+                list.add(model);
+            }
+        } else {
 
-        for (ProvinceInfoJson provinceInfoJson : provinceList) {
-            String provinceName = provinceInfoJson.getProvinceName();
-            int provinceId = provinceInfoJson.getProvinceId();
+            txtListTip.setText("服务器异常，请下拉刷新重新加载");
 
-            ListModel model = new ListModel();
-            model.setTextName(provinceName);
-            model.setNameId(provinceId);
-            list.add(model);
         }
+
         return list;
     }
 
@@ -109,7 +123,6 @@ public class ProvinceListActivity extends Activity {
         // 获取城市name和id
         String cityName = bundle.getString("city_name");
         String cityId = bundle.getString("city_id");
-
         Intent intent = new Intent();
         intent.putExtra("city_name", cityName);
         intent.putExtra("city_id", cityId);

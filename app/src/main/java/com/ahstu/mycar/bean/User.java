@@ -9,11 +9,11 @@ import cn.bmob.v3.BmobUser;
 public class User extends BmobUser {
     private String myInstallation;
 
-    public void setMyInstallation(String myInstallation) {
-        this.myInstallation = myInstallation;
-    }
-
     public String getMyInstallation() {
         return myInstallation;
+    }
+
+    public void setMyInstallation(String myInstallation) {
+        this.myInstallation = myInstallation;
     }
 }

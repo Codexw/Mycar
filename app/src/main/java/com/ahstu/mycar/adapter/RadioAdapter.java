@@ -3,6 +3,8 @@ package com.ahstu.mycar.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -17,13 +20,19 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.MeCarActivity;
+import com.ahstu.mycar.bean.carmodel;
+import com.ahstu.mycar.sql.ForListViewImage;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class RadioAdapter extends BaseAdapter {
+    private ForListViewImage forListViewImage;
 
     private LayoutInflater inflater;
-    private ArrayList list;
+    private ArrayList<carmodel> list;
     private viewHolder holder;
     private int index, temp;
     private Context content;
@@ -32,6 +41,7 @@ public class RadioAdapter extends BaseAdapter {
         this.content = content;
         this.list = list;
         inflater = LayoutInflater.from(content);
+        forListViewImage = new ForListViewImage();
 
     }
 
@@ -58,6 +68,7 @@ public class RadioAdapter extends BaseAdapter {
         holder = new viewHolder();
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.car_list_item, null);
+            holder.carpicture = (ImageView) convertView.findViewById(R.id.carpicture);
             holder.nameTxt = (TextView) convertView.findViewById(R.id.car_list_number);
             holder.selectBtn = (RadioButton) convertView
                     .findViewById(R.id.car_list_radiobutton);
@@ -67,8 +78,9 @@ public class RadioAdapter extends BaseAdapter {
         } else {
             holder = (viewHolder) convertView.getTag();
         }
-
-        holder.nameTxt.setText(list.get(position).toString());
+        holder.carpicture.setImageResource(R.mipmap.ic_launcher);
+        holder.carpicture.setTag(list.get(position).getSign());
+        holder.nameTxt.setText(list.get(position).getS());
         holder.car_list_linearlayout.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -77,13 +89,16 @@ public class RadioAdapter extends BaseAdapter {
                 Intent intent = new Intent();
                 intent.setClass(content, MeCarActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("car_number", list.get(position).toString());
-                Toast.makeText(content, list.get(position).toString(), Toast.LENGTH_SHORT).show();
+                bundle.putString("car_number", list.get(position).getS());
+                Toast.makeText(content, list.get(position).getS(), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bundle);
                 content.startActivity(intent);
 
             }
         });
+
+        // holder.carpicture.setImageBitmap(getPicture(list.get(position).getSign()));
+        forListViewImage.showImageAsyncTask(holder.carpicture, list.get(position).getSign());
 
         holder.selectBtn
                 .setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -95,7 +110,7 @@ public class RadioAdapter extends BaseAdapter {
                             index = position;
                             SharedPreferences.Editor editer = share.edit();
                             editer.putInt("position", index);
-                            editer.putString("number", list.get(position).toString());
+                            editer.putString("number", list.get(position).getS());
                             editer.commit();
                             notifyDataSetChanged();
                         }
@@ -113,11 +128,26 @@ public class RadioAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public Bitmap getPicture(String path) {
+        Bitmap bm = null;
+        try {
+            URL url = new URL(path);
+            URLConnection conn = url.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            bm = BitmapFactory.decodeStream(is);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return bm;
+    }
+
     public class viewHolder {
+        public ImageView carpicture;
         public TextView nameTxt;
         public RadioButton selectBtn;
         public TextView selectstate;
         public LinearLayout car_list_linearlayout;
     }
-
 }

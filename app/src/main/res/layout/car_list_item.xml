@@ -2,41 +2,50 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:minHeight="60dp"
     android:gravity="center_vertical"
+    android:minHeight="60dp"
 
     >
 
     <LinearLayout
+
+        android:id="@+id/car_list_linearlyaout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toLeftOf="@+id/car_list_radiobutton"
-        android:id="@+id/car_list_linearlyaout">
+        android:layout_toLeftOf="@+id/car_list_radiobutton">
+
+        <ImageView
+            android:id="@+id/carpicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp" />
 
         <TextView
+            android:id="@+id/car_list_number"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:id="@+id/car_list_number"
-            android:textSize="16dp"
-            android:gravity="center_vertical" />
+            android:layout_marginLeft="3dp"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
 
         <TextView
+            android:id="@+id/selectstate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="已选中"
             android:layout_toRightOf="@+id/car_list_number"
-            android:textSize="16dp"
             android:gravity="center"
+            android:text="已选中"
             android:textColor="@android:color/holo_blue_dark"
-            android:visibility="visible"
-            android:id="@+id/selectstate" />
+            android:textSize="16dp"
+            android:visibility="visible" />
     </LinearLayout>
 
     <RadioButton
+        android:id="@+id/car_list_radiobutton"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:id="@+id/car_list_radiobutton" />
+        android:layout_alignParentRight="true" />
 
 
 </RelativeLayout>

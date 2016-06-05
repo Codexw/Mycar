@@ -15,6 +15,7 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.adapter.RadioAdapter;
 import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.bean.User;
+import com.ahstu.mycar.bean.carmodel;
 import com.ahstu.mycar.sql.DatabaseHelper;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 
@@ -24,7 +25,6 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
-
 /**
  * Created by xuning on 2016/5/9.
  */
@@ -37,7 +37,7 @@ public class CarListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_activity_list);
         initview();
-
+        update();
         //添加按钮添加监听事件
         caradd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +52,7 @@ public class CarListActivity extends Activity {
                 finish();
             }
         });
+        carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
     }
 
     //初始化控件
@@ -87,14 +88,18 @@ public class CarListActivity extends Activity {
 
     //从数据库获取数据，添加到集合中
     public ArrayList getdata() {
-        ArrayList<String> arraylist = new ArrayList<String>();
+        ArrayList<carmodel> arraylist = new ArrayList<carmodel>();
 
         DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cs = db.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
+        Cursor cs = db.query("carinfo", new String[]{"car_number", "car_sign"}, null, null, null, null, null);
         while (cs.moveToNext()) {
+            carmodel carmodel = new carmodel();
             String s = cs.getString(cs.getColumnIndex("car_number"));
-            arraylist.add(s);
+            String sign = cs.getString(cs.getColumnIndex("car_sign"));
+            carmodel.setS(s);
+            carmodel.setSign(sign);
+            arraylist.add(carmodel);
 
         }
         cs.close();
@@ -105,7 +110,7 @@ public class CarListActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
+        // carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
         //list = getdata();
 
     }
@@ -113,64 +118,77 @@ public class CarListActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        update();
+        carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
+
+
+    }
+
+    void update() {
+
         User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
         BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
         query.addWhereEqualTo("user", user);
         query.order("-updatedAt");
+        try {
         query.findObjects(CarListActivity.this, new FindListener<Carinfomation>() {
             @Override
             public void onSuccess(List<Carinfomation> list) {
-                DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
-                SQLiteDatabase db = helper.getWritableDatabase();
-                for (int i = 0; i < list.size(); i++) {
-                    Carinfomation carinfomation = list.get(i);
-                    ContentValues value = new ContentValues();
-                    // value.put("car_number", carinfomation.getCar_number());
-                    value.put("car_brand", carinfomation.getCar_brand());
-                    value.put("car_model", carinfomation.getCar_model());
-                    value.put("car_sign", carinfomation.getCar_sign());
-                    value.put("car_enginerno", carinfomation.getCar_enginerno());
-                    value.put("car_level", carinfomation.getCar_level());
-                    value.put("car_mile", carinfomation.getCar_mile());
-                    value.put("car_gas", carinfomation.getCar_gas());
-                    value.put("car_enginerstate", carinfomation.getCar_enginerstate());
-                    value.put("car_shiftstate", carinfomation.getCar_shiftstate());
-                    value.put("car_light", carinfomation.getCar_light());
-                    value.put("car_frame", carinfomation.getCar_frame());
-                    value.put("car_box", carinfomation.getCar_box());
-                    if (carinfomation.getCar_start() == false) {
-                        value.put("car_start", 0);
-                    } else {
-                        value.put("car_start", 1);
+
+                if (list != null) {
+                    DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
+                    SQLiteDatabase db = helper.getWritableDatabase();
+                    for (int i = 0; i < list.size(); i++) {
+                        Carinfomation carinfomation = list.get(i);
+                        ContentValues value = new ContentValues();
+                        // value.put("car_number", carinfomation.getCar_number());
+                        value.put("car_brand", carinfomation.getCar_brand());
+                        value.put("car_model", carinfomation.getCar_model());
+                        // value.put("car_sign", carinfomation.getCar_sign());
+                        value.put("car_enginerno", carinfomation.getCar_enginerno());
+                        value.put("car_level", carinfomation.getCar_level());
+                        value.put("car_mile", carinfomation.getCar_mile());
+                        value.put("car_gas", carinfomation.getCar_gas());
+                        value.put("car_enginerstate", carinfomation.getCar_enginerstate());
+                        value.put("car_shiftstate", carinfomation.getCar_shiftstate());
+                        value.put("car_light", carinfomation.getCar_light());
+                        value.put("car_frame", carinfomation.getCar_frame());
+                        value.put("car_box", carinfomation.getCar_box());
+                        if (carinfomation.getCar_start() == false) {
+                            value.put("car_start", 0);
+                        } else {
+                            value.put("car_start", 1);
+                        }
+                        if (carinfomation.getCar_door() == false) {
+                            value.put("car_door", 0);
+
+                        } else {
+                            value.put("car_door", 1);
+
+                        }
+                        if (carinfomation.getCar_lock() == false) {
+
+                            value.put("car_lock", 0);
+
+                        } else {
+                            value.put("car_lock", 1);
+
+                        }
+
+                        if (carinfomation.getCar_air() == false) {
+
+                            value.put("car_air", 0);
+                        } else {
+                            value.put("car_air", 1);
+
+                        }
+                        db.update("carinfo", value, "car_number=?", new String[]{carinfomation.getCar_number()});
+
+
                     }
-                    if (carinfomation.getCar_door() == false) {
-                        value.put("car_door", 0);
-
-                    } else {
-                        value.put("car_door", 1);
-
-                    }
-                    if (carinfomation.getCar_lock() == false) {
-
-                        value.put("car_lock", 0);
-
-                    } else {
-                        value.put("car_lock", 1);
-
-                    }
-
-                    if (carinfomation.getCar_air() == false) {
-
-                        value.put("car_air", 0);
-                    } else {
-                        value.put("car_air", 1);
-
-                    }
-                    db.update("carinfo", value, "car_number=?", new String[]{carinfomation.getCar_number()});
-
-
+                    db.close();
                 }
-                db.close();
             }
 
             @Override
@@ -178,7 +196,9 @@ public class CarListActivity extends Activity {
 
             }
         });
-        carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
+        } catch (Exception e) {
+
+        }
 
 
     }

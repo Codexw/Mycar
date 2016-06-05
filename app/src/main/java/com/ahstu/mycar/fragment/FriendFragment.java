@@ -44,6 +44,8 @@ public class FriendFragment extends Fragment {
     TextView door_set;
     TextView air_set;
     TextView lock_set;
+    TextView c_gas;
+    TextView c_count;
     LinearLayout carcontrollinearlayout;
     RelativeLayout carcontrollinearlayout2;
     RelativeLayout car_start_relativelayout;
@@ -72,6 +74,7 @@ public class FriendFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         mInflater = inflater;
         View view = inflater.inflate(R.layout.fragment_friend, null);
+
         return view;
     }
 
@@ -110,6 +113,7 @@ public class FriendFragment extends Fragment {
             //进度条
             roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
             roundProgressBar.update();
+            //roundProgressBar.setBox_point(90);
 
             initview();
         }
@@ -121,7 +125,6 @@ public class FriendFragment extends Fragment {
         SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
         final String s = share.getString("number", "");
         final Carinfomation carinfomation = new Carinfomation();
-        //car=new Carinfomation();
         final BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
         query.addWhereEqualTo("car_number", s);
         try {
@@ -136,7 +139,11 @@ public class FriendFragment extends Fragment {
                         car_control_enginer.setText(car.getCar_enginerstate().toString());
                         car_control_shift.setText(car.getCar_shiftstate().toString());
                         car_control_light.setText(car.getCar_light().toString());
-
+                        c_count.setText(String.valueOf(car.getCar_mile()));
+                        c_gas.setText(String.valueOf(car.getCar_box() * car.getCar_gas() / 100));
+                        roundProgressBar.setBox_point(car.getCar_gas());
+                        
+                        
 
                     }
                 }
@@ -177,6 +184,8 @@ public class FriendFragment extends Fragment {
         door_set = (TextView) getActivity().findViewById(R.id.door_set);
         air_set = (TextView) getActivity().findViewById(R.id.air_set);
         lock_set = (TextView) getActivity().findViewById(R.id.lock_set);
+        c_count = (TextView) getActivity().findViewById(R.id.c_count);
+        c_gas = (TextView) getActivity().findViewById(R.id.c_gas);
         //根据本地数据库的值设置
         while (cursor.moveToNext()) {
             if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
