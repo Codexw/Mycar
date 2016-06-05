@@ -30,16 +30,6 @@
             android:text="附近加油站"/>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_map_search_station"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/title_stop"
-        android:background="#0fffffff"
-        android:paddingRight="10dp"
-        android:text="查找加油站"/>
-
     <ImageView
         android:id="@+id/iv_list"
         android:layout_width="40dp"
