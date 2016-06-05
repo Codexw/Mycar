@@ -75,7 +75,6 @@ public class StationMapActivity extends Activity implements OnClickListener {
     private Marker mLastMaker;
     private ArrayList<Station> mList;
     private Station mStation = null;
-    private int stationI = 1;
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -96,6 +95,7 @@ public class StationMapActivity extends Activity implements OnClickListener {
             }
         }
     };
+    private int stationI = 1;
     private StationData mStationData;
     private int mDistance = 100000;
     private BDLocation loc;
