@@ -55,6 +55,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private double stLon = 0.0;
     private double enLat = 0.0;
     private double enLon = 0.0;
+
     //定位相关变量
     private LocationClient mLocationClient = null;
     private MyLocationListener myLocationListener;
@@ -62,6 +63,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private double mLongitude;
     private Button mBtnSearch = null;
     private String mSDCardPath = null;
+
     //广播变量
     private LocalBroadcastManager broadcastManager1;
     private LocalBroadcastManager broadcastManager2;
@@ -272,7 +274,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     enLat = mLatitude;
                     enLon = mLongitude;
                 }
-                if (!str11.isEmpty() && !str22.isEmpty()) {  
+                if (!str11.isEmpty() && !str22.isEmpty()) {
                     if (BaiduNaviManager.isNaviInited()) {
                         routeplanToNavi();
                     }

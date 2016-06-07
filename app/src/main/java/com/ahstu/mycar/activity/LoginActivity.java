@@ -21,6 +21,10 @@ import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.bean.order;
 import com.ahstu.mycar.sql.DatabaseHelper;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 
 import java.util.List;
 
@@ -42,6 +46,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText et_password;
     private Button btnLogin;
     private Button btnRegister;
+    private LocationClient mLocationClient;
+    private MyLocationListener myLocationListener;
+    private double mLatitude;
+    private double mLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +58,22 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         this.context = this;
         initView();
         initClick();
+        initLocation();
         // 动画效果
         init();
+    }
+
+    private void initLocation() {
+        mLocationClient = new LocationClient(this);
+        myLocationListener = new MyLocationListener();
+        mLocationClient.registerLocationListener(myLocationListener);
+
+        LocationClientOption option = new LocationClientOption();
+        option.setCoorType("bd09ll"); // 返回百度经纬度坐标系 ：bd09ll
+        option.setIsNeedAddress(true); // 设置是否需要地址信息，默认为无地址
+        option.setOpenGps(true);
+        option.setScanSpan(1000);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
+        mLocationClient.setLocOption(option);//将上面option中的设置加载
     }
 
     /**
@@ -91,16 +113,18 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void onSuccess() {
 
-                            //更新当前登录用户的设备号
-                            BmobQuery<User> queryInstallation = new BmobQuery<User>();
-                            queryInstallation.addWhereEqualTo("username", et_username.getText().toString());
-                            queryInstallation.setLimit(1);
-                            queryInstallation.findObjects(LoginActivity.this, new FindListener<User>() {
+                            //更新当前登录用户的设备号和经纬度
+                            BmobQuery<User> query1 = new BmobQuery<User>();
+                            query1.addWhereEqualTo("username", et_username.getText().toString());
+                            query1.setLimit(1);
+                            query1.findObjects(LoginActivity.this, new FindListener<User>() {
                                 @Override
                                 public void onSuccess(List<User> list) {
-                                    for (User userIns : list) {
-                                        userIns.setMyInstallation(BmobInstallation.getInstallationId(LoginActivity.this));
-                                        userIns.update(LoginActivity.this, userIns.getObjectId(), new UpdateListener() {
+                                    for (User user : list) {
+                                        user.setMyInstallation(BmobInstallation.getInstallationId(LoginActivity.this));
+                                        user.setLat(mLatitude);
+                                        user.setLon(mLongitude);
+                                        user.update(LoginActivity.this, user.getObjectId(), new UpdateListener() {
                                             @Override
                                             public void onSuccess() {
                                             }
@@ -121,10 +145,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                             //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
                             final User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
-                            BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
-                            query.addWhereEqualTo("user", user);
-                            query.order("-updatedAt");
-                            query.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
+                            BmobQuery<Carinfomation> query2 = new BmobQuery<Carinfomation>();
+                            query2.addWhereEqualTo("user", user);
+                            query2.order("-updatedAt");
+                            query2.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
                                 @Override
                                 public void onSuccess(List<Carinfomation> list) {
                                     //打开数据库，存放在本地数据库
@@ -301,4 +325,30 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!mLocationClient.isStarted()) {
+            mLocationClient.start();
+        }
+    }
+
+    //退出程序时关闭定位
+    @Override
+    public void onStop() {
+        super.onStop();
+        //停止地图定位
+        mLocationClient.stop();
+    }
+
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+    }
 }

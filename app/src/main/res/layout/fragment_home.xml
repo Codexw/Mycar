@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,90 +12,86 @@
             android:id="@+id/bmapView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:clickable="true" />
+            android:clickable="true"/>
 
+        <ImageView
+            android:id="@+id/iv_map_traffic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/add_poi_map_selection_btn_pressed"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_icon_roadcondition_off"/>
 
         <Button
             android:id="@+id/btn_map_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#0fffffff"
+            android:background="#ffffff"
             android:paddingRight="10dp"
-            android:text="正常地图" />
+            android:text="正常地图"/>
 
         <Button
             android:id="@+id/btn_map_site"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#0fffffff"
+            android:background="#ffffff"
             android:paddingRight="10dp"
-            android:text="卫星地图" />
-
-        <Button
-            android:id="@+id/btn_map_traffic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="#0fffffff"
-            android:paddingRight="10dp"
-            android:text="实时交通" />
-
-        <Button
-            android:id="@+id/btn_map_mylocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="#0fffffff"
-            android:paddingRight="10dp"
-            android:text="我的位置" />
+            android:text="卫星地图"/>
 
         <Button
             android:id="@+id/btn_map_mode_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#0fffffff"
+            android:background="#ffffff"
             android:paddingRight="10dp"
-            android:text="普通模式" />
+            android:text="普通模式"/>
 
         <Button
             android:id="@+id/btn_map_mode_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#0fffffff"
+            android:background="#ffffff"
             android:paddingRight="10dp"
-            android:text="跟随模式" />
+            android:text="跟随模式"/>
 
         <Button
             android:id="@+id/btn_map_mode_compass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#0fffffff"
+            android:background="#ffffff"
             android:paddingRight="10dp"
-            android:text="罗盘模式" />
+            android:text="罗盘模式"/>
 
         <Button
             android:id="@+id/btn_map_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#bfffffff"
+            android:background="#ffffff"
             android:paddingRight="10dp"
-            android:text="地图菜单" />
+            android:text="地图菜单"/>
 
 
         <ImageView
             android:id="@+id/iv_loc"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_margin="8dp"
-            android:src="@drawable/location" />
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="10dp"
+            android:background="#DDFFFFFF"
+            android:padding="10dp"
+            android:src="@mipmap/location"/>
 
     </RelativeLayout>
 
