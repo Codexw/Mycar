@@ -12,10 +12,12 @@ import android.support.v7.app.AppCompatCallback;
 import android.support.v7.view.ActionMode;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
@@ -51,12 +53,12 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private BaiduMap mBaiduMap;
     private Button btn_map_normal;
     private Button btn_map_site;
-    private Button btn_map_traffic;
-    private Button btn_map_mylocation;
     private Button btn_map_mode_normal;
     private Button btn_map_mode_following;
     private Button btn_map_mode_compass;
     private Button btn_map_menu;
+    private ImageView iv_map_traffic;
+    private ImageView iv_myLocation;
 
     //定位相关变量
     private LocationClient mLocationClient;
@@ -72,8 +74,8 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private float mCurrentX;
 
     //地图菜单按钮动画
-    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_traffic, R.id.btn_map_mylocation,
-            R.id.btn_map_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site,
+            R.id.btn_map_mode_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
     //共享状态中介
@@ -147,12 +149,11 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         btn_map_menu.setOnClickListener(this);
         btn_map_normal.setOnClickListener(this);
         btn_map_site.setOnClickListener(this);
-        btn_map_traffic.setOnClickListener(this);
-        btn_map_mylocation.setOnClickListener(this);
         btn_map_mode_normal.setOnClickListener(this);
         btn_map_mode_following.setOnClickListener(this);
         btn_map_mode_compass.setOnClickListener(this);
-
+        iv_map_traffic.setOnClickListener(this);
+        iv_myLocation.setOnClickListener(this);
     }
 
     private void ininView() {
@@ -162,15 +163,21 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         mBaiduMap = mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);  //地图比例初始化为500M
         mBaiduMap.setMapStatus(msu);
-
+        mBaiduMap.setOnMapTouchListener(new BaiduMap.OnMapTouchListener() {
+            @Override
+            public void onTouch(MotionEvent motionEvent) {
+                iv_myLocation.setImageResource(R.mipmap.location);
+            }
+        });
+        
         btn_map_menu = (Button) getActivity().findViewById(R.id.btn_map_menu);
         btn_map_normal = (Button) getActivity().findViewById(R.id.btn_map_normal);
         btn_map_site = (Button) getActivity().findViewById(R.id.btn_map_site);
-        btn_map_traffic = (Button) getActivity().findViewById(R.id.btn_map_traffic);
-        btn_map_mylocation = (Button) getActivity().findViewById(R.id.btn_map_mylocation);
         btn_map_mode_normal = (Button) getActivity().findViewById(R.id.btn_map_mode_normal);
         btn_map_mode_following = (Button) getActivity().findViewById(R.id.btn_map_mode_following);
         btn_map_mode_compass = (Button) getActivity().findViewById(R.id.btn_map_mode_compass);
+        iv_map_traffic = (ImageView) getActivity().findViewById(R.id.iv_map_traffic);
+        iv_myLocation = (ImageView) getActivity().findViewById(R.id.iv_loc);
     }
 
     //定位初始化
@@ -275,22 +282,14 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
                 bt_animation();
                 break;
-            case R.id.btn_map_traffic:
+            case R.id.iv_map_traffic:
                 if (mBaiduMap.isTrafficEnabled()) {
                     mBaiduMap.setTrafficEnabled(false);
-                    btn_map_traffic.setText("实时交通(off)");
+                    iv_map_traffic.setImageResource(R.drawable.main_icon_roadcondition_off);
                 } else {
-
                     mBaiduMap.setTrafficEnabled(true);
-                    btn_map_traffic.setText("实时交通(on)");
+                    iv_map_traffic.setImageResource(R.drawable.main_icon_roadcondition_on);
                 }
-                bt_animation();
-                break;
-            case R.id.btn_map_mylocation:
-                LatLng latLng = new LatLng(mLatitude, mLongitude);
-
-                MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
-                mBaiduMap.animateMapStatus(msu);
                 bt_animation();
                 break;
             case R.id.btn_map_mode_normal:
@@ -307,15 +306,19 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 break;
 
             case R.id.iv_loc:
-                break;
-            case R.id.tv_bd09ll:
+                LatLng latLng = new LatLng(mLatitude, mLongitude);
+
+                MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+                mBaiduMap.animateMapStatus(msu);
+                bt_animation();
+                iv_myLocation.setImageResource(R.mipmap.location_center);
                 break;
         }
     }
 
     //按钮伸缩动画判断
     private void bt_animation() {
-        if (flag) {
+        if (flag) { 
             startAnim();
         } else {
             closeAnmi();
