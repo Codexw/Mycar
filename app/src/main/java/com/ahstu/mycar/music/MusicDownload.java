@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.MusicMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -38,7 +37,7 @@ public class MusicDownload extends Activity implements AdpterOnItemClick {
     private ListView musicdownlist;
     private Button bt_music_down;
     private List<MusicMessage> musicMessageArrayList;
-    private ArrayList<String> al = new ArrayList<String>();
+//    private ArrayList<String> al = new ArrayList<String>();
     private DownLoadCompleteReceiver receiver;
 
     @Override

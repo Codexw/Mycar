@@ -10,6 +10,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatCallback;
 import android.support.v7.view.ActionMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.bean.User;
+import com.ahstu.mycar.me.ShareLocationMessage;
 import com.ahstu.mycar.ui.MyOrientationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -36,6 +39,9 @@ import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * @author 吴天洛 2016/4/25
@@ -73,6 +79,10 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
             R.id.btn_map_mode_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
+    //共享状态中介
+    private ShareLocationMessage shareLocationMessage=new ShareLocationMessage();
+    private Thread querylocationthread;
+    private BmobQuery<User> userLocationBmobQuery;
 
     //获取地图按钮伸缩状态
     public boolean isFlag() {
@@ -90,14 +100,42 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         ininView();
         initClick();
         initLocation();
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
+        //查询对方位置线程
+        querylocationthread=new Thread(){
+            public void run() {
+                while(true){
+                    try {
+                        sleep(2000);
+                        userLocationBmobQuery = new BmobQuery<User>();
+                        userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getUsername());
+                        userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
+                            @Override
+                            public void onSuccess(List<User> list) {
+                                if (list != null) {
+                                    User aaa = list.get(0);
+                                    Log.i("user_message", ">>>>>>>>>>>" + aaa.getUsername() + " " + aaa.getLat() + "   " + aaa.getLon());
+                                }
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
         return view;
     }
+    
 
     //将按钮放入动画按钮数组
     private void initMapMenu() {
@@ -170,7 +208,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         //默认地图模式
         mLocationMode = LocationMode.NORMAL;
     }
-
+    
     //软件开启时判断地图是否打开，没有打开，则打开
     @Override
     public void onStart() {
@@ -182,7 +220,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         }
         //开启方向传感器
         mMyOrientationListener.start();
-
     }
 
     @Override
@@ -190,7 +227,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
         mMapView.onResume();
-
     }
 
     @Override
@@ -204,6 +240,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public void onStop() {
         super.onStop();
+//        qlthread.interrupt();
         //停止地图定位
         mBaiduMap.setMyLocationEnabled(false);
         mLocationClient.stop();
@@ -223,8 +260,14 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        //判断是否建立连接和是否为第一次连接
+        if(shareLocationMessage.isShareconnect()&&shareLocationMessage.isFirstconnect()){
+            shareLocationMessage.setFirstconnect(false);
+            querylocationthread.start();
+        }
     }
 
+    
     //按钮动画点击监听事件
     @Override
     public void onClick(View v) {
@@ -371,5 +414,5 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
             }
         }
     }
-
+   
 }
