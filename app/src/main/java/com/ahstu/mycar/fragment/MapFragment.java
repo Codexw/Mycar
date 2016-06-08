@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * @author 吴天洛 2016/4/25
@@ -104,29 +105,28 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
+        //查询对方位置线程
         querylocationthread=new Thread(){
             public void run() {
                 while(true){
                     try {
                         sleep(2000);
-                        Log.e("dsad","dsadsadsad");
-//                        userLocationBmobQuery = new BmobQuery<User>();
-//                        userLocationBmobQuery.addWhereEqualTo("username",shareLocationMessage.getUsername());
-//                        userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
-//                            @Override
-//                            public void onSuccess(List<User> list) {
-//                                if(list!=null){
-//                                    for(User userlist:list){
-//                                        Log.i("location",""+userlist.getmLat()+"   "+userlist.getmLon());
-//                                    }
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onError(int i, String s) {
-//
-//                            }
-//                        });
+                        userLocationBmobQuery = new BmobQuery<User>();
+                        userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getUsername());
+                        userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
+                            @Override
+                            public void onSuccess(List<User> list) {
+                                if (list != null) {
+                                    User aaa = list.get(0);
+                                    Log.i("user_message", ">>>>>>>>>>>" + aaa.getUsername() + " " + aaa.getLat() + "   " + aaa.getLon());
+                                }
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+
+                            }
+                        });
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -260,6 +260,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        //判断是否建立连接和是否为第一次连接
         if(shareLocationMessage.isShareconnect()&&shareLocationMessage.isFirstconnect()){
             shareLocationMessage.setFirstconnect(false);
             querylocationthread.start();
