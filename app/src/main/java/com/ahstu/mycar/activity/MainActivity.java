@@ -237,6 +237,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
             }
         }.start();
+        
     }
 
     /**
@@ -443,7 +444,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                                      */
                                         bmobPush.pushMessage("车灯异常");
                                     }
-
                                 }
                                 }
 

@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.MusicMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,9 +25,8 @@ public class MusicSearchAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<MusicMessage> musicMessageList;
     private AdpterOnItemClick myAdpterOnclick;
-    private ArrayList<String> str;
-
-
+//    private ArrayList<String> str;
+    
     public MusicSearchAdapter(Context context, List<MusicMessage> str) {
         mInflater = LayoutInflater.from(context);
         musicMessageList = str;
@@ -39,8 +37,6 @@ public class MusicSearchAdapter extends BaseAdapter {
 
         this.myAdpterOnclick = listener;
     }
-    
-    
     
     @Override
     public int getCount() {
@@ -67,16 +63,9 @@ public class MusicSearchAdapter extends BaseAdapter {
         
         
         holder.musicDownName.setText(musicMessageList.get(position).getSong_name());
-//        holder.bt_music_down.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.e("click",">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+musicMessageList.get(position).getSong_url());
-//            }
-//        });
         holder.bt_music_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Log.e("err",">>>>>>>>>>>>>>>>>>>>>");
                 if (myAdpterOnclick != null) {
                     int which = view.getId();
                     myAdpterOnclick.onAdpterClick(position);
