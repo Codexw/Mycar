@@ -20,7 +20,7 @@ import com.ahstu.mycar.activity.LoginActivity;
 import com.ahstu.mycar.activity.MeorderActivity;
 import com.ahstu.mycar.activity.MyApplication;
 import com.ahstu.mycar.bean.User;
-import com.ahstu.mycar.music.MusicDownload;
+import com.ahstu.mycar.music.MusicDownloadActivity;
 import com.ahstu.mycar.music.MusicPlayService;
 
 import java.util.List;
@@ -153,7 +153,7 @@ public class MeInfoFragment extends Fragment {
         me_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MusicDownload.class);
+                Intent intent = new Intent(getActivity(), MusicDownloadActivity.class);
                 startActivity(intent);
             }
         });

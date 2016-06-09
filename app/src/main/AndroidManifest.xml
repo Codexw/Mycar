@@ -149,7 +149,7 @@
             android:name=".activity.MapMenuActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".music.MusicDownload"
+            android:name=".music.MusicDownloadActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SearchMapActivity"

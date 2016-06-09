@@ -156,7 +156,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 //        Toast.makeText(this, "select"+v.getTag(), Toast.LENGTH_SHORT).show();
         application = (MyApplication) getApplication();
         mService = application.getmService();
-        Log.e("TAG", ">>>>>>>>>>>>>>>>>>" + v.getTag().toString());
+        Log.e("TAG", "MainActivity159" + v.getTag().toString());
         if (songs != null) {
             switch (v.getTag().toString()) {
                 case "previous":

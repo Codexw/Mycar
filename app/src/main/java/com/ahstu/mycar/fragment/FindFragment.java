@@ -24,6 +24,7 @@ import com.ahstu.mycar.activity.CarQueryActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
 import com.ahstu.mycar.activity.StationMapActivity;
 import com.ahstu.mycar.me.SearchFriendActivity;
+import com.ahstu.mycar.me.ShareLocationMessage;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -57,6 +58,8 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private double stLon = 0.0;
     private double enLat = 0.0;
     private double enLon = 0.0;
+
+    private ShareLocationMessage shareLocationMessage = new ShareLocationMessage();
 
     //定位相关变量
     private LocationClient mLocationClient = null;
@@ -294,7 +297,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), StationMapActivity.class));
                 break;
             case R.id.btn_sharelocation:
-                startActivity(new Intent(getActivity(), SearchFriendActivity.class));
+                if (shareLocationMessage.isShareconnect()) {
+                    Toast.makeText(getActivity(), "请先关闭当前的位置共享！", Toast.LENGTH_SHORT).show();
+                } else
+                    startActivity(new Intent(getActivity(), SearchFriendActivity.class));
                 break;
         }
     }
