@@ -64,7 +64,7 @@
         <!-- 百度sdk开发秘钥 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr"/>
+            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"

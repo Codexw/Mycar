@@ -50,6 +50,8 @@ public class FriendNotificationService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
+        //获取当前用户
+        person_name = getSharedPreferences("User", MODE_PRIVATE);
         initButtonReceiver();
     }
 
@@ -67,6 +69,7 @@ public class FriendNotificationService extends Service{
         shareLocationMessage.setOther_username(name);
         shareLocationMessage.setShareconnect(true);
         shareLocationMessage.setFirstconnect(true);
+        shareLocationMessage.setObjection(1);
         //将本用户名推送接受信息回去
         bmobPush.pushMessage(person_name.getString("name", "") + "车友接受了位置共享");
 //        Intent i=new Intent(FriendNotificationService.this,MusicMainActivity.class);

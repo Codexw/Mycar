@@ -8,7 +8,15 @@ public class ShareLocationMessage {
     private static boolean firstconnect=false;
     private static String username;
     private static String other_username;
-    
+    private static int objection;//接收方或是发送方，发送方0，接收方1
+
+    public static int getObjection() {
+        return objection;
+    }
+
+    public static void setObjection(int objection) {
+        ShareLocationMessage.objection = objection;
+    }
 
     public static String getUsername() {
         return username;
