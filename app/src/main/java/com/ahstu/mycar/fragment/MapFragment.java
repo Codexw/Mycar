@@ -3,6 +3,7 @@ package com.ahstu.mycar.fragment;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
@@ -29,9 +31,11 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
@@ -42,6 +46,7 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * @author 吴天洛 2016/4/25
@@ -80,7 +85,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
     //共享状态中介
-    private ShareLocationMessage shareLocationMessage=new ShareLocationMessage();
+    private ShareLocationMessage shareLocationMessage = new ShareLocationMessage();
     private Thread querylocationthread;
     private BmobQuery<User> userLocationBmobQuery;
 
@@ -105,28 +110,71 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
+
         //查询对方位置线程
-        querylocationthread=new Thread(){
+        querylocationthread = new Thread() {
             public void run() {
-                while(true){
+                while (true) {
                     try {
-                        sleep(2000);
+
+                        //更新我的位置
+                        SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
+                        String name = sp.getString("name", "");
+                        BmobQuery<User> query = new BmobQuery<User>();
+                        query.addWhereEqualTo("username", name);
+                        query.setLimit(1);
+                        query.findObjects(getActivity(), new FindListener<User>() {
+                            @Override
+                            public void onSuccess(List<User> list) {
+                                if (!list.isEmpty()) {
+                                    User user = list.get(0);
+                                    user.setLat(mLatitude);
+                                    user.setLon(mLongitude);
+                                    user.update(getActivity(), user.getObjectId(), new UpdateListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            Log.i("MapFragment136", "分享位置后更新自己的位置成功");
+                                        }
+
+                                        @Override
+                                        public void onFailure(int i, String s) {
+                                            Log.i("MapFragment142", "分享位置后更新自己的位置失败");
+                                        }
+                                    });
+                                }
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+                                Log.i("MapFragment150", "查询失败");
+                            }
+                        });
+
+                        //显示对方位置
                         userLocationBmobQuery = new BmobQuery<User>();
                         userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getUsername());
                         userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
                             @Override
                             public void onSuccess(List<User> list) {
                                 if (list != null) {
-                                    User aaa = list.get(0);
-                                    Log.i("user_message", ">>>>>>>>>>>" + aaa.getUsername() + " " + aaa.getLat() + "   " + aaa.getLon());
+                                    User user = list.get(0);
+                                    View view = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
+                                    final TextView tv = (TextView) view.findViewById(R.id.tv_marker);
+                                    tv.setText(user.getUsername());
+                                    BitmapDescriptor mBitmap = BitmapDescriptorFactory.fromView(tv);
+                                    LatLng mLatLng = new LatLng(user.getLat(), user.getLon());
+                                    MarkerOptions mMarkerOptions = new MarkerOptions().position(mLatLng).icon(mBitmap);
+                                    mBaiduMap.addOverlay(mMarkerOptions);
                                 }
                             }
 
                             @Override
                             public void onError(int i, String s) {
-
+                                Log.i("MapFragment173", "查询失败");
                             }
                         });
+                        sleep(2000);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -135,7 +183,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         };
         return view;
     }
-    
+
 
     //将按钮放入动画按钮数组
     private void initMapMenu() {
@@ -169,7 +217,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 iv_myLocation.setImageResource(R.mipmap.location);
             }
         });
-        
+
         btn_map_menu = (Button) getActivity().findViewById(R.id.btn_map_menu);
         btn_map_normal = (Button) getActivity().findViewById(R.id.btn_map_normal);
         btn_map_site = (Button) getActivity().findViewById(R.id.btn_map_site);
@@ -208,7 +256,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         //默认地图模式
         mLocationMode = LocationMode.NORMAL;
     }
-    
+
     //软件开启时判断地图是否打开，没有打开，则打开
     @Override
     public void onStart() {
@@ -261,13 +309,13 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         //判断是否建立连接和是否为第一次连接
-        if(shareLocationMessage.isShareconnect()&&shareLocationMessage.isFirstconnect()){
+        if (shareLocationMessage.isShareconnect() && shareLocationMessage.isFirstconnect()) {
             shareLocationMessage.setFirstconnect(false);
             querylocationthread.start();
         }
     }
 
-    
+
     //按钮动画点击监听事件
     @Override
     public void onClick(View v) {
@@ -319,7 +367,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
     //按钮伸缩动画判断
     private void bt_animation() {
-        if (flag) { 
+        if (flag) {
             startAnim();
         } else {
             closeAnmi();
@@ -414,5 +462,5 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
             }
         }
     }
-   
+
 }

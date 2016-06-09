@@ -32,8 +32,8 @@
             <TextView
                 android:id="@+id/txtHome"
                 style="@style/ExtraVerySmallGray"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
                 android:drawablePadding="2dp"
                 android:drawableTop="@drawable/nav_home_image"
                 android:gravity="center"
@@ -84,7 +84,7 @@
                 android:drawableTop="@drawable/nav_friend_image"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="好友"
+                android:text="车辆控制"
                 android:textColor="@color/nav_friend_text" />
         </LinearLayout>
 
@@ -104,7 +104,7 @@
                 android:drawableTop="@drawable/nav_personal_image"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="我"
+                android:text="我的"
                 android:textColor="@color/nav_personal_text" />
         </LinearLayout>
 
