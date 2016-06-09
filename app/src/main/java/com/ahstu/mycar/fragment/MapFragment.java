@@ -32,9 +32,11 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
@@ -88,6 +90,12 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private ShareLocationMessage shareLocationMessage = new ShareLocationMessage();
     private Thread querylocationthread;
     private BmobQuery<User> userLocationBmobQuery;
+    private MarkerOptions mMarkerOptionsFriend;
+    private TextView tvFriend;
+    private LatLng mLatLngFriend;
+    private View viewFriend;
+    private Marker mMaker;
+    private InfoWindow mInfoWindow;
 
     //获取地图按钮伸缩状态
     public boolean isFlag() {
@@ -105,6 +113,10 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         ininView();
         initClick();
         initLocation();
+
+        viewFriend = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
+        tvFriend = (TextView) viewFriend.findViewById(R.id.tv_marker);
+        mMarkerOptionsFriend = new MarkerOptions();
     }
 
     @Override
@@ -133,12 +145,12 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                                     user.update(getActivity(), user.getObjectId(), new UpdateListener() {
                                         @Override
                                         public void onSuccess() {
-                                            Log.i("MapFragment136", "分享位置后更新自己的位置成功");
+                                            Log.i("MapFragment144", "分享位置后更新自己的位置成功");
                                         }
 
                                         @Override
                                         public void onFailure(int i, String s) {
-                                            Log.i("MapFragment142", "分享位置后更新自己的位置失败");
+                                            Log.i("MapFragment149", "分享位置后更新自己的位置失败");
                                         }
                                     });
                                 }
@@ -146,7 +158,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
                             @Override
                             public void onError(int i, String s) {
-                                Log.i("MapFragment150", "查询失败");
+                                Log.i("MapFragment157", "查询失败");
                             }
                         });
 
@@ -158,13 +170,48 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                             public void onSuccess(List<User> list) {
                                 if (list != null) {
                                     User user = list.get(0);
-                                    View view = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
-                                    final TextView tv = (TextView) view.findViewById(R.id.tv_marker);
-                                    tv.setText(user.getUsername());
-                                    BitmapDescriptor mBitmap = BitmapDescriptorFactory.fromView(tv);
+
+                                    mBaiduMap.clear();
+                                    tvFriend.setText(user.getUsername());
+                                    BitmapDescriptor mBitmap = BitmapDescriptorFactory.fromView(tvFriend);
                                     LatLng mLatLng = new LatLng(user.getLat(), user.getLon());
-                                    MarkerOptions mMarkerOptions = new MarkerOptions().position(mLatLng).icon(mBitmap);
-                                    mBaiduMap.addOverlay(mMarkerOptions);
+                                    MarkerOptions op = new MarkerOptions().position(mLatLng)
+                                            .icon(mBitmap).zIndex(9).draggable(true);
+                                    mMaker = (Marker) mBaiduMap.addOverlay(op);
+                                    mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(mLatLng));
+
+                                    mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+                                        @Override
+                                        public boolean onMarkerClick(final Marker marker) {
+                                            Button button = new Button(getActivity());
+//                                            Button button = new Button(getApplicationContext());
+                                            button.setBackgroundResource(R.drawable.popup);
+                                            InfoWindow.OnInfoWindowClickListener listener = null;
+                                            if (marker == mMaker) {
+                                                button.setText("删除");
+                                                listener = new InfoWindow.OnInfoWindowClickListener() {
+                                                    public void onInfoWindowClick() {
+
+                                                        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                                        mBaiduMap.clear();
+                                                        mBaiduMap.hideInfoWindow();
+                                                    }
+                                                };
+                                                LatLng ll = marker.getPosition();
+                                                mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -147, listener);
+                                                mBaiduMap.showInfoWindow(mInfoWindow);
+                                            }
+                                            return true;
+                                        }
+                                    });
+
+//                                    tvFriend.setText(user.getUsername());
+//                                    BitmapDescriptor mBitmap = BitmapDescriptorFactory.fromView(tvFriend);
+//                                    LatLng mLatLng = new LatLng(user.getLat(), user.getLon());
+//                                    mMarkerOptionsFriend = mMarkerOptionsFriend.position(mLatLng).icon(mBitmap);
+//                                    mMaker = (Marker) mBaiduMap.addOverlay(mMarkerOptionsFriend);
+
+
                                 }
                             }
 
@@ -173,7 +220,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                                 Log.i("MapFragment173", "查询失败");
                             }
                         });
-                        sleep(2000);
+                        sleep(5000);
 
                     } catch (Exception e) {
                         e.printStackTrace();
