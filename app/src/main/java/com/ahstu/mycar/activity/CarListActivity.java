@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -96,9 +98,11 @@ public class CarListActivity extends Activity {
         while (cs.moveToNext()) {
             carmodel carmodel = new carmodel();
             String s = cs.getString(cs.getColumnIndex("car_number"));
-            String sign = cs.getString(cs.getColumnIndex("car_sign"));
+            //String sign = cs.getString(cs.getColumnIndex("car_sign"));
+            byte[] blob = cs.getBlob(cs.getColumnIndex("car_sign"));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(blob, 0, blob.length);
             carmodel.setS(s);
-            carmodel.setSign(sign);
+            carmodel.setSign(bitmap);
             arraylist.add(carmodel);
 
         }

@@ -237,7 +237,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
             }
         }.start();
-        
+
     }
 
     /**
@@ -388,6 +388,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
     //消息推送
     public class messageThread extends Thread {
+
         public boolean isrunning;
         //        User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
         BmobQuery<Carinfomation> carinfomationBmobQuery = new BmobQuery<Carinfomation>();
@@ -396,12 +397,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         private boolean ex1, ex2, ex3, ex4, ex5;
 
         public void run() {
+
             while (isrunning) {
                 try {
+
                     sleep(3000);
-                    Looper.prepare();
+
+                    // Looper.prepare();
+
                     SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
                     String s = share.getString("number", "");
+
                     if (s.equals(""))
                         continue;
                     carinfomationBmobQuery.addWhereEqualTo("car_number", s);//查询默认车辆
@@ -455,9 +461,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                         }
 
                     });
-                    Looper.loop();
+                    //Looper.loop();
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(MainActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
                 }
                 if (ex1 && ex2 && ex3 && ex4 && ex5)
                     isrunning = false;

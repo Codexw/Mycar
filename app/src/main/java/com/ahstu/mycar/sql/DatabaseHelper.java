@@ -20,12 +20,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table carinfo(car_number text primary key,car_brand text,car_sign text" +
+        String sql = "create table carinfo(car_number text primary key,car_brand text,car_sign BLOB" +
                 ",car_model text,car_enginerno text,car_frame text,car_box integer,car_level text,car_mile integer,car_gas integer,car_enginerstate text,car_shiftstate text,car_light text" +
                 ",car_start boolean,car_lock boolean,car_door boolean,car_air boolean)";
 
         db.execSQL(sql);
-        String s = "create table gasorder(id integer primary key autoincrement,username text,carnumber text,stationname text,ctype text,gascount double,gasprice double,countprice double,time text)";
+        String s = "create table gasorder(id integer primary key autoincrement,username text,carnumber text,stationname text,ctype text,gascount double,gasprice double,countprice text,time text)";
         db.execSQL(s);
     }
 

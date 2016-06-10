@@ -70,7 +70,8 @@ public class OrderItemActivity extends Activity {
             String ctype = cursor.getString(cursor.getColumnIndex("ctype")).toString();
             Double gascount = cursor.getDouble(cursor.getColumnIndex("gascount"));
             Double gasprice = cursor.getDouble(cursor.getColumnIndex("gasprice"));
-            Double countprice = cursor.getDouble(cursor.getColumnIndex("countprice"));
+            // Double countprice = cursor.getDouble(cursor.getColumnIndex("countprice"));
+            String countprice = cursor.getString(cursor.getColumnIndex("countprice"));
             String time = cursor.getString(cursor.getColumnIndex("time")).toString();
 
             info_station.setText(staion);
@@ -79,7 +80,7 @@ public class OrderItemActivity extends Activity {
             info_ctype.setText(ctype);
             info_gascount.setText(String.valueOf(gascount) + "升");
             info_gasprice.setText(String.valueOf(gasprice) + "元/升");
-            info_countprice.setText(String.valueOf(countprice) + "元");
+            info_countprice.setText(countprice);
             info_time.setText(time);
             JSONObject json = new JSONObject();
             try {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
 import com.ahstu.mycar.R;
@@ -30,13 +31,22 @@ public class MeorderActivity extends Activity {
     int a[];
     int size;
     List<Map<String, String>> list;
-
+    RelativeLayout ordernull, melistlayout; 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actvity_order);
         meorderlist = (ListView) findViewById(R.id.meorderlist);
-        orderback = (ImageView) findViewById(R.id.or_back); 
+        orderback = (ImageView) findViewById(R.id.or_back);
+        ordernull = (RelativeLayout) findViewById(R.id.order_null);
+        melistlayout = (RelativeLayout) findViewById(R.id.melistlayout);
+        DatabaseHelper helper = new DatabaseHelper(MeorderActivity.this, "node.db", null, 1);
+        SQLiteDatabase data = helper.getReadableDatabase();
+        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time"}, null, null, null, null, null);
+        if (cursor.getCount() > 0) {
+            ordernull.setVisibility(View.GONE);
+            melistlayout.setVisibility(View.VISIBLE);
+        }
         getdata();
         SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time"}, new int[]{R.id.order_item_text1, R.id.order_item_text2});
         meorderlist.setAdapter(adapter);
@@ -80,7 +90,6 @@ public class MeorderActivity extends Activity {
                 station[j] = cursor.getString(cursor.getColumnIndex("stationname"));
                 time[j] = cursor.getString(cursor.getColumnIndex("time"));
                 a[j] = cursor.getInt(cursor.getColumnIndex("id"));
-
             }
             data.close();
         }

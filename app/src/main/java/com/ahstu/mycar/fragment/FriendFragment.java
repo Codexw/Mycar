@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.me.RoundProgressBar;
 import com.ahstu.mycar.sql.DatabaseHelper;
+import com.ahstu.mycar.ui.PullToRefreshLayout;
 
 import java.util.List;
 
@@ -34,6 +37,8 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 
 public class FriendFragment extends Fragment {
+
+
     LayoutInflater mInflater;
     Button addcar;
     TextView car_set_number;
@@ -47,7 +52,7 @@ public class FriendFragment extends Fragment {
     TextView c_gas;
     TextView c_count;
     LinearLayout carcontrollinearlayout;
-    RelativeLayout carcontrollinearlayout2;
+    PullToRefreshLayout carcontrollinearlayout2;
     RelativeLayout car_start_relativelayout;
     RelativeLayout car_door_relativelayout;
     RelativeLayout car_air_relativelayout;
@@ -75,6 +80,7 @@ public class FriendFragment extends Fragment {
         mInflater = inflater;
         View view = inflater.inflate(R.layout.fragment_friend, null);
 
+
         return view;
     }
 
@@ -92,10 +98,9 @@ public class FriendFragment extends Fragment {
 
             addcar = (Button) getActivity().findViewById(R.id.carcontrol_button);
             carcontrollinearlayout = (LinearLayout) getActivity().findViewById(R.id.carcontrollinearlayout);
-            carcontrollinearlayout2 = (RelativeLayout) getActivity().findViewById(R.id.carcontrol);
+            carcontrollinearlayout2 = (PullToRefreshLayout) getActivity().findViewById(R.id.refresh_view);
             //判断count的值，大于0的话，数据库存在值。
             if (count > 0) {
-                Toast.makeText(getActivity(), "值是" + count, Toast.LENGTH_SHORT).show();
                 carcontrollinearlayout.setVisibility(View.GONE);
                 carcontrollinearlayout2.setVisibility(View.VISIBLE);
             } else {
@@ -116,6 +121,7 @@ public class FriendFragment extends Fragment {
             //roundProgressBar.setBox_point(90);
 
             initview();
+
         }
         super.onHiddenChanged(hidden);
     }
@@ -142,9 +148,62 @@ public class FriendFragment extends Fragment {
                         c_count.setText(String.valueOf(car.getCar_mile()));
                         c_gas.setText(String.valueOf(car.getCar_box() * car.getCar_gas() / 100));
                         roundProgressBar.setBox_point(car.getCar_gas());
-                        
-                        
+                        DatabaseHelper data = new DatabaseHelper(getActivity(), "node.db", null, 1);
+                        SQLiteDatabase db = data.getWritableDatabase();
+                        ContentValues value = new ContentValues();
+                        if (car.getCar_start() == false) {
+                            value.put("car_start", 0);
+                            car_start_state = 0;
+                            car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                            start_set.setText("关闭");
+                        } else {
+                            value.put("car_start", 1);
+                            car_start_state = 1;
+                            car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                            start_set.setText("开启");
 
+
+                        }
+                        if (car.getCar_door() == false) {
+                            value.put("car_door", 0);
+                            car_door_state = 0;
+                            car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                            door_set.setText("关闭");
+
+                        } else {
+                            value.put("car_door", 1);
+                            car_door_state = 1;
+                            car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                            door_set.setText("开启");
+
+                        }
+                        if (car.getCar_lock() == false) {
+
+                            value.put("car_lock", 0);
+                            car_lock_state = 0;
+                            car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                            lock_set.setText("关闭");
+                        } else {
+                            value.put("car_lock", 1);
+                            car_lock_state = 1;
+                            car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                            lock_set.setText("开启");
+                        }
+
+                        if (car.getCar_air() == false) {
+
+                            value.put("car_air", 0);
+                            car_air_state = 0;
+                            car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                            air_set.setText("关闭");
+                        } else {
+                            value.put("car_air", 1);
+                            car_air_state = 1;
+                            car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                            air_set.setText("开启");
+                        }
+                        db.update("carinfo", value, "car_number=?", new String[]{s});
+                        db.close();
                     }
                 }
 
@@ -160,10 +219,10 @@ public class FriendFragment extends Fragment {
 
 
         //Log.e("TAG", "《《《《《《《《《《《《《《《《《《《" + s);
-        DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.query("carinfo", new String[]{"car_start", "car_air", "car_door", "car_lock", "car_mile", "car_gas"}, "car_number=?", new String[]{s}, null, null, null);
-        //初始化组件
+//        DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
+//        SQLiteDatabase db = helper.getReadableDatabase();
+//        Cursor cursor = db.query("carinfo", new String[]{"car_start", "car_air", "car_door", "car_lock", "car_mile", "car_gas"}, "car_number=?", new String[]{s}, null, null, null);
+//        //初始化组件
         car_set_number = (TextView) getActivity().findViewById(R.id.car_set_number);
         car_air_relativelayout = (RelativeLayout) getActivity().findViewById(R.id.car_air_relativelayout);
         car_door_relativelayout = (RelativeLayout) getActivity().findViewById(R.id.car_door_relativelayout);
@@ -186,60 +245,58 @@ public class FriendFragment extends Fragment {
         lock_set = (TextView) getActivity().findViewById(R.id.lock_set);
         c_count = (TextView) getActivity().findViewById(R.id.c_count);
         c_gas = (TextView) getActivity().findViewById(R.id.c_gas);
+        ((PullToRefreshLayout) getActivity().findViewById(R.id.refresh_view))
+                .setOnRefreshListener(new MyListener());
+
         //根据本地数据库的值设置
-        while (cursor.moveToNext()) {
-            if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
-                car_start_state = 0;
-                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                start_set.setText("关闭");
-
-            } else {
-                car_start_state = 1;
-                //car_start_set_true.setVisibility(View.VISIBLE);
-                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                start_set.setText("开启");
-
-            }
-            if (cursor.getInt(cursor.getColumnIndex("car_air")) == 0) {
-                car_air_state = 0;
-                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-
-//                car_air_set_false.setVisibility(View.VISIBLE);
-                air_set.setText("关闭");
-            } else {
-                car_air_state = 1;
-                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-
-                // car_air_set_true.setVisibility(View.VISIBLE);
-                air_set.setText("开启");
-            }
-
-            if (cursor.getInt(cursor.getColumnIndex("car_door")) == 0) {
-                car_door_state = 0;
-                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                door_set.setText("关闭");
-
-            } else {
-                car_door_state = 1;
-                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-
-                door_set.setText("开启");
-            }
-            if (cursor.getInt(cursor.getColumnIndex("car_lock")) == 0) {
-
-                car_lock_state = 0;
-                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                lock_set.setText("关闭");
-
-            } else {
-                car_lock_state = 1;
-                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                lock_set.setText("开启");
-
-            }
-        }
-        cursor.close();
-        db.close();
+//        while (cursor.moveToNext()) {
+//            if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
+//                car_start_state = 0;
+//                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+//                start_set.setText("关闭");
+//
+//            } else {
+//                car_start_state = 1;
+//               
+//                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+//                start_set.setText("开启");
+//
+//            }
+//            if (cursor.getInt(cursor.getColumnIndex("car_air")) == 0) {
+//                car_air_state = 0;
+//                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+//                air_set.setText("关闭");
+//            } else {
+//                car_air_state = 1;
+//                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+//                air_set.setText("开启");
+//            }
+//
+//            if (cursor.getInt(cursor.getColumnIndex("car_door")) == 0) {
+//                car_door_state = 0;
+//                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+//                door_set.setText("关闭");
+//
+//            } else {
+//                car_door_state = 1;
+//                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+//                door_set.setText("开启");
+//            }
+//            if (cursor.getInt(cursor.getColumnIndex("car_lock")) == 0) {
+//
+//                car_lock_state = 0;
+//                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+//                lock_set.setText("关闭");
+//
+//            } else {
+//                car_lock_state = 1;
+//                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+//                lock_set.setText("开启");
+//
+//            }
+//        }
+//        cursor.close();
+//        db.close();
         //设置车牌号
         car_set_number.setText(s);
         //空调控制监听器
@@ -390,7 +447,6 @@ public class FriendFragment extends Fragment {
 //                    car_start_set_true.setVisibility(View.VISIBLE);
 //                    car_start_set_false.setVisibility(View.INVISIBLE);
                     car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-
                     car_start_state = 1;
 
                     carinfomation.setValue("car_start", true);
@@ -510,13 +566,44 @@ public class FriendFragment extends Fragment {
                     value.put("car_lock", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-
                     lock_set.setText("关闭");
                 }
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Toast.makeText(getActivity(),"onresume",Toast.LENGTH_SHORT).show();
+        onHiddenChanged(false);
 
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        // Toast.makeText(getActivity(),"onpause",Toast.LENGTH_SHORT).show();
+    }
+
+    class MyListener implements PullToRefreshLayout.OnRefreshListener {
+        @Override
+        public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
+            new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    // 千万别忘了告诉控件刷新完毕了哦！
+                    pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+                    onHiddenChanged(false);
+
+                }
+            }.sendEmptyMessageDelayed(0, 2500);
+        }
+
+        @Override
+        public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+        }
+    }
 }

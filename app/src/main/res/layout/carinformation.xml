@@ -4,21 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#499BF7"
-        android:gravity="center">
+        android:background="#499BF7">
 
+        <ImageView
+            android:id="@+id/carlist_back"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="汽车信息"
 
             />
 
+        <Button
+            android:id="@+id/car_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:text="保存" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <ScrollView
@@ -524,14 +537,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@android:color/black"></View>
-
-            <Button
-                android:id="@+id/car_save"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="保存"
-
-                />
 
 
         </LinearLayout>
