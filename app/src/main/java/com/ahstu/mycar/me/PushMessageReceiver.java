@@ -59,6 +59,7 @@ public class PushMessageReceiver extends BroadcastReceiver {
                 if(s.contains("车友接受了位置共享")){
                     shareLocationMessage.setShareconnect(true);
                     shareLocationMessage.setFirstconnect(true);
+                    shareLocationMessage.setObjection(0);
                 }
             }
             

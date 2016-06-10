@@ -36,6 +36,7 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
     private BmobPushManager bmobPush;
     private BmobQuery<BmobInstallation> moblie_id;
     private ShareLocationMessage shareLocationMessage;
+    private SharedPreferences sp;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,9 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
         friendList = (ListView) findViewById(R.id.music_search_listview);
         bt_shareLocation = (Button) findViewById(R.id.bt_music_download);
 
+        //获取当前用户
+        sp = getSharedPreferences("User", MODE_PRIVATE);
+        
         //推送查询
         bmobPush = new BmobPushManager(SearchFriendActivity.this);
         moblie_id = BmobInstallation.getQuery();//查询设备表
@@ -65,14 +69,19 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
                 namestring = friendName.getText().toString();
                 BmobQuery<User> friendquery = new BmobQuery<User>();
                 friendquery.addWhereContains("username", namestring);//对歌曲名字进行模糊查询
+                friendquery.addWhereNotEqualTo("username", sp.getString("name", ""));
                 friendquery.findObjects(SearchFriendActivity.this, new FindListener<User>() {
                     @Override
                     public void onSuccess(List<User> list) {
-                        userList = list;
-                        carFriendAdapter = new CarFriendAdapter(SearchFriendActivity.this, list);
-                        carFriendAdapter.onListener(SearchFriendActivity.this);
-                        friendList.setAdapter(carFriendAdapter);
-                        Toast.makeText(SearchFriendActivity.this, "search success", Toast.LENGTH_SHORT).show();
+                        if (list.size() >= 1) {
+                            userList = list;
+                            carFriendAdapter = new CarFriendAdapter(SearchFriendActivity.this, list);
+                            carFriendAdapter.onListener(SearchFriendActivity.this);
+                            friendList.setAdapter(carFriendAdapter);
+                            Toast.makeText(SearchFriendActivity.this, "search success", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SearchFriendActivity.this, "搜索的车友不存在", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -87,7 +96,6 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
     @Override
     public void onAdpterClick(int postion) {
         //查询本机登录的用户名和手机id
-        SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
         String name = sp.getString("name", "");
         String mobileid=BmobInstallation.getInstallationId(this);
         //进行消息推送
