@@ -9,12 +9,16 @@ import android.util.Log;
 import android.view.View;
 
 import com.baidu.navisdk.adapter.BNRouteGuideManager;
+import com.baidu.navisdk.adapter.BNRouteGuideManager.CustomizedLayerItem;
 import com.baidu.navisdk.adapter.BNRouteGuideManager.OnNavigationListener;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
 import com.baidu.navisdk.adapter.BNaviBaseCallbackModel;
 import com.baidu.navisdk.adapter.BaiduNaviCommonModule;
 import com.baidu.navisdk.adapter.NaviModuleFactory;
 import com.baidu.navisdk.adapter.NaviModuleImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 诱导界面
@@ -168,16 +172,16 @@ public class BDStationGuideActivity extends Activity {
     }
 
     private void addCustomizedLayerItems() {
-//		List<CustomizedLayerItem> items = new ArrayList<CustomizedLayerItem>();
-//		CustomizedLayerItem item1 = null;
-//		if (mBNRoutePlanNode != null) {
-//			/*item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
+        List<CustomizedLayerItem> items = new ArrayList<CustomizedLayerItem>();
+        CustomizedLayerItem item1 = null;
+        if (mBNRoutePlanNode != null) {
+//            item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
 //					mBNRoutePlanNode.getCoordinateType(), getResources().getDrawable(R.drawable.ic_launcher),
 //					CustomizedLayerItem.ALIGN_CENTER);
-//			items.add(item1);
-//
-//			BNRouteGuideManager.getInstance().setCustomizedLayerItems(items);*/
-//		}
+			items.add(item1);
+
+			BNRouteGuideManager.getInstance().setCustomizedLayerItems(items);
+        }
         BNRouteGuideManager.getInstance().showCustomizedLayer(true);
     }
 

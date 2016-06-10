@@ -88,13 +88,13 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private boolean flag = true;
     //共享状态中介
     private ShareLocationMessage shareLocationMessage = new ShareLocationMessage();
-    private Thread querylocationthread;
     private BmobQuery<User> userLocationBmobQuery;
     private Marker mMaker;
     private InfoWindow mInfoWindow;
     private View viewFriend;
     private TextView tv;
     private BitmapDescriptor mBitmap;
+    private boolean isrunning = true;
 
     //获取地图按钮伸缩状态
     public boolean isFlag() {
@@ -123,9 +123,11 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                     button.setText("删除");
                     listener = new InfoWindow.OnInfoWindowClickListener() {
                         public void onInfoWindowClick() {
-
+                            isrunning = false;
+                            shareLocationMessage.setShareconnect(false);
                             mBaiduMap.clear();
                             mBaiduMap.hideInfoWindow();
+
                         }
                     };
                     LatLng ll = marker.getPosition();
@@ -137,96 +139,11 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         });
     }
 
-    //车友位置
-    private void initFriend() {
-        viewFriend = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
-        tv = (TextView) viewFriend.findViewById(R.id.tv_marker);
-        tv.setText("车友");
-        mBitmap = BitmapDescriptorFactory.fromView(tv);
-        LatLng mLatLng = new LatLng(39.915216, 116.410011);
-        MarkerOptions mMarkerOptions = new MarkerOptions().position(mLatLng).icon(mBitmap).zIndex(9).draggable(true);
-        mMaker = (Marker) mBaiduMap.addOverlay(mMarkerOptions);
-        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(mLatLng));
-
-        LatLng latLng = new LatLng(mLatitude, mLongitude);
-        MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
-        mBaiduMap.animateMapStatus(msu);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
-
-        //查询对方位置线程
-        querylocationthread = new Thread() {
-            public void run() {
-                while (true) {
-                    try {
-
-                        //更新我的位置
-                        SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
-                        String name = sp.getString("name", "");
-                        BmobQuery<User> query = new BmobQuery<User>();
-                        query.addWhereEqualTo("username", name);
-                        query.setLimit(1);
-                        query.findObjects(getActivity(), new FindListener<User>() {
-                            @Override
-                            public void onSuccess(List<User> list) {
-                                if (!list.isEmpty()) {
-                                    User user = list.get(0);
-                                    user.setLat(mLatitude);
-                                    user.setLon(mLongitude);
-                                    user.update(getActivity(), user.getObjectId(), new UpdateListener() {
-                                        @Override
-                                        public void onSuccess() {
-                                            Log.i("MapFragment136", "分享位置后更新自己的位置成功");
-                                        }
-
-                                        @Override
-                                        public void onFailure(int i, String s) {
-                                            Log.i("MapFragment142", "分享位置后更新自己的位置失败");
-                                        }
-                                    });
-                                }
-                            }
-
-                            @Override
-                            public void onError(int i, String s) {
-                                Log.i("MapFragment150", "查询失败");
-                            }
-                        });
-
-                        //显示对方位置
-                        userLocationBmobQuery = new BmobQuery<User>();
-                        userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getUsername());
-                        userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
-                            @Override
-                            public void onSuccess(List<User> list) {
-                                if (list != null) {
-                                    User user = list.get(0);
-                                    tv.setText(user.getUsername());
-                                    mBitmap = BitmapDescriptorFactory.fromView(tv);
-                                    mMaker.setIcon(mBitmap);
-                                    LatLng latLng = new LatLng(user.getLat(), user.getLon());
-                                    mMaker.setPosition(latLng);
-                                    mBaiduMap.hideInfoWindow();
-                                }
-                            }
-
-                            @Override
-                            public void onError(int i, String s) {
-                                Log.i("MapFragment201", "查询失败");
-                            }
-                        });
-                        sleep(2000);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
+        
         return view;
     }
 
@@ -349,6 +266,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         mMapView.onDestroy();
+        shareLocationMessage.setShareconnect(false);
     }
 
     @Override
@@ -357,11 +275,122 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         //判断是否建立连接和是否为第一次连接
         if (shareLocationMessage.isShareconnect() && shareLocationMessage.isFirstconnect()) {
             shareLocationMessage.setFirstconnect(false);
+            isrunning = true;
             initFriend();
-            querylocationthread.start();
+
+            new Thread() {
+                public void run() {
+                    while (isrunning) {
+                        try {
+
+                            //更新我的位置
+                            SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
+                            String name = sp.getString("name", "");
+                            BmobQuery<User> query = new BmobQuery<User>();
+                            query.addWhereEqualTo("username", name);
+                            query.setLimit(1);
+                            query.findObjects(getActivity(), new FindListener<User>() {
+                                @Override
+                                public void onSuccess(List<User> list) {
+                                    if (!list.isEmpty()) {
+                                        User user = list.get(0);
+                                        user.setLat(mLatitude);
+                                        user.setLon(mLongitude);
+                                        user.update(getActivity(), user.getObjectId(), new UpdateListener() {
+                                            @Override
+                                            public void onSuccess() {
+                                                Log.i("MapFragment169", "分享位置后更新自己的位置成功");
+                                            }
+
+                                            @Override
+                                            public void onFailure(int i, String s) {
+                                                Log.i("MapFragment174", "分享位置后更新自己的位置失败");
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onError(int i, String s) {
+                                    Log.i("MapFragment182", "查询失败");
+                                }
+                            });
+
+                            //添加共享双方到地图上
+                            userLocationBmobQuery = new BmobQuery<User>();
+                            if (shareLocationMessage.getObjection() == 0) {
+                                //如果是发送请求方
+                                userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getUsername());
+                                userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
+                                    @Override
+                                    public void onSuccess(List<User> list) {
+                                        if (list != null) {
+                                            User user = list.get(0);
+                                            tv.setText(user.getUsername());
+                                            mBitmap = BitmapDescriptorFactory.fromView(tv);
+                                            mMaker.setIcon(mBitmap);
+                                            LatLng latLng = new LatLng(user.getLat(), user.getLon());
+                                            mMaker.setPosition(latLng);
+                                            mBaiduMap.hideInfoWindow();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(int i, String s) {
+                                        Log.i("MapFragment207", "查询失败");
+                                    }
+                                });
+                            } else {
+                                //如果是请求接收方
+                                userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getOther_username());
+                                userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
+                                    @Override
+                                    public void onSuccess(List<User> list) {
+                                        if (list != null) {
+                                            User user = list.get(0);
+                                            tv.setText(user.getUsername());
+                                            mBitmap = BitmapDescriptorFactory.fromView(tv);
+                                            mMaker.setIcon(mBitmap);
+                                            LatLng latLng = new LatLng(user.getLat(), user.getLon());
+                                            mMaker.setPosition(latLng);
+                                            mBaiduMap.hideInfoWindow();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(int i, String s) {
+                                        Log.i("MapFragment229", "查询失败");
+                                    }
+                                });
+
+                            }
+                            sleep(2000);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }.start();
         }
     }
 
+    //车友位置
+    private void initFriend() {
+        viewFriend = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
+        tv = (TextView) viewFriend.findViewById(R.id.tv_marker);
+        tv.setText("车友");
+        mBitmap = BitmapDescriptorFactory.fromView(tv);
+        LatLng mLatLng = new LatLng(39.915216, 116.410011);
+        MarkerOptions mMarkerOptions = new MarkerOptions().position(mLatLng).icon(mBitmap).zIndex(9).draggable(true);
+        mMaker = (Marker) mBaiduMap.addOverlay(mMarkerOptions);
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(mLatLng));
+
+        LatLng latLng = new LatLng(mLatitude, mLongitude);
+        MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+        mBaiduMap.animateMapStatus(msu);
+
+    }
 
     //按钮动画点击监听事件
     @Override

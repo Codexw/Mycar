@@ -171,13 +171,12 @@ public class BDSearchGuideActivity extends Activity {
 
     private void addCustomizedLayerItems() {
         List<CustomizedLayerItem> items = new ArrayList<CustomizedLayerItem>();
-//        CustomizedLayerItem item1 = null;
+        CustomizedLayerItem item1 = null;
         if (mBNRoutePlanNode != null) {
-           /* item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
-                    mBNRoutePlanNode.getCoordinateType(), getResources().getDrawable(R.drawable.ic_launcher),
-                    CustomizedLayerItem.ALIGN_CENTER);
-            items.add(item1);*/
-
+//            item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
+//                    mBNRoutePlanNode.getCoordinateType(), getResources().getDrawable(R.drawable.ic_launcher),
+//                    CustomizedLayerItem.ALIGN_CENTER);
+            items.add(item1);
             BNRouteGuideManager.getInstance().setCustomizedLayerItems(items);
         }
         BNRouteGuideManager.getInstance().showCustomizedLayer(true);
