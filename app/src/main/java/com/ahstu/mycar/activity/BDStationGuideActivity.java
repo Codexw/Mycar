@@ -178,9 +178,9 @@ public class BDStationGuideActivity extends Activity {
 //            item1 = new CustomizedLayerItem(mBNRoutePlanNode.getLongitude(), mBNRoutePlanNode.getLatitude(),
 //					mBNRoutePlanNode.getCoordinateType(), getResources().getDrawable(R.drawable.ic_launcher),
 //					CustomizedLayerItem.ALIGN_CENTER);
-			items.add(item1);
+            items.add(item1);
 
-			BNRouteGuideManager.getInstance().setCustomizedLayerItems(items);
+            BNRouteGuideManager.getInstance().setCustomizedLayerItems(items);
         }
         BNRouteGuideManager.getInstance().showCustomizedLayer(true);
     }

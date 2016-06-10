@@ -165,7 +165,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
         weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
         mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
-        searchFriend= (Button) getActivity().findViewById(R.id.btn_sharelocation);
+        searchFriend = (Button) getActivity().findViewById(R.id.btn_sharelocation);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());

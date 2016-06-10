@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -382,6 +383,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             SQLiteDatabase db = helper.getWritableDatabase();
             db.insert("carinfo", null, values);
             db.close();
+            Log.i("LoginActivity386", "sdsdsdddddddddddddddddd");
             initview();
         }
     }
