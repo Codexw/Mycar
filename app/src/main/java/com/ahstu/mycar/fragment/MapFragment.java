@@ -137,6 +137,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         });
     }
 
+    //车友位置
     private void initFriend() {
         viewFriend = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
         tv = (TextView) viewFriend.findViewById(R.id.tv_marker);
@@ -150,7 +151,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         LatLng latLng = new LatLng(mLatitude, mLongitude);
         MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
         mBaiduMap.animateMapStatus(msu);
-        
+
     }
 
     @Override
