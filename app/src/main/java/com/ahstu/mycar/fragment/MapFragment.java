@@ -3,6 +3,7 @@ package com.ahstu.mycar.fragment;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,13 +11,19 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatCallback;
 import android.support.v7.view.ActionMode;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.bean.User;
+import com.ahstu.mycar.me.ShareLocationMessage;
 import com.ahstu.mycar.ui.MyOrientationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -24,9 +31,13 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
@@ -34,6 +45,10 @@ import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * @author 吴天洛 2016/4/25
@@ -46,12 +61,12 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private BaiduMap mBaiduMap;
     private Button btn_map_normal;
     private Button btn_map_site;
-    private Button btn_map_traffic;
-    private Button btn_map_mylocation;
     private Button btn_map_mode_normal;
     private Button btn_map_mode_following;
     private Button btn_map_mode_compass;
     private Button btn_map_menu;
+    private ImageView iv_map_traffic;
+    private ImageView iv_myLocation;
 
     //定位相关变量
     private LocationClient mLocationClient;
@@ -67,10 +82,19 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private float mCurrentX;
 
     //地图菜单按钮动画
-    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_traffic, R.id.btn_map_mylocation,
-            R.id.btn_map_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site,
+            R.id.btn_map_mode_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
+    //共享状态中介
+    private ShareLocationMessage shareLocationMessage = new ShareLocationMessage();
+    private BmobQuery<User> userLocationBmobQuery;
+    private Marker mMaker;
+    private InfoWindow mInfoWindow;
+    private View viewFriend;
+    private TextView tv;
+    private BitmapDescriptor mBitmap;
+    private boolean isrunning = true;
 
     //获取地图按钮伸缩状态
     public boolean isFlag() {
@@ -89,13 +113,40 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         initClick();
         initLocation();
 
+        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(final Marker marker) {
+                Button button = new Button(getActivity());
+                button.setBackgroundResource(R.drawable.popup);
+                InfoWindow.OnInfoWindowClickListener listener = null;
+                if (marker == mMaker) {
+                    button.setText("删除");
+                    listener = new InfoWindow.OnInfoWindowClickListener() {
+                        public void onInfoWindowClick() {
+                            isrunning = false;
+                            shareLocationMessage.setShareconnect(false);
+                            mBaiduMap.clear();
+                            mBaiduMap.hideInfoWindow();
+
+                        }
+                    };
+                    LatLng ll = marker.getPosition();
+                    mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -147, listener);
+                    mBaiduMap.showInfoWindow(mInfoWindow);
+                }
+                return true;
+            }
+        });
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
+        
         return view;
     }
+
 
     //将按钮放入动画按钮数组
     private void initMapMenu() {
@@ -109,12 +160,11 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         btn_map_menu.setOnClickListener(this);
         btn_map_normal.setOnClickListener(this);
         btn_map_site.setOnClickListener(this);
-        btn_map_traffic.setOnClickListener(this);
-        btn_map_mylocation.setOnClickListener(this);
         btn_map_mode_normal.setOnClickListener(this);
         btn_map_mode_following.setOnClickListener(this);
         btn_map_mode_compass.setOnClickListener(this);
-
+        iv_map_traffic.setOnClickListener(this);
+        iv_myLocation.setOnClickListener(this);
     }
 
     private void ininView() {
@@ -124,15 +174,21 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         mBaiduMap = mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);  //地图比例初始化为500M
         mBaiduMap.setMapStatus(msu);
+        mBaiduMap.setOnMapTouchListener(new BaiduMap.OnMapTouchListener() {
+            @Override
+            public void onTouch(MotionEvent motionEvent) {
+                iv_myLocation.setImageResource(R.mipmap.location);
+            }
+        });
 
         btn_map_menu = (Button) getActivity().findViewById(R.id.btn_map_menu);
         btn_map_normal = (Button) getActivity().findViewById(R.id.btn_map_normal);
         btn_map_site = (Button) getActivity().findViewById(R.id.btn_map_site);
-        btn_map_traffic = (Button) getActivity().findViewById(R.id.btn_map_traffic);
-        btn_map_mylocation = (Button) getActivity().findViewById(R.id.btn_map_mylocation);
         btn_map_mode_normal = (Button) getActivity().findViewById(R.id.btn_map_mode_normal);
         btn_map_mode_following = (Button) getActivity().findViewById(R.id.btn_map_mode_following);
         btn_map_mode_compass = (Button) getActivity().findViewById(R.id.btn_map_mode_compass);
+        iv_map_traffic = (ImageView) getActivity().findViewById(R.id.iv_map_traffic);
+        iv_myLocation = (ImageView) getActivity().findViewById(R.id.iv_loc);
     }
 
     //定位初始化
@@ -175,7 +231,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         }
         //开启方向传感器
         mMyOrientationListener.start();
-
     }
 
     @Override
@@ -183,7 +238,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
         mMapView.onResume();
-
     }
 
     @Override
@@ -197,6 +251,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public void onStop() {
         super.onStop();
+//        qlthread.interrupt();
         //停止地图定位
         mBaiduMap.setMyLocationEnabled(false);
         mLocationClient.stop();
@@ -211,11 +266,130 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         mMapView.onDestroy();
+        shareLocationMessage.setShareconnect(false);
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        //判断是否建立连接和是否为第一次连接
+        if (shareLocationMessage.isShareconnect() && shareLocationMessage.isFirstconnect()) {
+            shareLocationMessage.setFirstconnect(false);
+            isrunning = true;
+            initFriend();
+
+            new Thread() {
+                public void run() {
+                    while (isrunning) {
+                        try {
+
+                            //更新我的位置
+                            SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
+                            String name = sp.getString("name", "");
+                            BmobQuery<User> query = new BmobQuery<User>();
+                            query.addWhereEqualTo("username", name);
+                            query.setLimit(1);
+                            query.findObjects(getActivity(), new FindListener<User>() {
+                                @Override
+                                public void onSuccess(List<User> list) {
+                                    if (!list.isEmpty()) {
+                                        User user = list.get(0);
+                                        user.setLat(mLatitude);
+                                        user.setLon(mLongitude);
+                                        user.update(getActivity(), user.getObjectId(), new UpdateListener() {
+                                            @Override
+                                            public void onSuccess() {
+                                                Log.i("MapFragment169", "分享位置后更新自己的位置成功");
+                                            }
+
+                                            @Override
+                                            public void onFailure(int i, String s) {
+                                                Log.i("MapFragment174", "分享位置后更新自己的位置失败");
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onError(int i, String s) {
+                                    Log.i("MapFragment182", "查询失败");
+                                }
+                            });
+
+                            //添加共享双方到地图上
+                            userLocationBmobQuery = new BmobQuery<User>();
+                            if (shareLocationMessage.getObjection() == 0) {
+                                //如果是发送请求方
+                                userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getUsername());
+                                userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
+                                    @Override
+                                    public void onSuccess(List<User> list) {
+                                        if (list != null) {
+                                            User user = list.get(0);
+                                            tv.setText(user.getUsername());
+                                            mBitmap = BitmapDescriptorFactory.fromView(tv);
+                                            mMaker.setIcon(mBitmap);
+                                            LatLng latLng = new LatLng(user.getLat(), user.getLon());
+                                            mMaker.setPosition(latLng);
+                                            mBaiduMap.hideInfoWindow();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(int i, String s) {
+                                        Log.i("MapFragment207", "查询失败");
+                                    }
+                                });
+                            } else {
+                                //如果是请求接收方
+                                userLocationBmobQuery.addWhereEqualTo("username", shareLocationMessage.getOther_username());
+                                userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
+                                    @Override
+                                    public void onSuccess(List<User> list) {
+                                        if (list != null) {
+                                            User user = list.get(0);
+                                            tv.setText(user.getUsername());
+                                            mBitmap = BitmapDescriptorFactory.fromView(tv);
+                                            mMaker.setIcon(mBitmap);
+                                            LatLng latLng = new LatLng(user.getLat(), user.getLon());
+                                            mMaker.setPosition(latLng);
+                                            mBaiduMap.hideInfoWindow();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(int i, String s) {
+                                        Log.i("MapFragment229", "查询失败");
+                                    }
+                                });
+
+                            }
+                            sleep(2000);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }.start();
+        }
+    }
+
+    //车友位置
+    private void initFriend() {
+        viewFriend = LayoutInflater.from(getActivity()).inflate(R.layout.marker, null);
+        tv = (TextView) viewFriend.findViewById(R.id.tv_marker);
+        tv.setText("车友");
+        mBitmap = BitmapDescriptorFactory.fromView(tv);
+        LatLng mLatLng = new LatLng(39.915216, 116.410011);
+        MarkerOptions mMarkerOptions = new MarkerOptions().position(mLatLng).icon(mBitmap).zIndex(9).draggable(true);
+        mMaker = (Marker) mBaiduMap.addOverlay(mMarkerOptions);
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(mLatLng));
+
+        LatLng latLng = new LatLng(mLatitude, mLongitude);
+        MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+        mBaiduMap.animateMapStatus(msu);
+
     }
 
     //按钮动画点击监听事件
@@ -233,22 +407,14 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
                 bt_animation();
                 break;
-            case R.id.btn_map_traffic:
+            case R.id.iv_map_traffic:
                 if (mBaiduMap.isTrafficEnabled()) {
                     mBaiduMap.setTrafficEnabled(false);
-                    btn_map_traffic.setText("实时交通(off)");
+                    iv_map_traffic.setImageResource(R.drawable.main_icon_roadcondition_off);
                 } else {
-
                     mBaiduMap.setTrafficEnabled(true);
-                    btn_map_traffic.setText("实时交通(on)");
+                    iv_map_traffic.setImageResource(R.drawable.main_icon_roadcondition_on);
                 }
-                bt_animation();
-                break;
-            case R.id.btn_map_mylocation:
-                LatLng latLng = new LatLng(mLatitude, mLongitude);
-
-                MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
-                mBaiduMap.animateMapStatus(msu);
                 bt_animation();
                 break;
             case R.id.btn_map_mode_normal:
@@ -265,8 +431,12 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 break;
 
             case R.id.iv_loc:
-                break;
-            case R.id.tv_bd09ll:
+                LatLng latLng = new LatLng(mLatitude, mLongitude);
+
+                MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+                mBaiduMap.animateMapStatus(msu);
+                bt_animation();
+                iv_myLocation.setImageResource(R.mipmap.location_center);
                 break;
         }
     }

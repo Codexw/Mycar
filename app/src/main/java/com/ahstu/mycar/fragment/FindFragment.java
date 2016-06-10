@@ -24,6 +24,8 @@ import com.ahstu.mycar.activity.BDSearchGuideActivity;
 import com.ahstu.mycar.activity.CarQueryActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
 import com.ahstu.mycar.activity.StationMapActivity;
+import com.ahstu.mycar.me.SearchFriendActivity;
+import com.ahstu.mycar.me.ShareLocationMessage;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -52,10 +54,14 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private ImageView mIvChangeStEn;
     private Button weizhangbutton;
     private Button mBtnStation;
+    private Button searchFriend;
     private double stLat = 0.0;
     private double stLon = 0.0;
     private double enLat = 0.0;
     private double enLon = 0.0;
+
+    private ShareLocationMessage shareLocationMessage = new ShareLocationMessage();
+
     //定位相关变量
     private LocationClient mLocationClient = null;
     private MyLocationListener myLocationListener;
@@ -63,6 +69,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private double mLongitude;
     private Button mBtnSearch = null;
     private String mSDCardPath = null;
+
     //广播变量
     private LocalBroadcastManager broadcastManager1;
     private LocalBroadcastManager broadcastManager2;
@@ -158,6 +165,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
         weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
         mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
+        searchFriend= (Button) getActivity().findViewById(R.id.btn_sharelocation);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());
@@ -175,6 +183,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mBtnSearch.setOnClickListener(this);
         weizhangbutton.setOnClickListener(this);
         mBtnStation.setOnClickListener(this);
+        searchFriend.setOnClickListener(this);
     }
 
     @Override
@@ -273,7 +282,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     enLat = mLatitude;
                     enLon = mLongitude;
                 }
-                if (!str11.isEmpty() && !str22.isEmpty()) {  
+                if (!str11.isEmpty() && !str22.isEmpty()) {
                     if (BaiduNaviManager.isNaviInited()) {
                         routeplanToNavi();
                     }
@@ -293,6 +302,12 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_station:
                 startActivity(new Intent(getActivity(), StationMapActivity.class));
+                break;
+            case R.id.btn_sharelocation:
+                if (shareLocationMessage.isShareconnect()) {
+                    Toast.makeText(getActivity(), "请先关闭当前的位置共享！", Toast.LENGTH_SHORT).show();
+                } else
+                    startActivity(new Intent(getActivity(), SearchFriendActivity.class));
                 break;
         }
     }

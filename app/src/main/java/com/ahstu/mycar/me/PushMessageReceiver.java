@@ -23,6 +23,8 @@ public class PushMessageReceiver extends BroadcastReceiver {
 
     private String s = null, message = null;
     private CarMessage carMessage = new CarMessage();
+    private String friend_name,mobile_id;
+    private ShareLocationMessage shareLocationMessage=new ShareLocationMessage();
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void onReceive(Context context, Intent intent) {
@@ -36,6 +38,16 @@ public class PushMessageReceiver extends BroadcastReceiver {
                 e.printStackTrace();
             }
 
+            if(s.contains("车友发送位置共享请求")){
+                int index=s.lastIndexOf("车友发送位置共享请求");
+                friend_name=s.substring(0,index);
+                mobile_id=s.substring(index+10,s.length());
+                Intent friendShare=new Intent(context,FriendNotificationService.class);
+                friendShare.putExtra("FRIEND_NAME",friend_name);
+                friendShare.putExtra("MOBILE_ID",mobile_id);
+                context.startService(friendShare);
+            }
+            else{
             NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
             Notification notification;
 
@@ -44,7 +56,13 @@ public class PushMessageReceiver extends BroadcastReceiver {
             notification = new Notification.Builder(context).setContentTitle("MyCar").setContentText(s).setTicker(s).setWhen(System.currentTimeMillis()).setDefaults(Notification.DEFAULT_ALL)
                     .setSmallIcon(R.drawable.ic_launcher).build();
             manager.notify(carMessage.getNotificationId(), notification);
-
+                if(s.contains("车友接受了位置共享")){
+                    shareLocationMessage.setShareconnect(true);
+                    shareLocationMessage.setFirstconnect(true);
+                    shareLocationMessage.setObjection(0);
+                }
+            }
+            
         }
     }
 }

@@ -8,6 +8,8 @@ import cn.bmob.v3.BmobUser;
  */
 public class User extends BmobUser {
     private String myInstallation;
+    private double mLat;
+    private double mLon;
 
     public String getMyInstallation() {
         return myInstallation;
@@ -15,5 +17,21 @@ public class User extends BmobUser {
 
     public void setMyInstallation(String myInstallation) {
         this.myInstallation = myInstallation;
+    }
+
+    public double getLat() {
+        return mLat;
+    }
+
+    public void setLat(double lat) {
+        mLat = lat;
+    }
+
+    public double getLon() {
+        return mLon;
+    }
+
+    public void setLon(double lon) {
+        mLon = lon;
     }
 }

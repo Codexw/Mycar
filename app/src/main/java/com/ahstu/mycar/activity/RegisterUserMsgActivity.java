@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.listener.SaveListener;
@@ -29,7 +33,10 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
     private EditText register_password;
     private EditText register_password_again;
     private Button register_button;
-
+    private LocationClient mLocationClient;
+    private MyLocationListener myLocationListener;
+    private double mLatitude;
+    private double mLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,21 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
         setContentView(R.layout.activity_register_user_msg);
         initView();
         initClick();
+        initLocation();
         this.context = this;
+    }
+
+    private void initLocation() {
+        mLocationClient = new LocationClient(this);
+        myLocationListener = new MyLocationListener();
+        mLocationClient.registerLocationListener(myLocationListener);
+
+        LocationClientOption option = new LocationClientOption();
+        option.setCoorType("bd09ll"); // 返回百度经纬度坐标系 ：bd09ll
+        option.setIsNeedAddress(true); // 设置是否需要地址信息，默认为无地址
+        option.setOpenGps(true);
+        option.setScanSpan(1000);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
+        mLocationClient.setLocOption(option);//将上面option中的设置加载
     }
 
     private void initClick() {
@@ -79,6 +100,8 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
                     user.setPassword(register_password.getText().toString());
                     user.setMobilePhoneNumber(register_phone_num);
                     user.setMyInstallation(BmobInstallation.getInstallationId(RegisterUserMsgActivity.this));
+                    user.setLat(mLatitude);
+                    user.setLon(mLongitude);
                     user.signUp(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
@@ -106,4 +129,30 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!mLocationClient.isStarted()) {
+            mLocationClient.start();
+        }
+    }
+
+    //退出程序时关闭定位
+    @Override
+    public void onStop() {
+        super.onStop();
+        //停止地图定位
+        mLocationClient.stop();
+    }
+
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+    }
 }
