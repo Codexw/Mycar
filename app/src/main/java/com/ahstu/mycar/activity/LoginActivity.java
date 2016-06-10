@@ -1,12 +1,16 @@
 package com.ahstu.mycar.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,6 +26,10 @@ import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.bean.order;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import cn.bmob.v3.BmobInstallation;
@@ -36,6 +44,7 @@ import cn.bmob.v3.listener.UpdateListener;
  *         功能：登录界面，用于登录
  */
 public class LoginActivity extends Activity implements View.OnClickListener {
+    ProgressDialog progress;
     private long exitTime = 0;
     private Context context;
     private EditText et_username;
@@ -79,6 +88,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
+
+
                 if (et_username.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
                 } else if (et_password.getText().toString().isEmpty()) {
@@ -90,7 +101,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     user.login(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
-
+                            progress = new ProgressDialog(LoginActivity.this);
+                            progress.setMessage("正在登陆...");
+                            progress.setCanceledOnTouchOutside(false);
+                            progress.show();
                             //更新当前登录用户的设备号
                             BmobQuery<User> queryInstallation = new BmobQuery<User>();
                             queryInstallation.addWhereEqualTo("username", et_username.getText().toString());
@@ -127,78 +141,35 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             query.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
                                 @Override
                                 public void onSuccess(List<Carinfomation> list) {
-                                    //打开数据库，存放在本地数据库
-                                    DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
-                                    SQLiteDatabase db = helper.getWritableDatabase();
 
                                     for (int i = 0; i < list.size(); i++) {
                                         Carinfomation carinfomation = list.get(i);
-                                        ContentValues value = new ContentValues();
-                                        value.put("car_number", carinfomation.getCar_number());
-                                        value.put("car_brand", carinfomation.getCar_brand());
-                                        value.put("car_model", carinfomation.getCar_model());
-                                        value.put("car_sign", carinfomation.getCar_sign()); //圖片加載出現bug，由於網絡問題
-                                        value.put("car_enginerno", carinfomation.getCar_enginerno());
-                                        value.put("car_level", carinfomation.getCar_level());
-                                        value.put("car_mile", carinfomation.getCar_mile());
-                                        value.put("car_gas", carinfomation.getCar_gas());
-                                        value.put("car_enginerstate", carinfomation.getCar_enginerstate());
-                                        value.put("car_shiftstate", carinfomation.getCar_shiftstate());
-                                        value.put("car_light", carinfomation.getCar_light());
-                                        value.put("car_frame", carinfomation.getCar_frame());
-                                        value.put("car_box", carinfomation.getCar_box());
-                                        if (carinfomation.getCar_start() == false) {
-                                            value.put("car_start", 0);
-                                        } else {
-                                            value.put("car_start", 1);
-                                        }
-                                        if (carinfomation.getCar_door() == false) {
-                                            value.put("car_door", 0);
+                                        new Asyntask().execute(carinfomation);
 
-                                        } else {
-                                            value.put("car_door", 1);
 
-                                        }
-                                        if (carinfomation.getCar_lock() == false) {
-
-                                            value.put("car_lock", 0);
-
-                                        } else {
-                                            value.put("car_lock", 1);
-
-                                        }
-
-                                        if (carinfomation.getCar_air() == false) {
-
-                                            value.put("car_air", 0);
-                                        } else {
-                                            value.put("car_air", 1);
-
-                                        }
-                                        db.insert("carinfo", null, value);
                                     }
-                                    db.close();
 
-                                    SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
-                                    DatabaseHelper data = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
-                                    SQLiteDatabase sql = data.getReadableDatabase();
-                                    Cursor cursor = sql.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
-                                    if (cursor != null) {
-                                        if (cursor.moveToFirst()) {
-                                            SharedPreferences.Editor editer = share.edit();
-                                            editer.putInt("position", 0);
-                                            editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
-                                            editer.commit();
-                                            // Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
-                                        }
 
-                                    } else {
-
-                                        SharedPreferences.Editor editer = share.edit();
-                                        editer.putInt("position", 0);
-                                        editer.putString("number", "");
-                                        editer.commit();
-                                    }
+//                                    SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
+//                                    DatabaseHelper data = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+//                                    SQLiteDatabase sql = data.getReadableDatabase();
+//                                    Cursor cursor = sql.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
+//                                    if (cursor != null) {
+//                                        if (cursor.moveToFirst()) {
+//                                            SharedPreferences.Editor editer = share.edit();
+//                                            editer.putInt("position", 0);
+//                                            editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
+//                                            editer.commit();
+//                                            // Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
+//                                        }
+//
+//                                    } else {
+//
+//                                        SharedPreferences.Editor editer = share.edit();
+//                                        editer.putInt("position", 0);
+//                                        editer.putString("number", "");
+//                                        editer.commit();
+//                                    }
 
 
                                 }
@@ -209,7 +180,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                 }
 
                             });
-
 
                             //从服务器获取订单信息
                             BmobQuery<order> orderquery = new BmobQuery<order>();
@@ -229,13 +199,15 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                         values.put("username", user.getUsername().toString());
                                         values.put("ctype", order.getCtype());
                                         values.put("gascount", order.getGascount());
-                                        values.put("gasprice", order.getGasprice());
                                         values.put("countprice", order.getCountprice());
+                                        values.put("gasprice", order.getGasprice());
                                         values.put("time", order.getTime());
                                         db.insert("gasorder", null, values);
 
                                     }
+                                    progress.dismiss();
                                     db.close();
+
                                 }
 
                                 @Override
@@ -252,13 +224,17 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             editor.putString("name", et_username.getText().toString());
                             editor.putString("password", et_password.getText().toString());
                             editor.commit();
+
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+                            
 
                         }
 
 
                         @Override
                         public void onFailure(int i, String s) {
+
                             if (i == 9016) {
                                 Toast.makeText(LoginActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
                             } else if (i == 101) {
@@ -301,4 +277,112 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         return super.onKeyDown(keyCode, event);
     }
 
+    public Bitmap getPicture(String path) {
+        Bitmap bm = null;
+        try {
+            URL url = new URL(path);
+            URLConnection conn = url.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            bm = BitmapFactory.decodeStream(is);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return bm;
+    }
+
+    void initview() {
+        SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
+        DatabaseHelper data = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+        SQLiteDatabase sql = data.getReadableDatabase();
+        Cursor cursor = sql.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                SharedPreferences.Editor editer = share.edit();
+                editer.putInt("position", 0);
+                editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
+                editer.commit();
+                // Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
+            }
+
+        } else {
+
+            SharedPreferences.Editor editer = share.edit();
+            editer.putInt("position", 0);
+            editer.putString("number", "");
+            editer.commit();
+        }
+
+        //data.close();
+        sql.close();
+        cursor.close();
+
+    }
+
+    class Asyntask extends AsyncTask<Carinfomation, Void, ContentValues> {
+
+        @Override
+        protected ContentValues doInBackground(Carinfomation... params) {
+            Carinfomation carinfomation = params[0];
+            ContentValues value = new ContentValues();
+            value.put("car_number", carinfomation.getCar_number());
+            value.put("car_brand", carinfomation.getCar_brand());
+            value.put("car_model", carinfomation.getCar_model());
+            // value.put("car_sign", carinfomation.getCar_sign()); //圖片加載出現bug，由於網絡問題
+            value.put("car_enginerno", carinfomation.getCar_enginerno());
+            value.put("car_level", carinfomation.getCar_level());
+            value.put("car_mile", carinfomation.getCar_mile());
+            value.put("car_gas", carinfomation.getCar_gas());
+            value.put("car_enginerstate", carinfomation.getCar_enginerstate());
+            value.put("car_shiftstate", carinfomation.getCar_shiftstate());
+            value.put("car_light", carinfomation.getCar_light());
+            value.put("car_frame", carinfomation.getCar_frame());
+            value.put("car_box", carinfomation.getCar_box());
+            if (carinfomation.getCar_start() == false) {
+                value.put("car_start", 0);
+            } else {
+                value.put("car_start", 1);
+            }
+            if (carinfomation.getCar_door() == false) {
+                value.put("car_door", 0);
+
+            } else {
+                value.put("car_door", 1);
+
+            }
+            if (carinfomation.getCar_lock() == false) {
+
+                value.put("car_lock", 0);
+
+            } else {
+                value.put("car_lock", 1);
+
+            }
+
+            if (carinfomation.getCar_air() == false) {
+
+                value.put("car_air", 0);
+            } else {
+                value.put("car_air", 1);
+
+            }
+            Bitmap bitmap = getPicture(carinfomation.getCar_sign());
+            final ByteArrayOutputStream os = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+            value.put("car_sign", os.toByteArray());
+
+
+            return value;
+        }
+
+        @Override
+        protected void onPostExecute(ContentValues values) {
+            DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+            SQLiteDatabase db = helper.getWritableDatabase();
+            db.insert("carinfo", null, values);
+            db.close();
+            initview();
+        }
+    }
 }

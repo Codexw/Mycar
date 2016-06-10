@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -52,6 +54,7 @@ public class CarinformationActivity extends Activity {
     TextView car_frame;
     TextView car_box;
     Button car_save;
+    ImageView cancel;
     int countp;
     String number;
     @Override
@@ -61,6 +64,12 @@ public class CarinformationActivity extends Activity {
         //初始化汽车信息里面的组件
         initview();
         //给组件赋值
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Intent intent = getIntent();
         final Bundle bundle = intent.getExtras();
         final String s = bundle.getString("car_sign").toString();
@@ -170,29 +179,30 @@ public class CarinformationActivity extends Activity {
                     });
 
                     //将汽车信息保存在本地数据库中
-                    DatabaseHelper helper = new DatabaseHelper(CarinformationActivity.this, "node.db", null, 1);
-                    SQLiteDatabase db = helper.getWritableDatabase();
-                    ContentValues value = new ContentValues();
-                    value.put("car_number", bundle.getString("car_number"));
-                    value.put("car_sign", bundle.getString("car_sign"));
-                    value.put("car_brand", bundle.getString("car_brand"));
-                    value.put("car_model", bundle.getString("car_model"));
-                    value.put("car_enginerno", bundle.getString("car_enginerno"));
-                    value.put("car_frame", bundle.getString("car_frame"));
-                    value.put("car_level", bundle.getString("car_level"));
-                    value.put("car_mile", bundle.getInt("car_mile"));
-                    value.put("car_gas", bundle.getInt("car_gas"));
-                    value.put("car_box", bundle.getInt("car_box"));
-                    value.put("car_enginerstate", bundle.getString("car_enginerstate"));
-                    value.put("car_shiftstate", bundle.getString("car_shiftstate"));
-                    value.put("car_light", bundle.getString("car_light"));
-                    value.put("car_start", bundle.getBoolean("car_start"));
-                    value.put("car_door", bundle.getBoolean("car_door"));
-                    value.put("car_lock", bundle.getBoolean("car_lock"));
-                    value.put("car_air", bundle.getBoolean("car_air"));
-                    long a = db.insert("carinfo", null, value);
-                    Toast.makeText(CarinformationActivity.this, a + "", Toast.LENGTH_SHORT).show();
-
+//                    DatabaseHelper helper = new DatabaseHelper(CarinformationActivity.this, "node.db", null, 1);
+//                    SQLiteDatabase db = helper.getWritableDatabase();
+//                    ContentValues value = new ContentValues();
+//                    value.put("car_number", bundle.getString("car_number"));
+//                    value.put("car_sign", bundle.getString("car_sign"));
+//                    value.put("car_brand", bundle.getString("car_brand"));
+//                    value.put("car_model", bundle.getString("car_model"));
+//                    value.put("car_enginerno", bundle.getString("car_enginerno"));
+//                    value.put("car_frame", bundle.getString("car_frame"));
+//                    value.put("car_level", bundle.getString("car_level"));
+//                    value.put("car_mile", bundle.getInt("car_mile"));
+//                    value.put("car_gas", bundle.getInt("car_gas"));
+//                    value.put("car_box", bundle.getInt("car_box"));
+//                    value.put("car_enginerstate", bundle.getString("car_enginerstate"));
+//                    value.put("car_shiftstate", bundle.getString("car_shiftstate"));
+//                    value.put("car_light", bundle.getString("car_light"));
+//                    value.put("car_start", bundle.getBoolean("car_start"));
+//                    value.put("car_door", bundle.getBoolean("car_door"));
+//                    value.put("car_lock", bundle.getBoolean("car_lock"));
+//                    value.put("car_air", bundle.getBoolean("car_air"));
+//                    long a = db.insert("carinfo", null, value);
+//                    Toast.makeText(CarinformationActivity.this, a + "", Toast.LENGTH_SHORT).show();
+                    //使用异步把数据保存在本地
+                    new Asytask().execute(bundle);
 
                     new Thread() {
                         @Override
@@ -233,6 +243,7 @@ public class CarinformationActivity extends Activity {
         car_lock = (TextView) findViewById(R.id.car_lock);
         car_frame = (TextView) findViewById(R.id.car_frame);
         car_box = (TextView) findViewById(R.id.car_box);
+        cancel = (ImageView) findViewById(R.id.carlist_back);
         context = this;
     }
 
@@ -253,5 +264,45 @@ public class CarinformationActivity extends Activity {
         return bm;
     }
 
+    //使用异步加载把数据保存在本地数据库中
+    class Asytask extends AsyncTask<Bundle, Void, ContentValues> {
+
+        @Override
+        protected ContentValues doInBackground(Bundle... params) {
+            Bundle bundle = params[0];
+            ContentValues value = new ContentValues();
+            value.put("car_number", bundle.getString("car_number"));
+            value.put("car_sign", bundle.getString("car_sign"));
+            value.put("car_brand", bundle.getString("car_brand"));
+            value.put("car_model", bundle.getString("car_model"));
+            value.put("car_enginerno", bundle.getString("car_enginerno"));
+            value.put("car_frame", bundle.getString("car_frame"));
+            value.put("car_level", bundle.getString("car_level"));
+            value.put("car_mile", bundle.getInt("car_mile"));
+            value.put("car_gas", bundle.getInt("car_gas"));
+            value.put("car_box", bundle.getInt("car_box"));
+            value.put("car_enginerstate", bundle.getString("car_enginerstate"));
+            value.put("car_shiftstate", bundle.getString("car_shiftstate"));
+            value.put("car_light", bundle.getString("car_light"));
+            value.put("car_start", bundle.getBoolean("car_start"));
+            value.put("car_door", bundle.getBoolean("car_door"));
+            value.put("car_lock", bundle.getBoolean("car_lock"));
+            value.put("car_air", bundle.getBoolean("car_air"));
+            Bitmap bitmap = getPicture(bundle.getString("car_sign").toString());
+            final ByteArrayOutputStream os = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+            value.put("car_sign", os.toByteArray());
+            return value;
+        }
+
+        @Override
+        protected void onPostExecute(ContentValues values) {
+            DatabaseHelper helper = new DatabaseHelper(CarinformationActivity.this, "node.db", null, 1);
+            SQLiteDatabase db = helper.getWritableDatabase();
+            db.insert("carinfo", null, values);
+            db.close();
+            // super.onPostExecute(values);
+        }
+    }
 
 }

@@ -13,7 +13,7 @@ public class order extends BmobObject {
     private String ctype;
     private Double gascount;
     private Double gasprice;
-    private Double countprice;
+    private String countprice;
 
     public User getUser() {
         return user;
@@ -63,11 +63,11 @@ public class order extends BmobObject {
         this.gasprice = gasprice;
     }
 
-    public Double getCountprice() {
+    public String getCountprice() {
         return countprice;
     }
 
-    public void setCountprice(Double countprice) {
+    public void setCountprice(String countprice) {
         this.countprice = countprice;
     }
 

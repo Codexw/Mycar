@@ -4,10 +4,12 @@ package com.ahstu.mycar.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -52,16 +54,22 @@ public class ProvinceListActivity extends Activity {
 
         lv_list = (ListView) findViewById(R.id.lv_1ist);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);
-        //refreshLayout.setColorSchemeColors(R.color.);
+//        refreshLayout.setColorSchemeColors(R.color.);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mAdapter = new ListAdapter(ProvinceListActivity.this, getData2());
-                lv_list.setAdapter(mAdapter);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new ListAdapter(ProvinceListActivity.this, getData2());
+                        lv_list.setAdapter(mAdapter);
+                        refreshLayout.setRefreshing(false);
+                    }
+                }, 2000);
             }
         });
-//        mAdapter = new ListAdapter(this, getData2());
-//        lv_list.setAdapter(mAdapter);
+        mAdapter = new ListAdapter(this, getData2());
+        lv_list.setAdapter(mAdapter);
         //给Listview添加监听器
         lv_list.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -76,6 +84,21 @@ public class ProvinceListActivity extends Activity {
 
                 intent.setClass(ProvinceListActivity.this, CityListActivity.class);
                 startActivityForResult(intent, 20);
+            }
+        });
+        lv_list.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0) {
+                    refreshLayout.setEnabled(true);
+                } else {
+                    refreshLayout.setEnabled(false);
+                }
             }
         });
 

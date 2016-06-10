@@ -1,11 +1,13 @@
 package com.ahstu.mycar.bean;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by xuning on 2016/6/3.
  */
 public class carmodel {
     String s;
-    String sign;
+    Bitmap sign;
 
     public String getS() {
         return s;
@@ -15,11 +17,11 @@ public class carmodel {
         this.s = s;
     }
 
-    public String getSign() {
+    public Bitmap getSign() {
         return sign;
     }
 
-    public void setSign(String sign) {
+    public void setSign(Bitmap sign) {
         this.sign = sign;
     }
 }

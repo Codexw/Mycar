@@ -24,6 +24,7 @@ import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.bean.order;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -117,11 +118,18 @@ public class GasorderActivity extends Activity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (editText.getText().toString().equals("")) {
                     count.setText("0");
+                } else if (editText.getText().toString().startsWith(".")) {
+                    Toast.makeText(GasorderActivity.this, "输入格式不正确", Toast.LENGTH_SHORT).show();
+
                 } else {
                     String ss = gas_price.getText().toString().trim();
-                    double sum = Double.valueOf(ss.substring(0, ss.length() - 3));
-                    double cot = Double.valueOf(editText.getText().toString().trim());
-                    count.setText(String.valueOf(sum * cot));
+                    double sum = Double.parseDouble(ss.substring(0, ss.length() - 3));
+                    double cot = Double.parseDouble(editText.getText().toString().trim());
+                    NumberFormat format = NumberFormat.getCurrencyInstance();
+                    format.setMaximumFractionDigits(2);
+                    format.setMinimumFractionDigits(1);
+                    count.setText(format.format(sum * cot));
+                 
                 }
             }
 
@@ -164,7 +172,7 @@ public class GasorderActivity extends Activity {
                     String b = editText.getText().toString();
                     values.put("gascount", Double.valueOf(b));
                     values.put("carnumber", carnumber);
-                    values.put("countprice", Double.valueOf(count.getText().toString()));
+                    values.put("countprice", count.getText().toString());
                     data.insert("gasorder", null, values);
                     data.close();
                     //订单信息保存在服务器中
@@ -176,7 +184,7 @@ public class GasorderActivity extends Activity {
                     order.setGasprice(Double.valueOf(a.substring(0, a.length() - 3)));
                     order.setCarnumber(carnumber);
                     order.setGascount(Double.valueOf(b));
-                    order.setCountprice(Double.valueOf(count.getText().toString()));
+                    order.setCountprice(count.getText().toString());
                     order.setTime(time);
                     order.save(GasorderActivity.this, new SaveListener() {
                         @Override

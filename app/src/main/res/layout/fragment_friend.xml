@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.v4.widget.SwipeRefreshLayout--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:id="@+id/carfresh"--><!--&gt;-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -40,15 +40,25 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <com.ahstu.mycar.ui.PullToRefreshLayout
+            android:id="@+id/refresh_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <include layout="@layout/allview_refresh_head" />
+
+            <com.ahstu.mycar.ui.PullableScrollow
+                android:id="@+id/scroview"
+            android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
         <RelativeLayout
             android:id="@+id/carcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/centre_layout"
@@ -462,7 +472,9 @@
             </LinearLayout>
 
         </RelativeLayout>
-        </ScrollView>
-
+            </com.ahstu.mycar.ui.PullableScrollow>
+            <!--<include layout="@layout/allview_load_more" />-->
+        </com.ahstu.mycar.ui.PullToRefreshLayout>
     </LinearLayout>
 </RelativeLayout>
+ 
