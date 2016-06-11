@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.MeCarActivity;
 import com.ahstu.mycar.bean.carmodel;
-import com.ahstu.mycar.sql.ForListViewImage;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -29,7 +28,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class RadioAdapter extends BaseAdapter {
-    private ForListViewImage forListViewImage;
+
 
     private LayoutInflater inflater;
     private ArrayList<carmodel> list;
@@ -41,7 +40,7 @@ public class RadioAdapter extends BaseAdapter {
         this.content = content;
         this.list = list;
         inflater = LayoutInflater.from(content);
-        forListViewImage = new ForListViewImage();
+
 
     }
 
@@ -85,7 +84,6 @@ public class RadioAdapter extends BaseAdapter {
 
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent();
                 intent.setClass(content, MeCarActivity.class);
                 Bundle bundle = new Bundle();
@@ -93,12 +91,11 @@ public class RadioAdapter extends BaseAdapter {
                 Toast.makeText(content, list.get(position).getS(), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bundle);
                 content.startActivity(intent);
-
             }
         });
 
-        // holder.carpicture.setImageBitmap(getPicture(list.get(position).getSign()));
-        forListViewImage.showImageAsyncTask(holder.carpicture, list.get(position).getSign());
+        holder.carpicture.setImageBitmap(list.get(position).getSign());
+        //forListViewImage.showImageAsyncTask(holder.carpicture, list.get(position).getSign());
 
         holder.selectBtn
                 .setOnCheckedChangeListener(new OnCheckedChangeListener() {

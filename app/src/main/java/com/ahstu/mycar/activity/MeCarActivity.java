@@ -112,19 +112,10 @@ public class MeCarActivity extends Activity {
             mecar_enginerstate.setText(cursor.getString(cursor.getColumnIndex("car_enginerstate")));
             mecar_shiftstate.setText(cursor.getString(cursor.getColumnIndex("car_shiftstate")));
             mecar_light.setText(cursor.getString(cursor.getColumnIndex("car_light")));
-            final String url = cursor.getString(cursor.getColumnIndex("car_sign"));
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    final Bitmap bitmap = getPicture(url);
-                    mecar_sign.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mecar_sign.setImageBitmap(bitmap);
-                        }
-                    });
-                }
-            }).start();
+            byte[] blob = cursor.getBlob(cursor.getColumnIndex("car_sign"));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+            mecar_sign.setImageBitmap(bitmap);
+
             if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
                 mecar_start.setText("已关闭");
             } else {
@@ -158,9 +149,10 @@ public class MeCarActivity extends Activity {
         query.findObjects(this, new FindListener<Carinfomation>() {
             @Override
             public void onSuccess(List<Carinfomation> list) {
-
-                objectId = list.get(0).getObjectId();
-                Toast.makeText(MeCarActivity.this, "查询成功" + objectId, Toast.LENGTH_SHORT).show();
+                if (list.size() > 0) {
+                    objectId = list.get(0).getObjectId();
+                    Toast.makeText(MeCarActivity.this, "查询成功" + objectId, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -190,7 +182,6 @@ public class MeCarActivity extends Activity {
                             public void onSuccess() {
                                 finish();
                             }
-
                             @Override
                             public void onFailure(int i, String s) {
 

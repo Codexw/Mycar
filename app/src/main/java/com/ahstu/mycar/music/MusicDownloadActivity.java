@@ -38,7 +38,7 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
     private ListView musicdownlist;
     private Button bt_music_down;
     private List<MusicMessage> musicMessageArrayList;
-//    private ArrayList<String> al = new ArrayList<String>();
+    //    private ArrayList<String> al = new ArrayList<String>();
     private DownLoadCompleteReceiver receiver;
 
     @Override

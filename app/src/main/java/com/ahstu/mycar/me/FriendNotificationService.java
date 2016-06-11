@@ -22,7 +22,7 @@ import cn.bmob.v3.BmobQuery;
 /**
  * Created by Administrator on 2016/6/6.
  */
-public class FriendNotificationService extends Service{
+public class FriendNotificationService extends Service {
 
     private final static String SHARELOCATION = "Sharelocation";
     private final static int BUTTON_ACCEPT = 1;
@@ -30,18 +30,18 @@ public class FriendNotificationService extends Service{
     private NotificationManager notificationManager;
     private NotificationCompat.Builder mBuilder;//notification构造器
     private Notification share_notification;
-    private String ACTION_FRIEND="com.ahstu.mycar.sharelocation.action";
+    private String ACTION_FRIEND = "com.ahstu.mycar.sharelocation.action";
     private ButtonBroadcastReceiver btReceiver;
-    
+
     private RemoteViews friendremoteviews;
-    
-    private String name,mobileid;
+
+    private String name, mobileid;
 
     private BmobPushManager bmobPush;
     private BmobQuery<BmobInstallation> bmobInstallationBmobQueryid;
     private SharedPreferences person_name;
     private ShareLocationMessage shareLocationMessage;
-    
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -55,7 +55,7 @@ public class FriendNotificationService extends Service{
         initButtonReceiver();
     }
 
-    public void initButtonReceiver(){
+    public void initButtonReceiver() {
         btReceiver = new ButtonBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION_FRIEND);
@@ -63,7 +63,7 @@ public class FriendNotificationService extends Service{
     }
 
     //接受响应事件
-    public void acceptShare(){
+    public void acceptShare() {
         notificationManager.cancel(1);
         //设置对方name，建立连接
         shareLocationMessage.setOther_username(name);
@@ -79,7 +79,7 @@ public class FriendNotificationService extends Service{
     }
 
     //拒绝响应事件
-    public void denyShare(){
+    public void denyShare() {
         notificationManager.cancel(1);
         bmobPush.pushMessage(person_name.getString("name", "") + "车友拒绝了位置共享");
 
@@ -120,9 +120,9 @@ public class FriendNotificationService extends Service{
         bmobInstallationBmobQueryid.addWhereEqualTo("installationId", mobileid);
         bmobPush.setQuery(bmobInstallationBmobQueryid);
         return super.onStartCommand(intent, flags, startId);
-        
+
     }
-    
+
     @Override
     public void onDestroy() {
         super.onDestroy();

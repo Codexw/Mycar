@@ -60,7 +60,7 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
     private MyOrientationListener mMyOrientationListener;
     private float mCurrentX;
 
-    private GeoCoder mSearch = null; // 搜索模块，也可去掉地图模块独立使用
+    private GeoCoder mSearch = null; // 搜索模块
     private InfoWindow mInfoWindow;
 
     private FragmentManager manager;

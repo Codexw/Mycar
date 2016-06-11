@@ -4,8 +4,8 @@ package com.ahstu.mycar.me;
  * Created by Administrator on 2016/6/8.
  */
 public class ShareLocationMessage {
-    private static boolean shareconnect=false;
-    private static boolean firstconnect=false;
+    private static boolean shareconnect = false;
+    private static boolean firstconnect = false;
     private static String username;
     private static String other_username;
     private static int objection;//接收方或是发送方，发送方0，接收方1
@@ -42,8 +42,7 @@ public class ShareLocationMessage {
         ShareLocationMessage.firstconnect = firstconnect;
     }
 
-    
-    
+
     public static boolean isShareconnect() {
         return shareconnect;
     }

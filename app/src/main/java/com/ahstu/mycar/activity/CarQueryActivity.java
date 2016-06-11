@@ -2,6 +2,9 @@ package com.ahstu.mycar.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.me.WeizhangResponseAdapter;
+import com.ahstu.mycar.sql.DatabaseHelper;
 import com.cheshouye.api.client.WeizhangClient;
 import com.cheshouye.api.client.WeizhangIntentService;
 import com.cheshouye.api.client.json.CarInfo;
@@ -60,6 +64,21 @@ public class CarQueryActivity extends Activity {
         weizhangIntent.putExtra("appId", 1702);// 您的appId
         weizhangIntent.putExtra("appKey", "62fdfbce0fd98c355994140f850d2353");// 您的appKey
         startService(weizhangIntent);
+        SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
+        String number = share.getString("number", "");
+        DatabaseHelper helper = new DatabaseHelper(CarQueryActivity.this, "node.db", null, 1);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.query("carinfo", new String[]{"car_number", "car_enginerno", "car_frame"}, "car_number=?", new String[]{number}, null, null, null);
+        while (cursor.moveToNext()) {
+            chepainumber = cursor.getString(cursor.getColumnIndex("car_number")).trim();
+            engine_number = cursor.getString(cursor.getColumnIndex("car_enginerno")).trim();
+            chejia_number = cursor.getString(cursor.getColumnIndex("car_frame")).trim();
+
+        }
+        Log.i("shuchu", "sssssssssss" + chepainumber);
+        Log.i("shuchu", "ssssssssss" + engine_number);
+        Log.i("shuchu", "sssssssssss" + chejia_number);
+        
         //初始化组件
         chaxundi = (TextView) findViewById(R.id.chaxundi);
         chepai = (TextView) findViewById(R.id.chepai);
@@ -119,8 +138,6 @@ public class CarQueryActivity extends Activity {
                     int classno = inputConfig.getClassno();
                     if (engineno == 0) {
                         car.setEngine_no(s);
-
-
                     } else if (engineno < 0) {
                         car.setEngine_no(engine_number);
 
@@ -138,29 +155,15 @@ public class CarQueryActivity extends Activity {
 
                     } else {
                         car.setChejia_no(chejia_number.substring(chejia_number.length() - classno));
-
-
                     }
 
                     car.setChepai_no(chepainumber);
-
-
-//                    Intent intent = new Intent();
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("carInfo", car);
-//                    intent.putExtras(bundle);
-//                    intent.setClass(CarQueryActivity.this, WeizhangResultActivity.class);
-//                    startActivity(intent);
-//                    finish();
 
                     frame.setVisibility(View.VISIBLE);
                     result_null.setVisibility(View.GONE);
                     result_list.setVisibility(View.GONE);
                     result_title.setVisibility(View.GONE);
                     step4(car);
-                    
-
-
                 }
             }
         });
@@ -198,7 +201,6 @@ public class CarQueryActivity extends Activity {
         String cityId = bundle1.getString("city_id");
 
         chaxundi.setText(cityName);
-
         chaxundi.setTag(cityId);
     }
 

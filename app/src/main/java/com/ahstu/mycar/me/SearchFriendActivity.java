@@ -24,7 +24,7 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by Administrator on 2016/6/5.
  */
-public class SearchFriendActivity extends Activity implements FriendAdpterOnItemClick{
+public class SearchFriendActivity extends Activity implements FriendAdpterOnItemClick {
 
     private EditText friendName;
     private Button bt_searchFriend;
@@ -37,19 +37,19 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
     private BmobQuery<BmobInstallation> moblie_id;
     private ShareLocationMessage shareLocationMessage;
     private SharedPreferences sp;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_download);
-        
+
         // 初始化BmobSDK
         Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
         // 使用推送服务时的初始化操作
         BmobInstallation.getCurrentInstallation(this).save();//消息推送
         // 启动推送服务
         BmobPush.startWork(this);
-        
+
         friendName = (EditText) findViewById(R.id.music_search_name);
         friendName.setHint("请输入需要查找的车友姓名");
         bt_searchFriend = (Button) findViewById(R.id.bt_music_search);
@@ -58,11 +58,11 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
 
         //获取当前用户
         sp = getSharedPreferences("User", MODE_PRIVATE);
-        
+
         //推送查询
         bmobPush = new BmobPushManager(SearchFriendActivity.this);
         moblie_id = BmobInstallation.getQuery();//查询设备表
-        
+
         bt_searchFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,15 +97,15 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
     public void onAdpterClick(int postion) {
         //查询本机登录的用户名和手机id
         String name = sp.getString("name", "");
-        String mobileid=BmobInstallation.getInstallationId(this);
+        String mobileid = BmobInstallation.getInstallationId(this);
         //进行消息推送
-        if(userList.get(postion).getMyInstallation()!=null&&userList.get(postion).getMyInstallation().length()>5){
+        if (userList.get(postion).getMyInstallation() != null && userList.get(postion).getMyInstallation().length() > 5) {
             shareLocationMessage.setUsername(userList.get(postion).getUsername());//获取请求对象的name
             moblie_id.addWhereEqualTo("installationId", userList.get(postion).getMyInstallation());
             bmobPush.setQuery(moblie_id);
             bmobPush.pushMessage(name + "车友发送位置共享请求" + mobileid);
-        }else {
-            Toast.makeText(this,"搜索车友未上线，发送位置共享请求失败！",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "搜索车友未上线，发送位置共享请求失败！", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -113,5 +113,5 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
     protected void onDestroy() {
         super.onDestroy();
     }
-    
+
 }

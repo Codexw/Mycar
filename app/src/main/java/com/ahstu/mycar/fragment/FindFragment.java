@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -164,7 +165,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
         weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
         mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
-        searchFriend= (Button) getActivity().findViewById(R.id.btn_sharelocation);
+        searchFriend = (Button) getActivity().findViewById(R.id.btn_sharelocation);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());
@@ -288,11 +289,17 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.weizhangbutton:
-                Intent i = new Intent();
-                i.setClass(getActivity(), CarQueryActivity.class);
-                startActivity(i);
-                break;
+                SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
+                String s = share.getString("number", "");
+                if (s.equals("")) {
+                    Toast.makeText(getActivity(), "请先添加车辆", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent();
+                    i.setClass(getActivity(), CarQueryActivity.class);
+                    startActivity(i);
 
+                }
+                break;
             case R.id.btn_station:
                 startActivity(new Intent(getActivity(), StationMapActivity.class));
                 break;
