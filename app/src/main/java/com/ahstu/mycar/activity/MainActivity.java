@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.fragment.FindFragment;
-import com.ahstu.mycar.fragment.FriendFragment;
+import com.ahstu.mycar.fragment.CarControlFragment;
 import com.ahstu.mycar.fragment.MapFragment;
 import com.ahstu.mycar.fragment.MeInfoFragment;
 import com.ahstu.mycar.me.CarMessage;
@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private TextView[] mTabs;
     private MapFragment mMapFragment;
     private FindFragment mFindFragment;
-    private FriendFragment mFriendFragment;
+    private CarControlFragment mCarControlFragment;
     private MeInfoFragment mMeInfoFragment;
     private Fragment[] mFragments;
     private int index;
@@ -268,15 +268,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private void initTab() {
         mMapFragment = new MapFragment();
         mFindFragment = new FindFragment();
-        mFriendFragment = new FriendFragment();
+        mCarControlFragment = new CarControlFragment();
         mMeInfoFragment = new MeInfoFragment();
-        mFragments = new Fragment[]{mMapFragment, mFindFragment, mFriendFragment, mMeInfoFragment};
+        mFragments = new Fragment[]{mMapFragment, mFindFragment, mCarControlFragment, mMeInfoFragment};
         getSupportFragmentManager().beginTransaction().add(R.id.content_fragment, mMapFragment).
                 add(R.id.content_fragment, mFindFragment).
-                add(R.id.content_fragment, mFriendFragment).
+                add(R.id.content_fragment, mCarControlFragment).
                 add(R.id.content_fragment, mMeInfoFragment).
                 hide(mFindFragment).
-                hide(mFriendFragment).
+                hide(mCarControlFragment).
                 hide(mMeInfoFragment).
                 show(mMapFragment).commit();
     }
