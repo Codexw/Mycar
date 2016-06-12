@@ -415,7 +415,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                     mBaiduMap.setTrafficEnabled(true);
                     iv_map_traffic.setImageResource(R.drawable.main_icon_roadcondition_on);
                 }
-                bt_animation();
                 break;
             case R.id.btn_map_mode_normal:
                 mLocationMode = LocationMode.NORMAL;
@@ -435,7 +434,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
                 mBaiduMap.animateMapStatus(msu);
-                bt_animation();
                 iv_myLocation.setImageResource(R.mipmap.location_center);
                 break;
         }

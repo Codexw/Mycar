@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,7 +26,7 @@ public class CarFriendAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<User> friendNameList;
     private FriendAdpterOnItemClick friendAdpterOnclick;
-    private ArrayList<String> str;
+//    private ArrayList<String> str;
 
     public CarFriendAdapter(Context context, List<User> str) {
         mInflater = LayoutInflater.from(context);
@@ -62,14 +61,14 @@ public class CarFriendAdapter extends BaseAdapter {
         holder.friendName = (TextView) convertView.findViewById(R.id.music_name_item);
 
         holder.bt_share_location = (Button) convertView.findViewById(R.id.bt_music_download);
-        holder.bt_share_location.setText("请求共享位置");
+        holder.bt_share_location.setText("位置请求");
 
         holder.friendName.setText(friendNameList.get(position).getUsername());
         holder.bt_share_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (friendAdpterOnclick != null) {
-                    int which = view.getId();
+//                    int which = view.getId();
                     friendAdpterOnclick.onAdpterClick(position);
 
                 }

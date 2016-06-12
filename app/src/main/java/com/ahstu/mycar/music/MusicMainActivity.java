@@ -63,7 +63,6 @@ public class MusicMainActivity extends Activity {
         tv_newPlaylist = (TextView) this.findViewById(R.id.tv_newPlaylist);
     }
 
-
     public void playListOnclick() {
         tv_newPlaylist.setVisibility(View.VISIBLE);
         al_playlist = MusicUtils.PlaylistList(MusicMainActivity.this);
@@ -75,7 +74,7 @@ public class MusicMainActivity extends Activity {
             map.put("singerName", "");
             listItems.add(map);
         }
-        adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.itemmusic_main_activity, new String[]{"songName", "singerName"}, new int[]{
+        adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_music_main_activity, new String[]{"songName", "singerName"}, new int[]{
                 R.id.tv_songName, R.id.tv_singerName});
         type = PLAYLIST;
         listView.setAdapter(adapter);
@@ -105,16 +104,15 @@ public class MusicMainActivity extends Activity {
                 List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                 for (int i = 0; i < songs.size(); i++) {
                     Map<String, Object> map = new HashMap<String, Object>();
-//					map.put("id", songs.get(i).getSqlId());
-                    map.put("songName", songs.get(i).getName());
+                    map.put("songName", "歌曲名: " + songs.get(i).getName());
                     if (songs.get(i).getSingerName().equals("<unknown>")) {
-                        map.put("singerName", "----");
+                        map.put("singerName", "未知歌手");
                     } else {
-                        map.put("singerName", songs.get(i).getSingerName());
+                        map.put("singerName", "歌手: " + songs.get(i).getSingerName());
                     }
                     listItems.add(map);
                 }
-                adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.itemmusic_main_activity, new String[]{"songName", "singerName"}, new int[]{
+                adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_music_main_activity, new String[]{"songName", "singerName"}, new int[]{
                         R.id.tv_songName, R.id.tv_singerName});
                 type = SONGS_LIST;
                 listView.setAdapter(adapter);
@@ -123,14 +121,15 @@ public class MusicMainActivity extends Activity {
 
         listView.setOnItemClickListener(new OnItemClickListener() {
             Intent it = new Intent();
-            private List<Map<String, Object>> listItems;
 
+            //            private List<Map<String, Object>> listItems;
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 switch (type) {
                     case PLAYLIST:
                         isReturePlaylist = true;
                         it.putExtra("position", position);
+                        it.putExtra("listname", al_playlist.get(position));
                         it.setClass(MusicMainActivity.this, PlaylistSongActivity.class);
                         startActivity(it);
                         break;
@@ -142,7 +141,6 @@ public class MusicMainActivity extends Activity {
                         mService.setSongs(songs);
                         mService.playMusic(songs.get(position).getUrl());
                         break;
-
                 }
             }
         });
@@ -155,12 +153,12 @@ public class MusicMainActivity extends Activity {
         final EditText inputServer = new EditText(MusicMainActivity.this);
         AlertDialog.Builder builder = new AlertDialog.Builder(MusicMainActivity.this);
 
-        builder.setTitle("Input Name").setIcon(android.R.drawable.ic_dialog_info).setView(inputServer).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setTitle("请输入列表名称").setView(inputServer).setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
-        }).setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        }).setPositiveButton("保存", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 String name = inputServer.getText().toString().trim();
                 if (!TextUtils.isEmpty(name)) {
@@ -184,7 +182,7 @@ public class MusicMainActivity extends Activity {
                     it.setClass(MusicMainActivity.this, PlaylistSongActivity.class);
                     startActivity(it);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "列表名不能为空！", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
@@ -224,11 +222,10 @@ public class MusicMainActivity extends Activity {
                 map.put("singerName", "");
                 listItems.add(map);
             }
-            adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.itemmusic_main_activity, new String[]{"id", "songName", "singerName"}, new int[]{R.id.tv_id,
+            adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_music_main_activity, new String[]{"id", "songName", "singerName"}, new int[]{R.id.tv_id,
                     R.id.tv_songName, R.id.tv_singerName});
             listView.setAdapter(adapter);
             isReturePlaylist = false;
         }
     }
-
 }

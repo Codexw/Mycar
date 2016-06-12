@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:Android="http://schemas.android.com/apk/res/android"
-    Android:orientation="horizontal"
     Android:layout_width="fill_parent"
-    Android:layout_height="fill_parent">
+    Android:layout_height="fill_parent"
+    Android:orientation="horizontal">
 
 
     <!-- 图标图片 -->
@@ -10,8 +10,8 @@
         Android:id="@+id/icon"
         Android:layout_width="24dp"
         Android:layout_height="24dp"
-        Android:layout_marginRight="12dp"
-        Android:layout_gravity="center" />
+        Android:layout_gravity="center"
+        Android:layout_marginRight="12dp" />
 
     <!-- 专辑图片 -->
     <ImageView
@@ -22,12 +22,12 @@
 
     <!-- 商品信息 -->
     <LinearLayout
-        Android:orientation="vertical"
         Android:layout_width="wrap_content"
         Android:layout_height="wrap_content"
-        Android:layout_marginTop="6dp"
+        Android:layout_marginBottom="6dp"
         Android:layout_marginLeft="10dp"
-        Android:layout_marginBottom="6dp">
+        Android:layout_marginTop="6dp"
+        Android:orientation="vertical">
 
         <TextView
             Android:id="@+id/songName"

@@ -2,10 +2,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg2"
-    android:orientation="vertical">
+
+    >
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/register_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/blue">
+
+            <ImageView
+                android:id="@+id/iv_register_title_back"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_icon_normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="音乐列表"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -15,14 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="列表" />
+            android:text="歌曲列表" />
 
         <Button
             android:id="@+id/btn_allSongs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="歌曲" />
+            android:text="全部歌曲" />
 
 
     </LinearLayout>
@@ -34,6 +61,7 @@
         android:layout_margin="6dp"
         android:gravity="center"
         android:text="新建列表"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:visibility="gone" />
 
@@ -41,5 +69,6 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    </LinearLayout>
 
 </LinearLayout>

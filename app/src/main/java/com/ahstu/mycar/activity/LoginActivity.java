@@ -105,7 +105,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             progress = new ProgressDialog(LoginActivity.this);
                             progress.setMessage("正在登陆...");
                             progress.setCanceledOnTouchOutside(false);
-                            progress.show();
+                            progress.show();//偶尔会打印出异常
                             //更新当前登录用户的设备号
                             BmobQuery<User> queryInstallation = new BmobQuery<User>();
                             queryInstallation.addWhereEqualTo("username", et_username.getText().toString());

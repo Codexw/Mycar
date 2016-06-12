@@ -97,7 +97,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     public void setAdapter() {
         if (getListItems() != null) {
             listItems = getListItems();//得到适配器数据
-            listViewAdapter = new ListViewAdapter(this, listItems, R.layout.itemplaylist_song_activity); // 创建适配
+            listViewAdapter = new ListViewAdapter(this, listItems, R.layout.item_playlist_song_activity); // 创建适配
             listViewAdapter.setPl_songIds(pl_songIds);//传入列表歌曲id
 //		listview.setAdapter(listViewAdapter);
             song_not_null = true;
@@ -332,8 +332,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             case R.id.imgAdd:
                 if (menuView.isShown())
                     menuView.in();
-                else
+                else {
+                    if (mService.isPlay())
+                        menuView.setIs_play(true);
+                    else
+                        menuView.setIs_play(false);
                     menuView.out();
+                }
                 break;
         }
         onTabIndex(index);
@@ -377,8 +382,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         if (mService.isPlay()) {
             mService.pausePlay();
         }
-
-        Toast.makeText(this, "ondestory", Toast.LENGTH_SHORT).show();
     }
 
     @Override

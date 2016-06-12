@@ -8,6 +8,8 @@
         android:id="@+id/music_name_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
         android:text="item"
         android:textSize="20sp" />
 
@@ -16,5 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/song_download_btstyle"
         android:text="下载" />
 </RelativeLayout>

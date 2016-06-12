@@ -123,8 +123,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-
-        android:background="@drawable/publish_btn_bg"
-        android:src="@drawable/publish_add" />
+        android:src="@drawable/music_menu_btstyle" />
 
 </RelativeLayout>

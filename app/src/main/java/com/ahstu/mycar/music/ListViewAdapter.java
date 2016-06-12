@@ -21,8 +21,6 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<String> songIds;// 全部歌曲的id
     private ArrayList<String> pl_songIds;// 列表歌曲的id
     private int res;// 适配器对应的xml文件资源
-    private boolean mBusy = false;
-//	private ImageLoader mImageLoader;// 异步加载图片类
 
     public ListViewAdapter(Context context, List<Map<String, Object>> listItems, int res) {
         this.context = context;
@@ -31,7 +29,6 @@ public class ListViewAdapter extends BaseAdapter {
         songIds = new ArrayList<String>();
         pl_songIds = new ArrayList<String>();
         this.res = res;
-//		mImageLoader = new ImageLoader(context);
     }
 
     public int getCount() {
@@ -72,27 +69,32 @@ public class ListViewAdapter extends BaseAdapter {
         }
         holder.songName.setText((String) listItems.get(position).get("songName"));
         holder.singerName.setText((String) listItems.get(position).get("singerName"));
-        String urlId;
-        if (pl_songIds.size() > 0) {
-            urlId = pl_songIds.get(position);
-        } else
-            urlId = songIds.get(position);
         holder.albumPicture.setImageResource(R.drawable.audioplayernoartwork);
 
-//		if (!mBusy) {
-//			mImageLoader.DisplayImage(urlId, holder.albumPicture, false);
-//		} else {
-//			mImageLoader.DisplayImage(urlId, holder.albumPicture, true);
-//		}
-
         return view;
+    }
+
+    public void setListItems(List<Map<String, Object>> listItems) {
+        this.listItems = listItems;
+    }
+
+    public void setAddSongIds(ArrayList<String> addSongIds) {
+        this.addSongIds = addSongIds;
+    }
+
+    public void setSongIds(ArrayList<String> songIds) {
+        this.songIds = songIds;
+    }
+
+    public void setPl_songIds(ArrayList<String> pl_songIds) {
+        this.pl_songIds = pl_songIds;
     }
 
     static class ViewHolder {
         ImageView icon;// 放置增加或删除图标
         TextView songName;
         TextView singerName;
-        ImageView albumPicture;// 专辑图片
+        ImageView albumPicture;
 
         public ViewHolder(View view) {
             super();
@@ -101,37 +103,5 @@ public class ListViewAdapter extends BaseAdapter {
             this.singerName = (TextView) view.findViewById(R.id.singerName);
             this.albumPicture = (ImageView) view.findViewById(R.id.albumPicture);
         }
-    }
-
-    public List<Map<String, Object>> getListItems() {
-        return listItems;
-    }
-
-    public void setListItems(List<Map<String, Object>> listItems) {
-        this.listItems = listItems;
-    }
-
-    public ArrayList<String> getAddSongIds() {
-        return addSongIds;
-    }
-
-    public void setAddSongIds(ArrayList<String> addSongIds) {
-        this.addSongIds = addSongIds;
-    }
-
-    public ArrayList<String> getSongIds() {
-        return songIds;
-    }
-
-    public void setSongIds(ArrayList<String> songIds) {
-        this.songIds = songIds;
-    }
-
-    public ArrayList<String> getPl_songIds() {
-        return pl_songIds;
-    }
-
-    public void setPl_songIds(ArrayList<String> pl_songIds) {
-        this.pl_songIds = pl_songIds;
     }
 }

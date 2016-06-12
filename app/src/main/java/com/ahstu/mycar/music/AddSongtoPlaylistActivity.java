@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 @SuppressLint("NewApi")
 public class AddSongtoPlaylistActivity extends Activity {
@@ -84,7 +82,6 @@ public class AddSongtoPlaylistActivity extends Activity {
         btn_back = (Button) findViewById(R.id.back_btn);
     }
 
-
     private void initListener() {
         // 完成添加
         tv_finish.setOnClickListener(new OnClickListener() {
@@ -110,24 +107,21 @@ public class AddSongtoPlaylistActivity extends Activity {
 
                             for (Mp3 tempMp3 : songListForPlaylist) {
                                 long sqlId = tempMp3.getAllSongIndex();
-                                Log.i("PLAYLIST", "CHECK: mp3: " + sqlId + " ADDID: " + addSongs[i]);
+//                                Log.i("PLAYLIST", "CHECK: mp3: " + sqlId + " ADDID: " + addSongs[i]);
                                 if (sqlId == addSongs[i]) {
                                     playListContain = true;
                                     break;
                                 }
                             }
-
                             if (!playListContain) {
                                 tempSong.add(new Long(addSongs[i]));
                             }
                         }
-
                         addSongTemp = new long[tempSong.size()];
                         for (int i = 0; i < tempSong.size(); i++) {
                             addSongTemp[i] = tempSong.get(i);
                         }
                     }
-
                     MusicUtils.addToPlaylist(AddSongtoPlaylistActivity.this, addSongTemp, playlistId);
                 }
                 finish();
@@ -146,7 +140,6 @@ public class AddSongtoPlaylistActivity extends Activity {
             }
         });
     }
-
 
     public void setAdapter() {
 
@@ -198,8 +191,6 @@ public class AddSongtoPlaylistActivity extends Activity {
             }
             listItems.add(map);
         }
-
         return listItems;
     }
-
 }
