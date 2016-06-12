@@ -2,12 +2,14 @@ package com.ahstu.mycar.activity;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -141,7 +143,7 @@ public class GasorderActivity extends Activity {
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 //获取用户名
                 SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
                 String name = sp.getString("name", "");
@@ -158,7 +160,7 @@ public class GasorderActivity extends Activity {
                 String ctype = spinner.getSelectedItem().toString();
 
                 if (editText.getText().toString().equals("")) {
-                    Toast.makeText(GasorderActivity.this, "信息填写完整", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GasorderActivity.this, "请填写预约加油量", Toast.LENGTH_SHORT).show();
 
 
                 } else {
@@ -189,7 +191,10 @@ public class GasorderActivity extends Activity {
                     order.save(GasorderActivity.this, new SaveListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(GasorderActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GasorderActivity.this, "订单已完成", Toast.LENGTH_SHORT).show();
+                            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
+                            finish();
                         }
 
                         @Override
