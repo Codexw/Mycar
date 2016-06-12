@@ -72,7 +72,7 @@ public class CarFriendAdapter extends BaseAdapter {
                 if (friendAdpterOnclick != null) {
                     int which = view.getId();
                     friendAdpterOnclick.onAdpterClick(position);
-                    Log.e("err", ">>>>>>>>>>>>>>>>>>>>>" + which);
+                    Log.e("CarFriendAdapter75", ">>>>>>>>>>>>>>>>>>>>>" + which);
 
                 }
             }
