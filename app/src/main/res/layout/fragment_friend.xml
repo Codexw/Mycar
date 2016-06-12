@@ -8,13 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
         >
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#499BF7">
+            android:background="@color/blue">
 
             <TextView
                 android:id="@+id/car_title"
@@ -33,10 +31,14 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/carcontrol_button"
-                android:layout_width="match_parent"
+                android:id="@+id/carcontrol_text"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="请先添加车辆" />
+                android:gravity="center"
+                android:text="你还没车辆，请先添加车辆"
+                android:textSize="20dp"
+
+                />
 
         </LinearLayout>
 
@@ -147,7 +149,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/background_dark"></View>
+                    android:background="@color/dark_grey"></View>
 
 
                 <LinearLayout
@@ -163,9 +165,10 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
                         android:text="汽车牌照"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/car_set_number"
@@ -175,7 +178,7 @@
                         android:layout_marginRight="5dp"
                         android:gravity="center_vertical"
                         android:text="12346"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
 
                 </RelativeLayout>
@@ -183,7 +186,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/background_dark">
+                    android:background="@color/dark_grey">
 
 
                 </View>
@@ -197,9 +200,10 @@
                         android:id="@+id/car_control_start"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
                         android:text="汽车启动"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         />
 
                     <TextView
@@ -235,7 +239,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/background_dark">
+                    android:background="@color/dark_grey">
 
 
                 </View>
@@ -249,9 +253,10 @@
                         android:id="@+id/car_control_door"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
                         android:text="车门控制"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         />
 
                     <TextView
@@ -288,7 +293,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/background_dark"></View>
+                    android:background="@color/dark_grey"></View>
 
                 <RelativeLayout
                     android:id="@+id/car_air_relativelayout"
@@ -300,9 +305,10 @@
                         android:id="@+id/car_control_air"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
                         android:text="空调控制"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         />
 
                     <TextView
@@ -338,7 +344,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/background_dark"></View>
+                    android:background="@color/dark_grey"></View>
 
                 <RelativeLayout
                     android:id="@+id/car_lock_relativelayout"
@@ -349,9 +355,10 @@
                         android:id="@+id/car_control_lock"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
                         android:text="汽车锁定"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         />
 
                     <TextView
@@ -385,28 +392,58 @@
 
                 </RelativeLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/dark_grey"></View>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:text="车灯状况"
+                            android:textSize="18dp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/car_control_light"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center" />
+
+
+                    </RelativeLayout>
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@android:color/background_dark"></View>
+                            android:background="@color/dark_grey"></View>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="50dp">
-
                             <TextView
                                 android:layout_width="100dp"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="发动机性能"
-                                android:textSize="20dp" />
+                                android:textSize="18dp" />
 
                             <TextView
                                 android:id="@+id/car_control_enginer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="5dp"
+                                android:layout_marginRight="10dp"
                                 android:gravity="center" />
 
                         </RelativeLayout>
@@ -414,7 +451,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@android:color/background_dark"></View>
+                            android:background="@color/dark_grey"></View>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -423,51 +460,25 @@
                             <TextView
                                 android:layout_width="100dp"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="变速器性能"
-                                android:textSize="20dp" />
+                                android:textSize="18dp"
+                                />
 
                             <TextView
                                 android:id="@+id/car_control_shift"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="5dp"
+                                android:layout_marginRight="10dp"
                                 android:gravity="center" />
 
 
                         </RelativeLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@android:color/background_dark"></View>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp">
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:text="车灯"
-                                android:textSize="20dp"
-
-
-                                />
-
-                            <TextView
-                                android:id="@+id/car_control_light"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="5dp"
-                                android:gravity="center" />
-
-
-                        </RelativeLayout>
-                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -228,7 +228,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
-                            
+                            finish();
 
                         }
 

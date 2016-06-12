@@ -148,6 +148,7 @@ public class MeInfoFragment extends Fragment {
                     
                 }
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+                getActivity().finish();
             }
         });
         me_music.setOnClickListener(new View.OnClickListener() {
