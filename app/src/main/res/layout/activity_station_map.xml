@@ -10,7 +10,7 @@
         android:clickable="true" />
 
     <RelativeLayout
-        android:id="@+id/title_stop"
+        android:id="@+id/register_title_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/blue">
@@ -18,26 +18,27 @@
         <ImageView
             android:id="@+id/stop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/back" />
+            android:src="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="附近加油站" />
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="附近加油站"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:id="@+id/iv_list"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/station_list"/>
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/iv_list"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="18dp"
-        android:src="@drawable/list" />
-
 
     <LinearLayout
         android:id="@+id/ll_summary"
@@ -46,8 +47,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:background="@drawable/frame"
         android:orientation="vertical"
         android:visibility="gone">

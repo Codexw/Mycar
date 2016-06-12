@@ -10,8 +10,11 @@
     <!-- line颜色 -->
     <color name="line">#CBCED2</color>
     <!-- 蓝色 -->
-    <color name="blue">#3385FF</color>
-    <color name="dark_grey">#B8B8B8</color>
+    <!--<color name="blue">#3385FF</color>-->
+    <color name="blue">#499BF7</color>
+
+    <color name="dark">#dcdcdc</color>  <!--深灰色 -->
+    <color name="dark_grey">#cccccc</color>  <!--浅灰色 -->
     <color name="translucent">#cc808080</color>
     <color name="csy_row_on">#fff0f0f0</color>
     <color name="csy_text">#ff555555</color>

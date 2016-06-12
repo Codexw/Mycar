@@ -40,7 +40,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:background="@drawable/weizhang"
+        android:background="@drawable/ic_weizhang"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -70,7 +70,7 @@
         android:layout_below="@+id/chepailinearlayout"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="@drawable/weizhang"
+        android:background="@drawable/ic_weizhang"
         android:orientation="horizontal"
         android:textSize="16dp">
 
