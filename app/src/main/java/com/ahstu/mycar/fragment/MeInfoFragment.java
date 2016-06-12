@@ -35,7 +35,6 @@ import cn.bmob.v3.listener.UpdateListener;
 public class MeInfoFragment extends Fragment {
     View view;
     Context mContext;
-    //LinearLayout weizhang;
     LinearLayout me_mycar;
     LinearLayout me_myform;
     LinearLayout exit;

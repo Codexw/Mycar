@@ -36,7 +36,7 @@ import cn.bmob.v3.listener.UpdateListener;
  * @author 吴天洛 2016/4/25
  */
 
-public class FriendFragment extends Fragment {
+public class CarControlFragment extends Fragment {
 
 
     LayoutInflater mInflater;
