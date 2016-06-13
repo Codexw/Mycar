@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,11 +38,11 @@ public class CityListActivity extends Activity {
         //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.csy_titlebar);
 
         //标题
-        TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
+        TextView txtTitle = (TextView) findViewById(R.id.title_name);
         txtTitle.setText("选择查询地-城市");
 
         //返回按钮
-        Button btnBack = (Button) findViewById(R.id.btnBack);
+        ImageView btnBack = (ImageView) findViewById(R.id.iv_back);
         btnBack.setVisibility(View.VISIBLE);
         btnBack.setOnClickListener(new OnClickListener() {
             @Override
