@@ -18,12 +18,6 @@ import com.ahstu.mycar.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * 自定义的布局，用来管理三个子控件，其中一个是下拉头，一个是包含内容的pullableView（可以是实现Pullable接口的的任何View），
- * 还有一个上拉头，更多详解见博客http://blog.csdn.net/zhongkejingwang/article/details/38868463
- *
- * @author 陈靖
- */
 public class PullToRefreshLayout extends RelativeLayout {
     public static final String TAG = "PullToRefreshLayout";
     // 初始状态
