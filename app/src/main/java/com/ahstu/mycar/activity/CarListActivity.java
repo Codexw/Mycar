@@ -9,9 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.adapter.RadioAdapter;
@@ -31,10 +32,10 @@ import cn.bmob.v3.listener.FindListener;
  * Created by xuning on 2016/5/9.
  */
 public class CarListActivity extends Activity {
-    Button caradd;
+    TextView caradd;
     ListView carlist;
     ImageView image;
-
+    LinearLayout linear1, linear2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_activity_list);
@@ -59,9 +60,26 @@ public class CarListActivity extends Activity {
 
     //初始化控件
     void initview() {
-        caradd = (Button) findViewById(R.id.car_add);
+        caradd = (TextView) findViewById(R.id.car_add);
         carlist = (ListView) findViewById(R.id.carList);
         image = (ImageView) findViewById(R.id.carlist_back);
+        linear1 = (LinearLayout) findViewById(R.id.carlistlinear1);
+        linear2 = (LinearLayout) findViewById(R.id.carlistlinear2);
+//        DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
+//        SQLiteDatabase db = helper.getReadableDatabase();
+//        Cursor cs = db.query("carinfo", new String[]{"car_number", "car_sign"}, null, null, null, null, null);
+//        if(cs.getCount()>0)
+//        {
+//            linear1.setVisibility(View.GONE);
+//            linear2.setVisibility(View.VISIBLE);
+//        }
+//        else
+//        {
+//            linear2.setVisibility(View.GONE);
+//            linear1.setVisibility(View.VISIBLE);
+//
+//        }
+
 
     }
 
@@ -125,8 +143,19 @@ public class CarListActivity extends Activity {
 
         update();
         carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
+        DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cs = db.query("carinfo", new String[]{"car_number", "car_sign"}, null, null, null, null, null);
+        if (cs.getCount() > 0) {
+            linear1.setVisibility(View.GONE);
+            linear2.setVisibility(View.VISIBLE);
+        } else {
+            linear2.setVisibility(View.GONE);
+            linear1.setVisibility(View.VISIBLE);
 
-
+        }
+        db.close();
+        cs.close();
     }
 
     void update() {

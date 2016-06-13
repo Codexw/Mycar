@@ -12,10 +12,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
@@ -45,14 +43,13 @@ public class MeCarActivity extends Activity {
     TextView mecar_enginerstate;
     TextView mecar_shiftstate;
     TextView mecar_light;
-    ImageView mecar_sign;
     TextView mecar_start;
     TextView mecar_door;
     TextView mecar_air;
     TextView mecar_lock;
     TextView mecar_frame;
     TextView mecar_box;
-    Button delete;
+    TextView delete;
     Intent intent;
     Bundle bundle;
     String objectId;
@@ -79,14 +76,13 @@ public class MeCarActivity extends Activity {
         mecar_enginerstate = (TextView) findViewById(R.id.mecar_enginerstate);
         mecar_shiftstate = (TextView) findViewById(R.id.mecar_shiftstate);
         mecar_light = (TextView) findViewById(R.id.mecar_light);
-        mecar_sign = (ImageView) findViewById(R.id.mecar_sign);
         mecar_start = (TextView) findViewById(R.id.mecar_start);
         mecar_door = (TextView) findViewById(R.id.mecar_door);
         mecar_air = (TextView) findViewById(R.id.mecar_air);
         mecar_lock = (TextView) findViewById(R.id.mecar_lock);
         mecar_frame = (TextView) findViewById(R.id.mecar_frame);
         mecar_box = (TextView) findViewById(R.id.mecar_box);
-        delete = (Button) findViewById(R.id.medelete);
+        delete = (TextView) findViewById(R.id.medelete);
         image = (ImageView) findViewById(R.id.mecar_back);
         
     }
@@ -95,7 +91,7 @@ public class MeCarActivity extends Activity {
         final String s = bundle.getString("car_number");
         Log.e("TAG", ">>>>>>>>>>>>>>>>>>111<<<<<<<<<<<<<<<" + s);
         String[] columns = {"car_number", "car_model", "car_brand", "car_enginerno", "car_frame", "car_level", "car_mile",
-                "car_gas", "car_box", "car_enginerstate", "car_shiftstate", "car_light", "car_sign", "car_start", "car_door", "car_air", "car_lock"};
+                "car_gas", "car_box", "car_enginerstate", "car_shiftstate", "car_light", "car_start", "car_door", "car_air", "car_lock"};
         DatabaseHelper helper = new DatabaseHelper(MeCarActivity.this, "node.db", null, 1);
         SQLiteDatabase data = helper.getReadableDatabase();
         Cursor cursor = data.query("carinfo", columns, "car_number=?", new String[]{s}, null, null, null);
@@ -106,16 +102,12 @@ public class MeCarActivity extends Activity {
             mecar_enginerno.setText(cursor.getString(cursor.getColumnIndex("car_enginerno")));
             mecar_frame.setText(cursor.getString(cursor.getColumnIndex("car_frame")));
             mecar_level.setText(cursor.getString(cursor.getColumnIndex("car_level")));
-            mecar_mile.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("car_mile"))));
+            mecar_mile.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("car_mile"))) + "km");
             mecar_gas.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("car_gas"))) + "%");
-            mecar_box.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("car_box"))));
+            mecar_box.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex("car_box"))) + "L");
             mecar_enginerstate.setText(cursor.getString(cursor.getColumnIndex("car_enginerstate")));
             mecar_shiftstate.setText(cursor.getString(cursor.getColumnIndex("car_shiftstate")));
             mecar_light.setText(cursor.getString(cursor.getColumnIndex("car_light")));
-            byte[] blob = cursor.getBlob(cursor.getColumnIndex("car_sign"));
-            Bitmap bitmap = BitmapFactory.decodeByteArray(blob, 0, blob.length);
-            mecar_sign.setImageBitmap(bitmap);
-
             if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
                 mecar_start.setText("已关闭");
             } else {
@@ -151,7 +143,7 @@ public class MeCarActivity extends Activity {
             public void onSuccess(List<Carinfomation> list) {
                 if (list.size() > 0) {
                     objectId = list.get(0).getObjectId();
-                    Toast.makeText(MeCarActivity.this, "查询成功" + objectId, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MeCarActivity.this, "查询成功" + objectId, Toast.LENGTH_SHORT).show();
                 }
             }
 

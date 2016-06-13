@@ -26,26 +26,49 @@
             android:text="我的车辆"
             android:textSize="16dp" />
 
-        <Button
+        <TextView
             android:id="@+id/car_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:text="添加车辆" />
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="添加"
+            android:textColor="@color/textcolor"
+            android:textSize="16dp" />
 
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/carlistlinear1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="你还没有车辆，请添加" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/carlistlinear2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+
+        >
 
     <ListView
         android:id="@+id/carList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
         >
 
 
     </ListView>
-
+    </LinearLayout>
 
 </LinearLayout>

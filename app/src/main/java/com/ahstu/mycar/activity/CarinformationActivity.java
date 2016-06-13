@@ -3,12 +3,14 @@ package com.ahstu.mycar.activity;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -67,25 +69,31 @@ public class CarinformationActivity extends Activity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                AlertDialog alert = new AlertDialog.Builder(CarinformationActivity.this).create();
+                alert.setTitle("提示");
+                alert.setMessage("没保存信息，你确定要退出吗");
+                alert.setButton(DialogInterface.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+
+                    }
+                });
+                alert.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alert.show();
+                
             }
         });
         Intent intent = getIntent();
         final Bundle bundle = intent.getExtras();
         final String s = bundle.getString("car_sign").toString();
+        new imageTask().execute(s);
         number = bundle.getString("car_number");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final Bitmap bitmap = getPicture(s);
-                car_sign.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        car_sign.setImageBitmap(bitmap);
-                    }
-                });
-            }
-        }).start();
         car_number.setText(bundle.getString("car_number"));
         car_brand.setText(bundle.getString("car_brand"));
         car_model.setText(bundle.getString("car_model"));
@@ -169,7 +177,7 @@ public class CarinformationActivity extends Activity {
                     carinfomation.save(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(CarinformationActivity.this, "你保存成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CarinformationActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -305,4 +313,20 @@ public class CarinformationActivity extends Activity {
         }
     }
 
+    class imageTask extends AsyncTask<String, Void, Bitmap> {
+
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            Bitmap bitmap = getPicture(params[0]);
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+
+            car_sign.setImageBitmap(bitmap);
+            super.onPostExecute(bitmap);
+        }
+    }
 }

@@ -1,120 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/query_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#499BF7">
+        android:background="@color/blue">
 
         <ImageView
             android:id="@+id/carquery_exit"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/back"
-
-            />
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="违章查询" />
+            android:text="违章查询"
+            android:textSize="18sp"/>
 
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/chepailinearlayout"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/query_title"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/ic_weizhang"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="车牌号"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/chepai"
-
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="16dp"></TextView>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/chaxundilinearlayout"
+        android:id="@+id/ll"
+        android:layout_below="@id/query_title"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/chepailinearlayout"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/ic_weizhang"
-        android:orientation="horizontal"
-        android:textSize="16dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/next_button"
+        android:orientation="vertical">
 
-        <TextView
-
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="查询地"
-            android:textSize="16dp"
-
-            />
-
-        <TextView
-            android:id="@+id/chaxundi"
+        <LinearLayout
+            android:id="@+id/chepailinearlayout"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="请选择查询地"
-            android:textSize="16dp"></TextView>
+            android:layout_height="60dp"
+            android:layout_below="@+id/query_title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="车牌号:"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/chepai"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16dp"/>
 
 
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:id="@+id/chaxundilinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/chepailinearlayout"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:textSize="16dp">
+
+            <TextView
+
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="查询地:"
+                android:textSize="16dp"
+
+                />
+
+            <TextView
+                android:id="@+id/chaxundi"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="请选择查询地 >"
+                android:textSize="16dp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_query"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_below="@+id/chaxundilinearlayout"
+        android:layout_below="@+id/ll"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
-        android:background="@drawable/bt_query"
+        android:background="@drawable/login_button"
         android:text="开始查询"
-        />
+        android:textColor="@color/white"/>
 
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/btn_query"
-        android:visibility="gone"
-
-        >
+        android:visibility="gone">
 
         <ProgressBar
             android:id="@+id/progress"
@@ -122,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="35.0dp" />
+            android:layout_marginBottom="35.0dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,9 +132,16 @@
             android:gravity="center"
             android:text="正在查询, 请稍候 ..."
             android:textColor="@color/csy_text"
-            android:textSize="@dimen/csy_tip_ts" />
+            android:textSize="@dimen/csy_tip_ts"/>
 
     </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/btn_query"
+        android:layout_marginTop="5dp"
+        android:background="@color/dark_grey"/>
 
     <TextView
         android:id="@+id/result_title"
@@ -144,16 +152,13 @@
         android:gravity="center_vertical"
         android:padding="@dimen/csy_pd"
         android:textColor="@color/csy_label"
-        android:textSize="@dimen/csy_text_ts"
-
-        />
+        android:textSize="@dimen/csy_text_ts"/>
 
     <ListView
         android:id="@+id/listresult"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/result_title">
-
     </ListView>
 
     <TextView
@@ -163,5 +168,5 @@
         android:layout_below="@+id/btn_query"
         android:gravity="center"
         android:text="恭喜，你没有违章记录"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 </RelativeLayout>

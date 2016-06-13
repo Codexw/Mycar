@@ -95,8 +95,7 @@ public class CarControlFragment extends Fragment {
             int count = cursor.getCount();
             cursor.close();
             data.close();
-
-            addcar = (Button) getActivity().findViewById(R.id.carcontrol_button);
+            addcar = (Button) getActivity().findViewById(R.id.carcontrol_text);
             carcontrollinearlayout = (LinearLayout) getActivity().findViewById(R.id.carcontrollinearlayout);
             carcontrollinearlayout2 = (PullToRefreshLayout) getActivity().findViewById(R.id.refresh_view);
             //判断count的值，大于0的话，数据库存在值。

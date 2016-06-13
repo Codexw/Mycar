@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
     private EditText friendName;
     private Button bt_searchFriend;
     private Button bt_shareLocation;
+    private ImageView search_title_back;
     private ListView friendList;
     private List<User> userList;
     private CarFriendAdapter carFriendAdapter;
@@ -52,8 +54,15 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
         // 启动推送服务
         BmobPush.startWork(this);
 
+        search_title_back = (ImageView) findViewById(R.id.search_title_back);
+        search_title_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         friendName = (EditText) findViewById(R.id.music_search_name);
-        friendName.setHint("请输入需要查找的车友姓名");
+        friendName.setHint("请输入车友姓名");
         bt_searchFriend = (Button) findViewById(R.id.bt_music_search);
         friendList = (ListView) findViewById(R.id.music_search_listview);
         bt_shareLocation = (Button) findViewById(R.id.bt_music_download);
@@ -80,7 +89,6 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
                             carFriendAdapter = new CarFriendAdapter(SearchFriendActivity.this, list);
                             carFriendAdapter.onListener(SearchFriendActivity.this);
                             friendList.setAdapter(carFriendAdapter);
-                            Toast.makeText(SearchFriendActivity.this, "search success", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(SearchFriendActivity.this, "搜索的车友不存在", Toast.LENGTH_SHORT).show();
                         }
@@ -91,6 +99,8 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
 
                     }
                 });
+
+                //隐藏输入键盘
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
