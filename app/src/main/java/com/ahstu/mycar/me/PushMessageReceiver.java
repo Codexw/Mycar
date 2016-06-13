@@ -38,10 +38,10 @@ public class PushMessageReceiver extends BroadcastReceiver {
                 e.printStackTrace();
             }
 
-            if (s.contains("车友发送位置共享请求")) {
-                int index = s.lastIndexOf("车友发送位置共享请求");
+            if (s.contains("请求位置共享")) {
+                int index = s.lastIndexOf("请求位置共享");
                 friend_name = s.substring(0, index);
-                mobile_id = s.substring(index + 10, s.length());
+                mobile_id = s.substring(index + 6, s.length());
                 Intent friendShare = new Intent(context, FriendNotificationService.class);
                 friendShare.putExtra("FRIEND_NAME", friend_name);
                 friendShare.putExtra("MOBILE_ID", mobile_id);
@@ -55,7 +55,7 @@ public class PushMessageReceiver extends BroadcastReceiver {
             notification = new Notification.Builder(context).setContentTitle("MyCar").setContentText(s).setTicker(s).setWhen(System.currentTimeMillis()).setDefaults(Notification.DEFAULT_ALL)
                     .setSmallIcon(R.drawable.notification_head).build();
             manager.notify(carMessage.getNotificationId(), notification);
-                if (s.contains("车友接受了位置共享")) {
+                if (s.contains("接受了位置共享")) {
                     shareLocationMessage.setShareconnect(true);
                     shareLocationMessage.setFirstconnect(true);
                     shareLocationMessage.setObjection(0);

@@ -18,6 +18,10 @@ import com.ahstu.mycar.bean.Station;
 
 import java.util.List;
 
+/**
+ * @author 吴天洛
+ *         功能：周围加油站列表
+ */
 public class StationListActivity extends Activity {
 
     private TextView tvName;
@@ -39,7 +43,7 @@ public class StationListActivity extends Activity {
         iv_back.setVisibility(View.VISIBLE);
         tvName = (TextView) findViewById(R.id.title_name);
         tvName.setText("加油站列表");
-        
+
         iv_back.setOnClickListener(new OnClickListener() {
 
             @Override

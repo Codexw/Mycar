@@ -12,12 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/5/19.
+ * Created by 徐伟 on 2016/5/19.
  */
 public class MapMenuActivity extends AppCompatActivity {
 
-    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site,
-            R.id.btn_map_normal, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
 

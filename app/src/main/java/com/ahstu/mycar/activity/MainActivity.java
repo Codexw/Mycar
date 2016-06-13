@@ -457,28 +457,28 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                                 for (Carinfomation car : list) {
                                     if (car.getCar_mile() != 0 && (car.getCar_mile() % 15000) == 0 && (!ex1)) {
                                         ex1 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                         bmobPush.pushMessage("当前里程数:" + car.getCar_mile().toString());
                                     }
                                     if (car.getCar_gas() < 20 && (!ex2)) {
                                         ex2 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                         bmobPush.pushMessage("当前油量:" + car.getCar_gas().toString());
                                     }
                                     if (car.getCar_enginerstate().equals("异常") && (!ex3)) {
                                         ex3 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                         bmobPush.pushMessage("发动机异常");
                                     }
                                     if (car.getCar_shiftstate().equals("异常") && (!ex4)) {
                                         ex4 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                         bmobPush.pushMessage("变速器异常");
 
                                     }
                                     if (car.getCar_light().equals("异常") && (!ex5)) {
                                         ex5 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                    
                                     /*
                                     *push推送會出現異常

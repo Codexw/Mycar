@@ -42,6 +42,10 @@ import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 
+/**
+ * @author 吴天洛
+ *         功能：导航中查找目的地
+ */
 public class SearchLatLonActivity extends Activity implements View.OnClickListener, OnGetGeoCoderResultListener {
 
     private ImageView mIvBack;
@@ -224,15 +228,15 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
 //                    listener = new InfoWindow.OnInfoWindowClickListener() {
 //                        public void onInfoWindowClick() { 
 
-                            Intent intent = new Intent("com.ahstu.mycar.fragment.FindFragment");
-                            intent.putExtra("intent", getIntent().getStringExtra("intent"));
-                            intent.putExtra("add", mEditText.getText().toString());
-                            intent.putExtra("lat", marker.getPosition().latitude);
-                            intent.putExtra("lon", marker.getPosition().longitude);
-                            LocalBroadcastManager.getInstance(SearchLatLonActivity.this).sendBroadcast(intent);
-                            finish();
+                    Intent intent = new Intent("com.ahstu.mycar.fragment.FindFragment");
+                    intent.putExtra("intent", getIntent().getStringExtra("intent"));
+                    intent.putExtra("add", mEditText.getText().toString());
+                    intent.putExtra("lat", marker.getPosition().latitude);
+                    intent.putExtra("lon", marker.getPosition().longitude);
+                    LocalBroadcastManager.getInstance(SearchLatLonActivity.this).sendBroadcast(intent);
+                    finish();
 
-                            mBaiduMap.hideInfoWindow();
+                    mBaiduMap.hideInfoWindow();
 //                        }
 //                    };
 //                    LatLng ll = marker.getPosition();

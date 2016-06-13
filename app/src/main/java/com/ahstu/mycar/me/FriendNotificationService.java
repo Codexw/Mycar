@@ -71,7 +71,7 @@ public class FriendNotificationService extends Service {
         shareLocationMessage.setFirstconnect(true);
         shareLocationMessage.setObjection(1);
         //将本用户名推送接受信息回去
-        bmobPush.pushMessage(person_name.getString("name", "") + "车友接受了位置共享");
+        bmobPush.pushMessage(person_name.getString("name", "") + "接受了位置共享");
 //        Intent i=new Intent(FriendNotificationService.this,MusicMainActivity.class);
 //        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        startActivity(i);
@@ -81,7 +81,7 @@ public class FriendNotificationService extends Service {
     //拒绝响应事件
     public void denyShare() {
         notificationManager.cancel(1);
-        bmobPush.pushMessage(person_name.getString("name", "") + "车友拒绝了位置共享");
+        bmobPush.pushMessage(person_name.getString("name", "") + "拒绝了位置共享");
 
     }
 
@@ -95,7 +95,7 @@ public class FriendNotificationService extends Service {
         notificationManager = (NotificationManager) super.getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new NotificationCompat.Builder(this);
         RemoteViews friendremoteviews = new RemoteViews(getPackageName(), R.layout.friendshare_notification);
-        friendremoteviews.setTextViewText(R.id.friend_request, name + "好友位置请求");
+        friendremoteviews.setTextViewText(R.id.friend_request, name + "请求位置共享");
 
         //接受请求
         Intent friend_notification = new Intent(ACTION_FRIEND);
@@ -109,7 +109,7 @@ public class FriendNotificationService extends Service {
         friendremoteviews.setOnClickPendingIntent(R.id.bt_deny_share, intent_deny);
 
         //设置通知栏
-        mBuilder.setContent(friendremoteviews).setWhen(System.currentTimeMillis()).setTicker(name + "车友请求位置共享").setSmallIcon(R.mipmap.notification_head)
+        mBuilder.setContent(friendremoteviews).setWhen(System.currentTimeMillis()).setTicker(name + "请求位置共享").setSmallIcon(R.mipmap.notification_head)
                 .setDefaults(Notification.DEFAULT_ALL);
         share_notification = mBuilder.build();
         share_notification.flags = Notification.FLAG_AUTO_CANCEL;

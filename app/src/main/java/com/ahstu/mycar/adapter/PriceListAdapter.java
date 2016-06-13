@@ -13,7 +13,7 @@ import com.ahstu.mycar.bean.Price;
 import java.util.List;
 
 /**
- * Created by redowu on 2016/5/12.
+ * Created by 吴天洛 on 2016/5/12.
  */
 public class PriceListAdapter extends BaseAdapter {
 

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by redowu on 2016/5/8.
+ * Created by 吴天洛 on 2016/5/8.
  */
 public class Price implements Parcelable {
     private String type;

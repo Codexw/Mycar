@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
- * Created by redowu on 2016/5/8.
+ * Created by 吴天洛 on 2016/5/8.
  */
 public class Station implements Parcelable {
     private String name;

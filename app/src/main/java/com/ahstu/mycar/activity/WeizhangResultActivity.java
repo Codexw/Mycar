@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * title：查询违章信息
  *
- * @author paul
+ * @author xuning
  */
 public class WeizhangResultActivity extends Activity {
     final Handler cwjHandler = new Handler();//用来更新ui

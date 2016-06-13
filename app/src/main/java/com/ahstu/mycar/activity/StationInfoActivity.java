@@ -29,7 +29,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * @author 吴天洛
+ *         功能：加油站详情、导航到加油站
+ */
 public class StationInfoActivity extends Activity {
 
     public static final String ROUTE_PLAN_NODE = "routePlanNode";

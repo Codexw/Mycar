@@ -315,7 +315,6 @@ public class CarinformationActivity extends Activity {
 
     class imageTask extends AsyncTask<String, Void, Bitmap> {
 
-
         @Override
         protected Bitmap doInBackground(String... params) {
             Bitmap bitmap = getPicture(params[0]);
