@@ -53,7 +53,7 @@ public class PushMessageReceiver extends BroadcastReceiver {
             Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
             //启动通知栏
             notification = new Notification.Builder(context).setContentTitle("MyCar").setContentText(s).setTicker(s).setWhen(System.currentTimeMillis()).setDefaults(Notification.DEFAULT_ALL)
-                    .setSmallIcon(R.drawable.ic_launcher).build();
+                    .setSmallIcon(R.drawable.notification_head).build();
             manager.notify(carMessage.getNotificationId(), notification);
                 if (s.contains("车友接受了位置共享")) {
                     shareLocationMessage.setShareconnect(true);

@@ -7,7 +7,8 @@
         android:id="@+id/image_sharelocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher" />
+        android:padding="5dp"
+        android:src="@drawable/notification_head" />
 
     <TextView
         android:id="@+id/friend_request"

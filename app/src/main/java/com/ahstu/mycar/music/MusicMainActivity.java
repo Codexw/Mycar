@@ -80,11 +80,11 @@ public class MusicMainActivity extends Activity {
             Map<String, Object> map = new HashMap<String, Object>();
 //					map.put("id", "");
             map.put("songName", al_playlist.get(i));
-            map.put("singerName", "");
+//            map.put("singerName", "");
             listItems.add(map);
         }
-        adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_music_main_activity, new String[]{"songName", "singerName"}, new int[]{
-                R.id.tv_songName, R.id.tv_singerName});
+        adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_list_music_main_activity, new String[]{"songName"}, new int[]{
+                R.id.tv_songlist_Name});
         type = PLAYLIST;
         listView.setAdapter(adapter);
     }
@@ -126,7 +126,7 @@ public class MusicMainActivity extends Activity {
                     }
                     listItems.add(map);
                 }
-                adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_music_main_activity, new String[]{"songName", "singerName"}, new int[]{
+                adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_all_music_main_activity, new String[]{"songName", "singerName"}, new int[]{
                         R.id.tv_songName, R.id.tv_singerName});
                 type = SONGS_LIST;
                 listView.setAdapter(adapter);
@@ -225,20 +225,9 @@ public class MusicMainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //这里要重新刷新列表，因为跳到列表歌曲界面时可能把这个列表删了，
-        //所有再跳回来当然要刷新，另外新建列表再回来肯定要刷新的
+        //跳回来刷新，新建列表回来刷新
         if (isReturePlaylist) {
-            al_playlist = MusicUtils.PlaylistList(MusicMainActivity.this);
-            List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-            for (int i = 0; i < al_playlist.size(); i++) {
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("id", al_playlist.get(i));
-                map.put("songName", "");
-                map.put("singerName", "");
-                listItems.add(map);
-            }
-            adapter = new SimpleAdapter(MusicMainActivity.this, listItems, R.layout.item_music_main_activity, new String[]{"id", "songName", "singerName"}, new int[]{R.id.tv_id,
-                    R.id.tv_songName, R.id.tv_singerName});
-            listView.setAdapter(adapter);
+            playListOnclick();
             isReturePlaylist = false;
         }
     }
