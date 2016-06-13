@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ import cn.bmob.v3.listener.FindListener;
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
     private final int SETADAPTER = 111;
-    private ImageView[] mTabs;
+    private LinearLayout[] mTabs;
     private MapFragment mMapFragment;
     private FindFragment mFindFragment;
     private CarControlFragment mCarControlFragment;
@@ -63,6 +64,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private int intcurrentTabIndex;
     private boolean song_not_null;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
+    private LinearLayout LLHome, LLSearch, LLControl, LLMe;
     private ImageView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
     private View currentButton; //获取view，用于底部导航栏状态的切换
@@ -132,51 +134,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        //以下是定时器0.1秒后再跳到handler加载适配器
-        timer = new Timer();
-        myTimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                Message message = new Message();
-                message.what = SETADAPTER;
-                handler.sendMessage(message);
-            }
-        };
-        timer.schedule(myTimerTask, 100);
-    }
-
-
-    //調用衛星菜單中的接口回調方法，實現衛星菜單監聽事件
-    @Override
-
-    public void dealMusicclick(View v) {
-//        Toast.makeText(this, "select"+v.getTag(), Toast.LENGTH_SHORT).show();
-        application = (MyApplication) getApplication();
-        mService = application.getmService();
-        Log.e("TAG", "MainActivity159" + v.getTag().toString());
-        if (songs != null) {
-            switch (v.getTag().toString()) {
-                case "previous":
-                    mService.frontMusic();
-                    break;
-                case "pause":
-                    mService.pausePlay();
-                    break;
-                case "next":
-                    mService.nextMusic();
-                    break;
-                case "list":
-                    startActivity(new Intent(MainActivity.this, MusicMainActivity.class));
-                    break;
-            }
-        } else
-            Toast.makeText(MainActivity.this, "音乐列表为空，请先下载歌曲！", Toast.LENGTH_SHORT).show();
-    }
-
-
-    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
@@ -238,28 +195,72 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         }.start();
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //以下是定时器0.1秒后再跳到handler加载适配器
+        timer = new Timer();
+        myTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                Message message = new Message();
+                message.what = SETADAPTER;
+                handler.sendMessage(message);
+            }
+        };
+        timer.schedule(myTimerTask, 100);
+    }
+
+
+    //調用衛星菜單中的接口回調方法，實現衛星菜單監聽事件
+    @Override
+
+    public void dealMusicclick(View v) {
+//        Toast.makeText(this, "select"+v.getTag(), Toast.LENGTH_SHORT).show();
+        application = (MyApplication) getApplication();
+        mService = application.getmService();
+        Log.e("TAG", "MainActivity159" + v.getTag().toString());
+        if (songs != null) {
+            switch (v.getTag().toString()) {
+                case "previous":
+                    mService.frontMusic();
+                    break;
+                case "pause":
+                    mService.pausePlay();
+                    break;
+                case "next":
+                    mService.nextMusic();
+                    break;
+                case "list":
+                    startActivity(new Intent(MainActivity.this, MusicMainActivity.class));
+                    break;
+            }
+        } else
+            Toast.makeText(MainActivity.this, "音乐列表为空，请先下载歌曲！", Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * 初始化点击事件
      */
     private void initOnclick() {
-        txtHome.setOnClickListener(this);
-        txtSearch.setOnClickListener(this);
-        txtFriend.setOnClickListener(this);
-        txtMe.setOnClickListener(this);
+        LLHome.setOnClickListener(this);
+        LLSearch.setOnClickListener(this);
+        LLControl.setOnClickListener(this);
+        LLMe.setOnClickListener(this);
         imgAdd.setOnClickListener(this);
 
-        txtHome.performClick();//默认textHome被点击
+        LLHome.performClick();//默认LLHome被点击
     }
 
     /**
      * 初始化，获取id
      */
     private void initView() {
-        txtHome = (ImageView) findViewById(R.id.txtHome);
-        txtSearch = (ImageView) findViewById(R.id.txtSearch);
-        txtFriend = (ImageView) findViewById(R.id.txtFriend);
-        txtMe = (ImageView) findViewById(R.id.txtMe);
+        LLHome = (LinearLayout) findViewById(R.id.LLHome);
+        LLSearch = (LinearLayout) findViewById(R.id.LLSearch);
+        LLControl = (LinearLayout) findViewById(R.id.LLControl);
+        LLMe = (LinearLayout) findViewById(R.id.LLMe);
         imgAdd = (ImageView) findViewById(R.id.imgAdd);
         menuView = (MusicMenu) findViewById(R.id.menu);
     }
@@ -312,19 +313,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         if (menuView.isShown())
             menuView.in();
         switch (v.getId()) {
-            case R.id.txtHome:
+            case R.id.LLHome:
                 index = 0;
                 setButton(v);
                 break;
-            case R.id.txtSearch:
+            case R.id.LLSearch:
                 index = 1;
                 setButton(v);
                 break;
-            case R.id.txtFriend:
+            case R.id.LLControl:
                 index = 2;
                 setButton(v);
                 break;
-            case R.id.txtMe:
+            case R.id.LLMe:
                 index = 3;
                 setButton(v);
                 break;
@@ -352,6 +353,38 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         }
         v.setEnabled(false);
         currentButton = v;
+
+        if (findViewById(R.id.LLHome).isEnabled()) {
+            findViewById(R.id.ivHome).setEnabled(true);
+            findViewById(R.id.tvHome).setEnabled(true);
+        } else {
+            findViewById(R.id.ivHome).setEnabled(false);
+            findViewById(R.id.tvHome).setEnabled(false);
+        }
+
+        if (findViewById(R.id.LLSearch).isEnabled()) {
+            findViewById(R.id.ivSearch).setEnabled(true);
+            findViewById(R.id.tvSearch).setEnabled(true);
+        } else {
+            findViewById(R.id.ivSearch).setEnabled(false);
+            findViewById(R.id.tvSearch).setEnabled(false);
+        }
+
+        if (findViewById(R.id.LLControl).isEnabled()) {
+            findViewById(R.id.ivControl).setEnabled(true);
+            findViewById(R.id.tvControl).setEnabled(true);
+        } else {
+            findViewById(R.id.ivControl).setEnabled(false);
+            findViewById(R.id.tvControl).setEnabled(false);
+        }
+
+        if (findViewById(R.id.LLMe).isEnabled()) {
+            findViewById(R.id.ivMe).setEnabled(true);
+            findViewById(R.id.tvMe).setEnabled(true);
+        } else {
+            findViewById(R.id.ivMe).setEnabled(false);
+            findViewById(R.id.tvMe).setEnabled(false);
+        }
     }
 
     /**
