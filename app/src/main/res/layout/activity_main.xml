@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="地图"
-                android:textColor="@color/nav_home_text" />
+                android:textColor="@color/nav_friend_text" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,7 +63,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="线路"
-                android:textColor="@color/nav_find_text" />
+                android:textColor="@color/nav_friend_text" />
 
         </LinearLayout>
 
@@ -81,7 +81,6 @@
 
             <ImageView
                 android:id="@+id/txtFriend"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/nav_friend_image" />

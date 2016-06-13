@@ -69,6 +69,7 @@ public class CarControlFragment extends Fragment {
     int car_air_state;
     int car_lock_state;
     int car_start_state;
+    int car_gaspoint;
     String objectid;
     Carinfomation car;
     //进度条
@@ -79,8 +80,7 @@ public class CarControlFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         mInflater = inflater;
         View view = inflater.inflate(R.layout.fragment_friend, null);
-
-
+        roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
         return view;
     }
 
@@ -116,11 +116,8 @@ public class CarControlFragment extends Fragment {
 
             //进度条
             roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
-            roundProgressBar.update();
-            //roundProgressBar.setBox_point(90);
-
             initview();
-
+            roundProgressBar.update();
         }
         super.onHiddenChanged(hidden);
     }
@@ -146,7 +143,9 @@ public class CarControlFragment extends Fragment {
                         car_control_light.setText(car.getCar_light().toString());
                         c_count.setText(String.valueOf(car.getCar_mile()));
                         c_gas.setText(String.valueOf(car.getCar_box() * car.getCar_gas() / 100));
+                        car_gaspoint = car.getCar_gas();
                         roundProgressBar.setBox_point(car.getCar_gas());
+//                        roundProgressBar.update();
                         DatabaseHelper data = new DatabaseHelper(getActivity(), "node.db", null, 1);
                         SQLiteDatabase db = data.getWritableDatabase();
                         ContentValues value = new ContentValues();
@@ -160,8 +159,6 @@ public class CarControlFragment extends Fragment {
                             car_start_state = 1;
                             car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
                             start_set.setText("已开启");
-
-
                         }
                         if (car.getCar_door() == false) {
                             value.put("car_door", 0);

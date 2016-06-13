@@ -127,7 +127,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                 listItems.add(map);
             }
         }
-
         return listItems;
     }
 
@@ -146,7 +145,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         };
         timer.schedule(myTimerTask, 100);
     }
-
 
     //調用衛星菜單中的接口回調方法，實現衛星菜單監聽事件
     @Override
@@ -174,7 +172,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         } else
             Toast.makeText(MainActivity.this, "音乐列表为空，请先下载歌曲！", Toast.LENGTH_SHORT).show();
     }
-
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -215,7 +212,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                     }
                     if (null == mService) {
                         mService = application.getmService();
-
                     }
                     try {
                     /*
@@ -233,7 +229,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                         e.printStackTrace();
                     }
                 }
-
             }
         }.start();
 
@@ -280,7 +275,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                 show(mMapFragment).commit();
     }
 
-
     private void onTabIndex(int index) {
         if (intcurrentTabIndex != index) {
             FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
@@ -302,7 +296,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             mMapFragment.closeAnmi();
         return super.onTouchEvent(event);
     }
-
 
     /**
      * 处理点击事件，加载fragment
@@ -402,11 +395,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
             while (isrunning) {
                 try {
-
                     sleep(3000);
-
                     // Looper.prepare();
-
                     SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
                     String s = share.getString("number", "");
 
@@ -424,33 +414,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                                 for (Carinfomation car : list) {
                                     if (car.getCar_mile() != 0 && (car.getCar_mile() % 15000) == 0 && (!ex1)) {
                                         ex1 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                        bmobPush.pushMessage("当前里程数:" + car.getCar_mile().toString());
+                                        bmobPush.pushMessage("当前车辆里程数:" + car.getCar_mile().toString() + ",请注意及时维护车辆");
                                     }
                                     if (car.getCar_gas() < 20 && (!ex2)) {
                                         ex2 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                        bmobPush.pushMessage("当前油量:" + car.getCar_gas().toString());
+                                        bmobPush.pushMessage("当前车辆剩余油量:" + car.getCar_gas().toString() + ",请注意及时加油");
                                     }
                                     if (car.getCar_enginerstate().equals("异常") && (!ex3)) {
                                         ex3 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                        bmobPush.pushMessage("发动机异常");
+                                        bmobPush.pushMessage("当前车辆发动机异常，请及时维修");
                                     }
                                     if (car.getCar_shiftstate().equals("异常") && (!ex4)) {
                                         ex4 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                        bmobPush.pushMessage("变速器异常");
-
+                                        bmobPush.pushMessage("当前车辆变速器异常，请及时维修");
                                     }
                                     if (car.getCar_light().equals("异常") && (!ex5)) {
                                         ex5 = true;
-                                        Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                   
                                     /*
                                     *push推送會出現異常
                                      */
-                                        bmobPush.pushMessage("车灯异常");
+                                        bmobPush.pushMessage("当前车辆车灯异常，请及时维修");
                                     }
                                 }
                             }
@@ -461,15 +444,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                         public void onError(int i, String s) {
 
                         }
-
                     });
                     //Looper.loop();
                 } catch (Exception e) {
-                    // Toast.makeText(MainActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
                 }
                 if (ex1 && ex2 && ex3 && ex4 && ex5)
                     isrunning = false;
-
             }
         }
     }

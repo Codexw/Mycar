@@ -76,6 +76,12 @@ public class RoundProgressBar extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (box_point < 20)
+            mColorWheelPaint.setColor(Color.rgb(238, 40, 40));
+        else if (box_point < 30)
+            mColorWheelPaint.setColor(Color.rgb(249, 135, 49));
+        else
+            mColorWheelPaint.setColor(Color.rgb(51, 133, 255));
         canvas.drawArc(mColorWheelRectangle, 0, 360, false, mDefaultWheelPaint);
 //		canvas.drawArc(mColorWheelRectangle, 0, 359, false,
 //				mColorWheelPaintCentre);
