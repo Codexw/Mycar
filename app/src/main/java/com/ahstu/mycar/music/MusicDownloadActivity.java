@@ -82,7 +82,6 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
                         musicSearchAdapter = new MusicSearchAdapter(MusicDownloadActivity.this, list);
                         musicSearchAdapter.onListener(MusicDownloadActivity.this);
                         musicdownlist.setAdapter(musicSearchAdapter);
-                        Toast.makeText(MusicDownloadActivity.this, "search success", Toast.LENGTH_SHORT).show();
 
                     }
                     @Override

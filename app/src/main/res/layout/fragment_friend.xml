@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?><!--<android.support.v4.widget.SwipeRefreshLayout--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:id="@+id/carfresh"--><!--&gt;-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -21,7 +22,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="车辆控制"
-                android:textSize="20dp" />
+                android:textSize="20sp"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -34,11 +35,11 @@
                 android:id="@+id/carcontrol_text"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:background="@drawable/login_button"
                 android:gravity="center"
-                android:text="你还没车辆，请先添加车辆"
-                android:textSize="20dp"
-
-                />
+                android:padding="10dp"
+                android:text="请先添加车辆"
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -48,441 +49,427 @@
             android:layout_height="match_parent"
             android:visibility="gone">
 
-            <include layout="@layout/allview_refresh_head" />
+            <include layout="@layout/allview_refresh_head"/>
 
             <com.ahstu.mycar.ui.PullableScrollow
                 android:id="@+id/scroview"
-            android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
                 >
-        <RelativeLayout
-            android:id="@+id/carcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/centre_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:gravity="center">
-
-                <com.ahstu.mycar.me.RoundProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/set_linear1"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/centre_layout"
-                android:orientation="vertical">
-
-                <LinearLayout
+                <RelativeLayout
+                    android:id="@+id/carcontrol"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:id="@+id/centre_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center">
 
-                        <TextView
-                            android:id="@+id/c_gas"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1234"></TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="车油量(L)"></TextView>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="40dp"
-                        android:background="@android:color/holo_blue_dark"></View>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/c_count"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="7894"
-
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="里程数(km)"
-
-                            />
+                        <com.ahstu.mycar.me.RoundProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"/>
 
 
                     </LinearLayout>
 
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/dark_grey"></View>
-
-
-                <LinearLayout
+                    <LinearLayout
+                        android:id="@+id/set_linear1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/centre_layout"
                         android:orientation="vertical">
 
-
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp">
+                            android:layout_height="60dp"
+                            android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center_vertical"
-                        android:text="汽车牌照"
-                        android:textSize="18dp" />
-
-                    <TextView
-                        android:id="@+id/car_set_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="5dp"
-                        android:gravity="center_vertical"
-                        android:text="12346"
-                        android:textSize="18dp" />
-
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/dark_grey">
-
-
-                </View>
-
-                <RelativeLayout
-                    android:id="@+id/car_start_relativelayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    <TextView
-                        android:id="@+id/car_control_start"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center_vertical"
-                        android:text="汽车启动"
-                        android:textSize="18dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/start_set"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/car_control_start"
-                        android:gravity="center" />
-
-                    <ImageView
-                        android:id="@+id/car_start_set_ture"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_true"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/car_start_set_false"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-
-                        android:scaleType="fitCenter" />
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/dark_grey">
-
-
-                </View>
-
-                <RelativeLayout
-                    android:id="@+id/car_door_relativelayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    <TextView
-                        android:id="@+id/car_control_door"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center_vertical"
-                        android:text="车门控制"
-                        android:textSize="18dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/door_set"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/car_control_door"
-                        android:gravity="center" />
-
-                    <ImageView
-                        android:id="@+id/car_door_set_ture"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_true"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/car_door_set_false"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-
-                        android:scaleType="fitCenter" />
-
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/dark_grey"></View>
-
-                <RelativeLayout
-                    android:id="@+id/car_air_relativelayout"
-                    android:layout_width="match_parent"
-
-                    android:layout_height="50dp">
-
-                    <TextView
-                        android:id="@+id/car_control_air"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center_vertical"
-                        android:text="空调控制"
-                        android:textSize="18dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/air_set"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/car_control_air"
-                        android:gravity="center" />
-                    <ImageView
-                        android:id="@+id/car_air_set_ture"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_true"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/car_air_set_false"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-
-                        android:scaleType="fitCenter" />
-
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/dark_grey"></View>
-
-                <RelativeLayout
-                    android:id="@+id/car_lock_relativelayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    <TextView
-                        android:id="@+id/car_control_lock"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center_vertical"
-                        android:text="汽车锁定"
-                        android:textSize="18dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/lock_set"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/car_control_lock"
-                        android:gravity="center" />
-
-                    <ImageView
-                        android:id="@+id/car_lock_set_ture"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/check_box_true"
-                        android:scaleType="fitCenter"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/car_lock_set_false"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-
-                        android:scaleType="fitCenter" />
-
-
-                </RelativeLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/dark_grey"></View>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:gravity="center_vertical"
-                            android:text="车灯状况"
-                            android:textSize="18dp"
-
-                            />
-
-                        <TextView
-                            android:id="@+id/car_control_light"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="10dp"
-                            android:gravity="center" />
-
-
-                    </RelativeLayout>
-
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                        android:background="@color/dark_grey"></View>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp">
-                            <TextView
-                                android:layout_width="100dp"
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="5dp"
-                                android:gravity="center_vertical"
-                                android:text="发动机性能"
-                                android:textSize="18dp" />
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/car_control_enginer"
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/c_gas"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1234"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="车油量(L)"/>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/dark_grey"/>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="10dp"
-                                android:gravity="center" />
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                        </RelativeLayout>
+                                <TextView
+                                    android:id="@+id/c_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="7894"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="里程数(km)"/>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="@color/dark_grey"></View>
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="5dp"
-                                android:gravity="center_vertical"
-                                android:text="变速器性能"
-                                android:textSize="18dp"
-                                />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
 
-                            <TextView
-                                android:id="@+id/car_control_shift"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="10dp"
-                                android:gravity="center" />
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="汽车牌照"
+                                    android:textSize="18dp"/>
+
+                                <TextView
+                                    android:id="@+id/car_set_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="center_vertical"
+                                    android:text="12346"
+                                    android:textSize="18dp"/>
 
 
-                        </RelativeLayout>
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey">
 
 
-                </LinearLayout>
+                            </View>
 
-            </LinearLayout>
+                            <RelativeLayout
+                                android:id="@+id/car_start_relativelayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
 
-        </RelativeLayout>
+                                <TextView
+                                    android:id="@+id/car_control_start"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="汽车启动"
+                                    android:textSize="18dp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/start_set"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_toRightOf="@+id/car_control_start"
+                                    android:gravity="center"/>
+
+                                <ImageView
+                                    android:id="@+id/car_start_set_ture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/check_box_true"
+                                    android:scaleType="fitCenter"
+                                    android:visibility="invisible"/>
+
+                                <ImageView
+                                    android:id="@+id/car_start_set_false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:scaleType="fitCenter"/>
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey">
+
+
+                            </View>
+
+                            <RelativeLayout
+                                android:id="@+id/car_door_relativelayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <TextView
+                                    android:id="@+id/car_control_door"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="车门控制"
+                                    android:textSize="18dp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/door_set"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_toRightOf="@+id/car_control_door"
+                                    android:gravity="center"/>
+
+                                <ImageView
+                                    android:id="@+id/car_door_set_ture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/check_box_true"
+                                    android:scaleType="fitCenter"
+                                    android:visibility="invisible"/>
+
+                                <ImageView
+                                    android:id="@+id/car_door_set_false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:scaleType="fitCenter"/>
+
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/car_air_relativelayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <TextView
+                                    android:id="@+id/car_control_air"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="空调控制"
+                                    android:textSize="18dp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/air_set"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_toRightOf="@+id/car_control_air"
+                                    android:gravity="center"/>
+
+                                <ImageView
+                                    android:id="@+id/car_air_set_ture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/check_box_true"
+                                    android:scaleType="fitCenter"
+                                    android:visibility="invisible"/>
+
+                                <ImageView
+                                    android:id="@+id/car_air_set_false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:scaleType="fitCenter"/>
+
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/car_lock_relativelayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <TextView
+                                    android:id="@+id/car_control_lock"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="汽车锁定"
+                                    android:textSize="18dp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/lock_set"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_toRightOf="@+id/car_control_lock"
+                                    android:gravity="center"/>
+
+                                <ImageView
+                                    android:id="@+id/car_lock_set_ture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/check_box_true"
+                                    android:scaleType="fitCenter"
+                                    android:visibility="invisible"/>
+
+                                <ImageView
+                                    android:id="@+id/car_lock_set_false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:scaleType="fitCenter"/>
+
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey"></View>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="车灯状况"
+                                    android:textSize="18dp"
+
+                                    />
+
+                                <TextView
+                                    android:id="@+id/car_control_light"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="center"/>
+
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey"></View>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="发动机性能"
+                                    android:textSize="18dp"/>
+
+                                <TextView
+                                    android:id="@+id/car_control_enginer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="center"/>
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/dark_grey"></View>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp">
+
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="变速器性能"
+                                    android:textSize="18dp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/car_control_shift"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="center"/>
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
             </com.ahstu.mycar.ui.PullableScrollow>
             <!--<include layout="@layout/allview_load_more" />-->
         </com.ahstu.mycar.ui.PullToRefreshLayout>

@@ -154,12 +154,12 @@ public class CarControlFragment extends Fragment {
                             value.put("car_start", 0);
                             car_start_state = 0;
                             car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            start_set.setText("关闭");
+                            start_set.setText("已关闭");
                         } else {
                             value.put("car_start", 1);
                             car_start_state = 1;
                             car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            start_set.setText("开启");
+                            start_set.setText("已开启");
 
 
                         }
@@ -167,13 +167,13 @@ public class CarControlFragment extends Fragment {
                             value.put("car_door", 0);
                             car_door_state = 0;
                             car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            door_set.setText("关闭");
+                            door_set.setText("已关闭");
 
                         } else {
                             value.put("car_door", 1);
                             car_door_state = 1;
                             car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            door_set.setText("开启");
+                            door_set.setText("已开启");
 
                         }
                         if (car.getCar_lock() == false) {
@@ -181,12 +181,12 @@ public class CarControlFragment extends Fragment {
                             value.put("car_lock", 0);
                             car_lock_state = 0;
                             car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            lock_set.setText("关闭");
+                            lock_set.setText("已关闭");
                         } else {
                             value.put("car_lock", 1);
                             car_lock_state = 1;
                             car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            lock_set.setText("开启");
+                            lock_set.setText("已开启");
                         }
 
                         if (car.getCar_air() == false) {
@@ -194,12 +194,12 @@ public class CarControlFragment extends Fragment {
                             value.put("car_air", 0);
                             car_air_state = 0;
                             car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            air_set.setText("关闭");
+                            air_set.setText("已关闭");
                         } else {
                             value.put("car_air", 1);
                             car_air_state = 1;
                             car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            air_set.setText("开启");
+                            air_set.setText("已开启");
                         }
                         db.update("carinfo", value, "car_number=?", new String[]{s});
                         db.close();
@@ -330,7 +330,7 @@ public class CarControlFragment extends Fragment {
                     value.put("car_air", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    air_set.setText("开启");
+                    air_set.setText("已开启");
                 } else {
 //                    car_air_set_true.setVisibility(View.INVISIBLE);
 //                    car_air_set_false.setVisibility(View.VISIBLE);
@@ -360,7 +360,7 @@ public class CarControlFragment extends Fragment {
                     value.put("car_air", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    air_set.setText("关闭");
+                    air_set.setText("已关闭");
                 }
 
 
@@ -401,7 +401,7 @@ public class CarControlFragment extends Fragment {
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
 
-                    door_set.setText("开启");
+                    door_set.setText("已开启");
 
 
                 } else {
@@ -434,7 +434,7 @@ public class CarControlFragment extends Fragment {
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
 
-                    door_set.setText("关闭");
+                    door_set.setText("已关闭");
                 }
             }
         });
@@ -470,7 +470,7 @@ public class CarControlFragment extends Fragment {
                     value.put("car_start", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    start_set.setText("开启");
+                    start_set.setText("已开启");
 
                 } else {
 //                    car_start_set_true.setVisibility(View.INVISIBLE);
@@ -500,7 +500,7 @@ public class CarControlFragment extends Fragment {
                     value.put("car_start", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    start_set.setText("关闭");
+                    start_set.setText("已关闭");
                 }
             }
         });
@@ -536,7 +536,7 @@ public class CarControlFragment extends Fragment {
                     value.put("car_lock", 1);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    lock_set.setText("开启");
+                    lock_set.setText("已开启");
                 } else {
 //                    car_lock_set_true.setVisibility(View.INVISIBLE);
 //                    car_lock_set_false.setVisibility(View.VISIBLE);
@@ -565,7 +565,7 @@ public class CarControlFragment extends Fragment {
                     value.put("car_lock", 0);
                     db.update("carinfo", value, "car_number=?", new String[]{s});
                     db.close();
-                    lock_set.setText("关闭");
+                    lock_set.setText("已关闭");
                 }
             }
         });
@@ -592,7 +592,7 @@ public class CarControlFragment extends Fragment {
             new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    // 千万别忘了告诉控件刷新完毕了哦！
+                    // 控件刷新完毕了哦！
                     pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
                     onHiddenChanged(false);
 

@@ -91,7 +91,6 @@ public class CarListActivity extends Activity {
             case 0:
                 if (resultCode == RESULT_OK) {
 
-
                     final Bundle bundle = data.getExtras();
                     Intent intent = new Intent();
                     intent.putExtras(bundle);
