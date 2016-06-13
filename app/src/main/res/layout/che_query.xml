@@ -27,68 +27,82 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/chepailinearlayout"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/query_title"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="3dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="车牌号:"
-            android:textSize="16dp"/>
-
-        <TextView
-            android:id="@+id/chepai"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="16dp"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/chaxundilinearlayout"
+        android:id="@+id/ll"
+        android:layout_below="@id/query_title"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/chepailinearlayout"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:orientation="horizontal"
-        android:textSize="16dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/next_button"
+        android:orientation="vertical">
 
-        <TextView
-
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="查询地:"
-            android:textSize="16dp"
-
-            />
-
-        <TextView
-            android:id="@+id/chaxundi"
+        <LinearLayout
+            android:id="@+id/chepailinearlayout"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="请选择查询地"
-            android:textSize="16dp"/>
+            android:layout_height="60dp"
+            android:layout_below="@+id/query_title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="车牌号:"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/chepai"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="16dp"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:id="@+id/chaxundilinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/chepailinearlayout"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:textSize="16dp">
+
+            <TextView
+
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="查询地:"
+                android:textSize="16dp"
+
+                />
+
+            <TextView
+                android:id="@+id/chaxundi"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="请选择查询地 >"
+                android:textSize="16dp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_query"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_below="@+id/chaxundilinearlayout"
+        android:layout_below="@+id/ll"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
@@ -138,9 +152,7 @@
         android:gravity="center_vertical"
         android:padding="@dimen/csy_pd"
         android:textColor="@color/csy_label"
-        android:textSize="@dimen/csy_text_ts"
-
-        />
+        android:textSize="@dimen/csy_text_ts"/>
 
     <ListView
         android:id="@+id/listresult"
