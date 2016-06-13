@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,17 +16,15 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/back"
-
-
-            />
+            android:background="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="详细消息" />
+            android:text="详细消息"
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 
@@ -48,47 +46,50 @@
                 <ImageView
                     android:id="@+id/info_erweima"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:text="加油站:" />
+                    android:text="加油站: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_station"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-
                     android:gravity="center"
-                    android:text="用户姓名:" />
+                    android:text="用户姓名: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_username"
@@ -96,26 +97,27 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-
-                    />
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="2dp"
                     android:gravity="center"
-                    android:text="车牌号码:" />
+                    android:text="车牌号码: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_carnumber"
@@ -123,6 +125,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
+                    android:textSize="18sp"
 
                     />
 
@@ -131,19 +134,20 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
                     android:gravity="center"
-                    android:text="加油类型:" />
+                    android:text="加油类型: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_ctype"
@@ -151,6 +155,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
+                    android:textSize="18sp"
 
                     />
 
@@ -159,19 +164,20 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
                     android:gravity="center"
-                    android:text="加油单价:" />
+                    android:text="加油单价: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_gasprice"
@@ -179,6 +185,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
+                    android:textSize="18sp"
 
                     />
 
@@ -187,19 +194,20 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
                     android:gravity="center"
-                    android:text="加油数量:" />
+                    android:text="加油数量: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_gascount"
@@ -207,6 +215,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
+                    android:textSize="18sp"
 
                     />
 
@@ -215,19 +224,20 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
                     android:gravity="center"
-                    android:text="加油总价:" />
+                    android:text="加油总价: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_countprice"
@@ -235,25 +245,27 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
+                    android:textSize="18sp"
 
                     />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="2dp"
                     android:gravity="center"
-                    android:text="订单时间:" />
+                    android:text="订单时间: "
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/info_time"
@@ -261,16 +273,14 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-
-                    />
-
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/dark_grey"></View>
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey"/>
 
 
         </LinearLayout>

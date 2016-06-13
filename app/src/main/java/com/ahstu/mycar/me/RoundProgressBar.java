@@ -62,7 +62,7 @@ public class RoundProgressBar extends View {
 //		mColorWheelPaintCentre.setAntiAlias(true);
 
         mDefaultWheelPaint = new Paint();
-        mDefaultWheelPaint.setColor(Color.rgb(127, 127, 127));
+        mDefaultWheelPaint.setColor(Color.rgb(204, 204, 204));
         mDefaultWheelPaint.setStyle(Paint.Style.STROKE);
         mDefaultWheelPaint.setStrokeCap(Paint.Cap.ROUND);
         mDefaultWheelPaint.setAntiAlias(true);
@@ -108,7 +108,7 @@ public class RoundProgressBar extends View {
         mDefaultWheelPaint
                 .setStrokeWidth(circleStrokeWidth - Textscale(2, min));
         mDefaultWheelPaint.setShadowLayer(Textscale(10, min), 0, 0,
-                Color.rgb(127, 127, 127));// 设置阴影
+                Color.rgb(224, 224, 224));// 设置阴影
     }
 
     /**
