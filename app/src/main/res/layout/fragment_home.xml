@@ -73,14 +73,14 @@
             android:id="@+id/iv_map_traffic"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
             android:layout_above="@+id/iv_loc"
+            android:layout_alignParentLeft="true"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/btn_mapfragment_loc"
             android:padding="5dp"
             android:scaleType="centerInside"
-            android:src="@drawable/main_icon_roadcondition_off"/>
+            android:src="@drawable/main_icon_roadcondition_off" />
 
         <ImageView
             android:id="@+id/iv_loc"

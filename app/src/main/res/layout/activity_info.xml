@@ -150,11 +150,11 @@
             android:id="@+id/btn_addgas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/login_button"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/login_button"
             android:text="预约加油"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -38,13 +39,14 @@ public class MusicMainActivity extends Activity {
     boolean isReturePlaylist;
     private ListView listView;
     private Button btn_playlist, btn_allSongs;
-    private TextView tv_newPlaylist;
+    private TextView tv_newPlaylist, title_name;
     private SimpleAdapter adapter;
     private int type = -1;
     private List<Mp3> songs;// 歌曲集合
     private List<String> al_playlist;// 播放列表集合
     private MusicPlayService mService;
     private MyApplication application;
+    private ImageView iv_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +54,24 @@ public class MusicMainActivity extends Activity {
         setContentView(R.layout.music_main_activity);
         application = (MyApplication) getApplication();
         initView();
+        title_name.setText("我的音乐");
+        iv_back.setVisibility(View.VISIBLE);
+        tv_newPlaylist.setVisibility(View.VISIBLE);
+        tv_newPlaylist.setText("新建列表");
         initListener();
         playListOnclick();
     }
 
     public void initView() {
+        title_name = (TextView) findViewById(R.id.title_name);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
         listView = (ListView) this.findViewById(R.id.listview);
         btn_playlist = (Button) this.findViewById(R.id.btn_playlist);
         btn_allSongs = (Button) this.findViewById(R.id.btn_allSongs);
-        tv_newPlaylist = (TextView) this.findViewById(R.id.tv_newPlaylist);
+        tv_newPlaylist = (TextView) this.findViewById(R.id.tv_bd09ll);
     }
 
     public void playListOnclick() {
-        tv_newPlaylist.setVisibility(View.VISIBLE);
         al_playlist = MusicUtils.PlaylistList(MusicMainActivity.this);
         List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < al_playlist.size(); i++) {
@@ -81,6 +88,12 @@ public class MusicMainActivity extends Activity {
     }
     
     public void initListener() {
+        iv_back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         //新增列表
         tv_newPlaylist.setOnClickListener(new OnClickListener() {
             @Override
@@ -99,7 +112,6 @@ public class MusicMainActivity extends Activity {
         btn_allSongs.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_newPlaylist.setVisibility(View.GONE);
                 songs = MusicUtils.getAllSongs(MusicMainActivity.this);
                 List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                 for (int i = 0; i < songs.size(); i++) {

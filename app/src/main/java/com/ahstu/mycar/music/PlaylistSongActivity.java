@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,7 +36,8 @@ public class PlaylistSongActivity extends Activity {
 
     private final int SETADAPTER = 111;
     public Button btn_back;
-    private TextView tv_edit, tv_clear, tv_delete, tv_add, tv_back;
+    private TextView tv_edit, tv_clear, tv_delete, tv_add, tv_back, title_name;
+    private ImageView iv_back;
     private LinearLayout ll_normal, ll_edit;
     private ListView listView;
     private boolean idEdit = false;//判断是不是编辑模式，是的话显示删除图标
@@ -66,18 +68,20 @@ public class PlaylistSongActivity extends Activity {
         MyApplication application = (MyApplication) getApplication();
         mService = application.getmService();
         initView();
+        iv_back.setVisibility(View.VISIBLE);
         initListener();
 
         Intent intent = getIntent();
         String songlist_name = intent.getStringExtra("listname");
-        TextView list_name = (TextView) findViewById(R.id.title_tv);
-        list_name.setText(songlist_name);
+//        TextView list_name = (TextView) findViewById(R.id.title_tv);
+//        list_name.setText(songlist_name);
+        title_name.setText(songlist_name);
         if (intent != null) {
             //判断是不是从添加列表界面跳过来的，是的话就点击一下添加歌曲按钮，跳到添加歌曲界面
             boolean addSong = intent.getBooleanExtra("autoAddSong", false);
             if (addSong) {
                 String playlistName = intent.getStringExtra("playListName");
-                list_name.setText(playlistName);
+                title_name.setText(playlistName);
                 long listId = MusicUtils.getPlayListId(PlaylistSongActivity.this, playlistName);
                 playlistId = listId;
                 tv_add.performClick();//这里点击了添加歌曲按钮
@@ -109,6 +113,8 @@ public class PlaylistSongActivity extends Activity {
     }
 
     public void initView() {
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        title_name = (TextView) findViewById(R.id.title_name);
         listView = (ListView) findViewById(R.id.listView);
         tv_delete = (TextView) findViewById(R.id.tv_delete);
         tv_clear = (TextView) findViewById(R.id.tv_clear);
@@ -117,10 +123,16 @@ public class PlaylistSongActivity extends Activity {
         tv_back = (TextView) findViewById(R.id.tv_back);
         ll_normal = (LinearLayout) findViewById(R.id.ll_normal);
         ll_edit = (LinearLayout) findViewById(R.id.ll_edit);
-        btn_back = (Button) findViewById(R.id.back_btn);
+//        btn_back = (Button) findViewById(R.id.back_btn);
     }
 
     private void initListener() {
+        iv_back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         //编辑
         tv_edit.setOnClickListener(new OnClickListener() {
             @Override
@@ -195,14 +207,14 @@ public class PlaylistSongActivity extends Activity {
                 setAdapter();
             }
         });
-        //返回不编辑的歌曲列表
-        btn_back.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        //返回不编辑的歌曲列表
+//        btn_back.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
     }
 
     public void setAdapter() {
