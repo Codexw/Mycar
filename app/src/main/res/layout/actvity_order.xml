@@ -11,21 +11,18 @@
 
         <ImageView
             android:id="@+id/or_back"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/back"
-
-            />
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="订单列表" />
+            android:text="订单列表"
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 
