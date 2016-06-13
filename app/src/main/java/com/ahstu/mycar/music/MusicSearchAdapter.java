@@ -1,7 +1,6 @@
 package com.ahstu.mycar.music;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +13,20 @@ import com.ahstu.mycar.bean.MusicMessage;
 
 import java.util.List;
 
-
 interface AdpterOnItemClick {
     void onAdpterClick(int postion);
 }
-
 
 public class MusicSearchAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<MusicMessage> musicMessageList;
     private AdpterOnItemClick myAdpterOnclick;
-//    private ArrayList<String> str;
     
     public MusicSearchAdapter(Context context, List<MusicMessage> str) {
         mInflater = LayoutInflater.from(context);
         musicMessageList = str;
     }
-
 
     public void onListener(AdpterOnItemClick listener) {
 
@@ -61,20 +56,15 @@ public class MusicSearchAdapter extends BaseAdapter {
 
         holder.bt_music_down = (Button) convertView.findViewById(R.id.bt_music_download);
         
-        
         holder.musicDownName.setText(musicMessageList.get(position).getSong_name());
         holder.bt_music_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (myAdpterOnclick != null) {
-                    int which = view.getId();
                     myAdpterOnclick.onAdpterClick(position);
-                    Log.e("err", ">>>>>>>>>>>>>>>>>>>>>" + which);
-
                 }
             }
         });
-        
         return convertView;
     }
 
@@ -82,5 +72,4 @@ public class MusicSearchAdapter extends BaseAdapter {
         TextView musicDownName;
         Button bt_music_down;
     }
-
 }

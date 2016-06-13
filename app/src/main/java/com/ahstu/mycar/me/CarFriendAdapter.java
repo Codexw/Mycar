@@ -1,7 +1,6 @@
 package com.ahstu.mycar.me;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,7 +26,7 @@ public class CarFriendAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<User> friendNameList;
     private FriendAdpterOnItemClick friendAdpterOnclick;
-    private ArrayList<String> str;
+//    private ArrayList<String> str;
 
     public CarFriendAdapter(Context context, List<User> str) {
         mInflater = LayoutInflater.from(context);
@@ -70,9 +68,7 @@ public class CarFriendAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 if (friendAdpterOnclick != null) {
-                    int which = view.getId();
                     friendAdpterOnclick.onAdpterClick(position);
-                    Log.e("CarFriendAdapter75", ">>>>>>>>>>>>>>>>>>>>>" + which);
 
                 }
             }

@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,13 +23,12 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 @SuppressLint("NewApi")
 public class AddSongtoPlaylistActivity extends Activity {
 
     private final int SETADAPTER = 111;
-    public Button btn_back;
-    private TextView tv_finish, tv_back;
+    private TextView tv_finish, tv_back, title_name;
+    private ImageView iv_back;
     private ListView listView;
     private long playlistId;// 当前播放列表id
     private List<Mp3> songs;// 得到全部歌曲
@@ -58,6 +56,8 @@ public class AddSongtoPlaylistActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addsongtoplaylist);
         initView();
+        iv_back.setVisibility(View.VISIBLE);
+        title_name.setText("添加音乐");
         initListener();
     }
 
@@ -78,14 +78,20 @@ public class AddSongtoPlaylistActivity extends Activity {
     }
 
     public void initView() {
+        title_name = (TextView) findViewById(R.id.title_name);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
         listView = (ListView) findViewById(R.id.listView);
         tv_finish = (TextView) findViewById(R.id.tv_finish);
         tv_back = (TextView) findViewById(R.id.tv_back);
-        btn_back = (Button) findViewById(R.id.back_btn);
     }
 
-
     private void initListener() {
+        iv_back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         // 完成添加
         tv_finish.setOnClickListener(new OnClickListener() {
             @Override
@@ -110,24 +116,21 @@ public class AddSongtoPlaylistActivity extends Activity {
 
                             for (Mp3 tempMp3 : songListForPlaylist) {
                                 long sqlId = tempMp3.getAllSongIndex();
-                                Log.i("PLAYLIST", "CHECK: mp3: " + sqlId + " ADDID: " + addSongs[i]);
+//                                Log.i("PLAYLIST", "CHECK: mp3: " + sqlId + " ADDID: " + addSongs[i]);
                                 if (sqlId == addSongs[i]) {
                                     playListContain = true;
                                     break;
                                 }
                             }
-
                             if (!playListContain) {
                                 tempSong.add(new Long(addSongs[i]));
                             }
                         }
-
                         addSongTemp = new long[tempSong.size()];
                         for (int i = 0; i < tempSong.size(); i++) {
                             addSongTemp[i] = tempSong.get(i);
                         }
                     }
-
                     MusicUtils.addToPlaylist(AddSongtoPlaylistActivity.this, addSongTemp, playlistId);
                 }
                 finish();
@@ -139,14 +142,7 @@ public class AddSongtoPlaylistActivity extends Activity {
                 finish();
             }
         });
-        btn_back.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
-
 
     public void setAdapter() {
 
@@ -198,8 +194,6 @@ public class AddSongtoPlaylistActivity extends Activity {
             }
             listItems.add(map);
         }
-
         return listItems;
     }
-
 }

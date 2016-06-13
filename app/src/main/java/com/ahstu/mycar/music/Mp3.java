@@ -9,29 +9,12 @@ public class Mp3 {
     public int Duration;
     private long allSongIndex;
 
-
     public int getSqlId() {
         return id;
     }
 
     public void setSqlId(int sqlId) {
         this.id = sqlId;
-    }
-
-    public int getPlaylistId() {
-        return playlistId;
-    }
-
-    public void setPlaylistId(int playlistId) {
-        this.playlistId = playlistId;
-    }
-
-    public int getDuration() {
-        return Duration;
-    }
-
-    public void setDuration(int duration) {
-        Duration = duration;
     }
 
     public String getSingerName() {
@@ -72,6 +55,4 @@ public class Mp3 {
                 + ", name=" + name + ", Duration="
                 + Duration + ", allSongIndex=" + allSongIndex + "]";
     }
-
-
 }

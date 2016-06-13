@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="填写手机号码"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </RelativeLayout>
 
 
@@ -77,26 +77,26 @@
                 android:id="@+id/btn_register_code"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/login_button"
-                android:layout_marginTop="3dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginBottom="1dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/login_button"
                 android:gravity="center"
                 android:text="  获取验证码  "
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/et_register_code"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入验证码"
-                android:gravity="center_vertical"
-                android:padding="5dp"
+                android:layout_toLeftOf="@id/btn_register_code"
                 android:background="@null"
-                android:maxLength="6"
+                android:gravity="center_vertical"
+                android:hint="请输入验证码"
                 android:inputType="textUri"
-                android:layout_toLeftOf="@id/btn_register_code" />
+                android:maxLength="6"
+                android:padding="5dp" />
         </RelativeLayout>
 
     </LinearLayout>

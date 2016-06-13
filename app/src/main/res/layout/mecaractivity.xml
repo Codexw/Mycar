@@ -95,8 +95,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="汽车型号:"
-                    />
+                    android:text="汽车型号:" />
 
                 <TextView
                     android:id="@+id/mecar_model"

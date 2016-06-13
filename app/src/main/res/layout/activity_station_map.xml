@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="附近加油站"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/iv_list"
@@ -37,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/station_list"/>
+            android:src="@drawable/station_list" />
     </RelativeLayout>
 
     <LinearLayout

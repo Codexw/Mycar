@@ -43,6 +43,7 @@ public class MusicMenu extends ViewGroup {
     //强制转换成ImageView
     private ArrayList<ImageView> views = new ArrayList<>();
     private MusicMenuListener musicMenuListener;
+    private boolean is_play;
 
     public MusicMenu(Context context) {
         super(context);
@@ -64,6 +65,10 @@ public class MusicMenu extends ViewGroup {
         init(context);
     }
 
+    public void setIs_play(boolean is_play) {
+        this.is_play = is_play;
+    }
+
     public void setOnMusicMenuListener(MusicMenuListener listener) {
         musicMenuListener = listener;
     }
@@ -75,31 +80,16 @@ public class MusicMenu extends ViewGroup {
         childFour = new ImageView(context);
         application = new MyApplication();
         mService = new MusicPlayService();
-//        childOne.setBackgroundResource(R.drawable.music_menu_bg);
-//        childTwo.setBackgroundResource(R.drawable.music_menu_bg);
-//        childThree.setBackgroundResource(R.drawable.music_menu_bg);
-//        childFour.setBackgroundResource(R.drawable.music_menu_bg);
-
 
         childOne.setImageResource(R.drawable.previous_bt);
         childTwo.setImageResource(R.drawable.pause_bt);
         childThree.setImageResource(R.drawable.next_bt);
-        childFour.setImageResource(R.drawable.pause_bt);
+        childFour.setImageResource(R.drawable.songlist_bt);
 
         childOne.setTag("previous");
         childTwo.setTag("pause");
         childThree.setTag("next");
         childFour.setTag("list");
-//        childOne.setText("1");
-//        childTwo.setText("2");
-//        childThree.setText("3");
-//        childFour.setText("4");
-
-
-//        childOne.setGravity(Gravity.CENTER);
-//        childTwo.setGravity(Gravity.CENTER);
-//        childThree.setGravity(Gravity.CENTER);
-//        childFour.setGravity(Gravity.CENTER);
 
         addView(childOne);
         addView(childTwo);
@@ -117,19 +107,17 @@ public class MusicMenu extends ViewGroup {
         childFour.setVisibility(View.INVISIBLE);
 
 
-        childOne.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return false;
-            }
-        });
+//        childOne.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                return false;
+//            }
+//        });
 
         childOne.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-//                mainActivity.show();
-//                mService.frontMusic();
                 musicMenuListener.dealMusicclick(childOne);
                 in();
             }
@@ -138,7 +126,6 @@ public class MusicMenu extends ViewGroup {
 
             @Override
             public void onClick(View v) {
-//                mService.pausePlay();
                 musicMenuListener.dealMusicclick(childTwo);
                 in();
             }
@@ -148,42 +135,6 @@ public class MusicMenu extends ViewGroup {
 
             @Override
             public void onClick(View v) {
-//                application = (MyApplication) getApplication();
-//                mService = application.getmService();
-//                mService.nextMusic();
-//                new Thread(){
-//                    public void run(){
-//                        try {
-//                            sleep(1000);
-//                        } catch (InterruptedException e1) {
-//                            // TODO Auto-generated catch block
-//                            e1.printStackTrace();
-//                        }
-//                        if(null == mService){
-//                            mService = application.getmService();
-//                            Log.e("TAG",">>>>>>>>>still null<<<<<<<<<<<<<<");
-//                        }
-//                        if(mService==null){
-//                            Log.e("TT",">>>>>>>>>>not applacation");
-//                        }
-//                        
-//                    }
-//                }.start();
-
-
-//                application =  getApplication();
-////                Intent intent;
-////                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-////                intent=new Intent(MusicMenu.this, MusicActivity.class)
-////                context.startActivity(intent);
-//                try {
-//                    mService = application.getmService();
-//                    mService.nextMusic();
-//                } catch (Exception e) {
-//                    Log.e("mSerice",">>>>>>>>>>>>>>>>>>applacation<<<<<<<<<<<<<<<<<<");
-//                }
-//                if(mService==null)
-//                    Log.e("mSerice",">>>>>>>>>>>>>>>>>>null<<<<<<<<<<<<<<<<<<");
                 musicMenuListener.dealMusicclick(childThree);
                 in();
             }
@@ -206,6 +157,11 @@ public class MusicMenu extends ViewGroup {
 
         isAnimating = true;
 
+        if (is_play) {
+            childTwo.setImageResource(R.drawable.pause_bt);
+        } else {
+            childTwo.setImageResource(R.drawable.play_bt);
+        }
         int length = views.size();
         for (int i = 0; i < length; i++) {
             final View v = views.get(i);

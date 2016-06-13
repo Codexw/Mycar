@@ -15,9 +15,6 @@ import java.util.List;
 public class MusicUtils {
 
     public static ArrayList<String> al_playlist = new ArrayList<String>();
-    private static List<String> mMusicList = new ArrayList<String>();
-    private static List<Album> albums = new ArrayList<Album>();
-    private static List<Mp3> playList = new ArrayList<Mp3>();
     private static String[] mCols = new String[]{MediaStore.Audio.Playlists._ID, MediaStore.Audio.Playlists.NAME};
     private static ContentValues[] sContentValuesCache = null;
 
@@ -71,7 +68,7 @@ public class MusicUtils {
             return null;
         }
         int len = cursor.getCount();
-        long[] list = new long[len];
+//        long[] list = new long[len];
         cursor.moveToFirst();
         int id = -1, title = -1, artist = -1;
         int allSongIndex = -1;
@@ -121,10 +118,10 @@ public class MusicUtils {
             cur.moveToFirst();
             int base = cur.getInt(0);
             cur.close();
-            int numinserted = 0;
+//            int numinserted = 0;
             for (int i = 0; i < size; i += 1000) {
                 makeInsertItems(ids, i, 1000, base);
-                numinserted += resolver.bulkInsert(uri, sContentValuesCache);
+                resolver.bulkInsert(uri, sContentValuesCache);
             }
         }
     }
@@ -233,20 +230,9 @@ public class MusicUtils {
         return listId;
     }
 
-    public static List<Mp3> getPlayList() {
-        return playList;
-    }
-
-    public static void setPlayList(List<Mp3> playList) {
-        MusicUtils.playList = playList;
-    }
-
     public static ArrayList<String> getAl_playlist() {
         return al_playlist;
     }
 
-    public static void setAl_playlist(ArrayList<String> al_playlist) {
-        MusicUtils.al_playlist = al_playlist;
-    }
 
 }

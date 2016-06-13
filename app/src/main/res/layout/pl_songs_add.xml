@@ -22,9 +22,9 @@
         Android:layout_height="24dp"
         Android:layout_alignParentRight="true"
         Android:layout_centerVertical="true"
-        Android:layout_marginRight="10dp"
+        Android:layout_gravity="center"
         Android:layout_marginLeft="6dp"
-        Android:layout_gravity="center" />
+        Android:layout_marginRight="10dp" />
 
     <!-- 商品信息 -->
 
@@ -32,25 +32,23 @@
         Android:layout_width="wrap_content"
         Android:layout_height="wrap_content"
         Android:layout_alignParentTop="true"
-        Android:layout_toRightOf="@id/albumPicture"
-        Android:layout_toLeftOf="@id/icon"
         Android:layout_marginBottom="6dp"
         Android:layout_marginLeft="10dp"
         Android:layout_marginTop="6dp"
+        Android:layout_toLeftOf="@id/icon"
+        Android:layout_toRightOf="@id/albumPicture"
         Android:orientation="vertical">
 
         <TextView
             Android:id="@+id/songName"
             Android:layout_width="wrap_content"
             Android:layout_height="wrap_content"
-            Android:textColor="#FFFFFFFF"
             Android:textSize="18sp" />
 
         <TextView
             Android:id="@+id/singerName"
             Android:layout_width="wrap_content"
             Android:layout_height="wrap_content"
-            Android:textColor="#FFFFFFFF"
             Android:textSize="12sp" />
     </LinearLayout>
 
