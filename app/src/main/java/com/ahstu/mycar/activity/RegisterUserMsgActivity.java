@@ -22,7 +22,7 @@ import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
- * @author redowu 2016/4/25
+ * @author 吴天洛 2016/4/25
  *         功能:用户名和密码注册
  */
 public class RegisterUserMsgActivity extends Activity implements View.OnClickListener {

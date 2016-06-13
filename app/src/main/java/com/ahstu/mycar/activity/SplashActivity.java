@@ -24,7 +24,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 /**
- * @author redowu 2016/4/25
+ * @author 吴天洛 2016/4/25
  *         功能：欢迎界面动画、以及程序后台的部分加载
  */
 public class SplashActivity extends Activity implements Animation.AnimationListener {

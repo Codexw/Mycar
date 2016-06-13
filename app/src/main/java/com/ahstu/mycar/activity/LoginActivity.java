@@ -41,7 +41,7 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 /**
- * @author redowu 2016/4/25
+ * @author 吴天洛 2016/4/25
  *         功能：登录界面，用于登录
  */
 public class LoginActivity extends Activity implements View.OnClickListener {

@@ -22,8 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 诱导界面
- * * @author 吴天洛 2016/4/25
+ * 导航诱导界面
+ *
+ * @author 吴天洛 2016/4/25
  */
 public class BDSearchGuideActivity extends Activity {
 

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by redowu on 2016/5/8.
+ * Created by 吴天洛 on 2016/5/8.
  */
 public class StationData {
     private Handler handler;

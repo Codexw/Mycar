@@ -25,6 +25,10 @@ import com.cheshouye.api.client.json.ProvinceInfoJson;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author xuning
+ *         违章查询中选择省份城市
+ */
 public class ProvinceListActivity extends Activity {
     private ListView lv_list;
     private ListAdapter mAdapter;

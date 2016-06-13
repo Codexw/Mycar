@@ -89,7 +89,7 @@ public class MeCarActivity extends Activity {
 
     void set() {
         final String s = bundle.getString("car_number");
-        Log.e("TAG", ">>>>>>>>>>>>>>>>>>111<<<<<<<<<<<<<<<" + s);
+        Log.e("MeCarActivity", ">>>>>>>>>>>>>>>>>>111<<<<<<<<<<<<<<<" + s);
         String[] columns = {"car_number", "car_model", "car_brand", "car_enginerno", "car_frame", "car_level", "car_mile",
                 "car_gas", "car_box", "car_enginerstate", "car_shiftstate", "car_light", "car_start", "car_door", "car_air", "car_lock"};
         DatabaseHelper helper = new DatabaseHelper(MeCarActivity.this, "node.db", null, 1);

@@ -45,7 +45,7 @@ import java.util.List;
 
 /**
  * @author 吴天洛 2016/4/25
- *         功能:加油站
+ *         功能:加载、标记周围加油站到地图上
  */
 
 public class StationMapActivity extends Activity implements OnClickListener {

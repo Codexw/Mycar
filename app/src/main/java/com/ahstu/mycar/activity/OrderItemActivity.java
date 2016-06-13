@@ -60,7 +60,7 @@ public class OrderItemActivity extends Activity {
         SQLiteDatabase data = helper.getReadableDatabase();
         bundle = getIntent().getExtras();
         int id = bundle.getInt("id");
-        Log.e("Tag", "aaaaaaaaaaaaaaaaaaaa" + id);
+        Log.e("OrderItemActivity", "aaaaaaaaaaaaaaaaaaaa" + id);
         Cursor cursor = data.query("gasorder", new String[]{"username", "carnumber", "stationname", "ctype", "gascount", "gasprice", "countprice", "time"}, "id=?", new String[]{id + ""}, null, null, null);
         while (cursor.moveToNext()) {
             String username = cursor.getString(cursor.getColumnIndex("username"));

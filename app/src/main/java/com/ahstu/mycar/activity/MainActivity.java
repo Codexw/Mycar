@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -193,7 +194,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         }.start();
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();

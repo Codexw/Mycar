@@ -96,13 +96,9 @@ public class CarListActivity extends Activity {
                     intent.putExtras(bundle);
                     intent.setClass(CarListActivity.this, CarinformationActivity.class);
                     startActivity(intent);
-
                 }
                 break;
-
         }
-
-
     }
 
     //从数据库获取数据，添加到集合中
@@ -231,10 +227,6 @@ public class CarListActivity extends Activity {
         } catch (Exception e) {
 
         }
-
-
     }
-
-
 }
 

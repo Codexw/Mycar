@@ -26,7 +26,7 @@ import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.VerifySMSCodeListener;
 
 /**
- * @author redowu 2016/4/25
+ * @author 吴天洛 2016/4/25
  *         功能:手机号码注册
  */
 public class RegisterPhoneActivity extends Activity implements View.OnClickListener {

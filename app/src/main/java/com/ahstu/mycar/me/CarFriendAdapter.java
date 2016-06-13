@@ -61,7 +61,7 @@ public class CarFriendAdapter extends BaseAdapter {
         holder.friendName = (TextView) convertView.findViewById(R.id.music_name_item);
 
         holder.bt_share_location = (Button) convertView.findViewById(R.id.bt_music_download);
-        holder.bt_share_location.setText("请求共享位置");
+        holder.bt_share_location.setText("共享位置");
 
         holder.friendName.setText(friendNameList.get(position).getUsername());
         holder.bt_share_location.setOnClickListener(new View.OnClickListener() {

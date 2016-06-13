@@ -75,9 +75,9 @@ public class CarQueryActivity extends Activity {
             chejia_number = cursor.getString(cursor.getColumnIndex("car_frame")).trim();
 
         }
-        Log.i("shuchu", "sssssssssss" + chepainumber);
-        Log.i("shuchu", "ssssssssss" + engine_number);
-        Log.i("shuchu", "sssssssssss" + chejia_number);
+//        Log.i("shuchu", "sssssssssss" + chepainumber);
+//        Log.i("shuchu", "ssssssssss" + engine_number);
+//        Log.i("shuchu", "sssssssssss" + chejia_number);
         
         //初始化组件
         chaxundi = (TextView) findViewById(R.id.chaxundi);

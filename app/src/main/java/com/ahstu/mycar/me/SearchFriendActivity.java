@@ -90,7 +90,7 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
                             carFriendAdapter.onListener(SearchFriendActivity.this);
                             friendList.setAdapter(carFriendAdapter);
                         } else {
-                            Toast.makeText(SearchFriendActivity.this, "搜索的车友不存在", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SearchFriendActivity.this, "车友不存在", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -117,9 +117,9 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
             shareLocationMessage.setUsername(userList.get(postion).getUsername());//获取请求对象的name
             moblie_id.addWhereEqualTo("installationId", userList.get(postion).getMyInstallation());
             bmobPush.setQuery(moblie_id);
-            bmobPush.pushMessage(name + "车友发送位置共享请求" + mobileid);
+            bmobPush.pushMessage(name + "请求位置共享" + mobileid);
         } else {
-            Toast.makeText(this, "搜索车友未上线，发送位置共享请求失败！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "车友未上线，位置共享请求失败！", Toast.LENGTH_SHORT).show();
         }
     }
 
