@@ -109,7 +109,7 @@ public class FriendNotificationService extends Service {
         friendremoteviews.setOnClickPendingIntent(R.id.bt_deny_share, intent_deny);
 
         //设置通知栏
-        mBuilder.setContent(friendremoteviews).setWhen(System.currentTimeMillis()).setTicker(name + "车友请求位置共享").setSmallIcon(R.drawable.ic_launcher)
+        mBuilder.setContent(friendremoteviews).setWhen(System.currentTimeMillis()).setTicker(name + "车友请求位置共享").setSmallIcon(R.mipmap.notification_head)
                 .setDefaults(Notification.DEFAULT_ALL);
         share_notification = mBuilder.build();
         share_notification.flags = Notification.FLAG_AUTO_CANCEL;

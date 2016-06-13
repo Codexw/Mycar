@@ -12,6 +12,7 @@
     <!-- 蓝色 -->
     <!--<color name="blue">#3385FF</color>-->
     <color name="blue">#499BF7</color>
+    <color name="bluepress">#289bda</color>
 
     <color name="dark">#dcdcdc</color>  <!--深灰色 -->
     <color name="dark_grey">#cccccc</color>  <!--浅灰色 -->
