@@ -15,6 +15,7 @@ public class MyOrientationListener implements SensorEventListener {
     private Context context;
     private Sensor mSensor;
     private float lastX;
+    private OnOrientationListener mOnOrientationListener;
 
     public MyOrientationListener(Context context) {
         this.context = context;
@@ -51,8 +52,6 @@ public class MyOrientationListener implements SensorEventListener {
             lastX = x;
         }
     }
-
-    private OnOrientationListener mOnOrientationListener;
 
     public void setmOnOrientationListener(OnOrientationListener mOnOrientationListener) {
         this.mOnOrientationListener = mOnOrientationListener;

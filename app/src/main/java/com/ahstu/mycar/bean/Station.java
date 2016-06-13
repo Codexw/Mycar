@@ -9,6 +9,27 @@ import java.util.ArrayList;
  * Created by 吴天洛 on 2016/5/8.
  */
 public class Station implements Parcelable {
+    public static final Creator<Station> CREATOR = new Creator<Station>() {
+        @Override
+        public Station createFromParcel(Parcel in) {
+            Station s = new Station();
+            s.name = in.readString();
+            s.addr = in.readString();
+            s.area = in.readString();
+            s.brand = in.readString();
+            s.lat = in.readDouble();
+            s.lon = in.readDouble();
+            s.distance = in.readInt();
+            s.gastPriceList = in.readArrayList(Price.class.getClassLoader());
+            s.priceList = in.readArrayList(Price.class.getClassLoader());
+            return s;
+        }
+
+        @Override
+        public Station[] newArray(int size) {
+            return new Station[size];
+        }
+    };
     private String name;
     private String addr;
     private String area;
@@ -17,7 +38,6 @@ public class Station implements Parcelable {
     private double lon;
     private int distance;
     private ArrayList<Price> gastPriceList;  //本地油价
-    private ArrayList<Price> priceList; //省控油价
 
 /*    protected Station(Parcel in) {
         name = in.readString();
@@ -28,6 +48,7 @@ public class Station implements Parcelable {
         lon = in.readDouble();
         distance = in.readInt();
     }*/
+private ArrayList<Price> priceList; //省控油价
 
     public String getName() {
         return name;
@@ -101,7 +122,6 @@ public class Station implements Parcelable {
         this.priceList = priceList;
     }
 
-
     @Override
     public int describeContents() {
 
@@ -120,26 +140,4 @@ public class Station implements Parcelable {
         dest.writeList(gastPriceList);
         dest.writeList(priceList);
     }
-
-    public static final Creator<Station> CREATOR = new Creator<Station>() {
-        @Override
-        public Station createFromParcel(Parcel in) {
-            Station s = new Station();
-            s.name = in.readString();
-            s.addr = in.readString();
-            s.area = in.readString();
-            s.brand = in.readString();
-            s.lat = in.readDouble();
-            s.lon = in.readDouble();
-            s.distance = in.readInt();
-            s.gastPriceList = in.readArrayList(Price.class.getClassLoader());
-            s.priceList = in.readArrayList(Price.class.getClassLoader());
-            return s;
-        }
-
-        @Override
-        public Station[] newArray(int size) {
-            return new Station[size];
-        }
-    };
 }

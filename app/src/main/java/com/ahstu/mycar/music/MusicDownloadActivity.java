@@ -78,10 +78,13 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
                 musicquery.findObjects(MusicDownloadActivity.this, new FindListener<MusicMessage>() {
                     @Override
                     public void onSuccess(List<MusicMessage> list) {
-                        musicMessageArrayList = list;
-                        musicSearchAdapter = new MusicSearchAdapter(MusicDownloadActivity.this, list);
-                        musicSearchAdapter.onListener(MusicDownloadActivity.this);
-                        musicdownlist.setAdapter(musicSearchAdapter);
+                        if (list.size() >= 1) {
+                            musicMessageArrayList = list;
+                            musicSearchAdapter = new MusicSearchAdapter(MusicDownloadActivity.this, list);
+                            musicSearchAdapter.onListener(MusicDownloadActivity.this);
+                            musicdownlist.setAdapter(musicSearchAdapter);
+                        } else
+                            Toast.makeText(MusicDownloadActivity.this, "未搜索到相关音乐信息", Toast.LENGTH_SHORT).show();
 
                     }
                     @Override

@@ -7,13 +7,27 @@ import android.os.Parcelable;
  * Created by 吴天洛 on 2016/5/8.
  */
 public class Price implements Parcelable {
+    public static final Creator<Price> CREATOR = new Creator<Price>() {
+        @Override
+        public Price createFromParcel(Parcel in) {
+            Price p = new Price();
+            p.type = in.readString();
+            p.price = in.readString();
+            return p;
+        }
+
+        @Override
+        public Price[] newArray(int size) {
+            return new Price[size];
+        }
+    };
     private String type;
-    private String price;
 
 /*    protected Price(Parcel in) {
         type = in.readString();
         price = in.readString();
     }*/
+private String price;
 
     public String getType() {
         return type;
@@ -41,19 +55,4 @@ public class Price implements Parcelable {
         dest.writeString(type);
         dest.writeString(price);
     }
-
-    public static final Creator<Price> CREATOR = new Creator<Price>() {
-        @Override
-        public Price createFromParcel(Parcel in) {
-            Price p = new Price();
-            p.type = in.readString();
-            p.price = in.readString();
-            return p;
-        }
-
-        @Override
-        public Price[] newArray(int size) {
-            return new Price[size];
-        }
-    };
 }
