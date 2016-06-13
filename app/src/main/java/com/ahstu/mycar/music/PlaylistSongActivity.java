@@ -207,14 +207,7 @@ public class PlaylistSongActivity extends Activity {
                 setAdapter();
             }
         });
-//        //返回不编辑的歌曲列表
-//        btn_back.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+
     }
 
     public void setAdapter() {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
     private List<MusicMessage> musicMessageArrayList;
     //    private ArrayList<String> al = new ArrayList<String>();
     private DownLoadCompleteReceiver receiver;
+    private ImageView search_title_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
         searchmusicbt = (Button) findViewById(R.id.bt_music_search);
         musicdownlist = (ListView) findViewById(R.id.music_search_listview);
         bt_music_down = (Button) findViewById(R.id.bt_music_download);
+        search_title_back = (ImageView) findViewById(R.id.search_title_back);
 
         // 下载按钮服务（未解绑定）
         downManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);// 下载服务
@@ -60,6 +63,12 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
         receiver = new DownLoadCompleteReceiver();
         registerReceiver(receiver, filter);
 
+        search_title_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         searchmusicbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

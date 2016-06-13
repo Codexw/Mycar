@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -69,9 +68,7 @@ public class CarFriendAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 if (friendAdpterOnclick != null) {
-//                    int which = view.getId();
                     friendAdpterOnclick.onAdpterClick(position);
-                    Log.e("CarFriendAdapter75", ">>>>>>>>>>>>>>>>>>>>>" + which);
 
                 }
             }

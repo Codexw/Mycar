@@ -35,7 +35,7 @@ import java.util.Map;
 public class MusicMainActivity extends Activity {
 
     public static final int PLAYLIST = 1;//适配器加载的数据是歌曲列表
-    public static final int SONGS_LIST = 2;//适配器加载的数据是歌曲列表
+    public static final int SONGS_LIST = 2;
     boolean isReturePlaylist;
     private ListView listView;
     private Button btn_playlist, btn_allSongs;
@@ -53,11 +53,13 @@ public class MusicMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_main_activity);
         application = (MyApplication) getApplication();
+
         initView();
         title_name.setText("我的音乐");
         iv_back.setVisibility(View.VISIBLE);
         tv_newPlaylist.setVisibility(View.VISIBLE);
         tv_newPlaylist.setText("新建列表");
+
         initListener();
         playListOnclick();
     }

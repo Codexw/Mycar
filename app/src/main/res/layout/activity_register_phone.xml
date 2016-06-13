@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="填写手机号码"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </RelativeLayout>
 
 
