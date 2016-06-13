@@ -3,8 +3,6 @@ package com.ahstu.mycar.me;
 public class ListModel {
     private int nameId;
     private String textName;
-
-    //private int imageId;
     public int getNameId() {
         return nameId;
     }
@@ -20,12 +18,5 @@ public class ListModel {
     public void setTextName(String textName) {
         this.textName = textName;
     }
-//	public int getImageId() {
-//		return imageId;
-//	}
-//	public void setImageId(int imageId) {
-//		this.imageId = imageId;
-//	}
-
 
 }

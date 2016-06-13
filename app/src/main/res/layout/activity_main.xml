@@ -42,7 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="地图"
-                android:textColor="@color/nav_home_text" />
+                android:textColor="@color/nav_home_text"
+                android:textSize="12dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,12 +63,13 @@
             <TextView
                 android:id="@+id/tvSearch"
                 style="@style/ExtraVerySmallGray"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="线路"
-                android:textColor="@color/nav_find_text" />
+                android:textColor="@color/nav_find_text"
+                android:textSize="12dp" />
 
         </LinearLayout>
 
@@ -93,12 +95,13 @@
             <TextView
                 android:id="@+id/tvControl"
                 style="@style/ExtraVerySmallGray"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="车辆控制"
-                android:textColor="@color/nav_friend_text" />
+                android:textColor="@color/nav_friend_text"
+                android:textSize="12dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -118,12 +121,13 @@
             <TextView
                 android:id="@+id/tvMe"
                 style="@style/ExtraVerySmallGray"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="我的"
-                android:textColor="@color/nav_personal_text" />
+                android:text="我的信息"
+                android:textColor="@color/nav_personal_text"
+                android:textSize="12dp" />
         </LinearLayout>
 
     </LinearLayout>

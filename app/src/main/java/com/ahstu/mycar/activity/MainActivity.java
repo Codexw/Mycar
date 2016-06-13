@@ -9,7 +9,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -114,7 +113,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         pl_songIds = new ArrayList<String>();//存储列表歌曲id
 //		songs = MusicUtils.getSongListForPlaylist(MusicActivity.this, playlistId);//存储列表歌曲
         songs = MusicUtils.getAllSongs(MainActivity.this);
-//        Log.e("TTTT",songs.size()+">>>>>>>>>>>>>>>>>>>>>>");
         if (songs != null) {
             for (int i = 0; i < songs.size(); i++) {
                 Map<String, Object> map = new HashMap<String, Object>();
@@ -195,6 +193,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         }.start();
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -216,10 +215,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     @Override
 
     public void dealMusicclick(View v) {
-//        Toast.makeText(this, "select"+v.getTag(), Toast.LENGTH_SHORT).show();
         application = (MyApplication) getApplication();
         mService = application.getmService();
-        Log.e("TAG", "MainActivity159" + v.getTag().toString());
         if (songs != null) {
             switch (v.getTag().toString()) {
                 case "previous":

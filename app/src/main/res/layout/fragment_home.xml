@@ -24,7 +24,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="平面地图"/>
+            android:text="平面地图" />
 
         <Button
             android:id="@+id/btn_map_site"

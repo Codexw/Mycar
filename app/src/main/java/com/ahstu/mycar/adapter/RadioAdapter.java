@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.MeCarActivity;
@@ -88,7 +87,6 @@ public class RadioAdapter extends BaseAdapter {
                 intent.setClass(content, MeCarActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("car_number", list.get(position).getS());
-                Toast.makeText(content, list.get(position).getS(), Toast.LENGTH_SHORT).show();
                 intent.putExtras(bundle);
                 content.startActivity(intent);
             }

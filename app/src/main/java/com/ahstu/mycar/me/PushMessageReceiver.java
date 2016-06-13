@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 
@@ -50,7 +49,7 @@ public class PushMessageReceiver extends BroadcastReceiver {
             NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
             Notification notification;
 
-            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
             //启动通知栏
             notification = new Notification.Builder(context).setContentTitle("MyCar").setContentText(s).setTicker(s).setWhen(System.currentTimeMillis()).setDefaults(Notification.DEFAULT_ALL)
                     .setSmallIcon(R.drawable.notification_head).build();
