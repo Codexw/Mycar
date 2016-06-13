@@ -15,20 +15,24 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="#ffffff">
+        android:background="@drawable/btn_searchlatlonactivity">
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/back" />
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_icon_normal"/>
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="搜索" />
+            android:background="@drawable/login_button"
+            android:layout_margin="5dp"
+            android:text="搜索"
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/et"
@@ -36,6 +40,7 @@
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/btn_search"
             android:layout_toRightOf="@id/back"
+            android:hint="请输入地址"
             android:background="@null" />
     </RelativeLayout>
 

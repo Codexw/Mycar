@@ -4,13 +4,17 @@ package com.ahstu.mycar.activity;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
@@ -106,6 +110,8 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
             case R.id.btn_search:
                 // Geo搜索
                 mSearch.geocode(new GeoCodeOption().city("").address(mEditText.getText().toString()));
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 break;
         }
     }
@@ -128,7 +134,7 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
         //默认地图模式*/
 
         //初始化方向指示图标
-        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
+//        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
         mMyOrientationListener = new MyOrientationListener(this);
         mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
             @Override
@@ -197,23 +203,26 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
         }
 
         mBaiduMap.clear();
+        View viewFriend = LayoutInflater.from(this).inflate(R.layout.marker, null);
+        TextView tv = (TextView) viewFriend.findViewById(R.id.tv_marker);
+        tv.setText("确定");
+        BitmapDescriptor mBitmap = BitmapDescriptorFactory.fromView(tv);
         MarkerOptions op = new MarkerOptions().position(result.getLocation())
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_mark))
-                .zIndex(9).draggable(true);
+                .icon(mBitmap).zIndex(9).draggable(true);
         mMaker = (Marker) mBaiduMap.addOverlay(op);
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.newLatLng(result.getLocation()));
-
 
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
-                Button button = new Button(getApplicationContext());
-                button.setBackgroundResource(R.drawable.popup);
-                InfoWindow.OnInfoWindowClickListener listener = null;
+//                Button button = new Button(getApplicationContext());
+//                button.setBackgroundResource(R.drawable.popup);
+//                InfoWindow.OnInfoWindowClickListener listener = null;
                 if (marker == mMaker) {
-                    button.setText("确定");
-                    listener = new InfoWindow.OnInfoWindowClickListener() {
-                        public void onInfoWindowClick() {
+//                    button.setText("确定");
+//                    button.setTextColor(R.color.blue);
+//                    listener = new InfoWindow.OnInfoWindowClickListener() {
+//                        public void onInfoWindowClick() { 
 
                             Intent intent = new Intent("com.ahstu.mycar.fragment.FindFragment");
                             intent.putExtra("intent", getIntent().getStringExtra("intent"));
@@ -224,11 +233,11 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
                             finish();
 
                             mBaiduMap.hideInfoWindow();
-                        }
-                    };
-                    LatLng ll = marker.getPosition();
-                    mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -147, listener);
-                    mBaiduMap.showInfoWindow(mInfoWindow);
+//                        }
+//                    };
+//                    LatLng ll = marker.getPosition();
+//                    mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -147, listener);
+//                    mBaiduMap.showInfoWindow(mInfoWindow);
                 }
                 return true;
             }

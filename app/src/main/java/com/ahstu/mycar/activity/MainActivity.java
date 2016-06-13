@@ -16,13 +16,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
-import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.CarControlFragment;
+import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.MapFragment;
 import com.ahstu.mycar.fragment.MeInfoFragment;
 import com.ahstu.mycar.me.CarMessage;
@@ -54,7 +53,7 @@ import cn.bmob.v3.listener.FindListener;
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
     private final int SETADAPTER = 111;
-    private TextView[] mTabs;
+    private ImageView[] mTabs;
     private MapFragment mMapFragment;
     private FindFragment mFindFragment;
     private CarControlFragment mCarControlFragment;
@@ -64,7 +63,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private int intcurrentTabIndex;
     private boolean song_not_null;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
-    private TextView txtHome, txtSearch, txtFriend, txtMe;
+    private ImageView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
     private View currentButton; //获取view，用于底部导航栏状态的切换
     private MusicMenu menuView;
@@ -257,10 +256,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
      * 初始化，获取id
      */
     private void initView() {
-        txtHome = (TextView) findViewById(R.id.txtHome);
-        txtSearch = (TextView) findViewById(R.id.txtSearch);
-        txtFriend = (TextView) findViewById(R.id.txtFriend);
-        txtMe = (TextView) findViewById(R.id.txtMe);
+        txtHome = (ImageView) findViewById(R.id.txtHome);
+        txtSearch = (ImageView) findViewById(R.id.txtSearch);
+        txtFriend = (ImageView) findViewById(R.id.txtFriend);
+        txtMe = (ImageView) findViewById(R.id.txtMe);
         imgAdd = (ImageView) findViewById(R.id.imgAdd);
         menuView = (MusicMenu) findViewById(R.id.menu);
     }
@@ -304,7 +303,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         return super.onTouchEvent(event);
     }
 
-    
+
     /**
      * 处理点击事件，加载fragment
      */
@@ -454,9 +453,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                                         bmobPush.pushMessage("车灯异常");
                                     }
                                 }
-                                }
-
                             }
+
+                        }
 
                         @Override
                         public void onError(int i, String s) {

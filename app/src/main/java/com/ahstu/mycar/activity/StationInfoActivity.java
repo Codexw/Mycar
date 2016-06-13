@@ -132,6 +132,7 @@ public class StationInfoActivity extends Activity {
         tv_distance = (TextView) findViewById(R.id.tv_distance);
         tv_area = (TextView) findViewById(R.id.tv_area);
         tv_addr = (TextView) findViewById(R.id.tv_addr);
+
         iv_back = (ImageView) findViewById(R.id.iv_back);
         tv_bd09ll = (TextView) findViewById(R.id.tv_bd09ll);
         tvName = (TextView) findViewById(R.id.title_name);

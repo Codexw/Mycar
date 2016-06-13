@@ -4,14 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.bean.User;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -36,7 +37,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
     private Button btn_register_code;
     private Button btn_next;
     private Context context;
-
+    private TimeCount time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +87,11 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                                     public void done(Integer integer, BmobException e) {
                                         if (e == null) {
                                             Toast.makeText(context, "验证码已发送", Toast.LENGTH_SHORT).show();
+
+                                            //更改获取验证码的button
+                                            time = new TimeCount(60000, 1000);
+                                            time.start();
+                                            
                                         } else {
                                             Toast.makeText(context, "验证码发送失败", Toast.LENGTH_SHORT).show();
                                         }
@@ -148,4 +154,28 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
     }
 
 
+    class TimeCount extends CountDownTimer {
+
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btn_register_code.setClickable(false);
+            btn_register_code.setText("  重新发送(" + millisUntilFinished / 1000 + "s)  ");
+            btn_register_code.setTextColor(R.color.dark_grey);
+            btn_register_code.setBackgroundResource(R.drawable.regitser_code_again);
+        }
+
+        @Override
+        public void onFinish() {
+            btn_register_code.setText("  重新发送  ");
+            btn_register_code.setTextColor(R.color.white);
+            btn_register_code.setBackgroundResource(R.drawable.login_button);
+            btn_register_code.setClickable(true);
+
+        }
+    }
+    
 }

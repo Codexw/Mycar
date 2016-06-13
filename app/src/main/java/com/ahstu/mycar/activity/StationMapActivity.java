@@ -229,7 +229,7 @@ public class StationMapActivity extends Activity implements OnClickListener {
      */
     public void showLayoutInfo(String position, Station s) {
         tv_name.setText(position + "." + s.getName());
-        tv_distance.setText(s.getDistance() + "");
+        tv_distance.setText(s.getDistance() + "m");
         List<Price> list = s.getGastPriceList();
 
         if (list != null && list.size() > 0) {
