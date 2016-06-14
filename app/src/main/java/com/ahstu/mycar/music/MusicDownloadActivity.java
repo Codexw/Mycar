@@ -101,10 +101,9 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
 
     @Override
     public void onAdpterClick(int postion) {
-        int ii = postion;
         String song_name = musicMessageArrayList.get(postion).getSong_name();
         //下载音乐前先检测歌曲是否已经存在
-        if (new File("/sdcard/mycarmusic/" + song_name + ".mp4").exists()) {
+        if (new File("/sdcard/mycarmusic/" + song_name + ".mp3").exists()) {
             Toast.makeText(this, "歌曲已存在", Toast.LENGTH_SHORT).show();
         } else {
             String song_url = musicMessageArrayList.get(postion).getSong_url();
@@ -112,7 +111,10 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
                     Uri.parse(song_url));
             Toast.makeText(MusicDownloadActivity.this, " 音乐正在下载。。。",
                     Toast.LENGTH_SHORT).show();
-
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+//            Log.w("MusicDown118",song_name+"  "+song_url);
+//            Toast.makeText(MusicDownloadActivity.this,song_name+song_url,
+//                    Toast.LENGTH_SHORT).show();
             // 设置通知栏标题
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
             // 控制系统通知是否由下载管理器发布，而此下载正在运行或何时完成
@@ -120,7 +122,7 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
             request.setDescription("正在下载...");
             request.setAllowedOverRoaming(false);// 是否同意漫游状态下 执行操作
             // 设置文件存放目录
-            request.setDestinationInExternalPublicDir("Mycarmusic", musicMessageArrayList.get(postion).getSong_name() + ".mp4");
+            request.setDestinationInExternalPublicDir("mycarmusic", musicMessageArrayList.get(postion).getSong_name() + ".mp3");
             downManager.enqueue(request);
         }
     }

@@ -80,7 +80,7 @@ public class CarControlFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         mInflater = inflater;
         View view = inflater.inflate(R.layout.fragment_friend, null);
-        roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
+        // roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
         return view;
     }
 
@@ -117,6 +117,7 @@ public class CarControlFragment extends Fragment {
             //进度条
             roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
             initview();
+            roundProgressBar.setBox_point(0);
             roundProgressBar.update();
         }
         super.onHiddenChanged(hidden);
@@ -145,7 +146,7 @@ public class CarControlFragment extends Fragment {
                         c_gas.setText(String.valueOf(car.getCar_box() * car.getCar_gas() / 100));
                         car_gaspoint = car.getCar_gas();
                         roundProgressBar.setBox_point(car.getCar_gas());
-//                        roundProgressBar.update();
+                        roundProgressBar.update();
                         DatabaseHelper data = new DatabaseHelper(getActivity(), "node.db", null, 1);
                         SQLiteDatabase db = data.getWritableDatabase();
                         ContentValues value = new ContentValues();
