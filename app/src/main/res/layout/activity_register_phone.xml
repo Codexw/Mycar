@@ -109,6 +109,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/login_button"
         android:text="下一步"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 
