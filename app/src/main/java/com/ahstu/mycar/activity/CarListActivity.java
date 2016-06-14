@@ -133,10 +133,17 @@ public class CarListActivity extends Activity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        initview();
+        carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
-        update();
+//        update();
         carlist.setAdapter(new RadioAdapter(CarListActivity.this, getdata()));
         DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
