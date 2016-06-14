@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="我的信息"
+                android:text="我的"
                 android:textColor="@color/nav_personal_text"
                 android:textSize="12dp" />
         </LinearLayout>

@@ -20,11 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
-import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.me.RoundProgressBar;
 import com.ahstu.mycar.sql.DatabaseHelper;
 import com.ahstu.mycar.ui.PullToRefreshLayout;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import java.util.List;
 
@@ -110,7 +110,7 @@ public class CarControlFragment extends Fragment {
             addcar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(getActivity(), CarListActivity.class));
+                    startActivity(new Intent(getActivity(), CaptureActivity.class));
                 }
             });
 
