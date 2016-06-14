@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class MapMenuActivity extends AppCompatActivity {
 
-    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_normal, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
 
