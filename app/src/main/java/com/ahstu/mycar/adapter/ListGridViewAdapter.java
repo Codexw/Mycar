@@ -12,6 +12,10 @@ import com.ahstu.mycar.bean.Price;
 
 import java.util.List;
 
+/**
+ * @author 吴天洛
+ *         功能：加油站选中小图标时下方呈现的内容
+ */
 public class ListGridViewAdapter extends BaseAdapter {
 
     private List<Price> mList;

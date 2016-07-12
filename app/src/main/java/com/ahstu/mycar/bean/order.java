@@ -4,6 +4,7 @@ import cn.bmob.v3.BmobObject;
 
 /**
  * Created by xuning on 2016/5/21.
+ * 功能：同步订单到服务器
  */
 public class Order extends BmobObject {
     private User user;

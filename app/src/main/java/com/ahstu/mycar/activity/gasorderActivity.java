@@ -35,8 +35,8 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
- * Created by xuning on 2016/5/20.
- * 功能：预约加油
+ * @author xuning on 2016/5/20.
+ *         功能：预约加油
  */
 public class GasorderActivity extends Activity {
     TextView station_name;

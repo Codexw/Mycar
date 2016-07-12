@@ -11,6 +11,10 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+/**
+ * @author xuning
+ *         功能：圆形头像时用来画出圆形图
+ */
 public abstract class MaskedImage extends ImageView {
     private static final Xfermode MASK_XFERMODE;
     private Bitmap mask;

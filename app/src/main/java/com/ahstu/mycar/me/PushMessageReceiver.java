@@ -16,7 +16,8 @@ import org.json.JSONObject;
 import cn.bmob.push.PushConstants;
 
 /**
- * Created by Administrator on 2016/5/16.
+ * Created by 徐伟 on 2016/5/16.
+ * 功能：推送消息
  */
 public class PushMessageReceiver extends BroadcastReceiver {
 
@@ -46,21 +47,21 @@ public class PushMessageReceiver extends BroadcastReceiver {
                 friendShare.putExtra("MOBILE_ID", mobile_id);
                 context.startService(friendShare);
             } else {
-            NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-            Notification notification;
+                NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+                Notification notification;
 
 //            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
-            //启动通知栏
-            notification = new Notification.Builder(context).setContentTitle("MyCar").setContentText(s).setTicker(s).setWhen(System.currentTimeMillis()).setDefaults(Notification.DEFAULT_ALL)
-                    .setSmallIcon(R.drawable.notification_head).build();
-            manager.notify(carMessage.getNotificationId(), notification);
+                //启动通知栏
+                notification = new Notification.Builder(context).setContentTitle("MyCar").setContentText(s).setTicker(s).setWhen(System.currentTimeMillis()).setDefaults(Notification.DEFAULT_ALL)
+                        .setSmallIcon(R.drawable.notification_head).build();
+                manager.notify(carMessage.getNotificationId(), notification);
                 if (s.contains("接受了位置共享")) {
                     shareLocationMessage.setShareconnect(true);
                     shareLocationMessage.setFirstconnect(true);
                     shareLocationMessage.setObjection(0);
                 }
             }
-            
+
         }
     }
 }

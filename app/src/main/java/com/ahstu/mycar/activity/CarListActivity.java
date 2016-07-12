@@ -18,7 +18,7 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.adapter.RadioAdapter;
 import com.ahstu.mycar.bean.Carinfomation;
 import com.ahstu.mycar.bean.User;
-import com.ahstu.mycar.bean.carmodel;
+import com.ahstu.mycar.bean.Carmodel;
 import com.ahstu.mycar.sql.DatabaseHelper;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 
@@ -91,13 +91,13 @@ public class CarListActivity extends Activity {
 
     //从数据库获取数据，添加到集合中
     public ArrayList getdata() {
-        ArrayList<carmodel> arraylist = new ArrayList<carmodel>();
+        ArrayList<Carmodel> arraylist = new ArrayList<Carmodel>();
 
         DatabaseHelper helper = new DatabaseHelper(CarListActivity.this, "node.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cs = db.query("carinfo", new String[]{"car_number", "car_sign"}, null, null, null, null, null);
         while (cs.moveToNext()) {
-            carmodel carmodel = new carmodel();
+            Carmodel carmodel = new Carmodel();
             String s = cs.getString(cs.getColumnIndex("car_number"));
             //String sign = cs.getString(cs.getColumnIndex("car_sign"));
             byte[] blob = cs.getBlob(cs.getColumnIndex("car_sign"));

@@ -12,9 +12,8 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 /**
- * 带进度的进度条，线程安全的View，可直接在线程中更新进度
- *
- * @author
+ * @author 徐伟
+ *         功能：带进度的进度条，线程安全的View，可直接在线程中更新进度
  */
 public class RoundProgressBar extends View {
     private RectF mColorWheelRectangle = new RectF();
@@ -34,6 +33,7 @@ public class RoundProgressBar extends View {
         super(context);
         init(null, 0);
     }
+
     public RoundProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
@@ -54,12 +54,6 @@ public class RoundProgressBar extends View {
         mColorWheelPaint.setStyle(Paint.Style.STROKE);// 空心
         mColorWheelPaint.setStrokeCap(Paint.Cap.ROUND);// 圆角画笔
         mColorWheelPaint.setAntiAlias(true);// 去锯齿
-
-//		mColorWheelPaintCentre = new Paint();
-//		mColorWheelPaintCentre.setColor(Color.rgb(250, 250, 250));
-//		mColorWheelPaintCentre.setStyle(Paint.Style.STROKE);
-//		mColorWheelPaintCentre.setStrokeCap(Paint.Cap.ROUND);
-//		mColorWheelPaintCentre.setAntiAlias(true);
 
         mDefaultWheelPaint = new Paint();
         mDefaultWheelPaint.setColor(Color.rgb(204, 204, 204));
@@ -119,10 +113,6 @@ public class RoundProgressBar extends View {
 
     /**
      * 根据控件的大小改变绝对位置的比例
-     *
-     * @param n
-     * @param m
-     * @return
      */
     public float Textscale(float n, float m) {
         return n / 500 * m;

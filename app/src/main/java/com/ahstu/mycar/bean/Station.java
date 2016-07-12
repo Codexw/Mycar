@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Created by 吴天洛 on 2016/5/8.
+ * 功能：加油站信息
  */
 public class Station implements Parcelable {
     public static final Creator<Station> CREATOR = new Creator<Station>() {
@@ -39,16 +40,16 @@ public class Station implements Parcelable {
     private int distance;
     private ArrayList<Price> gastPriceList;  //本地油价
 
-/*    protected Station(Parcel in) {
-        name = in.readString();
-        addr = in.readString();
-        area = in.readString();
-        brand = in.readString();
-        lat = in.readDouble();
-        lon = in.readDouble();
-        distance = in.readInt();
-    }*/
-private ArrayList<Price> priceList; //省控油价
+    /*    protected Station(Parcel in) {
+            name = in.readString();
+            addr = in.readString();
+            area = in.readString();
+            brand = in.readString();
+            lat = in.readDouble();
+            lon = in.readDouble();
+            distance = in.readInt();
+        }*/
+    private ArrayList<Price> priceList; //省控油价
 
     public String getName() {
         return name;

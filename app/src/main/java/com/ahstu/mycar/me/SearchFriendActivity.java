@@ -25,7 +25,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 /**
- * Created by Administrator on 2016/6/5.
+ * Created by 徐伟 on 2016/6/5.
+ * 功能：查找车友
  */
 public class SearchFriendActivity extends Activity implements FriendAdpterOnItemClick {
 

@@ -140,11 +140,10 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
+        View view = inflater.inflate(R.layout.fragment_map, null);
 
         return view;
     }
-
 
     //将按钮放入动画按钮数组
     private void initMapMenu() {

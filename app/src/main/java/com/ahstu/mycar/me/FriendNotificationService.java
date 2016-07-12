@@ -20,7 +20,8 @@ import cn.bmob.v3.BmobPushManager;
 import cn.bmob.v3.BmobQuery;
 
 /**
- * Created by Administrator on 2016/6/6.
+ * Created by 徐伟 on 2016/6/6.
+ * 功能：通知栏
  */
 public class FriendNotificationService extends Service {
 
@@ -90,7 +91,7 @@ public class FriendNotificationService extends Service {
         //发送方姓名和设备id
         name = intent.getStringExtra("FRIEND_NAME");
         mobileid = intent.getStringExtra("MOBILE_ID");
-        
+
 
         //通知栏自定义按钮点击事件
         notificationManager = (NotificationManager) super.getSystemService(Context.NOTIFICATION_SERVICE);

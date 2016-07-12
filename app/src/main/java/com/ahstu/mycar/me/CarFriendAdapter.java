@@ -15,7 +15,8 @@ import java.util.List;
 
 
 /**
- * Created by Administrator on 2016/6/5.
+ * Created by 徐伟 on 2016/6/5.
+ * 功能：车友信息适配器
  */
 
 interface FriendAdpterOnItemClick {
@@ -32,8 +33,6 @@ public class CarFriendAdapter extends BaseAdapter {
         mInflater = LayoutInflater.from(context);
         friendNameList = str;
     }
-
-
     public void onListener(FriendAdpterOnItemClick listener) {
 
         this.friendAdpterOnclick = listener;

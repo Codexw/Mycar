@@ -34,10 +34,10 @@ import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * @author 吴天洛 2016/4/25
+ *         功能：车辆控制界面
  */
 
 public class CarControlFragment extends Fragment {
-
 
     LayoutInflater mInflater;
     Button addcar;
@@ -75,12 +75,10 @@ public class CarControlFragment extends Fragment {
     //进度条
     private RoundProgressBar roundProgressBar;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         mInflater = inflater;
-        View view = inflater.inflate(R.layout.fragment_friend, null);
-        // roundProgressBar = (RoundProgressBar) getActivity().findViewById(R.id.progressBar);
+        View view = inflater.inflate(R.layout.fragment_carcontrol, null);
         return view;
     }
 
@@ -215,10 +213,6 @@ public class CarControlFragment extends Fragment {
         }
 
 
-        //Log.e("TAG", "《《《《《《《《《《《《《《《《《《《" + s);
-//        DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
-//        SQLiteDatabase db = helper.getReadableDatabase();
-//        Cursor cursor = db.query("carinfo", new String[]{"car_start", "car_air", "car_door", "car_lock", "car_mile", "car_gas"}, "car_number=?", new String[]{s}, null, null, null);
 //        //初始化组件
         car_set_number = (TextView) getActivity().findViewById(R.id.car_set_number);
         car_air_relativelayout = (RelativeLayout) getActivity().findViewById(R.id.car_air_relativelayout);
@@ -245,55 +239,6 @@ public class CarControlFragment extends Fragment {
         ((PullToRefreshLayout) getActivity().findViewById(R.id.refresh_view))
                 .setOnRefreshListener(new MyListener());
 
-        //根据本地数据库的值设置
-//        while (cursor.moveToNext()) {
-//            if (cursor.getInt(cursor.getColumnIndex("car_start")) == 0) {
-//                car_start_state = 0;
-//                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-//                start_set.setText("关闭");
-//
-//            } else {
-//                car_start_state = 1;
-//               
-//                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-//                start_set.setText("开启");
-//
-//            }
-//            if (cursor.getInt(cursor.getColumnIndex("car_air")) == 0) {
-//                car_air_state = 0;
-//                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-//                air_set.setText("关闭");
-//            } else {
-//                car_air_state = 1;
-//                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-//                air_set.setText("开启");
-//            }
-//
-//            if (cursor.getInt(cursor.getColumnIndex("car_door")) == 0) {
-//                car_door_state = 0;
-//                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-//                door_set.setText("关闭");
-//
-//            } else {
-//                car_door_state = 1;
-//                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-//                door_set.setText("开启");
-//            }
-//            if (cursor.getInt(cursor.getColumnIndex("car_lock")) == 0) {
-//
-//                car_lock_state = 0;
-//                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-//                lock_set.setText("关闭");
-//
-//            } else {
-//                car_lock_state = 1;
-//                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-//                lock_set.setText("开启");
-//
-//            }
-//        }
-//        cursor.close();
-//        db.close();
         //设置车牌号
         car_set_number.setText(s);
         //空调控制监听器
@@ -574,8 +519,6 @@ public class CarControlFragment extends Fragment {
         super.onResume();
         // Toast.makeText(getActivity(),"onresume",Toast.LENGTH_SHORT).show();
         onHiddenChanged(false);
-
-
     }
 
     @Override
