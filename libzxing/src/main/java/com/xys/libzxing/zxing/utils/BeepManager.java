@@ -65,9 +65,6 @@ public class BeepManager implements MediaPlayer.OnCompletionListener, MediaPlaye
         playBeep = shouldBeep(prefs, activity);
         vibrate = true;
         if (playBeep && mediaPlayer == null) {
-            // The volume on STREAM_SYSTEM is not adjustable, and users found it
-            // too loud,
-            // so we now play on the music stream.
             activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
             mediaPlayer = buildMediaPlayer(activity);
         }
@@ -107,18 +104,14 @@ public class BeepManager implements MediaPlayer.OnCompletionListener, MediaPlaye
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        // When the beep has finished playing, rewind to queue up another one.
         mp.seekTo(0);
     }
 
     @Override
     public synchronized boolean onError(MediaPlayer mp, int what, int extra) {
         if (what == MediaPlayer.MEDIA_ERROR_SERVER_DIED) {
-            // we are finished, so put up an appropriate error toast if required
-            // and finish
             activity.finish();
         } else {
-            // possibly media player error, so release and recreate
             mp.release();
             mediaPlayer = null;
             updatePrefs();

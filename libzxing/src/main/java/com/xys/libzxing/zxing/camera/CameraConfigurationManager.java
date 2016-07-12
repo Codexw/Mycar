@@ -30,13 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * 邮箱: 1076559197@qq.com | tauchen1990@gmail.com
- * <p/>
- * 作者: 陈涛
- * <p/>
- * 日期: 2014年8月20日
- * <p/>
- * 描述: 该类主要负责设置相机的参数信息，获取最佳的预览界面
+ * 该类主要负责设置相机的参数信息，获取最佳的预览界面
  */
 public final class CameraConfigurationManager {
 
@@ -206,11 +200,6 @@ public final class CameraConfigurationManager {
             }
         }
 
-        // If no exact match, use largest preview size. This was not a great
-        // idea on older devices because
-        // of the additional computation needed. We're likely to get here on
-        // newer Android 4+ devices, where
-        // the CPU is much more powerful.
         if (!supportedPreviewSizes.isEmpty()) {
             Camera.Size largestPreview = supportedPreviewSizes.get(0);
             Point largestSize = new Point(largestPreview.width, largestPreview.height);

@@ -28,12 +28,6 @@ import com.xys.libzxing.zxing.activity.CaptureActivity;
 import com.xys.libzxing.zxing.camera.CameraManager;
 import com.xys.libzxing.zxing.decode.DecodeThread;
 
-/**
- * This class handles all the messaging which comprises the state machine for
- * capture.
- *
- * @author dswitkin@google.com (Daniel Switkin)
- */
 public class CaptureActivityHandler extends Handler {
 
     private final CaptureActivity activity;
@@ -64,9 +58,7 @@ public class CaptureActivityHandler extends Handler {
 
             activity.handleDecode((Result) message.obj, bundle);
 
-        } else if (message.what == R.id.decode_failed) {// We're decoding as fast as possible, so when one
-            // decode fails,
-            // start another.
+        } else if (message.what == R.id.decode_failed) {
             state = State.PREVIEW;
             cameraManager.requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
 
@@ -83,14 +75,10 @@ public class CaptureActivityHandler extends Handler {
         Message quit = Message.obtain(decodeThread.getHandler(), R.id.quit);
         quit.sendToTarget();
         try {
-            // Wait at most half a second; should be enough time, and onPause()
-            // will timeout quickly
             decodeThread.join(500L);
         } catch (InterruptedException e) {
-            // continue
         }
 
-        // Be absolutely sure we don't send any queued up messages
         removeMessages(R.id.decode_succeeded);
         removeMessages(R.id.decode_failed);
     }
