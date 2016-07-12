@@ -32,6 +32,7 @@ import java.util.List;
 
 /**
  * Created by xuning on 2016/5/3.
+ * 功能：违章查询
  */
 public class CarQueryActivity extends Activity {
     final Handler cwjHandler = new Handler();//用来更新ui
@@ -61,8 +62,8 @@ public class CarQueryActivity extends Activity {
         setContentView(R.layout.che_query);
         //初始化违章查询的服务
         Intent weizhangIntent = new Intent(this, WeizhangIntentService.class);
-        weizhangIntent.putExtra("appId", 1702);// 您的appId
-        weizhangIntent.putExtra("appKey", "62fdfbce0fd98c355994140f850d2353");// 您的appKey
+        weizhangIntent.putExtra("appId", 1702);
+        weizhangIntent.putExtra("appKey", "62fdfbce0fd98c355994140f850d2353");
         startService(weizhangIntent);
         SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
         String number = share.getString("number", "");
@@ -78,7 +79,7 @@ public class CarQueryActivity extends Activity {
 //        Log.i("shuchu", "sssssssssss" + chepainumber);
 //        Log.i("shuchu", "ssssssssss" + engine_number);
 //        Log.i("shuchu", "sssssssssss" + chejia_number);
-        
+
         //初始化组件
         chaxundi = (TextView) findViewById(R.id.chaxundi);
         chepai = (TextView) findViewById(R.id.chepai);
@@ -134,7 +135,6 @@ public class CarQueryActivity extends Activity {
                     InputConfigJson inputConfig = WeizhangClient.getInputConfig(car
                             .getCity_id());
                     int engineno = inputConfig.getEngineno();
-                    //int registno = inputConfig.getRegistno();
                     int classno = inputConfig.getClassno();
                     if (engineno == 0) {
                         car.setEngine_no(s);
@@ -193,9 +193,7 @@ public class CarQueryActivity extends Activity {
 
         if (data == null)
             return;
-
         Bundle bundle1 = data.getExtras();
-
         String cityName = bundle1.getString("city_name");
         System.out.println(cityName);
         String cityId = bundle1.getString("city_id");
@@ -225,7 +223,6 @@ public class CarQueryActivity extends Activity {
     private void updateUI() {
 
         frame.setVisibility(View.GONE);
-
         Log.d("返回数据", info.toJson());
 
         // 直接将信息限制在 Activity中

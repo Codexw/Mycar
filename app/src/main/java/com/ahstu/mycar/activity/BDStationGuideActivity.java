@@ -21,9 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 导航诱导界面
- *
  * @author 吴天洛
+ *         功能：导航诱导界面
  */
 public class BDStationGuideActivity extends Activity {
 

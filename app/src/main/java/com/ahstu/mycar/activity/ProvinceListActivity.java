@@ -40,7 +40,6 @@ public class ProvinceListActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.csy_activity_citys);
-        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.csy_titlebar);
 
         //标题
         TextView txtTitle = (TextView) findViewById(R.id.title_name);
@@ -55,7 +54,6 @@ public class ProvinceListActivity extends Activity {
                 finish();
             }
         });
-
 
         lv_list = (ListView) findViewById(R.id.lv_1ist);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);
@@ -134,11 +132,8 @@ public class ProvinceListActivity extends Activity {
                 list.add(model);
             }
         } else {
-
             txtListTip.setText("服务器异常，请下拉刷新重新加载");
-
         }
-
         return list;
     }
 

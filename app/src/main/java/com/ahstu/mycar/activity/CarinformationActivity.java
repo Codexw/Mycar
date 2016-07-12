@@ -35,6 +35,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by xuning on 2016/5/4.
+ * 功能：添加车辆信息
  */
 public class CarinformationActivity extends Activity {
     Context context;
@@ -59,6 +60,7 @@ public class CarinformationActivity extends Activity {
     ImageView cancel;
     int countp;
     String number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +88,7 @@ public class CarinformationActivity extends Activity {
                     }
                 });
                 alert.show();
-                
+
             }
         });
         Intent intent = getIntent();
@@ -185,31 +187,6 @@ public class CarinformationActivity extends Activity {
                             Toast.makeText(CarinformationActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
                         }
                     });
-
-                    //将汽车信息保存在本地数据库中
-//                    DatabaseHelper helper = new DatabaseHelper(CarinformationActivity.this, "node.db", null, 1);
-//                    SQLiteDatabase db = helper.getWritableDatabase();
-//                    ContentValues value = new ContentValues();
-//                    value.put("car_number", bundle.getString("car_number"));
-//                    value.put("car_sign", bundle.getString("car_sign"));
-//                    value.put("car_brand", bundle.getString("car_brand"));
-//                    value.put("car_model", bundle.getString("car_model"));
-//                    value.put("car_enginerno", bundle.getString("car_enginerno"));
-//                    value.put("car_frame", bundle.getString("car_frame"));
-//                    value.put("car_level", bundle.getString("car_level"));
-//                    value.put("car_mile", bundle.getInt("car_mile"));
-//                    value.put("car_gas", bundle.getInt("car_gas"));
-//                    value.put("car_box", bundle.getInt("car_box"));
-//                    value.put("car_enginerstate", bundle.getString("car_enginerstate"));
-//                    value.put("car_shiftstate", bundle.getString("car_shiftstate"));
-//                    value.put("car_light", bundle.getString("car_light"));
-//                    value.put("car_start", bundle.getBoolean("car_start"));
-//                    value.put("car_door", bundle.getBoolean("car_door"));
-//                    value.put("car_lock", bundle.getBoolean("car_lock"));
-//                    value.put("car_air", bundle.getBoolean("car_air"));
-//                    long a = db.insert("carinfo", null, value);
-//                    Toast.makeText(CarinformationActivity.this, a + "", Toast.LENGTH_SHORT).show();
-                    //使用异步把数据保存在本地
                     new Asytask().execute(bundle);
 
                     new Thread() {

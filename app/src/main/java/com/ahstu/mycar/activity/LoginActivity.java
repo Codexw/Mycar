@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
+import com.ahstu.mycar.bean.Order;
 import com.ahstu.mycar.bean.User;
-import com.ahstu.mycar.bean.order;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
 import java.io.ByteArrayOutputStream;
@@ -89,8 +89,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-
-
                 if (et_username.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
                 } else if (et_password.getText().toString().isEmpty()) {
@@ -146,53 +144,26 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                     for (int i = 0; i < list.size(); i++) {
                                         Carinfomation carinfomation = list.get(i);
                                         new Asyntask().execute(carinfomation);
-
-
                                     }
-
-
-//                                    SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
-//                                    DatabaseHelper data = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
-//                                    SQLiteDatabase sql = data.getReadableDatabase();
-//                                    Cursor cursor = sql.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
-//                                    if (cursor != null) {
-//                                        if (cursor.moveToFirst()) {
-//                                            SharedPreferences.Editor editer = share.edit();
-//                                            editer.putInt("position", 0);
-//                                            editer.putString("number", cursor.getString(cursor.getColumnIndex("car_number")).toString());
-//                                            editer.commit();
-//                                            // Log.e("TAG", "SSSSSSSSSSSSSSSSSSSS" + cursor.getString(cursor.getColumnIndex("car_number")).toString());
-//                                        }
-//
-//                                    } else {
-//
-//                                        SharedPreferences.Editor editer = share.edit();
-//                                        editer.putInt("position", 0);
-//                                        editer.putString("number", "");
-//                                        editer.commit();
-//                                    }
-
-
                                 }
 
                                 @Override
                                 public void onError(int i, String s) {
-
                                 }
 
                             });
 
                             //从服务器获取订单信息
-                            BmobQuery<order> orderquery = new BmobQuery<order>();
+                            BmobQuery<Order> orderquery = new BmobQuery<Order>();
                             orderquery.addWhereEqualTo("user", user);
                             orderquery.order("-updatedAt");
-                            orderquery.findObjects(LoginActivity.this, new FindListener<order>() {
+                            orderquery.findObjects(LoginActivity.this, new FindListener<Order>() {
                                 @Override
-                                public void onSuccess(List<order> list) {
+                                public void onSuccess(List<Order> list) {
                                     DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
                                     SQLiteDatabase db = helper.getWritableDatabase();
                                     for (int i = list.size() - 1; i >= 0; i--) {
-                                        order order = new order();
+                                        Order order = new Order();
                                         order = list.get(i);
                                         ContentValues values = new ContentValues();
                                         values.put("stationname", order.getStationname());

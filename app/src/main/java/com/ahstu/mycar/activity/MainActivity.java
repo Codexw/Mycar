@@ -9,7 +9,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,7 +41,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cn.bmob.push.BmobPush;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobPushManager;
 import cn.bmob.v3.BmobQuery;
@@ -54,7 +52,6 @@ import cn.bmob.v3.listener.FindListener;
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {
     private final int SETADAPTER = 111;
-    private LinearLayout[] mTabs;
     private MapFragment mMapFragment;
     private FindFragment mFindFragment;
     private CarControlFragment mCarControlFragment;
@@ -65,12 +62,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     private boolean song_not_null;
     private long exitTime;  //用于双击回退键退出软件的时间间隔处理
     private LinearLayout LLHome, LLSearch, LLControl, LLMe;
-    private ImageView txtHome, txtSearch, txtFriend, txtMe;
     private ImageView imgAdd;
     private View currentButton; //获取view，用于底部导航栏状态的切换
     private MusicMenu menuView;
     private ListView listview;
-    private Fragment otherFragment;
     private MusicPlayService mService;
     private MyApplication application;
     private ArrayList<Mp3> songs;//储存当前播放列表所有歌曲
@@ -100,7 +95,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
             listItems = getListItems();//得到适配器数据
             listViewAdapter = new ListViewAdapter(this, listItems, R.layout.item_playlist_song_activity); // 创建适配
             listViewAdapter.setPl_songIds(pl_songIds);//传入列表歌曲id
-//		listview.setAdapter(listViewAdapter);
             song_not_null = true;
         } else
             song_not_null = false;
@@ -147,7 +141,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         mService = application.getmService();
 
         // 初始化BmobSDK
-        Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
+//        Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
         // 使用推送服务时的初始化操作
         BmobInstallation.getCurrentInstallation(this).save();//消息推送
         // 启动推送服务
@@ -174,12 +168,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
                     }
                     try {
-                    /*
-                    //这里经常报空指针异常
-                     java.lang.NullPointerException
-                     05-26 00:37:39.360 10944-10993/com.ahstu.mycar 
-                     W/System.err: at com.ahstu.mycar.activity.MainActivity$3.run(MainActivity.java:213)
-                     */
                         mService.setCurrentListItme(0);
                         mService.setSongs(songs);
                         mService.playMusic(songs.get(0).getUrl());
@@ -194,6 +182,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
         }.start();
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -432,18 +421,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
 
             while (isrunning) {
                 try {
-
                     sleep(3000);
-
-                    // Looper.prepare();
-
                     SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
                     String s = share.getString("number", "");
 
                     if (s.equals(""))
                         continue;
                     carinfomationBmobQuery.addWhereEqualTo("car_number", s);//查询默认车辆
-
                     moblie_id.addWhereEqualTo("installationId", BmobInstallation.getInstallationId(MainActivity.this));//匹配当前设备的id
                     bmobPush.setQuery(moblie_id);
 

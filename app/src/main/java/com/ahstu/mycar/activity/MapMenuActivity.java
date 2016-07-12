@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by 徐伟 on 2016/5/19.
+ * 功能：地图菜单管理
  */
 public class MapMenuActivity extends AppCompatActivity {
 

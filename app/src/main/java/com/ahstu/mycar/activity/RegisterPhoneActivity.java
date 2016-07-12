@@ -38,6 +38,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
     private Button btn_next;
     private Context context;
     private TimeCount time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +92,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                                             //更改获取验证码的button
                                             time = new TimeCount(60000, 1000);
                                             time.start();
-                                            
+
                                         } else {
                                             Toast.makeText(context, "验证码发送失败", Toast.LENGTH_SHORT).show();
                                         }
@@ -153,7 +154,6 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
         return m.matches();
     }
 
-
     class TimeCount extends CountDownTimer {
 
         public TimeCount(long millisInFuture, long countDownInterval) {
@@ -177,5 +177,4 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
 
         }
     }
-    
 }

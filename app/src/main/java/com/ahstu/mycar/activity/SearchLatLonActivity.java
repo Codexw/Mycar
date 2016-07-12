@@ -44,7 +44,7 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 
 /**
  * @author 吴天洛
- *         功能：导航中查找目的地
+ *         功能：导航中查找起始地和目的地
  */
 public class SearchLatLonActivity extends Activity implements View.OnClickListener, OnGetGeoCoderResultListener {
 
@@ -132,13 +132,7 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
         option.setCoorType("bd09ll"); // 返回百度经纬度坐标系 ：bd09ll
         option.setScanSpan(1000);
         mLocationClient.setLocOption(option);//将上面option中的设置加载
-        
-      /*  mMaker = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
-        mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL,true,mMaker));
-        //默认地图模式*/
 
-        //初始化方向指示图标
-//        mbitmapDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.map_my_location_icon);
         mMyOrientationListener = new MyOrientationListener(this);
         mMyOrientationListener.setmOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
             @Override
@@ -173,7 +167,6 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
     @Override
     public void onPause() {
         super.onPause();
-
 //        在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
         mMapView.onPause();
     }
@@ -219,14 +212,7 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(final Marker marker) {
-//                Button button = new Button(getApplicationContext());
-//                button.setBackgroundResource(R.drawable.popup);
-//                InfoWindow.OnInfoWindowClickListener listener = null;
                 if (marker == mMaker) {
-//                    button.setText("确定");
-//                    button.setTextColor(R.color.blue);
-//                    listener = new InfoWindow.OnInfoWindowClickListener() {
-//                        public void onInfoWindowClick() { 
 
                     Intent intent = new Intent("com.ahstu.mycar.fragment.FindFragment");
                     intent.putExtra("intent", getIntent().getStringExtra("intent"));
@@ -237,11 +223,6 @@ public class SearchLatLonActivity extends Activity implements View.OnClickListen
                     finish();
 
                     mBaiduMap.hideInfoWindow();
-//                        }
-//                    };
-//                    LatLng ll = marker.getPosition();
-//                    mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -147, listener);
-//                    mBaiduMap.showInfoWindow(mInfoWindow);
                 }
                 return true;
             }

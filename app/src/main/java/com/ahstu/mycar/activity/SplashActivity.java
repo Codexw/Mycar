@@ -42,11 +42,8 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         //初始化BmobSDK
         Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
-
-
         imageView = (ImageView) findViewById(R.id.splash_img);
 
         //欢迎界面动画效果

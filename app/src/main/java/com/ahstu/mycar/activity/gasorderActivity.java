@@ -23,7 +23,7 @@ import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Price;
 import com.ahstu.mycar.bean.Station;
 import com.ahstu.mycar.bean.User;
-import com.ahstu.mycar.bean.order;
+import com.ahstu.mycar.bean.Order;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
 import java.text.NumberFormat;
@@ -36,6 +36,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by xuning on 2016/5/20.
+ * 功能：预约加油
  */
 public class GasorderActivity extends Activity {
     TextView station_name;
@@ -131,7 +132,7 @@ public class GasorderActivity extends Activity {
                     format.setMaximumFractionDigits(2);
                     format.setMinimumFractionDigits(1);
                     count.setText(format.format(sum * cot));
-                 
+
                 }
             }
 
@@ -179,7 +180,7 @@ public class GasorderActivity extends Activity {
                     data.close();
                     //订单信息保存在服务器中
                     User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
-                    order order = new order();
+                    Order order = new Order();
                     order.setUser(user);
                     order.setStationname(station_name.getText().toString());
                     order.setCtype(ctype);
@@ -199,13 +200,9 @@ public class GasorderActivity extends Activity {
 
                         @Override
                         public void onFailure(int i, String s) {
-
                         }
                     });
-
-
                 }
-
             }
         });
 

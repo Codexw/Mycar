@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 /**
  * Created by xuning on 2016/5/23.
+ * 功能：订单子项目详情
  */
 public class OrderItemActivity extends Activity {
     TextView info_station;
@@ -39,7 +40,6 @@ public class OrderItemActivity extends Activity {
         setContentView(R.layout.myorder_item);
         inview();
         set();
-
     }
 
     void inview() {
@@ -70,7 +70,6 @@ public class OrderItemActivity extends Activity {
             String ctype = cursor.getString(cursor.getColumnIndex("ctype")).toString();
             Double gascount = cursor.getDouble(cursor.getColumnIndex("gascount"));
             Double gasprice = cursor.getDouble(cursor.getColumnIndex("gasprice"));
-            // Double countprice = cursor.getDouble(cursor.getColumnIndex("countprice"));
             String countprice = cursor.getString(cursor.getColumnIndex("countprice"));
             String time = cursor.getString(cursor.getColumnIndex("time")).toString();
 
@@ -92,8 +91,6 @@ public class OrderItemActivity extends Activity {
                 json.put("加油数量", gascount);
                 json.put("加油总价", countprice);
                 json.put("加油时间", time);
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -23,6 +23,10 @@ import com.cheshouye.api.client.json.CityInfoJson;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by xuning on 2016/5/3.
+ * 功能：城市查询
+ */
 public class CityListActivity extends Activity {
     SwipeRefreshLayout refresh;
     private ListView lv_list;
@@ -35,7 +39,6 @@ public class CityListActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.csy_activity_citys);
-        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.csy_titlebar);
 
         //标题
         TextView txtTitle = (TextView) findViewById(R.id.title_name);
@@ -80,13 +83,6 @@ public class CityListActivity extends Activity {
         });
     }
 
-
-    /**
-     * title:获取数据
-     *
-     * @param provinceId
-     * @return
-     */
     //根据省份的id，来判断有哪些城市，并将城市存放在list中
     private List<ListModel> getData(String provinceId) {
         List<ListModel> list = new ArrayList<ListModel>();

@@ -30,6 +30,7 @@ import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by xuning on 2016/5/12.
+ * 功能：我的车辆信息
  */
 public class MeCarActivity extends Activity {
     Context context;
@@ -54,6 +55,7 @@ public class MeCarActivity extends Activity {
     Bundle bundle;
     String objectId;
     ImageView image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +86,7 @@ public class MeCarActivity extends Activity {
         mecar_box = (TextView) findViewById(R.id.mecar_box);
         delete = (TextView) findViewById(R.id.medelete);
         image = (ImageView) findViewById(R.id.mecar_back);
-        
+
     }
 
     void set() {
@@ -174,13 +176,12 @@ public class MeCarActivity extends Activity {
                             public void onSuccess() {
                                 finish();
                             }
+
                             @Override
                             public void onFailure(int i, String s) {
 
                             }
                         });
-
-
                     }
                 });
                 alert.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
@@ -192,15 +193,12 @@ public class MeCarActivity extends Activity {
                 alert.show();
             }
         });
-
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        
-        
     }
 
     //根据url获取网络图片资源。
@@ -217,9 +215,5 @@ public class MeCarActivity extends Activity {
             e.printStackTrace();
         }
         return bm;
-
-
     }
-
-
 }
