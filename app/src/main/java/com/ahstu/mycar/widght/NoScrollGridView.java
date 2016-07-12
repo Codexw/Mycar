@@ -4,6 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
 
+/**
+ * @author 吴天洛
+ *         功能：加油站选中时的信息以网格形式呈现
+ */
 public class NoScrollGridView extends GridView {
 
     public NoScrollGridView(Context context) {

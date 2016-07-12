@@ -23,6 +23,10 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author 徐伟
+ *         功能：新建玩文件夹后，给文件夹里添加音乐
+ */
 @SuppressLint("NewApi")
 public class AddSongtoPlaylistActivity extends Activity {
 

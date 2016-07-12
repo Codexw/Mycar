@@ -411,7 +411,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     public class messageThread extends Thread {
 
         public boolean isrunning;
-        //        User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
         BmobQuery<Carinfomation> carinfomationBmobQuery = new BmobQuery<Carinfomation>();
         BmobPushManager bmobPush = new BmobPushManager(MainActivity.this);
         BmobQuery<BmobInstallation> moblie_id = BmobInstallation.getQuery();//查询设备表

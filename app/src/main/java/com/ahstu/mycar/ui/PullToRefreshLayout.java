@@ -18,6 +18,10 @@ import com.ahstu.mycar.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author xuning
+ *         功能：下拉刷新
+ */
 public class PullToRefreshLayout extends RelativeLayout {
     public static final String TAG = "PullToRefreshLayout";
     // 初始状态
@@ -99,11 +103,6 @@ public class PullToRefreshLayout extends RelativeLayout {
                     pullDownY = refreshDist;
                     timer.cancel();
                 }
-//				else if (state == LOADING && -pullUpY <= loadmoreDist) {
-//					pullUpY = -loadmoreDist;
-//					timer.cancel();
-//				}
-
             }
             if (pullDownY > 0)
                 pullDownY -= MOVE_SPEED;
@@ -188,9 +187,6 @@ public class PullToRefreshLayout extends RelativeLayout {
     /**
      * 完成刷新操作，显示刷新结果。注意：刷新完成后一定要调用这个方法
      */
-    /**
-     * @param refreshResult PullToRefreshLayout.SUCCEED代表成功，PullToRefreshLayout.FAIL代表失败
-     */
     public void refreshFinish(int refreshResult) {
         refreshingView.clearAnimation();
         refreshingView.setVisibility(View.GONE);
@@ -221,37 +217,6 @@ public class PullToRefreshLayout extends RelativeLayout {
         }.sendEmptyMessageDelayed(0, 1000);
     }
 
-
-//	public void loadmoreFinish(int refreshResult) {
-//		loadingView.clearAnimation();
-//		loadingView.setVisibility(View.GONE);
-//		switch (refreshResult) {
-//			case SUCCEED:
-//				// 加载成功
-//				loadStateImageView.setVisibility(View.VISIBLE);
-//				loadStateTextView.setText(R.string.load_succeed);
-//				loadStateImageView
-//						.setBackgroundResource(R.drawable.allview_load_succeed);
-//				break;
-//			case FAIL:
-//			default:
-//				// 加载失败
-//				loadStateImageView.setVisibility(View.VISIBLE);
-//				loadStateTextView.setText(R.string.load_fail);
-//				loadStateImageView
-//						.setBackgroundResource(R.drawable.allview_load_failed);
-//				break;
-//		}
-//		// 刷新结果停留1秒
-//		new Handler() {
-//			@Override
-//			public void handleMessage(Message msg) {
-//				changeState(DONE);
-//				hide();
-//			}
-//		}.sendEmptyMessageDelayed(0, 1000);
-//	}
-
     private void changeState(int to) {
         state = to;
         switch (state) {
@@ -261,11 +226,6 @@ public class PullToRefreshLayout extends RelativeLayout {
                 refreshStateTextView.setText(R.string.pull_to_refresh);
                 pullView.clearAnimation();
                 pullView.setVisibility(View.VISIBLE);
-                // 上拉布局初始状态
-//				loadStateImageView.setVisibility(View.GONE);
-//				loadStateTextView.setText(R.string.pullup_to_load);
-//				pullUpView.clearAnimation();
-//				pullUpView.setVisibility(View.VISIBLE);
                 break;
             case RELEASE_TO_REFRESH:
                 // 释放刷新状态
@@ -280,19 +240,6 @@ public class PullToRefreshLayout extends RelativeLayout {
                 refreshingView.startAnimation(refreshingAnimation);
                 refreshStateTextView.setText(R.string.refreshing);
                 break;
-//			case RELEASE_TO_LOAD:
-//				// 释放加载状态
-//				loadStateTextView.setText(R.string.release_to_load);
-//				pullUpView.startAnimation(rotateAnimation);
-//				break;
-//			case LOADING:
-//				// 正在加载状态
-//				pullUpView.clearAnimation();
-//				loadingView.setVisibility(View.VISIBLE);
-//				pullUpView.setVisibility(View.INVISIBLE);
-//				loadingView.startAnimation(refreshingAnimation);
-//				loadStateTextView.setText(R.string.loading);
-//				break;
             case DONE:
                 // 刷新或加载完毕，啥都不做
                 break;
@@ -447,12 +394,6 @@ public class PullToRefreshLayout extends RelativeLayout {
                 .findViewById(R.id.state_tv);
         refreshingView = refreshView.findViewById(R.id.refreshing_icon);
         refreshStateImageView = refreshView.findViewById(R.id.state_iv);
-        // 初始化上拉布局
-//		pullUpView = loadmoreView.findViewById(R.id.pullup_icon);
-//		loadStateTextView = (TextView) loadmoreView
-//				.findViewById(R.id.loadstate_tv);
-//		loadingView = loadmoreView.findViewById(R.id.loading_icon);
-//		loadStateImageView = loadmoreView.findViewById(R.id.loadstate_iv);
     }
 
     @Override
@@ -466,8 +407,6 @@ public class PullToRefreshLayout extends RelativeLayout {
             initView();
             refreshDist = ((ViewGroup) refreshView).getChildAt(0)
                     .getMeasuredHeight();
-//			loadmoreDist = ((ViewGroup) loadmoreView).getChildAt(0)
-//					.getMeasuredHeight();
         }
         // 改变子控件的布局，这里直接用(pullDownY + pullUpY)作为偏移量，这样就可以不对当前状态作区分
         refreshView.layout(0,
@@ -476,11 +415,6 @@ public class PullToRefreshLayout extends RelativeLayout {
         pullableView.layout(0, (int) (pullDownY + pullUpY),
                 pullableView.getMeasuredWidth(), (int) (pullDownY + pullUpY)
                         + pullableView.getMeasuredHeight());
-//		loadmoreView.layout(0,
-//				(int) (pullDownY + pullUpY) + pullableView.getMeasuredHeight(),
-//				loadmoreView.getMeasuredWidth(),
-//				(int) (pullDownY + pullUpY) + pullableView.getMeasuredHeight()
-//						+ loadmoreView.getMeasuredHeight());
     }
 
     /**

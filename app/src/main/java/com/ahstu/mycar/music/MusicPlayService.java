@@ -12,6 +12,10 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author 徐伟
+ *         功能：音乐服务
+ */
 public class MusicPlayService extends Service {
 
     private final IBinder mBinder = new LocalBinder();
@@ -114,7 +118,6 @@ public class MusicPlayService extends Service {
     public void onStart(Intent intent, int startId) {
     }
 
-    // 在2.0以后的版本如果重写了onStartCommand，那onStart将不会被调用，注：在2.0以前是没有onStartCommand方法
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // 如果服务进程在它启动后(从onStartCommand()返回后)被kill掉, 那么让他呆在启动状态但不取传给它的intent.
