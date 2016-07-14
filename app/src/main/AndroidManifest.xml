@@ -64,12 +64,23 @@
         <!-- 百度sdk开发秘钥 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr"/>
+            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
             android:value="JH6bbab71326043ab6bbbbb6d70ba94028"/>
 
+
+        <activity
+            android:name="c.b.a.A"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="c.b.a.B"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name=".activity.SplashActivity"
             android:launchMode="singleTop">
