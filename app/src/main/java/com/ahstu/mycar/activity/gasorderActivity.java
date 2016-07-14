@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -31,13 +32,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import c.b.BP;
+import c.b.PListener;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by xuning on 2016/5/20.
  */
-public class GasorderActivity extends Activity {
+public class gasorderActivity extends Activity {
     TextView station_name;
     TextView count;
     TextView gas_price;
@@ -56,6 +59,7 @@ public class GasorderActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gas_orderactivity);
+        BP.init(this, "ccd46e34cec57d61dbcedaa08f722296");
         initview();
         set();
     }
@@ -71,6 +75,7 @@ public class GasorderActivity extends Activity {
 
 
     }
+
 
     void set() {
         order_back.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +126,7 @@ public class GasorderActivity extends Activity {
                 if (editText.getText().toString().equals("")) {
                     count.setText("0");
                 } else if (editText.getText().toString().startsWith(".")) {
-                    Toast.makeText(GasorderActivity.this, "输入格式不正确", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(gasorderActivity.this, "输入格式不正确", Toast.LENGTH_SHORT).show();
 
                 } else {
                     String ss = gas_price.getText().toString().trim();
@@ -146,62 +151,101 @@ public class GasorderActivity extends Activity {
             public void onClick(final View view) {
                 //获取用户名
                 SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
-                String name = sp.getString("name", "");
+                final String name = sp.getString("name", "");
                 //打开数据库
-                DatabaseHelper helper = new DatabaseHelper(GasorderActivity.this, "node.db", null, 1);
-                SQLiteDatabase data = helper.getWritableDatabase();
+                DatabaseHelper helper = new DatabaseHelper(gasorderActivity.this, "node.db", null, 1);
+                final SQLiteDatabase data = helper.getWritableDatabase();
                 //获取正在控制的车辆车牌
                 SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
-                String carnumber = share.getString("number", "");
-                ContentValues values = new ContentValues();
+                final String carnumber = share.getString("number", "");
+                final ContentValues values = new ContentValues();
                 Date currentTime = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String time = formatter.format(currentTime);
-                String ctype = spinner.getSelectedItem().toString();
+                final String time = formatter.format(currentTime);
+                final String ctype = spinner.getSelectedItem().toString();
 
                 if (editText.getText().toString().equals("")) {
-                    Toast.makeText(GasorderActivity.this, "请填写预约加油量", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(gasorderActivity.this, "请填写预约加油量", Toast.LENGTH_SHORT).show();
 
 
                 } else {
-                    //订单信息保存在本地
-                    values.put("time", time);
-                    values.put("stationname", station_name.getText().toString());
-                    values.put("username", name);
-                    values.put("ctype", ctype);
-                    String a = gas_price.getText().toString().trim();
-                    values.put("gasprice", Double.valueOf(a.substring(0, a.length() - 3)));
-                    String b = editText.getText().toString();
-                    values.put("gascount", Double.valueOf(b));
-                    values.put("carnumber", carnumber);
-                    values.put("countprice", count.getText().toString());
-                    data.insert("gasorder", null, values);
-                    data.close();
-                    //订单信息保存在服务器中
-                    User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
-                    order order = new order();
-                    order.setUser(user);
-                    order.setStationname(station_name.getText().toString());
-                    order.setCtype(ctype);
-                    order.setGasprice(Double.valueOf(a.substring(0, a.length() - 3)));
-                    order.setCarnumber(carnumber);
-                    order.setGascount(Double.valueOf(b));
-                    order.setCountprice(count.getText().toString());
-                    order.setTime(time);
-                    order.save(GasorderActivity.this, new SaveListener() {
-                        @Override
-                        public void onSuccess() {
-                            Toast.makeText(GasorderActivity.this, "订单已完成", Toast.LENGTH_SHORT).show();
-                            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
-                            finish();
-                        }
 
-                        @Override
-                        public void onFailure(int i, String s) {
+                    String totalcount = count.getText().toString();
+                    String price_number = totalcount.substring(1, totalcount.length());
+                    Double total_price = Double.parseDouble(price_number);
 
-                        }
-                    });
+                    //订单支付
+                    BP.pay("商品名称", "商品描述", total_price, true
+                            , new PListener() {
+
+                                @Override
+                                public void unknow() {
+                                    // 因为网络等问题,不能确认是否支付成功,请稍后手动查询(小概率事件)
+                                    Toast.makeText(gasorderActivity.this, "因为网络等问题,不能确认是否支付成功,请稍后手动查询(小概率事件)", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void succeed() {
+                                    // TODO Auto-generated method stub
+
+                                    //订单信息保存在本地
+                                    values.put("time", time);
+                                    values.put("stationname", station_name.getText().toString());
+                                    values.put("username", name);
+                                    values.put("ctype", ctype);
+                                    String a = gas_price.getText().toString().trim();
+                                    values.put("gasprice", Double.valueOf(a.substring(0, a.length() - 3)));
+                                    String b = editText.getText().toString();
+                                    values.put("gascount", Double.valueOf(b));
+                                    values.put("carnumber", carnumber);
+                                    values.put("countprice", count.getText().toString());
+                                    data.insert("gasorder", null, values);
+                                    data.close();
+                                    //订单信息保存在服务器中
+                                    User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
+                                    order order = new order();
+                                    order.setUser(user);
+                                    order.setStationname(station_name.getText().toString());
+                                    order.setCtype(ctype);
+                                    order.setGasprice(Double.valueOf(a.substring(0, a.length() - 3)));
+                                    order.setCarnumber(carnumber);
+                                    order.setGascount(Double.valueOf(b));
+                                    order.setCountprice(count.getText().toString());
+                                    order.setTime(time);
+                                    order.save(gasorderActivity.this, new SaveListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            Toast.makeText(gasorderActivity.this, "订单已完成", Toast.LENGTH_SHORT).show();
+                                            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                            inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
+                                            finish();
+                                        }
+
+                                        @Override
+                                        public void onFailure(int i, String s) {
+
+                                        }
+                                    });
+                                }
+
+                                @Override
+                                public void orderId(String orderid) {
+                                    // TODO Auto-generated method stub
+                                    Toast.makeText(gasorderActivity.this, "返回的订单号" + orderid, Toast.LENGTH_SHORT).show();
+                                    Log.i("price", ">>>>>>>>>>>>>>>>>>>>>>>>>>>" + orderid);
+
+                                }
+
+                                @Override
+                                public void fail(int arg0, String reason) {
+                                    // TODO Auto-generated method stub
+                                    Toast.makeText(gasorderActivity.this, "失败的序号，reason=" + reason, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                    );
+                    
+                    
+                    
 
 
                 }

@@ -148,7 +148,7 @@
             android:name=".activity.MeCarActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.GasorderActivity"
+            android:name=".activity.gasorderActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.MeorderActivity"
