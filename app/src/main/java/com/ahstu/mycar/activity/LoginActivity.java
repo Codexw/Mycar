@@ -177,7 +177,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                         db.insert("gasorder", null, values);
 
                                     }
-                                    progress.dismiss();
+                                    progress.dismiss();//java.lang.IllegalArgumentException: View not attached to window manager 会崩
                                     db.close();
 
                                 }

@@ -7,8 +7,10 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.sql.DatabaseHelper;
@@ -16,6 +18,9 @@ import com.xys.libzxing.zxing.encoding.EncodingUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import c.b.BP;
+import c.b.PListener;
 
 /**
  * Created by xuning on 2016/5/23.
@@ -33,11 +38,15 @@ public class OrderItemActivity extends Activity {
     ImageView erweima;
     ImageView meorder_back;
     Bundle bundle;
+    private Button paid_btn;
+    private String station_name, station_style;
+    private Double total_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myorder_item);
+        BP.init(this, "ccd46e34cec57d61dbcedaa08f722296");
         inview();
         set();
     }
@@ -53,6 +62,7 @@ public class OrderItemActivity extends Activity {
         info_time = (TextView) findViewById(R.id.info_time);
         erweima = (ImageView) findViewById(R.id.info_erweima);
         meorder_back = (ImageView) findViewById(R.id.meorderback);
+        paid_btn = (Button) findViewById(R.id.not_paid_btn);
     }
 
     void set() {
@@ -72,6 +82,11 @@ public class OrderItemActivity extends Activity {
             Double gasprice = cursor.getDouble(cursor.getColumnIndex("gasprice"));
             String countprice = cursor.getString(cursor.getColumnIndex("countprice"));
             String time = cursor.getString(cursor.getColumnIndex("time")).toString();
+
+            String str = countprice.replace(",", "");
+            total_price = Double.parseDouble(str.substring(1, str.length()));
+            station_name = staion;
+            station_style = ctype;
 
             info_station.setText(staion);
             info_carnumber.setText(carnumber);
@@ -103,6 +118,42 @@ public class OrderItemActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        paid_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //订单支付
+                BP.pay("加油站订单支付", station_name + " " + station_style, total_price, true
+                        , new PListener() {
+
+                            @Override
+                            public void unknow() {
+                                // 因为网络等问题,不能确认是否支付成功,请稍后手动查询(小概率事件)
+                                Toast.makeText(OrderItemActivity.this, "因为网络等问题,不能确认是否支付成功,请稍后手动查询", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void succeed() {
+                                // TODO Auto-generated method stub
+                                Toast.makeText(OrderItemActivity.this, "订单支付成功", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void orderId(String orderid) {
+                                // TODO Auto-generated method stub
+                                Toast.makeText(OrderItemActivity.this, "订单号:" + orderid, Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void fail(int arg0, String reason) {
+                                // TODO Auto-generated method stub
+                                Toast.makeText(OrderItemActivity.this, "交易失败:" + reason, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
             }
         });
 

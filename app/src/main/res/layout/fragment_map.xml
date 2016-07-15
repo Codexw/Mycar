@@ -47,7 +47,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="普通模式"/>
+            android:text="普通模式" />
 
         <Button
             android:id="@+id/btn_map_mode_compass"

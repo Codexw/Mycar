@@ -148,7 +148,7 @@
             android:name=".activity.MeCarActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.gasorderActivity"
+            android:name=".activity.GasorderActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.MeorderActivity"
@@ -168,6 +168,9 @@
         <activity
             android:name=".me.SearchFriendActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.OrderviewActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
         <service android:name=".music.MusicPlayService"/>

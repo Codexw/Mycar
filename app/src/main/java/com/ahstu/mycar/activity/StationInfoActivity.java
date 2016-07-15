@@ -160,7 +160,7 @@ public class StationInfoActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(StationInfoActivity.this, gasorderActivity.class);
+                intent.setClass(StationInfoActivity.this, GasorderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("station", s);
                 intent.putExtras(bundle);

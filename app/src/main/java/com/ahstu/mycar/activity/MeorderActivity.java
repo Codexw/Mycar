@@ -29,6 +29,7 @@ public class MeorderActivity extends Activity {
     ImageView orderback;
     String station[];
     String time[];
+    String ctype[];
     int a[];
     int size;
     List<Map<String, String>> list;
@@ -44,13 +45,13 @@ public class MeorderActivity extends Activity {
         melistlayout = (RelativeLayout) findViewById(R.id.melistlayout);
         DatabaseHelper helper = new DatabaseHelper(MeorderActivity.this, "node.db", null, 1);
         SQLiteDatabase data = helper.getReadableDatabase();
-        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time"}, null, null, null, null, null);
+        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time", "ctype"}, null, null, null, null, null);
         if (cursor.getCount() > 0) {
             ordernull.setVisibility(View.GONE);
             melistlayout.setVisibility(View.VISIBLE);
         }
         getdata();
-        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time"}, new int[]{R.id.order_item_text1, R.id.order_item_text2});
+        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time", "ctype"}, new int[]{R.id.order_item_text1, R.id.order_item_text2, R.id.order_item_text3});
         meorderlist.setAdapter(adapter);
         meorderlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,9 +76,10 @@ public class MeorderActivity extends Activity {
     void getdata() {
         DatabaseHelper helper = new DatabaseHelper(MeorderActivity.this, "node.db", null, 1);
         SQLiteDatabase data = helper.getReadableDatabase();
-        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time"}, null, null, null, null, null);
+        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time", "ctype"}, null, null, null, null, null);
         station = new String[cursor.getCount()];
         time = new String[cursor.getCount()];
+        ctype = new String[cursor.getCount()];
         a = new int[cursor.getCount()];
         size = cursor.getCount();
         int j = 0;
@@ -85,11 +87,13 @@ public class MeorderActivity extends Activity {
             cursor.moveToLast();
             station[j] = cursor.getString(cursor.getColumnIndex("stationname"));
             time[j] = cursor.getString(cursor.getColumnIndex("time"));
+            ctype[j] = cursor.getString(cursor.getColumnIndex("ctype"));
             a[j] = cursor.getInt(cursor.getColumnIndex("id"));
             while (cursor.moveToPrevious()) {
                 j++;
                 station[j] = cursor.getString(cursor.getColumnIndex("stationname"));
                 time[j] = cursor.getString(cursor.getColumnIndex("time"));
+                ctype[j] = cursor.getString(cursor.getColumnIndex("ctype"));
                 a[j] = cursor.getInt(cursor.getColumnIndex("id"));
             }
             data.close();
@@ -99,6 +103,7 @@ public class MeorderActivity extends Activity {
             Map<String, String> map = new HashMap<String, String>();
             map.put("station", station[i]);
             map.put("time", time[i]);
+            map.put("ctype", ctype[i]);
             list.add(map);
         }
     }

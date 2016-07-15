@@ -19,9 +19,8 @@ import static com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 public abstract class OverlayManager implements OnMarkerClickListener, OnPolylineClickListener {
 
     BaiduMap mBaiduMap = null;
-    private List<OverlayOptions> mOverlayOptionList = null;
-
     List<Overlay> mOverlayList = null;
+    private List<OverlayOptions> mOverlayOptionList = null;
 
     /**
      * 通过一个BaiduMap 对象构造
