@@ -309,7 +309,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
                     Intent intent = new Intent();
                     intent.putExtra("x", e.geoPt.longitude);
                     intent.putExtra("y", e.geoPt.latitude);
-                    intent.setClass(OfflineMapActivity.this, BaseMapDemo.class);
+                    intent.setClass(OfflineMapActivity.this, BaseMapActivity.class);
                     startActivity(intent);
                 }
             });

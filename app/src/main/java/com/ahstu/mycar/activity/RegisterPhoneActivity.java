@@ -44,6 +44,40 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
     private Context context;
     private TimeCount time;
     private CheckBox mCheckBox;
+    TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                btn_next.setEnabled(false);
+                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+            } else {
+                btn_next.setEnabled(true);
+                btn_next.setBackgroundResource(R.drawable.login_button);
+            }
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                btn_next.setEnabled(false);
+                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+            } else {
+                btn_next.setEnabled(true);
+                btn_next.setBackgroundResource(R.drawable.login_button);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                btn_next.setEnabled(false);
+                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+            } else {
+                btn_next.setEnabled(true);
+                btn_next.setBackgroundResource(R.drawable.login_button);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,41 +113,6 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
         btn_next = (Button) findViewById(R.id.btn_next);
     }
 
-    TextWatcher mTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
-                btn_next.setEnabled(false);
-                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
-            } else {
-                btn_next.setEnabled(true);
-                btn_next.setBackgroundResource(R.drawable.login_button);
-            }
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
-                btn_next.setEnabled(false);
-                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
-            } else {
-                btn_next.setEnabled(true);
-                btn_next.setBackgroundResource(R.drawable.login_button);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
-                btn_next.setEnabled(false);
-                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
-            } else {
-                btn_next.setEnabled(true);
-                btn_next.setBackgroundResource(R.drawable.login_button);
-            }
-        }
-    };
-    
     @Override
     public void onClick(View v) {
 
