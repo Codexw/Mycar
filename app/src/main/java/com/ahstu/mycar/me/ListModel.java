@@ -3,7 +3,6 @@ package com.ahstu.mycar.me;
 public class ListModel {
     private int nameId;
     private String textName;
-
     public int getNameId() {
         return nameId;
     }

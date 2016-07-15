@@ -210,7 +210,7 @@ public class CarControlFragment extends Fragment {
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "网速慢请下拉刷新", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "网速慢请重试", Toast.LENGTH_SHORT).show();
 
         }
 

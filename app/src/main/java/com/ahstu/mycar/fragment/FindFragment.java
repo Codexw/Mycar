@@ -258,7 +258,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_offlineMap:
 //                startActivity(new Intent(getActivity(), OfflineMapActivity.class));
-                Toast.makeText(getActivity(), "紧张制作中。。", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "连夜制作中。。。", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

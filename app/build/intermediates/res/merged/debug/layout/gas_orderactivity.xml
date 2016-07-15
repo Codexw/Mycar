@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/order_title"
@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="订单界面"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
 
     </RelativeLayout>
@@ -45,7 +45,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="加油站:  "
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/gasstation_name"
@@ -53,14 +53,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/dark_grey"/>
+            android:background="@color/dark_grey" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="加油类型:  "
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/spinner_type"
@@ -81,14 +81,15 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:spinnerMode="dropdown"
-                android:textSize="18sp"></Spinner>
+                android:textSize="18sp">
+            </Spinner>
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/dark_grey"/>
+            android:background="@color/dark_grey" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,7 +102,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="加油单价:  "
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/gas_price"
@@ -109,14 +110,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/dark_grey"/>
+            android:background="@color/dark_grey" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,7 +129,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="加油量(L):  "
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/gas_count"
@@ -139,14 +140,14 @@
                 android:digits="1234567890."
                 android:gravity="center_vertical"
                 android:inputType="phone"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/dark_grey"/>
+            android:background="@color/dark_grey" />
     </LinearLayout>
 
     <RelativeLayout
@@ -162,7 +163,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="合计:"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/count_price"
@@ -171,7 +172,7 @@
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/heji"
             android:gravity="center_vertical"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btn_order"
@@ -183,7 +184,7 @@
             android:background="@drawable/login_button"
             android:padding="5dp"
             android:text="提交订单"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
@@ -191,5 +192,5 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_below="@id/rl"
-        android:background="@color/dark_grey"/>
+        android:background="@color/dark_grey" />
 </RelativeLayout>

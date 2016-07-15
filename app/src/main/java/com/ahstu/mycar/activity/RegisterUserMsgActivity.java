@@ -259,6 +259,8 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
             db.close();
         }
     }
-
-
+    
+    
+    
+    
 }

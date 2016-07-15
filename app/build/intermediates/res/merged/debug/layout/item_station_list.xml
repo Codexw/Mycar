@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:descendantFocusability="blocksDescendants"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -31,14 +31,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_below="@id/tv_id"
             android:layout_toRightOf="@id/tv_id"
             android:paddingTop="8dp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black" />
 
         <View
             android:id="@+id/v_line"
@@ -57,17 +57,17 @@
             android:layout_below="@id/tv_addr"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:background="@color/dark_grey"/>
+            android:background="@color/dark_grey" />
 
         <com.ahstu.mycar.widght.NoScrollGridView
             android:id="@+id/gv_price"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/v_line"
-            android:layout_toRightOf="@id/tv_id"
+            android:verticalSpacing="8dp"
             android:listSelector="#00000000"
-            android:numColumns="2"
-            android:verticalSpacing="8dp"/>
+            android:layout_toRightOf="@id/tv_id"
+            android:numColumns="2" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -33,7 +33,6 @@ public class CarFriendAdapter extends BaseAdapter {
         mInflater = LayoutInflater.from(context);
         friendNameList = str;
     }
-
     public void onListener(FriendAdpterOnItemClick listener) {
 
         this.friendAdpterOnclick = listener;

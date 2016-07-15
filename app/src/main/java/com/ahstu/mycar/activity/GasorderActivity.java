@@ -53,7 +53,6 @@ public class GasorderActivity extends Activity {
     String[] gasprice;
     long h_number;
     String name;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +136,7 @@ public class GasorderActivity extends Activity {
                     count.setText(format.format(sum * cot));
 
                 }
-            }
+            }   
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -242,6 +241,6 @@ public class GasorderActivity extends Activity {
         });
 
     }
-
+    
 
 }
