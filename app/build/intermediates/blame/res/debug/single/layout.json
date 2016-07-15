@@ -72,12 +72,12 @@
         "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\layout\\activity_register_user_msg.xml"
     },
     {
-        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_map.xml",
-        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\layout\\fragment_map.xml"
-    },
-    {
         "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\layout\\spinner.xml",
         "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\layout\\spinner.xml"
+    },
+    {
+        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_map.xml",
+        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\layout\\fragment_map.xml"
     },
     {
         "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",

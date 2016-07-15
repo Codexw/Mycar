@@ -1,7 +1,0 @@
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$1$override.class
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$4$1$override.class
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$4$override.class
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$3$override.class
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$2$override.class
-CHANGED,G:\android_demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$override.class

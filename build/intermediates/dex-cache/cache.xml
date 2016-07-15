@@ -1,3 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="G:\android_demo\Car\app\libs\weizhang_sdk.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="7a43c225fe1c4a8c20d3fe112738d88f13909a47">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\weizhang_sdk_cee63d2378c5e98ab1ad9c748f06de75e4ca836c.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\BaiduLBS_Android.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="278f41c38272b06134ea3d72425ce4d05289314d">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android_6bcbe087bdabc0aa31856289353cc9b5c5e7eed0.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\okhttp-2.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="40340c0748190fe897baf7bffbc1b282734294e5">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\okhttp-2.4.0_a341f33320f452ea6a46ddfb0d26aa4ff6d553cd.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\jars\libs\zxing.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="3b0f5a41c105091377238a4292280d497699965a">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\zxing_787dd9162a53bb9990d0f6a8201a598dd0f7c946.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\httpmime-4.1.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ed8b5ee0167cb27dea55851259eb34b609f31df0">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\httpmime-4.1.2_eedbbdbe67a1aa4af091dd65ef0d1bab9d801cd3.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\juhe_sdk_v_2_1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c84128358c965dec01daa23c137dfc1cd65167b7">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\juhe_sdk_v_2_1_084cba5310579cabe415331f4c7be9bb1f3a414e.jar" />
+    </item>
+    <item
+        jar="F:\android-sdk_r24.4.1-windows\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1_6c94a550bba2f20111eb9957c29fa7647a4b7b84.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="b0ca1f3d6c1bf7991e19653c76d7bae9b6d34d5f">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\instant-run_ca4ce34f6adf6b1315511766bbc686c8f7fff684.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-22.2.1_897545d39e3a291815146d53a6bf2b589638ede7.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\BmobPay_v3.0.3_160621.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="02a7078b4fb655f1e5ab11714d0533e86ab8c713">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\BmobPay_v3.0.3_160621_fcd9f5ee8902a5c3e8d61bd3fab4fdc9669be070.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\org.apache.http.legacy.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5320fd78dd7f154e586970d4f02befc9b58432aa">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\org.apache.http.legacy_ab70b260cda5d70cb45eba801cb1cb237083f190.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\BmobSDK_V3.4.6_0415.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="41f54bb2846705eea0de5df48ddbcba378bd54e5">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\BmobSDK_V3.4.6_0415_2672b4f08d56cf1ac9e71d8f6018cc72f55f2a96.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6b7e59710eea2b5bb8fc22ced72fb06a2d0e206d">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_cbff13e94d5183cd958c46725403134f290344ce.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1_5d27ffe3b8ff469a1e636c7629585596a1640822.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\okio-1.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\okio-1.4.0_8a4a94a5312d7a97a237c573f5f2a6f7f591480b.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-22.2.1_8501c3d1875097a560e82cde7bb6604f0a293d8b.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\Bmob_Push_V0.8beta_20160420.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2fe391ed9034cd023de1da05cb8da77e08b46245">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\Bmob_Push_V0.8beta_20160420_b6a4430361046115416f80d21fa74a6e83a4f339.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\IndoorscapeAlbumPlugin.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="b6c8bf896e0d23f4003b9a3cab4bff9af9adefda">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\IndoorscapeAlbumPlugin_c6067198d39b63b5956f8aed7768f5ac1e6ba38b.jar" />
+    </item>
+    <item
+        jar="G:\android_demo\Car\app\libs\filechoose.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="30877bca7d1d9f09d7bc8b6ec3e6f5cf0fcf27fb">
+        <dex dex="G:\android_demo\Car\app\build\intermediates\pre-dexed\debug\filechoose_88fe91176420c5330f25dae33455fb82e95bb158.jar" />
+    </item>
+
+</items>
