@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\Android\\Demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_capture.xml",
+        "source": "E:\\Android\\Demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_capture.xml"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_capture.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_capture.xml"
+    },
+    {
+        "merged": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_capture.xml",
+        "source": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_capture.xml"
+    }
+]

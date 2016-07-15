@@ -1,0 +1,11 @@
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\me\ListModel$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$4$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\me\CarFriendAdapter$1$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$4$1$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\me\CarFriendAdapter$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$2$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$3$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\me\CarFriendAdapter$ViewHolder$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$1$override.class
