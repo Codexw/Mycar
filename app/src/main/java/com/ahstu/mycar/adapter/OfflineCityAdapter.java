@@ -64,7 +64,7 @@ public class OfflineCityAdapter extends BaseAdapter {
 //        TextView update = (TextView) view.findViewById(R.id.update);
         TextView ratio = (TextView) view.findViewById(R.id.size);
 //        ratio.setText(e.ratio + "%");
-        cityName.setText(e.cityName);
+        cityName.setText(e.cityName + formatDataSize(e.size));
         /*if (e.update) {
             update.setText("可更新");
         } else {
@@ -91,7 +91,7 @@ public class OfflineCityAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 //                int cityid = Integer.parseInt(cidView.getText().toString());
-                mOffline.start(e.cityID);
+//                mOffline.start(e.cityID);
 //                clickLocalMapListButton(null);
                 Toast.makeText(mContext, "开始下载离线地图. cityid: " + e.cityID, Toast.LENGTH_SHORT)
                         .show();
@@ -101,5 +101,15 @@ public class OfflineCityAdapter extends BaseAdapter {
         });
     }
 
+    //地图尺寸格式
+    public String formatDataSize(int size) {
+        String ret = "";
+        if (size < (1024 * 1024)) {
+            ret = String.format("%dK", size / 1024);
+        } else {
+            ret = String.format("%.1fM", size / (1024 * 1024.0));
+        }
+        return ret;
+    }
 
 }

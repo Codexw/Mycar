@@ -1,486 +1,486 @@
 [
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_friend.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\add_friend.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\next_button.9.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\next_button.9.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_pull_icon_big.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\allview_pull_icon_big.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_mark.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\icon_mark.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btstyle.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_menu_btstyle.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_pullup_icon_big.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_pullup_icon_big.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btn.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_menu_btn.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_radio_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_add.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_add.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_download_btstyle.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\song_download_btstyle.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\play_bt.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\play_bt.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shape.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\shape.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weizhang.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\weizhang.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_change_start_end.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\ic_change_start_end.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_poi_map_selection_btn_pressed.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\add_poi_map_selection_btn_pressed.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\car1.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\car1.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_arr_back.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\csy_arr_back.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_friend.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\add_friend.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_focus_mark.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\icon_focus_mark.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_dialog_material_background_dark.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_dialog_material_background_dark.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\map_my_location_icon.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\map_my_location_icon.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\previous_bt.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\previous_bt.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\userpassword_icon.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\userpassword_icon.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\all_song_rb_bg.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_ratingbar_full_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_textfield_search_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\songlist_bt.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\songlist_bt.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weizhang.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\weizhang.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mapfragment_loc_pressed.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\mapfragment_loc_pressed.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\new_song_list.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\list_pressed.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\list_pressed.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btp.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_list_btp.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btstyle.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_list_btstyle.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_false.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\check_box_false.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_loading.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\allview_loading.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\next_bt.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\next_bt.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_loading.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_loading.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_find_image.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_find_image.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btstyle.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_menu_btstyle.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_marker.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\selector_marker.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back_icon_normal.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\back_icon_normal.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_poi_map_selection_btn.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\add_poi_map_selection_btn.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_arr_back.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\csy_arr_back.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\car1.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\car1.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_bg.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_menu_bg.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btn.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_list_btn.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\popup.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\popup.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_true.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\check_box_true.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_dialog_title.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\frame_dialog_title.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_friend_image.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_friend_image.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_listitem_result.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\csy_listitem_result.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_personal_normal.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_personal_normal.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_focus_mark.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\icon_focus_mark.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_menu.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_unchecked.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\login_button_unchecked.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_download_btstyle.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\song_download_btstyle.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\login_button.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\order_submit.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\order_submit.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_true.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\check_box_true.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\songlist_bt.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\songlist_bt.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\yinyue.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\yinyue.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg_p.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\all_song_rb_bg_p.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_poi_map_selection_btn_pressed.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\add_poi_map_selection_btn_pressed.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_change_start_end.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\ic_change_start_end.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_personal_image.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_personal_image.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_home_selected.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_home_selected.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btp.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_menu_btp.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_icon_roadcondition_off.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\main_icon_roadcondition_off.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_find_normal.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_find_normal.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\delete_01.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\delete_01.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\list_pressed.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\list_pressed.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\audioplayernoartwork.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\audioplayernoartwork.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_refreshing.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_refreshing.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back_icon_selected.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\back_icon_selected.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_refresh_succeed.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_refresh_succeed.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_list_rb_bg_n.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\song_list_rb_bg_n.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_press.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\login_button_press.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_head.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\notification_head.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\new_song_list.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_marker.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\selector_marker.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mapfragment_loc_pressed.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\mapfragment_loc_pressed.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_edit_text_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_add.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_add.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\welcome.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\welcome.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\back.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\offlinemap.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\offlinemap.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\all_song_rb_bg.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\next_button.9.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\next_button.9.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\order.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\order.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mapfragment_loc.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\mapfragment_loc.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg_n.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\all_song_rb_bg_n.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_pullup_icon_big.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\allview_pullup_icon_big.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btstyle.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_list_btstyle.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_refreshing.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\allview_refreshing.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_bg.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_menu_bg.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\order_submit.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\order_submit.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\welcome.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\welcome.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\exit.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\exit.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_list_rb_bg.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\song_list_rb_bg.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_home_normal.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_home_normal.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back_icon_normal.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\back_icon_normal.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_personal_normal.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_personal_normal.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_switch_thumb_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_icon_roadcondition_off.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\main_icon_roadcondition_off.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_personal_image.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_personal_image.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mapfragment_loc.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\mapfragment_loc.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btp.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_menu_btp.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_friend_image.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_friend_image.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\me_head_bg.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\me_head_bg.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\me_head_bg.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\me_head_bg.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_searchlatlonactivity.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\btn_searchlatlonactivity.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_add_disable.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_add_disable.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_add_disable.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_add_disable.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_home_image.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_home_image.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list_n.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\new_song_list_n.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_check_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_dialog.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\frame_dialog.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\station_list.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\station_list.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_press.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\login_button_press.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\v_dotted_line.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\v_dotted_line.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_unchecked.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\login_button_unchecked.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bt_query.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\bt_query.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_refresh_succeed.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\allview_refresh_succeed.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\popup.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\popup.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list_p.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\new_song_list_p.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\next_bt.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\next_bt.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_home_normal.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_home_normal.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_find_image.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_find_image.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pause_bt.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\pause_bt.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\frame.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\head.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\head.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\charge.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\charge.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_tab_indicator_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\offlinemap.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\offlinemap.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_refresh_failed.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_refresh_failed.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_arr_right.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\csy_arr_right.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_dialog_title.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\frame_dialog_title.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\yinyue.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\yinyue.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_find_selected.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_find_selected.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_refresh_failed.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\allview_refresh_failed.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list_n.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\new_song_list_n.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_find_selected.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_find_selected.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btp.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_list_btp.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_icon_roadcondition_on.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\main_icon_roadcondition_on.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_find_normal.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_find_normal.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_search_name.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_search_name.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\v_dotted_line.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\v_dotted_line.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\delete_01.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\delete_01.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\list.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\list.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\login_button.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\previous_bt.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\previous_bt.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg_n.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\all_song_rb_bg_n.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_poi_map_selection_btn.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\add_poi_map_selection_btn.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_listitem_result.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\csy_listitem_result.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pause_bt.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\pause_bt.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_ratingbar_full_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\exit.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\exit.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_head.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\notification_head.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_home_selected.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_home_selected.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shape.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\shape.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_background.9.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\login_background.9.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_list_rb_bg_p.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\song_list_rb_bg_p.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_personal_selected.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_personal_selected.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_top_material.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_list_rb_bg.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\song_list_rb_bg.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bt_query.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\bt_query.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_arr_right.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\csy_arr_right.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_home_image.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_home_image.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\play_bt.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\play_bt.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_friend_normal.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_friend_normal.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_menu.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_listitem_citys.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\csy_listitem_citys.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_personal_selected.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_personal_selected.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\station_list.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\station_list.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_mapfragment_loc.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\btn_mapfragment_loc.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list_p.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\new_song_list_p.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_false.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\check_box_false.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\head.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\head.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\charge.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\charge.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_list_rb_bg_n.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\song_list_rb_bg_n.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\frame.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btn.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_list_btn.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_searchlatlonactivity.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\btn_searchlatlonactivity.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_icon_roadcondition_on.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\main_icon_roadcondition_on.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\map_my_location_icon.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\map_my_location_icon.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_friend_normal.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_friend_normal.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\regitser_code_again.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\regitser_code_again.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\audioplayernoartwork.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\audioplayernoartwork.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_holo_light.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\song_list_rb_bg_p.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\song_list_rb_bg_p.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_friend_selected.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\nav_friend_selected.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back_icon_selected.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\back_icon_selected.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_weizhang.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\ic_weizhang.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\list.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\list.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_dialog_material_background_light.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg_p.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\all_song_rb_bg_p.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\username_icon.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\username_icon.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_friend_selected.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\nav_friend_selected.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_background.9.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\login_background.9.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_dialog_material_background_light.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_light.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_weizhang.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\ic_weizhang.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\csy_listitem_citys.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\csy_listitem_citys.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\h_dotted_line.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\h_dotted_line.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_pull_icon_big.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_pull_icon_big.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\userpassword_icon.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\userpassword_icon.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_mapfragment_loc.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\btn_mapfragment_loc.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_mark.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\icon_mark.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_dialog.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\frame_dialog.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_search_name.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_search_name.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\order.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\order.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\username_icon.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\username_icon.png"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\back.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\back.xml"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\regitser_code_again.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\regitser_code_again.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btn.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\music_menu_btn.png"
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\h_dotted_line.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\h_dotted_line.xml"
     }
 ]
