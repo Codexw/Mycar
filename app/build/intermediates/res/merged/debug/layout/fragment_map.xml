@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true" />
+
+
+        <Button
+            android:id="@+id/btn_map_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_button"
+            android:padding="3dp"
+            android:text="平面地图" />
+
+        <Button
+            android:id="@+id/btn_map_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_button"
+            android:padding="3dp"
+            android:text="卫星地图" />
+
+
+        <Button
+            android:id="@+id/btn_map_mode_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_button"
+            android:padding="3dp"
+            android:text="普通模式"/>
+
+        <Button
+            android:id="@+id/btn_map_mode_compass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_button"
+            android:padding="3dp"
+            android:text="罗盘模式" />
+
+        <Button
+            android:id="@+id/btn_map_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_button"
+            android:padding="3dp"
+            android:text="地图菜单" />
+
+        <ImageView
+            android:id="@+id/iv_map_traffic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/iv_loc"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_mapfragment_loc"
+            android:padding="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_icon_roadcondition_off" />
+
+        <ImageView
+            android:id="@+id/iv_loc"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_mapfragment_loc"
+            android:padding="10dp"
+            android:src="@mipmap/location" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
