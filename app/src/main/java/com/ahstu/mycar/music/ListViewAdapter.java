@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class ListViewAdapter extends BaseAdapter {
     private Context context;
-    private List<Map<String, Object>> listItems;
+    private List<Map<String, Object>> listItems; 
     private ArrayList<String> addSongIds;// 将要添加的歌曲的id
     private ArrayList<String> songIds;// 全部歌曲的id
     private ArrayList<String> pl_songIds;// 列表歌曲的id

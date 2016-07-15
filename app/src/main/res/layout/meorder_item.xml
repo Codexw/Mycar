@@ -49,5 +49,6 @@
         android:gravity="center"
         android:paddingRight="5dp"
         android:text="时间"
-        android:textSize="10dp" />
+        android:textSize="10dp"
+        />
 </RelativeLayout>

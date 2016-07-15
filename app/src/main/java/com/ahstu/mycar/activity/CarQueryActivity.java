@@ -67,6 +67,7 @@ public class CarQueryActivity extends Activity {
         startService(weizhangIntent);
         SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
         String number = share.getString("number", "");
+        number=number.substring(0,7);
         DatabaseHelper helper = new DatabaseHelper(CarQueryActivity.this, "node.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.query("carinfo", new String[]{"car_number", "car_enginerno", "car_frame"}, "car_number=?", new String[]{number}, null, null, null);
@@ -88,7 +89,7 @@ public class CarQueryActivity extends Activity {
         result_list = (ListView) findViewById(R.id.listresult);
         bar = (ProgressBar) findViewById(R.id.progress);
         frame = (FrameLayout) findViewById(R.id.frame);
-        chepai.setText(chepainumber);
+        chepai.setText(number);
         query_back = (ImageView) findViewById(R.id.carquery_exit);
         query_back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -5,7 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ import com.ahstu.mycar.activity.SearchLatLonActivity;
 import com.ahstu.mycar.activity.StationMapActivity;
 import com.ahstu.mycar.me.SearchFriendActivity;
 import com.ahstu.mycar.me.ShareLocationMessage;
+import com.ahstu.mycar.sql.DatabaseHelper;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -231,9 +233,12 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.btn_weizhang:
-                SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
-                String s = share.getString("number", "");
-                if (s.equals("")) {
+                //SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
+                //String s = share.getString("number", "");
+                DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
+                SQLiteDatabase database=helper.getReadableDatabase();
+                Cursor cursor=database.query("carinfo",new String[]{"car_number"},null,null,null,null,null);
+                if (cursor.getCount()==0) {
                     Toast.makeText(getActivity(), "请先添加车辆", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent i = new Intent();

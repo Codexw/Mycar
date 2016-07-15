@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.CarListActivity;
 import com.ahstu.mycar.bean.Carinfomation;
+import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.me.RoundProgressBar;
 import com.ahstu.mycar.sql.DatabaseHelper;
 import com.ahstu.mycar.ui.PullToRefreshLayout;
@@ -128,6 +129,7 @@ public class CarControlFragment extends Fragment {
         final Carinfomation carinfomation = new Carinfomation();
         final BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
         query.addWhereEqualTo("car_number", s);
+        query.addWhereEqualTo("user", User.getCurrentUser(getActivity()));
         try {
             query.findObjects(getActivity(), new FindListener<Carinfomation>() {
                 @Override

@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
+import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.sql.DatabaseHelper;
 
 import java.io.InputStream;
@@ -140,6 +141,7 @@ public class MeCarActivity extends Activity {
 
         BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
         query.addWhereEqualTo("car_number", s);
+        query.addWhereEqualTo("user", User.getCurrentUser(MeCarActivity.this));
         query.findObjects(this, new FindListener<Carinfomation>() {
             @Override
             public void onSuccess(List<Carinfomation> list) {

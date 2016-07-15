@@ -30,6 +30,7 @@ public class MeorderActivity extends Activity {
     String station[];
     String time[];
     String ctype[];
+    int state[];
     int a[];
     int size;
     List<Map<String, String>> list;
@@ -51,7 +52,7 @@ public class MeorderActivity extends Activity {
             melistlayout.setVisibility(View.VISIBLE);
         }
         getdata();
-        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time", "ctype"}, new int[]{R.id.order_item_text1, R.id.order_item_text2, R.id.order_item_text3});
+        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time", "ctype","state"}, new int[]{R.id.order_item_text1, R.id.order_item_text2, R.id.order_item_text3,R.id.order_item_text4});
         meorderlist.setAdapter(adapter);
         meorderlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -76,10 +77,11 @@ public class MeorderActivity extends Activity {
     void getdata() {
         DatabaseHelper helper = new DatabaseHelper(MeorderActivity.this, "node.db", null, 1);
         SQLiteDatabase data = helper.getReadableDatabase();
-        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time", "ctype"}, null, null, null, null, null);
+        Cursor cursor = data.query("gasorder", new String[]{"id", "stationname", "time", "ctype","state"}, null, null, null, null, null);
         station = new String[cursor.getCount()];
         time = new String[cursor.getCount()];
         ctype = new String[cursor.getCount()];
+        state=new int[cursor.getCount()];
         a = new int[cursor.getCount()];
         size = cursor.getCount();
         int j = 0;
@@ -88,12 +90,14 @@ public class MeorderActivity extends Activity {
             station[j] = cursor.getString(cursor.getColumnIndex("stationname"));
             time[j] = cursor.getString(cursor.getColumnIndex("time"));
             ctype[j] = cursor.getString(cursor.getColumnIndex("ctype"));
+            state[j] = cursor.getInt(cursor.getColumnIndex("state"));
             a[j] = cursor.getInt(cursor.getColumnIndex("id"));
             while (cursor.moveToPrevious()) {
                 j++;
                 station[j] = cursor.getString(cursor.getColumnIndex("stationname"));
                 time[j] = cursor.getString(cursor.getColumnIndex("time"));
                 ctype[j] = cursor.getString(cursor.getColumnIndex("ctype"));
+                state[j] = cursor.getInt(cursor.getColumnIndex("state"));
                 a[j] = cursor.getInt(cursor.getColumnIndex("id"));
             }
             data.close();
@@ -104,7 +108,27 @@ public class MeorderActivity extends Activity {
             map.put("station", station[i]);
             map.put("time", time[i]);
             map.put("ctype", ctype[i]);
+            if(state[i]==0)
+                map.put("state","待支付");
+            else
+            map.put("state","已支付");
             list.add(map);
         }
+    }
+   
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+       // Toast.makeText(this,"onrestart",Toast.LENGTH_SHORT).show();
+        getdata();
+        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.meorder_item, new String[]{"station", "time", "ctype","state"}, new int[]{R.id.order_item_text1, R.id.order_item_text2, R.id.order_item_text3,R.id.order_item_text4});
+        meorderlist.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+       // Toast.makeText(this,"onresume",Toast.LENGTH_SHORT).show();
     }
 }

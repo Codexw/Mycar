@@ -22,7 +22,7 @@ public class MusicSearchAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<MusicMessage> musicMessageList;
     private AdpterOnItemClick myAdpterOnclick;
-
+    
     public MusicSearchAdapter(Context context, List<MusicMessage> str) {
         mInflater = LayoutInflater.from(context);
         musicMessageList = str;
@@ -32,7 +32,7 @@ public class MusicSearchAdapter extends BaseAdapter {
 
         this.myAdpterOnclick = listener;
     }
-
+    
     @Override
     public int getCount() {
         return musicMessageList.size();
@@ -55,7 +55,7 @@ public class MusicSearchAdapter extends BaseAdapter {
         holder.musicDownName = (TextView) convertView.findViewById(R.id.music_name_item);
 
         holder.bt_music_down = (Button) convertView.findViewById(R.id.bt_music_download);
-
+        
         holder.musicDownName.setText(musicMessageList.get(position).getSong_name());
         holder.bt_music_down.setOnClickListener(new View.OnClickListener() {
             @Override

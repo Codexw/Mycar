@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Carinfomation;
+import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.fragment.CarControlFragment;
 import com.ahstu.mycar.fragment.FindFragment;
 import com.ahstu.mycar.fragment.MapFragment;
@@ -200,7 +201,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     }
 
 
-    //調用衛星菜單中的接口回調方法，實現衛星菜單監聽事件
     @Override
 
     public void dealMusicclick(View v) {
@@ -427,6 +427,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
                     if (s.equals(""))
                         continue;
                     carinfomationBmobQuery.addWhereEqualTo("car_number", s);//查询默认车辆
+                    carinfomationBmobQuery.addWhereEqualTo("user", User.getCurrentUser(MainActivity.this));
                     moblie_id.addWhereEqualTo("installationId", BmobInstallation.getInstallationId(MainActivity.this));//匹配当前设备的id
                     bmobPush.setQuery(moblie_id);
 

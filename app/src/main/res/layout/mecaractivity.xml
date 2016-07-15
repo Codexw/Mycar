@@ -426,7 +426,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="汽车开启:" />
+                    android:text="汽车开启:"
+                    />
 
                 <TextView
                     android:id="@+id/mecar_start"
@@ -466,7 +467,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/mecardoor"
 
-                    android:gravity="center" />
+                    android:gravity="center"
+                    />
 
 
             </RelativeLayout>
@@ -487,7 +489,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="汽车锁定:" />
+                    android:text="汽车锁定:"
+                    />
 
                 <TextView
                     android:id="@+id/mecar_lock"
@@ -516,7 +519,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="空调控制:" />
+                    android:text="空调控制:"
+                    />
 
                 <TextView
                     android:id="@+id/mecar_air"
