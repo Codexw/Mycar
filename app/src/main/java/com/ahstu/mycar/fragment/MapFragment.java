@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.TaskStackBuilder;
@@ -93,6 +94,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private TextView tv;
     private BitmapDescriptor mBitmap;
     private boolean isrunning = true;
+    private Handler mHandler;
 
     //获取地图按钮伸缩状态
     public boolean isFlag() {
@@ -141,7 +143,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, null);
-
         return view;
     }
 
@@ -164,7 +165,6 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     }
 
     private void ininView() {
-
         //地图
         mMapView = (MapView) getActivity().findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
@@ -184,6 +184,18 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         btn_map_mode_compass = (Button) getActivity().findViewById(R.id.btn_map_mode_compass);
         iv_map_traffic = (ImageView) getActivity().findViewById(R.id.iv_map_traffic);
         iv_myLocation = (ImageView) getActivity().findViewById(R.id.iv_loc);
+
+        //定时刷新好友位置
+        mHandler = new Handler();
+        Runnable runnable = new Runnable() {
+            public void run() {
+                addFriend();
+                mHandler.postDelayed(this, 1000);
+            }
+        };
+        //开始计时
+        mHandler.removeCallbacks(runnable);
+        mHandler.postDelayed(runnable, 1000);
     }
 
     //定位初始化
@@ -264,9 +276,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         shareLocationMessage.setShareconnect(false);
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
+    public void addFriend() {
         //判断是否建立连接和是否为第一次连接
         if (shareLocationMessage.isShareconnect() && shareLocationMessage.isFirstconnect()) {
             shareLocationMessage.setFirstconnect(false);
@@ -277,37 +287,41 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                 public void run() {
                     while (isrunning) {
                         try {
-
                             //更新我的位置
                             SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
                             String name = sp.getString("name", "");
                             BmobQuery<User> query = new BmobQuery<User>();
                             query.addWhereEqualTo("username", name);
-                            query.setLimit(1);
                             query.findObjects(getActivity(), new FindListener<User>() {
+
                                 @Override
                                 public void onSuccess(List<User> list) {
-                                    if (!list.isEmpty()) {
-                                        User user = list.get(0);
-                                        user.setLat(mLatitude);
-                                        user.setLon(mLongitude);
-                                        user.update(getActivity(), user.getObjectId(), new UpdateListener() {
-                                            @Override
-                                            public void onSuccess() {
-                                                Log.i("MapFragment169", "分享位置后更新自己的位置成功");
-                                            }
+                                    Log.e("MapFragment299", "aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                    if (list != null) {
+                                        Log.e("MapFragment301", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+                                        if (list.size() > 0) {
+                                            Log.e("MapFragment303", "ccccccccccccccccc");
+                                            User user = list.get(0);
+                                            user.setLat(mLatitude);
+                                            user.setLon(mLongitude);
+                                            user.update(getActivity(), user.getObjectId(), new UpdateListener() {
+                                                @Override
+                                                public void onSuccess() {
+                                                    Log.i("MapFragment310", "分享位置后更新自己的位置成功");
+                                                }
 
-                                            @Override
-                                            public void onFailure(int i, String s) {
-                                                Log.i("MapFragment174", "分享位置后更新自己的位置失败");
-                                            }
-                                        });
+                                                @Override
+                                                public void onFailure(int i, String s) {
+                                                    Log.i("MapFragment315", "分享位置后更新自己的位置失败");
+                                                }
+                                            });
+                                        }
                                     }
                                 }
 
                                 @Override
                                 public void onError(int i, String s) {
-                                    Log.i("MapFragment182", "查询失败");
+                                    Log.i("MapFragment324", "查询失败");
                                 }
                             });
 
@@ -319,20 +333,25 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                                 userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
                                     @Override
                                     public void onSuccess(List<User> list) {
+                                        Log.e("carOne", "caraaaaaaaaaaaaaaaaaaa");
                                         if (list != null) {
-                                            User user = list.get(0);
-                                            tv.setText(user.getUsername());
-                                            mBitmap = BitmapDescriptorFactory.fromView(tv);
-                                            mMaker.setIcon(mBitmap);
-                                            LatLng latLng = new LatLng(user.getLat(), user.getLon());
-                                            mMaker.setPosition(latLng);
-                                            mBaiduMap.hideInfoWindow();
+                                            Log.e("carTwo", "carbbbbbbbbbbbbbbbbbbb");
+                                            if (list.size() > 0) {
+                                                Log.e("carTwo", "carccccccccccccccccccccccc");
+                                                User user = list.get(0);
+                                                tv.setText(user.getUsername());
+                                                mBitmap = BitmapDescriptorFactory.fromView(tv);
+                                                mMaker.setIcon(mBitmap);
+                                                LatLng latLng = new LatLng(user.getLat(), user.getLon());
+                                                mMaker.setPosition(latLng);
+                                                mBaiduMap.hideInfoWindow();
+                                            }
                                         }
                                     }
 
                                     @Override
                                     public void onError(int i, String s) {
-                                        Log.i("MapFragment207", "查询失败");
+                                        Log.i("MapFragment351", "查询失败");
                                     }
                                 });
                             } else {
@@ -354,7 +373,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
                                     @Override
                                     public void onError(int i, String s) {
-                                        Log.i("MapFragment229", "查询失败");
+                                        Log.i("MapFragment373", "查询失败");
                                     }
                                 });
 

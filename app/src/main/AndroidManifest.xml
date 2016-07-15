@@ -157,6 +157,12 @@
         <activity
             android:name=".me.SearchFriendActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.OfflineMapActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BaseMapActivity"
+            android:screenOrientation="portrait"/>
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
         <service android:name=".music.MusicPlayService"/>
@@ -176,6 +182,7 @@
 
         <receiver android:name="cn.bmob.push.PushReceiver">
             <intent-filter>
+
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <!-- 解锁完成后会调用 -->
@@ -184,14 +191,16 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-
-        <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver">
+        <receiver android:name=".me.PushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE"/>
             </intent-filter>
         </receiver>
 
         <service android:name=".me.FriendNotificationService"/>
+
+        <activity android:name=".activity.RegisterLawsActivity">
+        </activity>
     </application>
 
 </manifest>

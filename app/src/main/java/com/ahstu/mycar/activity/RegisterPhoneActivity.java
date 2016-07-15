@@ -5,10 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
@@ -35,9 +39,11 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
     private EditText et_phoneNum;
     private EditText et_register_code;
     private Button btn_register_code;
+    private TextView tv_webview;
     private Button btn_next;
     private Context context;
     private TimeCount time;
+    private CheckBox mCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +52,68 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
         initView();
         initClick();
         this.context = this;
+        if (mCheckBox.isChecked()) {
+            btn_next.setEnabled(true);
+        } else {
+            btn_next.setEnabled(false);
+        }
     }
 
     private void initClick() {
         register_title_back.setOnClickListener(this);
         btn_register_code.setOnClickListener(this);
+        mCheckBox.setOnClickListener(this);
+        tv_webview.setOnClickListener(this);
         btn_next.setOnClickListener(this);
     }
 
     private void initView() {
         register_title_back = (ImageView) findViewById(R.id.register_title_back);
         et_phoneNum = (EditText) findViewById(R.id.et_phoneNum);
+        et_phoneNum.addTextChangedListener(mTextWatcher);
         et_register_code = (EditText) findViewById(R.id.et_register_code);
+        et_register_code.addTextChangedListener(mTextWatcher);
         btn_register_code = (Button) findViewById(R.id.btn_register_code);
+        mCheckBox = (CheckBox) findViewById(R.id.checkbox);
+        tv_webview = (TextView) findViewById(R.id.tv_webview);
         btn_next = (Button) findViewById(R.id.btn_next);
     }
 
+    TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                btn_next.setEnabled(false);
+                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+            } else {
+                btn_next.setEnabled(true);
+                btn_next.setBackgroundResource(R.drawable.login_button);
+            }
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                btn_next.setEnabled(false);
+                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+            } else {
+                btn_next.setEnabled(true);
+                btn_next.setBackgroundResource(R.drawable.login_button);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                btn_next.setEnabled(false);
+                btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+            } else {
+                btn_next.setEnabled(true);
+                btn_next.setBackgroundResource(R.drawable.login_button);
+            }
+        }
+    };
+    
     @Override
     public void onClick(View v) {
 
@@ -114,7 +166,19 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                     et_phoneNum.setText("");
                 }
                 break;
-
+            case R.id.checkbox:
+                if (et_phoneNum.getText().toString().isEmpty() || et_register_code.getText().toString().isEmpty() || (!mCheckBox.isChecked())) {
+                    btn_next.setEnabled(false);
+                    btn_next.setBackgroundResource(R.drawable.login_button_unchecked);
+                } else {
+                    btn_next.setEnabled(true);
+                    btn_next.setBackgroundResource(R.drawable.login_button);
+                }
+                break;
+            case R.id.tv_webview:
+                startActivity(new Intent(this, RegisterLawsActivity.class));
+                break;
+                
             case R.id.btn_next:
                 if (et_phoneNum.getText().toString().isEmpty()) {
                     Toast.makeText(context, "请输入手机号", Toast.LENGTH_SHORT).show();
