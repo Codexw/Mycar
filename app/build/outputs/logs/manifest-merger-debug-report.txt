@@ -2,21 +2,21 @@
 manifest
 ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:2:1-219:12
 	package
-		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:4:5-30
+		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:4:11-36
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:3:11-57
 	xmlns:android
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 uses-sdk
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:6:5-58
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:6:5-57
 MERGED from [com.android.support:appcompat-v7:22.2.1] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:22.2.1] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\MyCar\libzxing\unspecified\AndroidManifest.xml:7:5-9:41
@@ -29,117 +29,117 @@ MERGED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\a
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:8:5-67
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:8:5-66
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:8:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:10:5-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:10:5-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:10:22-76
 uses-permission#android.permission.CHANGE_NETWORK_STATE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:11:5-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:11:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:12:5-76
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:12:5-75
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:12:22-73
 uses-permission#android.permission.WAKE_LOCK
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:14:5-68
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:14:5-67
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:14:22-65
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:15:5-75
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:15:5-74
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:15:22-72
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:17:5-80
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:17:5-79
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:17:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:18:5-81
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:18:5-80
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:18:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:19:5-84
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:19:5-83
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:19:22-81
 uses-permission#android.permission.CAMERA
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:21:5-65
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:21:5-64
 MERGED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\MyCar\libzxing\unspecified\AndroidManifest.xml:11:5-65
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:21:22-62
 uses-permission#android.permission.VIBRATE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:23:5-66
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:23:5-65
 MERGED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\MyCar\libzxing\unspecified\AndroidManifest.xml:12:5-66
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:23:22-63
 uses-permission#com.android.launcher.permission.READ_SETTINGS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:24:5-85
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:24:5-84
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:24:22-82
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:25:5-76
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:25:5-75
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:25:22-73
 uses-permission#android.permission.GET_TASKS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:26:5-68
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:26:5-67
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:26:22-65
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:27:5-73
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:27:5-72
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:27:22-70
 uses-permission#android.permission.BAIDU_LOCATION_SERVICE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:28:5-81
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:28:5-80
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:28:22-78
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:29:5-81
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:29:5-80
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:29:22-78
 uses-permission#android.permission.ACCES_MOCK_LOCATION
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:30:5-78
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:30:5-77
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:30:22-75
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:31:5-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:31:5-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:31:22-76
 uses-permission#android.permission.ACCESS_GPS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:33:5-69
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:33:5-68
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:33:22-66
 uses-permission#android.permission.BROADCAST_STICKY
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:35:5-75
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:35:5-74
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:35:22-72
 uses-permission#android.permission.PROCESS_OUTGOING_CALLS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:37:5-81
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:37:5-80
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:37:22-78
 uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:38:5-80
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:38:5-79
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:38:22-77
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:39:5-71
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:39:5-70
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:39:22-68
 uses-permission#cn.bmob.permission.push
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:40:5-63
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:40:5-62
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:40:22-60
 uses-permission#android.permission.RECEIVE_USER_PRESENT
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:44:5-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:44:5-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:44:22-76
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:45:5-81
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:45:5-80
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:45:22-78
 supports-screens
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:49:5-54:39
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:49:5-54:38
 	android:largeScreens
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:51:9-36
 	android:smallScreens
@@ -168,19 +168,19 @@ MERGED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\a
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:57:9-47
 meta-data#com.baidu.lbsapi.API_KEY
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:65:9-67:64
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:65:9-67:63
 	android:value
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:67:13-61
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:66:13-52
 meta-data#com.thinkland.juheapi.openid
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:69:9-71:66
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:69:9-71:65
 	android:value
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:71:13-63
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:70:13-56
 activity#c.b.a.A
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:74:9-79:70
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:74:9-79:69
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:78:13-47
 	android:exported
@@ -192,7 +192,7 @@ ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xm
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:75:13-35
 activity#c.b.a.B
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:80:9-83:64
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:80:9-83:63
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:82:13-49
 	android:theme
@@ -208,197 +208,197 @@ ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xm
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:87:13-91:29
 action#android.intent.action.MAIN
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:88:17-69
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:88:17-68
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:88:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:90:17-77
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:90:17-76
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:90:27-74
 activity#com.ahstu.mycar.activity.LoginActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:93:9-95:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:93:9-95:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:95:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:94:13-51
 activity#com.ahstu.mycar.activity.MainActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:96:9-98:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:96:9-98:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:98:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:97:13-50
 activity#com.ahstu.mycar.activity.RegisterPhoneActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:99:9-101:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:99:9-101:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:101:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:100:13-59
 activity#com.ahstu.mycar.activity.RegisterUserMsgActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:102:9-104:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:102:9-104:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:104:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:103:13-61
 activity#com.ahstu.mycar.activity.SearchLatLonActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:105:9-107:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:105:9-107:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:107:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:106:13-58
 activity#com.ahstu.mycar.activity.StationInfoActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:108:9-110:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:108:9-110:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:110:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:109:13-57
 activity#com.ahstu.mycar.activity.StationListActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:111:9-113:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:111:9-113:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:113:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:112:13-57
 activity#com.ahstu.mycar.music.MusicMainActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:114:9-116:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:114:9-116:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:116:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:115:13-52
 activity#com.ahstu.mycar.music.AddSongtoPlaylistActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:117:9-119:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:117:9-119:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:119:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:118:13-60
 activity#com.ahstu.mycar.music.PlaylistSongActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:120:9-122:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:120:9-122:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:122:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:121:13-55
 activity#com.ahstu.mycar.activity.BDSearchGuideActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:123:9-125:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:123:9-125:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:125:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:124:13-59
 activity#com.ahstu.mycar.activity.BDStationGuideActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:126:9-128:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:126:9-128:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:128:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:127:13-60
 activity#com.ahstu.mycar.activity.CarQueryActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:129:9-131:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:129:9-131:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:131:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:130:13-54
 activity#com.ahstu.mycar.activity.CityListActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:132:9-134:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:132:9-134:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:134:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:133:13-54
 activity#com.ahstu.mycar.activity.ProvinceListActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:135:9-137:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:135:9-137:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:137:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:136:13-58
 activity#com.ahstu.mycar.activity.WeizhangResultActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:138:9-140:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:138:9-140:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:140:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:139:13-60
 activity#com.ahstu.mycar.activity.CarinformationActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:141:9-143:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:141:9-143:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:143:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:142:13-60
 activity#com.ahstu.mycar.activity.CarListActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:144:9-146:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:144:9-146:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:146:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:145:13-53
 activity#com.ahstu.mycar.activity.MeCarActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:147:9-149:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:147:9-149:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:149:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:148:13-51
 activity#com.ahstu.mycar.activity.GasorderActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:150:9-152:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:150:9-152:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:152:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:151:13-54
 activity#com.ahstu.mycar.activity.MeorderActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:153:9-155:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:153:9-155:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:155:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:154:13-53
 activity#com.ahstu.mycar.activity.OrderItemActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:156:9-158:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:156:9-158:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:158:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:157:13-55
 activity#com.ahstu.mycar.activity.MapMenuActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:159:9-161:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:159:9-161:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:161:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:160:13-53
 activity#com.ahstu.mycar.music.MusicDownloadActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:162:9-164:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:162:9-164:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:164:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:163:13-56
 activity#com.ahstu.mycar.activity.StationMapActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:165:9-167:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:165:9-167:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:167:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:166:13-56
 activity#com.ahstu.mycar.me.SearchFriendActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:168:9-170:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:168:9-170:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:170:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:169:13-52
 activity#com.ahstu.mycar.activity.OrderviewActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:171:9-173:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:171:9-173:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:173:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:172:13-55
 activity#com.ahstu.mycar.activity.OfflineMapActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:174:9-176:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:174:9-176:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:176:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:175:13-56
 activity#com.ahstu.mycar.activity.BaseMapActivity
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:177:9-179:52
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:177:9-179:51
 	android:screenOrientation
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:179:13-49
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:178:13-53
 service#com.cheshouye.api.client.WeizhangIntentService
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:181:9-82
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:181:9-81
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:181:18-79
 service#com.ahstu.mycar.music.MusicPlayService
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:182:9-59
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:182:9-58
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:182:18-56
 service#com.baidu.location.f
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:185:9-187:38
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:185:9-187:37
 	android:enabled
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:187:13-35
 	android:name
@@ -414,7 +414,7 @@ ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xm
 intent-filter#cn.bmob.push.lib.service.PushService
 ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:192:13-194:29
 action#cn.bmob.push.lib.service.PushService
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:193:17-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:193:17-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:193:25-76
 receiver#cn.bmob.push.PushReceiver
@@ -424,15 +424,15 @@ ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xm
 intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE
 ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:198:13-206:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:201:17-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:201:17-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:201:25-76
 action#android.intent.action.USER_PRESENT
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:203:17-77
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:203:17-76
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:203:25-74
 action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:205:17-79
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:205:17-78
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:205:25-76
 receiver#com.ahstu.mycar.me.PushMessageReceiver
@@ -442,11 +442,11 @@ ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xm
 intent-filter#cn.bmob.push.action.MESSAGE
 ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:209:13-211:29
 action#cn.bmob.push.action.MESSAGE
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:210:17-70
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:210:17-69
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:210:25-67
 service#com.ahstu.mycar.me.FriendNotificationService
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:214:9-65
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:214:9-64
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:214:18-62
 activity#com.ahstu.mycar.activity.RegisterLawsActivity

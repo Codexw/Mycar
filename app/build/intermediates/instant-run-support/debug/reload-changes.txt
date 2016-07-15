@@ -1,3 +1,0 @@
-CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\adapter\OfflineCityAdapter$override.class
-CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\adapter\OfflineCityAdapter$2$override.class

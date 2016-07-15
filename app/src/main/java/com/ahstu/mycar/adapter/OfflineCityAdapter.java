@@ -85,6 +85,7 @@ public class OfflineCityAdapter extends BaseAdapter {
                         .show();
                 display.setVisibility(View.VISIBLE);
                 remove.setVisibility(View.GONE);
+                
             }
         });
         display.setOnClickListener(new View.OnClickListener() {
