@@ -13,16 +13,17 @@ import java.util.List;
 
 /**
  * Created by 徐伟 on 2016/5/19.
+ * 功能：地图菜单管理
  */
 public class MapMenuActivity extends AppCompatActivity {
 
-    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_normal, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+        setContentView(R.layout.fragment_map);
 
     }
 

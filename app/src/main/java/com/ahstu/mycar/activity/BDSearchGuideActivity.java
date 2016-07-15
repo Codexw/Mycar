@@ -22,9 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 导航诱导界面
- *
  * @author 吴天洛 2016/4/25
+ *         功能;导航诱导界面
  */
 public class BDSearchGuideActivity extends Activity {
 
@@ -131,7 +130,6 @@ public class BDSearchGuideActivity extends Activity {
             BNRouteGuideManager.getInstance().onDestroy();
         }
         FindFragment.activityList.remove(this);
-
     }
 
     @Override
@@ -144,7 +142,6 @@ public class BDSearchGuideActivity extends Activity {
         } else {
             BNRouteGuideManager.getInstance().onStop();
         }
-
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.ahstu.mycar.bean;
 
 /**
  * Created by xuning on 2016/5/7.
+ * 功能：车辆信息
  */
 
 import cn.bmob.v3.BmobObject;
@@ -25,6 +26,7 @@ public class Carinfomation extends BmobObject {
     private User user;
     private String car_frame;
     private Integer car_box;
+
     public String getCar_brand() {
         return car_brand;
     }

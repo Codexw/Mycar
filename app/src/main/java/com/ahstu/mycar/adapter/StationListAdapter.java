@@ -13,6 +13,10 @@ import com.ahstu.mycar.bean.Station;
 
 import java.util.List;
 
+/**
+ * @author 吴天洛
+ *         功能：加油站列表适配器
+ */
 public class StationListAdapter extends BaseAdapter {
 
     private Context mContext;

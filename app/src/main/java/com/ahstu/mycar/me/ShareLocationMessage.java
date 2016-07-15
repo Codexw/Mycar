@@ -1,7 +1,8 @@
 package com.ahstu.mycar.me;
 
 /**
- * Created by Administrator on 2016/6/8.
+ * Created by 徐伟 on 2016/6/8.
+ * 功能：共享位置
  */
 public class ShareLocationMessage {
     private static boolean shareconnect = false;

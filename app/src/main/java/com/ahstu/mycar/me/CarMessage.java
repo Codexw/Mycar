@@ -1,7 +1,7 @@
 package com.ahstu.mycar.me;
 
 /**
- * Created by Administrator on 2016/5/18.
+ * Created by 徐伟 on 2016/5/18.
  */
 public class CarMessage {
     private static int notificationId = 2;

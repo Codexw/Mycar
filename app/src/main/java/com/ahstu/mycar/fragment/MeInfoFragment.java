@@ -30,7 +30,8 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 /**
- * @author redowu 2016/4/25
+ * @author 吴天洛 2016/4/25
+ *         功能：“我的”界面
  */
 public class MeInfoFragment extends Fragment {
     View view;
@@ -52,21 +53,6 @@ public class MeInfoFragment extends Fragment {
         application = (MyApplication) getActivity().getApplication();
         mService = application.getmService();
     }
-
-//    private void initClick(View view) {
-//        btn_exit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //清除用户登录记录
-//                SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sp.edit();
-//                editor.clear();
-//                editor.commit();
-//                startActivity(new Intent(getActivity(), LoginActivity.class));
-//            }
-//        });
-//    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -127,7 +113,6 @@ public class MeInfoFragment extends Fragment {
                     }
                 });
 
-
                 SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
@@ -136,7 +121,7 @@ public class MeInfoFragment extends Fragment {
                 SharedPreferences.Editor ed = share.edit();
                 ed.clear();
                 ed.commit();
-                
+
                 getActivity().deleteDatabase("node.db");
                 try {
                     if (mService.isPlay()) {
@@ -144,7 +129,7 @@ public class MeInfoFragment extends Fragment {
                     }
                 } catch (Exception e) {
                     Log.e("music", ">>>>>>>>>>>>>>>>>>>>退出异常<<<<<<<<<<<<<<<");
-                    
+
                 }
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 getActivity().finish();
@@ -167,6 +152,4 @@ public class MeInfoFragment extends Fragment {
             }
         });
     }
-
-
 }

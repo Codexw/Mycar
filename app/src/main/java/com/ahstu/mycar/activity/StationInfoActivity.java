@@ -221,13 +221,6 @@ public class StationInfoActivity extends Activity {
                 } else {
 //                    authinfo = "key验证失败" + msg;
                 }
-        /*        StationInfoActivity.this.runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        Toast.makeText(StationInfoActivity.this, authinfo, Toast.LENGTH_LONG).show();
-                    }
-                });*/
             }
 
             public void initSuccess() {

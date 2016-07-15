@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Created by 吴天洛 on 2016/5/8.
+ * 功能：油价
  */
 public class Price implements Parcelable {
     public static final Creator<Price> CREATOR = new Creator<Price>() {
@@ -23,11 +24,11 @@ public class Price implements Parcelable {
     };
     private String type;
 
-/*    protected Price(Parcel in) {
-        type = in.readString();
-        price = in.readString();
-    }*/
-private String price;
+    /*    protected Price(Parcel in) {
+            type = in.readString();
+            price = in.readString();
+        }*/
+    private String price;
 
     public String getType() {
         return type;

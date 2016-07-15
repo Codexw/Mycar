@@ -32,6 +32,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author 徐伟
+ *         功能：音乐主界面
+ */
 public class MusicMainActivity extends Activity {
 
     public static final int PLAYLIST = 1;//适配器加载的数据是歌曲列表
@@ -88,7 +92,7 @@ public class MusicMainActivity extends Activity {
         type = PLAYLIST;
         listView.setAdapter(adapter);
     }
-    
+
     public void initListener() {
         iv_back.setOnClickListener(new OnClickListener() {
             @Override

@@ -4,6 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ListView;
 
+/**
+ * @author 吴天洛
+ *         功能：加油站列表中的信息以网格形式呈现
+ */
 public class NoScrollListView extends ListView {
 
     public NoScrollListView(Context context) {

@@ -15,6 +15,10 @@ import com.ahstu.mycar.R;
 
 import java.util.List;
 
+/**
+ * @author xuning
+ *         功能：查找城市时的城市列表适配器
+ */
 public class ListAdapter extends BaseAdapter {
     private List<ListModel> mData;
     private Context mContext;
@@ -22,8 +26,6 @@ public class ListAdapter extends BaseAdapter {
     public ListAdapter(Context mContext, List mData) {
         this.mData = mData;
         this.mContext = mContext;
-
-
     }
 
     @Override
@@ -52,8 +54,6 @@ public class ListAdapter extends BaseAdapter {
         //初始化
         ListModel model = mData.get(position);
         TextView txt_name = (TextView) view.findViewById(R.id.txt_name);
-        //ImageView image=(ImageView)view.findViewById(R.id.iv_1);
-
 
         //绑定数据
         txt_name.setText(model.getTextName());

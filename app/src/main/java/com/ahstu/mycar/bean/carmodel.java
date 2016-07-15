@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 /**
  * Created by xuning on 2016/6/3.
  */
-public class carmodel {
+public class Carmodel {
     String s;
     Bitmap sign;
 

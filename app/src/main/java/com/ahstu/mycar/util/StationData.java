@@ -18,6 +18,7 @@ import java.util.Iterator;
 
 /**
  * Created by 吴天洛 on 2016/5/8.
+ * 功能：加油站数据
  */
 public class StationData {
     private Handler handler;

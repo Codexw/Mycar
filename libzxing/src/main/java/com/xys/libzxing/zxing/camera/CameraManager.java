@@ -28,24 +28,12 @@ import com.xys.libzxing.zxing.camera.open.OpenCameraInterface;
 
 import java.io.IOException;
 
-/**
- * This object wraps the Camera service object and expects to be the only one
- * talking to it. The implementation encapsulates the steps needed to take
- * preview-sized images, which are used for both preview and decoding.
- *
- * @author dswitkin@google.com (Daniel Switkin)
- */
 public class CameraManager {
 
     private static final String TAG = CameraManager.class.getSimpleName();
 
     private final Context context;
     private final CameraConfigurationManager configManager;
-    /**
-     * Preview frames are delivered here, which we pass on to the registered
-     * handler. Make sure to clear the handler so it will only receive one
-     * message.
-     */
     private final PreviewCallback previewCallback;
     private Camera camera;
     private AutoFocusManager autoFocusManager;
@@ -59,13 +47,6 @@ public class CameraManager {
         previewCallback = new PreviewCallback(configManager);
     }
 
-    /**
-     * Opens the camera driver and initializes the hardware parameters.
-     *
-     * @param holder The surface object which the camera will draw preview frames
-     *               into.
-     * @throws IOException Indicates the camera driver failed to open.
-     */
     public synchronized void openDriver(SurfaceHolder holder) throws IOException {
         Camera theCamera = camera;
         if (theCamera == null) {
@@ -118,9 +99,6 @@ public class CameraManager {
         return camera != null;
     }
 
-    /**
-     * Closes the camera driver if still in use.
-     */
     public synchronized void closeDriver() {
         if (camera != null) {
             camera.release();
@@ -131,9 +109,6 @@ public class CameraManager {
         }
     }
 
-    /**
-     * Asks the camera hardware to begin drawing preview frames to the screen.
-     */
     public synchronized void startPreview() {
         Camera theCamera = camera;
         if (theCamera != null && !previewing) {
@@ -143,9 +118,6 @@ public class CameraManager {
         }
     }
 
-    /**
-     * Tells the camera to stop drawing preview frames.
-     */
     public synchronized void stopPreview() {
         if (autoFocusManager != null) {
             autoFocusManager.stop();
@@ -158,14 +130,6 @@ public class CameraManager {
         }
     }
 
-    /**
-     * A single preview frame will be returned to the handler supplied. The data
-     * will arrive as byte[] in the message.obj field, with width and height
-     * encoded as message.arg1 and message.arg2, respectively.
-     *
-     * @param handler The handler to send the message to.
-     * @param message The what field of the message to be sent.
-     */
     public synchronized void requestPreviewFrame(Handler handler, int message) {
         Camera theCamera = camera;
         if (theCamera != null && previewing) {
@@ -174,13 +138,6 @@ public class CameraManager {
         }
     }
 
-    /**
-     * Allows third party apps to specify the camera ID, rather than determine
-     * it automatically based on available cameras and their orientation.
-     *
-     * @param cameraId camera ID of the camera to use. A negative value means
-     *                 "no preference".
-     */
     public synchronized void setManualCameraId(int cameraId) {
         requestedCameraId = cameraId;
     }

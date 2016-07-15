@@ -19,6 +19,10 @@ import com.ahstu.mycar.music.MusicPlayService;
 
 import java.util.ArrayList;
 
+/**
+ * @author 徐伟
+ *         功能：音乐菜单
+ */
 public class MusicMenu extends ViewGroup {
 
     private static final int PADDING_L_R = 1;
@@ -265,9 +269,7 @@ public class MusicMenu extends ViewGroup {
                         MeasureSpec.makeMeasureSpec(SMALL_RADIUS,
                                 MeasureSpec.EXACTLY));//测量规范尺寸，模式
             }
-
         }
-
 
         int screenWidth = getResources().getDisplayMetrics().widthPixels;//获取屏幕宽度
 

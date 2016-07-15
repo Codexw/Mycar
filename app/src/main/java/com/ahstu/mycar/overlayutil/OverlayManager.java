@@ -15,16 +15,6 @@ import static com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 
 /**
  * 该类提供一个能够显示和管理多个Overlay的基类
- * <p>
- * 复写{@link #getOverlayOptions()} 设置欲显示和管理的Overlay列表
- * </p>
- * <p>
- * 通过
- * {@link BaiduMap#setOnMarkerClickListener(OnMarkerClickListener)}
- * 将覆盖物点击事件传递给OverlayManager后，OverlayManager才能响应点击事件。
- * <p>
- * 复写{@link #onMarkerClick(Marker)} 处理Marker点击事件
- * </p>
  */
 public abstract class OverlayManager implements OnMarkerClickListener, OnPolylineClickListener {
 

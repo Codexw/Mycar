@@ -31,6 +31,10 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author 徐伟
+ *         功能：音乐播放
+ */
 @SuppressLint("NewApi")
 public class PlaylistSongActivity extends Activity {
 
@@ -73,8 +77,6 @@ public class PlaylistSongActivity extends Activity {
 
         Intent intent = getIntent();
         String songlist_name = intent.getStringExtra("listname");
-//        TextView list_name = (TextView) findViewById(R.id.title_tv);
-//        list_name.setText(songlist_name);
         title_name.setText(songlist_name);
         if (intent != null) {
             //判断是不是从添加列表界面跳过来的，是的话就点击一下添加歌曲按钮，跳到添加歌曲界面

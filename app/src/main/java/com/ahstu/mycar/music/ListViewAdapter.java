@@ -14,9 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author 徐伟
+ *         功能：音乐适配器
+ */
 public class ListViewAdapter extends BaseAdapter {
-    private Context context; // 运行上下文
-    private List<Map<String, Object>> listItems; // 商品信息集合
+    private Context context;
+    private List<Map<String, Object>> listItems; 
     private ArrayList<String> addSongIds;// 将要添加的歌曲的id
     private ArrayList<String> songIds;// 全部歌曲的id
     private ArrayList<String> pl_songIds;// 列表歌曲的id

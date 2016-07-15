@@ -20,7 +20,7 @@
         Android:layout_height="70dp"
         Android:background="@drawable/audioplayernoartwork" />
 
-    <!-- 商品信息 -->
+    <!-- 信息 -->
     <LinearLayout
         Android:layout_width="wrap_content"
         Android:layout_height="wrap_content"

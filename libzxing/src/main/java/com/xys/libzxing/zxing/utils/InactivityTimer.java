@@ -27,10 +27,6 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.util.Log;
 
-/**
- * Finishes an activity after a period of inactivity if the device is on battery
- * power.
- */
 public class InactivityTimer {
 
     private static final String TAG = InactivityTimer.class.getSimpleName();
@@ -96,7 +92,6 @@ public class InactivityTimer {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
-                // 0 indicates that we're on battery
                 boolean onBatteryNow = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) <= 0;
                 if (onBatteryNow) {
                     InactivityTimer.this.onActivity();
@@ -115,7 +110,6 @@ public class InactivityTimer {
                 Log.i(TAG, "Finishing activity due to inactivity");
                 activity.finish();
             } catch (InterruptedException e) {
-                // continue without killing
             }
             return null;
         }

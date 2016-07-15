@@ -3,7 +3,8 @@ package com.ahstu.mycar.bean;
 import cn.bmob.v3.BmobObject;
 
 /**
- * Created by Administrator on 2016/5/23.
+ * Created by 徐伟 on 2016/5/23.
+ * 功能：音乐信息
  */
 public class MusicMessage extends BmobObject {
     private String song_name;

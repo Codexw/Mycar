@@ -22,6 +22,7 @@ import java.util.Map;
 
 /**
  * Created by xuning on 2016/5/22.
+ * 功能：我的订单信息
  */
 public class MeorderActivity extends Activity {
     ListView meorderlist;
@@ -31,7 +32,8 @@ public class MeorderActivity extends Activity {
     int a[];
     int size;
     List<Map<String, String>> list;
-    RelativeLayout ordernull, melistlayout; 
+    RelativeLayout ordernull, melistlayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +70,6 @@ public class MeorderActivity extends Activity {
                 finish();
             }
         });
-
     }
 
     void getdata() {
@@ -100,9 +101,5 @@ public class MeorderActivity extends Activity {
             map.put("time", time[i]);
             list.add(map);
         }
-
-
     }
-
-
 }

@@ -61,7 +61,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private BaiduMap mBaiduMap;
     private Button btn_map_normal;
     private Button btn_map_site;
-    private Button btn_map_mode_following;
+    private Button btn_map_mode_normal;
     private Button btn_map_mode_compass;
     private Button btn_map_menu;
     private ImageView iv_map_traffic;
@@ -81,7 +81,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
     private float mCurrentX;
 
     //地图菜单按钮动画
-    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_following, R.id.btn_map_mode_compass};
+    private int[] res = {R.id.btn_map_menu, R.id.btn_map_normal, R.id.btn_map_site, R.id.btn_map_mode_normal, R.id.btn_map_mode_compass};
     private List<Button> ButtonList = new ArrayList<Button>();
     private boolean flag = true;
     //共享状态中介
@@ -140,11 +140,10 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, null);  //java.io.IOException: open failed: EACCES (Permission denied)
+        View view = inflater.inflate(R.layout.fragment_map, null);
 
         return view;
     }
-
 
     //将按钮放入动画按钮数组
     private void initMapMenu() {
@@ -158,7 +157,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         btn_map_menu.setOnClickListener(this);
         btn_map_normal.setOnClickListener(this);
         btn_map_site.setOnClickListener(this);
-        btn_map_mode_following.setOnClickListener(this);
+        btn_map_mode_normal.setOnClickListener(this);
         btn_map_mode_compass.setOnClickListener(this);
         iv_map_traffic.setOnClickListener(this);
         iv_myLocation.setOnClickListener(this);
@@ -181,7 +180,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
         btn_map_menu = (Button) getActivity().findViewById(R.id.btn_map_menu);
         btn_map_normal = (Button) getActivity().findViewById(R.id.btn_map_normal);
         btn_map_site = (Button) getActivity().findViewById(R.id.btn_map_site);
-        btn_map_mode_following = (Button) getActivity().findViewById(R.id.btn_map_mode_following);
+        btn_map_mode_normal = (Button) getActivity().findViewById(R.id.btn_map_mode_normal);
         btn_map_mode_compass = (Button) getActivity().findViewById(R.id.btn_map_mode_compass);
         iv_map_traffic = (ImageView) getActivity().findViewById(R.id.iv_map_traffic);
         iv_myLocation = (ImageView) getActivity().findViewById(R.id.iv_loc);
@@ -412,8 +411,8 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                     iv_map_traffic.setImageResource(R.drawable.main_icon_roadcondition_on);
                 }
                 break;
-            case R.id.btn_map_mode_following:
-                mLocationMode = LocationMode.FOLLOWING;
+            case R.id.btn_map_mode_normal:
+                mLocationMode = LocationMode.NORMAL;
                 bt_animation();
                 break;
             case R.id.btn_map_mode_compass:

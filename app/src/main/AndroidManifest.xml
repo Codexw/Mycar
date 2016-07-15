@@ -163,9 +163,6 @@
             android:name=".music.MusicDownloadActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.SearchMapActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".activity.StationMapActivity"
             android:screenOrientation="portrait"/>
         <activity

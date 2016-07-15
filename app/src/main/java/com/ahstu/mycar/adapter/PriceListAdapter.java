@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by 吴天洛 on 2016/5/12.
+ * 功能：油价适配器
  */
 public class PriceListAdapter extends BaseAdapter {
 

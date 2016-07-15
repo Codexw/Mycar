@@ -39,7 +39,7 @@
 
 
         <Button
-            android:id="@+id/btn_map_mode_following"
+            android:id="@+id/btn_map_mode_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -47,7 +47,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="跟随模式" />
+            android:text="普通模式"/>
 
         <Button
             android:id="@+id/btn_map_mode_compass"

@@ -11,6 +11,10 @@ import com.cheshouye.api.client.json.WeizhangResponseHistoryJson;
 
 import java.util.List;
 
+/**
+ * @author xuning
+ *         功能：违章信息
+ */
 public class WeizhangResponseAdapter extends BaseAdapter {
 
     private List<WeizhangResponseHistoryJson> mDate;

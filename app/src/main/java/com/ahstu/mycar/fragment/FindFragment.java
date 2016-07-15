@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.navisdk.adapter.BNOuterLogUtil;
-import com.baidu.navisdk.adapter.BNOuterTTSPlayerCallback;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
 import com.baidu.navisdk.adapter.BNaviSettingManager;
 import com.baidu.navisdk.adapter.BaiduNaviManager;
@@ -77,65 +75,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private IntentFilter intentFilter2;
     private BroadcastReceiver mItemViewListClickReceiver1;
     private BroadcastReceiver mItemViewListClickReceiver2;
-    private BNOuterTTSPlayerCallback mTTSCallback = new BNOuterTTSPlayerCallback() {
-
-        @Override
-        public void stopTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "stopTTS");
-        }
-
-        @Override
-        public void resumeTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "resumeTTS");
-        }
-
-        @Override
-        public void releaseTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "releaseTTSPlayer");
-        }
-
-        @Override
-        public int playTTSText(String speech, int bPreempt) {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "playTTSText" + "_" + speech + "_" + bPreempt);
-
-            return 1;
-        }
-
-        @Override
-        public void phoneHangUp() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneHangUp");
-        }
-
-        @Override
-        public void phoneCalling() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "phoneCalling");
-        }
-
-        @Override
-        public void pauseTTS() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "pauseTTS");
-        }
-
-        @Override
-        public void initTTSPlayer() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "initTTSPlayer");
-        }
-
-        @Override
-        public int getTTSState() {
-            // TODO Auto-generated method stub
-            Log.e("test_TTS", "getTTSState");
-            return 1;
-        }
-    };
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

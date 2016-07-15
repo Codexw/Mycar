@@ -23,7 +23,6 @@ import com.cheshouye.api.client.json.WeizhangResponseJson;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * title：查询违章信息
  *

@@ -12,6 +12,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author 徐伟
+ */
 public class MusicUtils {
 
     public static ArrayList<String> al_playlist = new ArrayList<String>();

@@ -19,21 +19,26 @@ import android.widget.TextView;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.MeCarActivity;
-import com.ahstu.mycar.bean.carmodel;
+import com.ahstu.mycar.bean.Carmodel;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
+/**
+ * @author xuning
+ *         功能：车辆列表适配器
+ */
 public class RadioAdapter extends BaseAdapter {
 
 
     private LayoutInflater inflater;
-    private ArrayList<carmodel> list;
+    private ArrayList<Carmodel> list;
     private viewHolder holder;
     private int index, temp;
     private Context content;
+
     public RadioAdapter(Context content, ArrayList list) {
         super();
         this.content = content;

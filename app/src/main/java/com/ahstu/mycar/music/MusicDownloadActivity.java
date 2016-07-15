@@ -26,7 +26,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 /**
- * Created by Administrator on 2016/5/23.
+ * Created by 徐伟 on 2016/5/23.
+ * 功能：音乐下载
  */
 public class MusicDownloadActivity extends Activity implements AdpterOnItemClick {
 
@@ -40,7 +41,6 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
     private ListView musicdownlist;
     private Button bt_music_down;
     private List<MusicMessage> musicMessageArrayList;
-    //    private ArrayList<String> al = new ArrayList<String>();
     private DownLoadCompleteReceiver receiver;
     private ImageView search_title_back;
 
@@ -87,6 +87,7 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
                             Toast.makeText(MusicDownloadActivity.this, "未搜索到相关音乐信息", Toast.LENGTH_SHORT).show();
 
                     }
+
                     @Override
                     public void onError(int i, String s) {
 
@@ -112,9 +113,6 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
             Toast.makeText(MusicDownloadActivity.this, " 音乐正在下载。。。",
                     Toast.LENGTH_SHORT).show();
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
-//            Log.w("MusicDown118",song_name+"  "+song_url);
-//            Toast.makeText(MusicDownloadActivity.this,song_name+song_url,
-//                    Toast.LENGTH_SHORT).show();
             // 设置通知栏标题
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
             // 控制系统通知是否由下载管理器发布，而此下载正在运行或何时完成
