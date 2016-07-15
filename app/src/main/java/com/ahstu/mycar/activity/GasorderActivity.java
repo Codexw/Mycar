@@ -136,7 +136,7 @@ public class GasorderActivity extends Activity {
                     count.setText(format.format(sum * cot));
 
                 }
-            }
+            }   
 
             @Override
             public void afterTextChanged(Editable editable) {
