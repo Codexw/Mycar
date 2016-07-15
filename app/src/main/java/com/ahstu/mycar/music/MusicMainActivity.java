@@ -16,12 +16,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
@@ -42,8 +41,8 @@ public class MusicMainActivity extends Activity {
     public static final int SONGS_LIST = 2;
     boolean isReturePlaylist;
     private ListView listView;
-    private Button btn_playlist, btn_allSongs;
-    private TextView tv_newPlaylist, title_name;
+    private RadioButton btn_playlist, btn_allSongs;
+    private ImageView tv_newPlaylist;
     private SimpleAdapter adapter;
     private int type = -1;
     private List<Mp3> songs;// 歌曲集合
@@ -59,22 +58,22 @@ public class MusicMainActivity extends Activity {
         application = (MyApplication) getApplication();
 
         initView();
-        title_name.setText("我的音乐");
-        iv_back.setVisibility(View.VISIBLE);
-        tv_newPlaylist.setVisibility(View.VISIBLE);
-        tv_newPlaylist.setText("新建列表");
+//        title_name.setText("我的音乐");
+//        iv_back.setVisibility(View.VISIBLE);
+//        tv_newPlaylist.setVisibility(View.VISIBLE);
+//        tv_newPlaylist.setText("新建列表");
 
         initListener();
         playListOnclick();
     }
 
     public void initView() {
-        title_name = (TextView) findViewById(R.id.title_name);
-        iv_back = (ImageView) findViewById(R.id.iv_back);
+//        title_name = (TextView) findViewById(R.id.title_name);
+        iv_back = (ImageView) findViewById(R.id.order_pay_back);
         listView = (ListView) this.findViewById(R.id.listview);
-        btn_playlist = (Button) this.findViewById(R.id.btn_playlist);
-        btn_allSongs = (Button) this.findViewById(R.id.btn_allSongs);
-        tv_newPlaylist = (TextView) this.findViewById(R.id.tv_bd09ll);
+        btn_playlist = (RadioButton) this.findViewById(R.id.btn_playlist);
+        btn_allSongs = (RadioButton) this.findViewById(R.id.btn_allSongs);
+        tv_newPlaylist = (ImageView) this.findViewById(R.id.create_song_list);
     }
 
     public void playListOnclick() {

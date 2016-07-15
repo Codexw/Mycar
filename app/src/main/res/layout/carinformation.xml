@@ -67,8 +67,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/carpinpai"
-                    android:gravity="center"
-                    />
+                    android:gravity="center" />
 
 
             </RelativeLayout>
@@ -89,8 +88,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="汽车标志:"
-                    />
+                    android:text="汽车标志:" />
 
 
                 <ImageView
@@ -411,8 +409,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/carbiansuqi"
-                    android:gravity="center"
-                    ></TextView>
+                    android:gravity="center"></TextView>
 
 
             </RelativeLayout>
@@ -464,8 +461,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="汽车开启:"
-                    />
+                    android:text="汽车开启:" />
 
                 <TextView
                     android:id="@+id/car_start"
@@ -504,8 +500,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/cardoor"
-                    android:gravity="center"
-                    />
+                    android:gravity="center" />
             </RelativeLayout>
 
             <View
@@ -555,8 +550,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="空调控制:"
-                    />
+                    android:text="空调控制:" />
 
                 <TextView
                     android:id="@+id/car_air"

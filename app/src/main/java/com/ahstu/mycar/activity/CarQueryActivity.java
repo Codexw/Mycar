@@ -67,7 +67,7 @@ public class CarQueryActivity extends Activity {
         startService(weizhangIntent);
         SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
         String number = share.getString("number", "");
-        number=number.substring(0,7);
+        number = number.substring(0, 7);
         DatabaseHelper helper = new DatabaseHelper(CarQueryActivity.this, "node.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.query("carinfo", new String[]{"car_number", "car_enginerno", "car_frame"}, "car_number=?", new String[]{number}, null, null, null);

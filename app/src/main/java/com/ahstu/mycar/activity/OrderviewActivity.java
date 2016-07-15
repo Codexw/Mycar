@@ -2,9 +2,12 @@ package com.ahstu.mycar.activity;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +17,10 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.bean.Order;
 import com.ahstu.mycar.sql.DatabaseHelper;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 import c.b.BP;
 import c.b.PListener;
@@ -26,10 +33,10 @@ public class OrderviewActivity extends Activity {
     private TextView station_name, gas_type, gas_number, gas_price, order_count, username, car_number, order_time;
     private ImageView order_pay_back;
     private Button order_pay_bt;
-    private String h_number,objectid;
+    private String h_number, objectid;
     private String count_price;
     private String station, type;
-    
+    private int PLUGINVERSION = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,7 @@ public class OrderviewActivity extends Activity {
         setContentView(R.layout.activity_pay_order);
         BP.init(this, "ccd46e34cec57d61dbcedaa08f722296");
         h_number = getIntent().getStringExtra("h_number");
-        objectid=getIntent().getStringExtra("objectid");
+        objectid = getIntent().getStringExtra("objectid");
         init();
         operate();
 
@@ -55,6 +62,16 @@ public class OrderviewActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+
+                int pluginVersion = BP.getPluginVersion();
+                if (pluginVersion < PLUGINVERSION) {// 为0说明未安装支付插件, 否则就是支付插件的版本低于官方最新版
+                    Toast.makeText(
+                            OrderviewActivity.this,
+                            pluginVersion == 0 ? "监测到本机尚未安装支付插件,无法进行支付,请先安装插件(无流量消耗)"
+                                    : "监测到本机的支付插件不是最新版,最好进行更新,请先更新插件(无流量消耗)", 0).show();
+                    installBmobPayPlugin("bp.db");
+                }
+
                 //订单支付
                 BP.pay("加油站订单支付", station + "  " + type, Double.parseDouble(count_price), true
                         , new PListener() {
@@ -70,17 +87,17 @@ public class OrderviewActivity extends Activity {
                                 // TODO Auto-generated method stub
                                 Toast.makeText(OrderviewActivity.this, "订单支付成功", Toast.LENGTH_SHORT).show();
                                 DatabaseHelper helper = new DatabaseHelper(OrderviewActivity.this, "node.db", null, 1);
-                                SQLiteDatabase data=helper.getWritableDatabase();
-                                ContentValues value=new ContentValues();
-                                value.put("state",1);
-                                data.update("gasorder",value,"id=?",new String[]{h_number});
+                                SQLiteDatabase data = helper.getWritableDatabase();
+                                ContentValues value = new ContentValues();
+                                value.put("state", 1);
+                                data.update("gasorder", value, "id=?", new String[]{h_number});
                                 data.close();
-                                Order order=new Order();
-                                order.setValue("state",1);
+                                Order order = new Order();
+                                order.setValue("state", 1);
                                 order.update(OrderviewActivity.this, objectid, new UpdateListener() {
                                     @Override
                                     public void onSuccess() {
-                                        
+
                                     }
 
                                     @Override
@@ -94,14 +111,19 @@ public class OrderviewActivity extends Activity {
                             @Override
                             public void orderId(String orderid) {
                                 // TODO Auto-generated method stub
-                                Toast.makeText(OrderviewActivity.this, "订单号:" + orderid, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(OrderviewActivity.this, "订单号:" + orderid, Toast.LENGTH_SHORT).show();
 
                             }
 
                             @Override
                             public void fail(int arg0, String reason) {
                                 // TODO Auto-generated method stub
-                                Toast.makeText(OrderviewActivity.this, "交易失败:" + reason, Toast.LENGTH_SHORT).show();
+                                if (reason.equals("bmob plugin isn't installed"))
+                                    Toast.makeText(OrderviewActivity.this, "安装支付安全插件", Toast.LENGTH_SHORT).show();
+                                else if (reason.equals("user cancle the operation"))
+                                    Toast.makeText(OrderviewActivity.this, "支付操作已取消", Toast.LENGTH_SHORT).show();
+                                else
+                                    Toast.makeText(OrderviewActivity.this, "交易失败:" + reason, Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -144,6 +166,35 @@ public class OrderviewActivity extends Activity {
 
             station = cursor.getString(cursor.getColumnIndex("stationname")).toString();
             type = cursor.getString(cursor.getColumnIndex("ctype")).toString();
+        }
+    }
+
+
+    //安装支付安全插件
+    void installBmobPayPlugin(String fileName) {
+        try {
+            InputStream is = getAssets().open(fileName);
+            File file = new File(Environment.getExternalStorageDirectory()
+                    + File.separator + fileName + ".apk");
+            if (file.exists())
+                file.delete();
+            file.createNewFile();
+            FileOutputStream fos = new FileOutputStream(file);
+            byte[] temp = new byte[1024];
+            int i = 0;
+            while ((i = is.read(temp)) > 0) {
+                fos.write(temp, 0, i);
+            }
+            fos.close();
+            is.close();
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setDataAndType(Uri.parse("file://" + file),
+                    "application/vnd.android.package-archive");
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

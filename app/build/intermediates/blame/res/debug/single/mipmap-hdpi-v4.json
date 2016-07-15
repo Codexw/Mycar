@@ -1,22 +1,22 @@
 [
     {
-        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\notification_head.png",
-        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\notification_head.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\location.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\location.png"
     },
     {
-        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\location_center.png",
-        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\location_center.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
-        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\notification_head.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\notification_head.png"
     },
     {
-        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\location.png",
-        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\location.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\location_center.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\location_center.png"
     },
     {
-        "merged": "G:\\android_demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_change_start_end.png",
-        "source": "G:\\android_demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\ic_change_start_end.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_change_start_end.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-hdpi\\ic_change_start_end.png"
     }
 ]

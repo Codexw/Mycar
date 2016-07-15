@@ -10,10 +10,10 @@
     <!-- 查询内容 -->
     <LinearLayout
         android:id="@+id/query_info"
-        android:layout_below="@id/titbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_below="@id/titbar"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:padding="@dimen/csy_pd">
@@ -61,20 +61,20 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/query_info"
         android:layout_marginTop="1.0dp"
-        android:padding="@dimen/csy_pd"
+        android:background="@android:color/white"
         android:gravity="center_vertical"
+        android:padding="@dimen/csy_pd"
         android:textColor="@color/csy_label"
-        android:textSize="@dimen/csy_text_ts"
-        android:background="@android:color/white" />
+        android:textSize="@dimen/csy_text_ts" />
 
     <!-- 结果列表 -->
     <ListView
         android:id="@+id/result_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5.0dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/result_title"
+        android:layout_marginTop="5.0dp"
         android:divider="@null" />
 
     <!-- 没有违章记录 -->
@@ -82,9 +82,9 @@
         android:id="@+id/result_null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80.0dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/query_info"
+        android:layout_marginTop="80.0dp"
         android:gravity="center"
         android:text="恭喜, 没有查到违章记录！"
         android:textColor="@color/csy_text"
@@ -98,15 +98,15 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:visibility="gone"
-        android:background="#7fffffff">
+        android:background="#7fffffff"
+        android:visibility="gone">
 
         <ProgressBar
             android:id="@+id/progressBar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="35.0dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="35.0dp" />
 
         <TextView
             android:layout_width="wrap_content"

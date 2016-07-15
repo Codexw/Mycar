@@ -236,9 +236,9 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                 //SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
                 //String s = share.getString("number", "");
                 DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
-                SQLiteDatabase database=helper.getReadableDatabase();
-                Cursor cursor=database.query("carinfo",new String[]{"car_number"},null,null,null,null,null);
-                if (cursor.getCount()==0) {
+                SQLiteDatabase database = helper.getReadableDatabase();
+                Cursor cursor = database.query("carinfo", new String[]{"car_number"}, null, null, null, null, null);
+                if (cursor.getCount() == 0) {
                     Toast.makeText(getActivity(), "请先添加车辆", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent i = new Intent();

@@ -149,18 +149,18 @@ public class GasorderActivity extends Activity {
             public void onClick(final View view) {
                 //获取用户名
                 SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
-                 name = sp.getString("name", "");
+                name = sp.getString("name", "");
                 //打开数据库
                 DatabaseHelper helper = new DatabaseHelper(GasorderActivity.this, "node.db", null, 1);
                 final SQLiteDatabase data = helper.getWritableDatabase();
                 //获取正在控制的车辆车牌
                 SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
-               final String carnumber = share.getString("number", "");
-               final ContentValues values = new ContentValues();
+                final String carnumber = share.getString("number", "");
+                final ContentValues values = new ContentValues();
                 Date currentTime = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 final String time = formatter.format(currentTime);
-               final  String ctype = spinner.getSelectedItem().toString();
+                final String ctype = spinner.getSelectedItem().toString();
 
 
                 if (editText.getText().toString().equals("")) {
@@ -169,11 +169,11 @@ public class GasorderActivity extends Activity {
 
                 } else {
 
-                   final  String a = gas_price.getText().toString().trim();
-                  final   String b = editText.getText().toString();
+                    final String a = gas_price.getText().toString().trim();
+                    final String b = editText.getText().toString();
                     //订单信息保存在服务器中
                     User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
-                   final  Order order = new Order();
+                    final Order order = new Order();
                     order.setUser(user);
                     order.setStationname(station_name.getText().toString());
                     order.setCtype(ctype);
@@ -196,14 +196,14 @@ public class GasorderActivity extends Activity {
                             values.put("gascount", Double.valueOf(b));
                             values.put("carnumber", carnumber);
                             values.put("countprice", count.getText().toString());
-                            values.put("state",0);
-                            values.put("ordernumber",order.getObjectId().toString());
+                            values.put("state", 0);
+                            values.put("ordernumber", order.getObjectId().toString());
                             h_number = data.insert("gasorder", null, values);
 
                             data.close();
                             Intent intent = new Intent(GasorderActivity.this, OrderviewActivity.class);
                             intent.putExtra("h_number", h_number + "");
-                            intent.putExtra("objectid",order.getObjectId().toString());
+                            intent.putExtra("objectid", order.getObjectId().toString());
                             startActivity(intent);
                             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                             inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
@@ -215,7 +215,7 @@ public class GasorderActivity extends Activity {
 
                         }
                     });
-                   //订单信息保存在本地
+                    //订单信息保存在本地
 //                    values.put("time", time);
 //                    values.put("stationname", station_name.getText().toString());
 //                    values.put("username", name);
@@ -232,8 +232,8 @@ public class GasorderActivity extends Activity {
 //                    
 //                    data.close();
 
-                   
-                   // finish();
+
+                    // finish();
 
                 }
 
@@ -241,5 +241,6 @@ public class GasorderActivity extends Activity {
         });
 
     }
+    
 
 }

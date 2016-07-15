@@ -174,8 +174,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                         values.put("countprice", order.getCountprice());
                                         values.put("gasprice", order.getGasprice());
                                         values.put("time", order.getTime());
-                                        values.put("ordernumber",order.getObjectId());
-                                        values.put("state",order.getState());
+                                        values.put("ordernumber", order.getObjectId());
+                                        values.put("state", order.getState());
                                         db.insert("gasorder", null, values);
 
                                     }
@@ -213,7 +213,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                         @Override
                         public void onFailure(int i, String s) {
-                           
+
                             if (i == 9016) {
                                 Toast.makeText(LoginActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
                             } else if (i == 101) {
@@ -227,7 +227,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.btn_register:
                 startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
                 break;
-    }
+        }
     }
 
     // 动画效果

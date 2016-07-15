@@ -177,7 +177,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
             case R.id.tv_webview:
                 startActivity(new Intent(this, RegisterLawsActivity.class));
                 break;
-                
+
             case R.id.btn_next:
                 if (et_phoneNum.getText().toString().isEmpty()) {
                     Toast.makeText(context, "请输入手机号", Toast.LENGTH_SHORT).show();

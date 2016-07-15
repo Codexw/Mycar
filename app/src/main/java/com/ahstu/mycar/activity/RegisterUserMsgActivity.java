@@ -127,8 +127,8 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
                             editor.putString("password", register_password.getText().toString());
                             editor.commit();
                             SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
-                            SharedPreferences.Editor edit=share.edit();
-                            edit.putString("number","浙CN20F6(测试车辆)");
+                            SharedPreferences.Editor edit = share.edit();
+                            edit.putString("number", "浙CN20F6(测试车辆)");
                             edit.commit();
                             new savedata().execute();
                             User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
@@ -143,7 +143,7 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
                             carinfomation.setCar_gas(60);
                             carinfomation.setCar_box(62);
                             carinfomation.setCar_enginerstate("正常");
-                            carinfomation.setCar_level( "4门5座");
+                            carinfomation.setCar_level("4门5座");
                             carinfomation.setCar_shiftstate("正常");
                             carinfomation.setCar_light("正常");
                             carinfomation.setCar_door(false);
@@ -194,17 +194,6 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
         mLocationClient.stop();
     }
 
-    public class MyLocationListener implements BDLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            if (location == null) {
-                return;
-            }
-            mLatitude = location.getLatitude();
-            mLongitude = location.getLongitude();
-        }
-    }
-
     public Bitmap getPicture(String path) {
         Bitmap bm = null;
         try {
@@ -218,30 +207,40 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
             e.printStackTrace();
         }
         return bm;
-    } 
-    
-    class savedata extends AsyncTask<Void,Void,ContentValues>
-    {
+    }
+
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+    }
+
+    class savedata extends AsyncTask<Void, Void, ContentValues> {
 
 
         @Override
         protected ContentValues doInBackground(Void... params) {
-            ContentValues value=new ContentValues();
-            
-            value.put("car_number","浙CN20F6(测试车辆)");
-            value.put("car_sign","http://bmob-cdn-1238.b0.upaiyun.com/2016/06/13/6fb613eb40a17473809eff6895b5f4a1.png");
-            value.put("car_brand","起亚");
-            value.put("car_model","k4");
-            value.put("car_enginerno","F1196354");
-            value.put("car_frame","LJDMAA222F0228852");
+            ContentValues value = new ContentValues();
+
+            value.put("car_number", "浙CN20F6(测试车辆)");
+            value.put("car_sign", "http://bmob-cdn-1238.b0.upaiyun.com/2016/06/13/6fb613eb40a17473809eff6895b5f4a1.png");
+            value.put("car_brand", "起亚");
+            value.put("car_model", "k4");
+            value.put("car_enginerno", "F1196354");
+            value.put("car_frame", "LJDMAA222F0228852");
             value.put("car_level", "4门5座");
-            value.put("car_mile",5000);
+            value.put("car_mile", 5000);
             value.put("car_gas", 60);
             value.put("car_box", 62);
-            value.put("car_enginerstate","正常");
-            value.put("car_shiftstate","正常");
-            value.put("car_light","正常");
-            value.put("car_start",false);
+            value.put("car_enginerstate", "正常");
+            value.put("car_shiftstate", "正常");
+            value.put("car_light", "正常");
+            value.put("car_start", false);
             value.put("car_door", false);
             value.put("car_lock", false);
             value.put("car_air", false);

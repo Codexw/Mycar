@@ -145,7 +145,7 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
                 query.findObjects(SplashActivity.this, new FindListener<User>() {
                     @Override
                     public void onSuccess(List<User> list) {
-                        if(list.size()>0) {
+                        if (list.size() > 0) {
                             for (User user : list) {
                                 user.setLat(mLatitude);
                                 user.setLon(mLongitude);
