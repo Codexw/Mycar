@@ -15,6 +15,7 @@ public class Order extends BmobObject {
     private Double gascount;
     private Double gasprice;
     private String countprice;
+    private Integer state;
 
     public User getUser() {
         return user;
@@ -78,5 +79,13 @@ public class Order extends BmobObject {
 
     public void setCarnumber(String carnumber) {
         this.carnumber = carnumber;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }
