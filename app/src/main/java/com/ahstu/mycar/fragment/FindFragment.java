@@ -50,9 +50,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
     private TextView mTvSt;
     private TextView mTvEn;
     private ImageView mIvChangeStEn;
-    private Button weizhangbutton;
+    private Button mBtnWeizhang;
     private Button mBtnStation;
-    private Button searchFriend;
+    private Button mBtnSearchFriend;
+    private Button mBtnOfflineMap;
     private double stLat = 0.0;
     private double stLon = 0.0;
     private double enLat = 0.0;
@@ -102,9 +103,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn = (TextView) getActivity().findViewById(R.id.end);
         mIvChangeStEn = (ImageView) getActivity().findViewById(R.id.changeStartEnd);
         mBtnSearch = (Button) getActivity().findViewById(R.id.btn_search);
-        weizhangbutton = (Button) getActivity().findViewById(R.id.weizhangbutton);
+        mBtnWeizhang = (Button) getActivity().findViewById(R.id.btn_weizhang);
         mBtnStation = (Button) getActivity().findViewById(R.id.btn_station);
-        searchFriend = (Button) getActivity().findViewById(R.id.btn_sharelocation);
+        mBtnSearchFriend = (Button) getActivity().findViewById(R.id.btn_sharelocation);
+        mBtnOfflineMap = (Button) getActivity().findViewById(R.id.btn_offlineMap);
 
         //广播
         broadcastManager1 = LocalBroadcastManager.getInstance(getActivity());
@@ -120,9 +122,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
         mTvEn.setOnClickListener(this);
         mIvChangeStEn.setOnClickListener(this);
         mBtnSearch.setOnClickListener(this);
-        weizhangbutton.setOnClickListener(this);
+        mBtnWeizhang.setOnClickListener(this);
         mBtnStation.setOnClickListener(this);
-        searchFriend.setOnClickListener(this);
+        mBtnSearchFriend.setOnClickListener(this);
+        mBtnOfflineMap.setOnClickListener(this);
     }
 
     @Override
@@ -227,7 +230,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     }
                 }
                 break;
-            case R.id.weizhangbutton:
+            case R.id.btn_weizhang:
                 SharedPreferences share = getActivity().getSharedPreferences("text", getActivity().MODE_PRIVATE);
                 String s = share.getString("number", "");
                 if (s.equals("")) {
@@ -247,6 +250,10 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), "请先关闭当前的位置共享！", Toast.LENGTH_SHORT).show();
                 } else
                     startActivity(new Intent(getActivity(), SearchFriendActivity.class));
+                break;
+            case R.id.btn_offlineMap:
+//                startActivity(new Intent(getActivity(), OfflineMapActivity.class));
+                Toast.makeText(getActivity(), "连夜制作中。。。", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

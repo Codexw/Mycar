@@ -64,7 +64,7 @@
         <!-- 百度sdk开发秘钥 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
+            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr"/>
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
@@ -171,6 +171,12 @@
         <activity
             android:name=".activity.OrderviewActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OfflineMapActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BaseMapActivity"
+            android:screenOrientation="portrait"/>
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
         <service android:name=".music.MusicPlayService"/>
@@ -190,6 +196,7 @@
 
         <receiver android:name="cn.bmob.push.PushReceiver">
             <intent-filter>
+
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <!-- 解锁完成后会调用 -->
@@ -198,14 +205,16 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-
-        <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver">
+        <receiver android:name=".me.PushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE"/>
             </intent-filter>
         </receiver>
 
         <service android:name=".me.FriendNotificationService"/>
+
+        <activity android:name=".activity.RegisterLawsActivity">
+        </activity>
     </application>
 
 </manifest>
