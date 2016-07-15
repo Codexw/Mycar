@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\shadow.png",
+        "source": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\shadow.png"
+    },
+    {
+        "merged": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\qr_code_bg.9.png",
+        "source": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\qr_code_bg.9.png"
+    },
+    {
+        "merged": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan_line.png",
+        "source": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan_line.png"
+    }
+]
