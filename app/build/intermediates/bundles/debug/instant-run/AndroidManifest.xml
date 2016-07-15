@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ahstu.mycar"
+    android:versionCode="1"
+    android:versionName="1.0" >
+ <!-- 使用开源包 -->
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 监听网络的变化 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 设备休眠 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- sd卡存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 摄像头 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 通知震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="cn.bmob.permission.push" />
+    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 推送所需的权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <application
+        name="com.ahstu.mycar.activity.MyApplication"
+        android:name="com.android.tools.fd.runtime.BootstrapApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/head"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <!-- 百度sdk开发秘钥 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
+        <!-- 聚合openid -->
+        <meta-data
+            android:name="com.thinkland.juheapi.openid"
+            android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
+
+        <activity
+            android:name="c.b.a.A"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="c.b.a.B"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.ahstu.mycar.activity.SplashActivity"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ahstu.mycar.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.RegisterPhoneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.RegisterUserMsgActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.SearchLatLonActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.StationInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.StationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.MusicMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.AddSongtoPlaylistActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.PlaylistSongActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.BDSearchGuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.BDStationGuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.CarQueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.CityListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.ProvinceListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.WeizhangResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.CarinformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.CarListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.MeCarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.GasorderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.MeorderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.OrderItemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.MapMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.music.MusicDownloadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.StationMapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.me.SearchFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.OrderviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.OfflineMapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.BaseMapActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
+        <service android:name="com.ahstu.mycar.music.MusicPlayService" />
+
+        <!-- 百度地图定位的service -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true" />
+        <service
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:exported="true"
+            android:label="PushService" >
+            <intent-filter>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="cn.bmob.push.PushReceiver" >
+            <intent-filter>
+
+                <!-- 系统启动完成后会调用 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 解锁完成后会调用 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 监听网络连通性 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.ahstu.mycar.me.PushMessageReceiver" >
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.ahstu.mycar.me.FriendNotificationService" />
+
+        <activity android:name="com.ahstu.mycar.activity.RegisterLawsActivity" />
+        <activity android:name="com.xys.libzxing.zxing.activity.CaptureActivity" />
+    </application>
+
+</manifest>

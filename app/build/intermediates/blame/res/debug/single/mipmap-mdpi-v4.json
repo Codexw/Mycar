@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\notification_head.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-mdpi\\notification_head.png"
+    },
+    {
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    }
+]

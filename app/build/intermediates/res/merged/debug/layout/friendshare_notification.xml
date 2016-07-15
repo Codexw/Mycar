@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_sharelocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:src="@drawable/notification_head" />
+
+    <TextView
+        android:id="@+id/friend_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bt_accept_share"
+        android:layout_alignBottom="@+id/bt_accept_share"
+        android:layout_toLeftOf="@+id/bt_accept_share"
+        android:layout_toStartOf="@+id/bt_accept_share"
+        android:text="车友请求位置共享" />
+
+    <Button
+        android:id="@+id/bt_accept_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/bt_deny_share"
+        android:layout_toStartOf="@+id/bt_deny_share"
+        android:text="接受" />
+
+    <Button
+        android:id="@+id/bt_deny_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="拒绝" />
+</RelativeLayout>
