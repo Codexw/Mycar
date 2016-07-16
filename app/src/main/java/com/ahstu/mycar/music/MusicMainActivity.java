@@ -79,6 +79,7 @@ public class MusicMainActivity extends Activity {
     public void playListOnclick() {
         al_playlist = MusicUtils.PlaylistList(MusicMainActivity.this);
         List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+
         for (int i = 0; i < al_playlist.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();
 //					map.put("id", "");
