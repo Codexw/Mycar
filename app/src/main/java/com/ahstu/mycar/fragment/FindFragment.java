@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.activity.BDSearchGuideActivity;
 import com.ahstu.mycar.activity.CarQueryActivity;
+import com.ahstu.mycar.activity.OfflineMapActivity;
 import com.ahstu.mycar.activity.SearchLatLonActivity;
 import com.ahstu.mycar.activity.StationMapActivity;
 import com.ahstu.mycar.me.SearchFriendActivity;
@@ -257,8 +258,7 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     startActivity(new Intent(getActivity(), SearchFriendActivity.class));
                 break;
             case R.id.btn_offlineMap:
-//                startActivity(new Intent(getActivity(), OfflineMapActivity.class));
-                Toast.makeText(getActivity(), "连夜制作中。。。", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), OfflineMapActivity.class));
                 break;
         }
     }

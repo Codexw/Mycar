@@ -241,6 +241,6 @@ public class GasorderActivity extends Activity {
         });
 
     }
-    
+
 
 }

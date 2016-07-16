@@ -1,23 +1,23 @@
 package com.ahstu.mycar.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
+import com.ahstu.mycar.adapter.OfflineCityAdapter;
 import com.baidu.mapapi.map.offline.MKOLSearchRecord;
 import com.baidu.mapapi.map.offline.MKOLUpdateElement;
 import com.baidu.mapapi.map.offline.MKOfflineMap;
@@ -31,6 +31,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
     private TextView cidView;
     private TextView stateView;
     private EditText cityNameView;
+    private Context mContext;
     /**
      * 已下载的离线地图信息列表
      */
@@ -40,6 +41,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offlinemap);
+        mContext = this;
         mOffline = new MKOfflineMap();
         mOffline.init(this);
         initView();
@@ -56,28 +58,30 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
         ArrayList<String> hotCities = new ArrayList<String>();
         // 获取热闹城市列表
         ArrayList<MKOLSearchRecord> records1 = mOffline.getHotCityList();
-        if (records1 != null) {
-            for (MKOLSearchRecord r : records1) {
-                hotCities.add(r.cityName + "(" + r.cityID + ")" + "   --"
-                        + this.formatDataSize(r.size));
-            }
-        }
-        ListAdapter hAdapter = (ListAdapter) new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, hotCities);
+//        if (records1 != null) {
+//            for (MKOLSearchRecord r : records1) {
+//                hotCities.add(r.cityName + "(" + r.cityID + ")" + "   --"
+//                        + this.formatDataSize(r.size));
+//            }
+//        }
+//        ListAdapter hAdapter = (ListAdapter) new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1, hotCities);
+        OfflineCityAdapter hAdapter = new OfflineCityAdapter(mContext, records1, mOffline);
         hotCityList.setAdapter(hAdapter);
 
         ListView allCityList = (ListView) findViewById(R.id.allcitylist);
         // 获取所有支持离线地图的城市
         ArrayList<String> allCities = new ArrayList<String>();
         ArrayList<MKOLSearchRecord> records2 = mOffline.getOfflineCityList();
-        if (records1 != null) {
-            for (MKOLSearchRecord r : records2) {
-                allCities.add(r.cityName + "(" + r.cityID + ")" + "   --"
-                        + this.formatDataSize(r.size));
-            }
-        }
-        ListAdapter aAdapter = (ListAdapter) new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, allCities);
+//        if (records1 != null) {
+//            for (MKOLSearchRecord r : records2) {
+//                allCities.add(r.cityName + "(" + r.cityID + ")" + "   --"
+//                        + this.formatDataSize(r.size));
+//            }
+//        }
+//        ListAdapter aAdapter = (ListAdapter) new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1, allCities);
+        OfflineCityAdapter aAdapter = new OfflineCityAdapter(mContext, records2, mOffline);
         allCityList.setAdapter(aAdapter);
 
         LinearLayout cl = (LinearLayout) findViewById(R.id.citylist_layout);

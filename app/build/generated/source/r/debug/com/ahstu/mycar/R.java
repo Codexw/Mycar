@@ -1922,6 +1922,7 @@ containing a value of this type.
         public static final int chepailinearlayout=0x7f0d00ff;
         public static final int chronometer=0x7f0d01c2;
         public static final int city=0x7f0d0081;
+        public static final int cityName=0x7f0d01c8;
         public static final int city_list=0x7f0d0087;
         public static final int cityid=0x7f0d0080;
         public static final int citylist_layout=0x7f0d008a;
@@ -1942,7 +1943,8 @@ containing a value of this type.
         public static final int del=0x7f0d0086;
         public static final int dialog=0x7f0d0023;
         public static final int disableHome=0x7f0d0012;
-        public static final int display=0x7f0d01ca;
+        public static final int display=0x7f0d01ce;
+        public static final int display2=0x7f0d01ca;
         public static final int door_set=0x7f0d0136;
         public static final int dropdown=0x7f0d0024;
         public static final int edit_query=0x7f0d004a;
@@ -1992,7 +1994,7 @@ containing a value of this type.
         public static final int ivHome=0x7f0d0073;
         public static final int ivMe=0x7f0d007c;
         public static final int ivSearch=0x7f0d0076;
-        public static final int iv_back=0x7f0d01d1;
+        public static final int iv_back=0x7f0d01d5;
         public static final int iv_list=0x7f0d00af;
         public static final int iv_loc=0x7f0d00ad;
         public static final int iv_map_traffic=0x7f0d0156;
@@ -2011,7 +2013,7 @@ containing a value of this type.
         public static final int listview=0x7f0d01ad;
         public static final int ll=0x7f0d00fe;
         public static final int ll_edit=0x7f0d00b7;
-        public static final int ll_normal=0x7f0d01cc;
+        public static final int ll_normal=0x7f0d01d0;
         public static final int ll_phone=0x7f0d009e;
         public static final int ll_summary=0x7f0d00b0;
         public static final int loading_icon=0x7f0d00bd;
@@ -2115,14 +2117,15 @@ containing a value of this type.
         public static final int query_title=0x7f0d00fc;
         public static final int quit=0x7f0d000a;
         public static final int radio=0x7f0d0042;
-        public static final int ratio=0x7f0d01c9;
+        public static final int ratio=0x7f0d01cd;
         public static final int refresh=0x7f0d0109;
         public static final int refresh_view=0x7f0d0126;
         public static final int refreshing_icon=0x7f0d00c2;
         public static final int register_laws_title_back=0x7f0d009b;
         public static final int register_title_back=0x7f0d009d;
         public static final int register_title_bar=0x7f0d009a;
-        public static final int remove=0x7f0d01cb;
+        public static final int remove=0x7f0d01cf;
+        public static final int remove2=0x7f0d01cb;
         public static final int restart_preview=0x7f0d000b;
         public static final int result_list=0x7f0d0110;
         public static final int result_null=0x7f0d0108;
@@ -2154,6 +2157,7 @@ containing a value of this type.
         public static final int showHome=0x7f0d0016;
         public static final int showTitle=0x7f0d0017;
         public static final int singerName=0x7f0d0175;
+        public static final int size=0x7f0d01c9;
         public static final int songName=0x7f0d0174;
         public static final int spinner_type=0x7f0d0167;
         public static final int splash_img=0x7f0d00ae;
@@ -2180,7 +2184,7 @@ containing a value of this type.
         public static final int time=0x7f0d01c1;
         public static final int titbar=0x7f0d010c;
         public static final int title=0x7f0d0034;
-        public static final int title_name=0x7f0d01d2;
+        public static final int title_name=0x7f0d01d6;
         public static final int title_template=0x7f0d0037;
         public static final int titlebar=0x7f0d011a;
         public static final int topPanel=0x7f0d0036;
@@ -2189,15 +2193,15 @@ containing a value of this type.
         public static final int tvHome=0x7f0d0074;
         public static final int tvMe=0x7f0d007d;
         public static final int tvSearch=0x7f0d0077;
-        public static final int tv_add=0x7f0d01d0;
+        public static final int tv_add=0x7f0d01d4;
         public static final int tv_addr=0x7f0d0063;
         public static final int tv_area=0x7f0d0062;
         public static final int tv_back=0x7f0d00b8;
-        public static final int tv_bd09ll=0x7f0d01d3;
-        public static final int tv_clear=0x7f0d01ce;
-        public static final int tv_delete=0x7f0d01cf;
+        public static final int tv_bd09ll=0x7f0d01d7;
+        public static final int tv_clear=0x7f0d01d2;
+        public static final int tv_delete=0x7f0d01d3;
         public static final int tv_distance=0x7f0d0061;
-        public static final int tv_edit=0x7f0d01cd;
+        public static final int tv_edit=0x7f0d01d1;
         public static final int tv_finish=0x7f0d00b9;
         public static final int tv_id=0x7f0d016e;
         public static final int tv_load=0x7f0d0121;
@@ -2213,7 +2217,7 @@ containing a value of this type.
         public static final int txtTitle=0x7f0d011c;
         public static final int txt_name=0x7f0d0113;
         public static final int up=0x7f0d000e;
-        public static final int update=0x7f0d01c8;
+        public static final int update=0x7f0d01cc;
         public static final int useLogo=0x7f0d0018;
         public static final int user=0x7f0d0069;
         public static final int user_info=0x7f0d006a;
@@ -2320,15 +2324,16 @@ containing a value of this type.
         public static final int notification_template_media=0x7f04004e;
         public static final int notification_template_part_chronometer=0x7f04004f;
         public static final int notification_template_part_time=0x7f040050;
-        public static final int offline_localmap_list=0x7f040051;
-        public static final int pl_songs_add=0x7f040052;
-        public static final int playlist_songs=0x7f040053;
-        public static final int select_dialog_item_material=0x7f040054;
-        public static final int select_dialog_multichoice_material=0x7f040055;
-        public static final int select_dialog_singlechoice_material=0x7f040056;
-        public static final int spinner=0x7f040057;
-        public static final int support_simple_spinner_dropdown_item=0x7f040058;
-        public static final int title=0x7f040059;
+        public static final int offline_cities_list=0x7f040051;
+        public static final int offline_localmap_list=0x7f040052;
+        public static final int pl_songs_add=0x7f040053;
+        public static final int playlist_songs=0x7f040054;
+        public static final int select_dialog_item_material=0x7f040055;
+        public static final int select_dialog_multichoice_material=0x7f040056;
+        public static final int select_dialog_singlechoice_material=0x7f040057;
+        public static final int spinner=0x7f040058;
+        public static final int support_simple_spinner_dropdown_item=0x7f040059;
+        public static final int title=0x7f04005a;
     }
     public static final class mipmap {
         public static final int ic_change_start_end=0x7f030000;

@@ -8,6 +8,14 @@
         "source": "G:\\android_demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\qr_code_bg.9.png"
     },
     {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan_line.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan_line.png"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\qr_code_bg.9.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\qr_code_bg.9.png"
+    },
+    {
         "merged": "E:\\Android\\Demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan_line.png",
         "source": "E:\\Android\\Demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan_line.png"
     },
@@ -22,5 +30,9 @@
     {
         "merged": "E:\\Android\\Demo\\Car\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\shadow.png",
         "source": "E:\\Android\\Demo\\Car\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\shadow.png"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\shadow.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\libzxing\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\shadow.png"
     }
 ]
