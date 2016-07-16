@@ -45,7 +45,6 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
         mOffline = new MKOfflineMap();
         mOffline.init(this);
         initView();
-
     }
 
     private void initView() {

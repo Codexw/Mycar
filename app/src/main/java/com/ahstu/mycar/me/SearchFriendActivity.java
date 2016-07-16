@@ -18,7 +18,6 @@ import com.ahstu.mycar.bean.User;
 import java.util.List;
 
 import cn.bmob.push.BmobPush;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobPushManager;
 import cn.bmob.v3.BmobQuery;
@@ -49,7 +48,7 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
         setContentView(R.layout.music_download);
 
         // 初始化BmobSDK
-        Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
+//        Bmob.initialize(this, "ccd46e34cec57d61dbcedaa08f722296");
         // 使用推送服务时的初始化操作
         BmobInstallation.getCurrentInstallation(this).save();//消息推送
         // 启动推送服务
@@ -80,7 +79,7 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
             public void onClick(View v) {
                 namestring = friendName.getText().toString();
                 BmobQuery<User> friendquery = new BmobQuery<User>();
-                friendquery.addWhereContains("username", namestring);//对歌曲名字进行模糊查询
+                friendquery.addWhereContains("username", namestring);//对名字进行模糊查询
                 friendquery.addWhereNotEqualTo("username", sp.getString("name", ""));
                 friendquery.findObjects(SearchFriendActivity.this, new FindListener<User>() {
                     @Override
@@ -119,6 +118,7 @@ public class SearchFriendActivity extends Activity implements FriendAdpterOnItem
             moblie_id.addWhereEqualTo("installationId", userList.get(postion).getMyInstallation());
             bmobPush.setQuery(moblie_id);
             bmobPush.pushMessage(name + "请求位置共享" + mobileid);
+            Toast.makeText(this, "请求已发送", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "车友未上线，位置共享请求失败！", Toast.LENGTH_SHORT).show();
         }
