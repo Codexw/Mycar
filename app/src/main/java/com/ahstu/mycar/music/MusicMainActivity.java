@@ -63,6 +63,19 @@ public class MusicMainActivity extends Activity {
 //        tv_newPlaylist.setVisibility(View.VISIBLE);
 //        tv_newPlaylist.setText("新建列表");
 
+        //默认添加我的收藏列表
+        ContentResolver resolver = getContentResolver();
+        int id = idForplaylist("我的收藏");
+        Uri uri;
+        if (id >= 0) {
+            uri = ContentUris.withAppendedId(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI, id);
+        } else {
+            ContentValues values = new ContentValues(1);
+            values.put(MediaStore.Audio.Playlists.NAME, "我的收藏");
+            uri = resolver.insert(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI, values);
+        }
+        setResult(RESULT_OK, (new Intent()).setData(uri));
+
         initListener();
         playListOnclick();
     }
@@ -171,7 +184,7 @@ public class MusicMainActivity extends Activity {
         final EditText inputServer = new EditText(MusicMainActivity.this);
         AlertDialog.Builder builder = new AlertDialog.Builder(MusicMainActivity.this);
 
-        builder.setTitle("请输入列表名称").setView(inputServer).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        builder.setTitle("请输入新建歌单名称").setView(inputServer).setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -179,13 +192,13 @@ public class MusicMainActivity extends Activity {
         }).setPositiveButton("保存", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 String name = inputServer.getText().toString().trim();
-                if (!TextUtils.isEmpty(name)) {
+                if (!TextUtils.isEmpty(name) && !name.equals("我的收藏")) {
                     ContentResolver resolver = getContentResolver();
                     int id = idForplaylist(name);
                     Uri uri;
                     if (id >= 0) {
-                        uri = ContentUris.withAppendedId(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI, id);
-                        MusicUtils.clearPlaylist(MusicMainActivity.this, id);
+                        Toast.makeText(getApplicationContext(), "列表名已存在！", Toast.LENGTH_SHORT).show();
+                        return;
                     } else {
                         ContentValues values = new ContentValues(1);
                         values.put(MediaStore.Audio.Playlists.NAME, name);
@@ -200,7 +213,10 @@ public class MusicMainActivity extends Activity {
                     it.setClass(MusicMainActivity.this, PlaylistSongActivity.class);
                     startActivity(it);
                 } else {
-                    Toast.makeText(getApplicationContext(), "列表名不能为空！", Toast.LENGTH_SHORT).show();
+                    if (name.equals("我的收藏"))
+                        Toast.makeText(getApplicationContext(), "列表名已存在！", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getApplicationContext(), "列表名不能为空！", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }

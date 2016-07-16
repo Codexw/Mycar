@@ -40,7 +40,7 @@ public class PlaylistSongActivity extends Activity {
 
     private final int SETADAPTER = 111;
     public Button btn_back;
-    private TextView tv_edit, tv_clear, tv_delete, tv_add, tv_back, title_name;
+    private TextView tv_edit, tv_clear, tv_delete, tv_add, tv_back, title_name, left_tv_delete;
     private ImageView iv_back;
     private LinearLayout ll_normal, ll_edit;
     private ListView listView;
@@ -74,10 +74,19 @@ public class PlaylistSongActivity extends Activity {
         initView();
         iv_back.setVisibility(View.VISIBLE);
         initListener();
+        
 
         Intent intent = getIntent();
         String songlist_name = intent.getStringExtra("listname");
         title_name.setText(songlist_name);
+        if (songlist_name.equals("我的收藏")) {
+            left_tv_delete.setVisibility(View.GONE);
+            tv_delete.setVisibility(View.GONE);
+        } else {
+            left_tv_delete.setVisibility(View.VISIBLE);
+            tv_delete.setVisibility(View.VISIBLE);
+        }
+            
         if (intent != null) {
             //判断是不是从添加列表界面跳过来的，是的话就点击一下添加歌曲按钮，跳到添加歌曲界面
             boolean addSong = intent.getBooleanExtra("autoAddSong", false);
@@ -126,6 +135,8 @@ public class PlaylistSongActivity extends Activity {
         ll_normal = (LinearLayout) findViewById(R.id.ll_normal);
         ll_edit = (LinearLayout) findViewById(R.id.ll_edit);
 //        btn_back = (Button) findViewById(R.id.back_btn);
+
+        left_tv_delete = (TextView) findViewById(R.id.left_tv_delete);
     }
 
     private void initListener() {
@@ -170,8 +181,10 @@ public class PlaylistSongActivity extends Activity {
         });
         //删除本列表
         tv_delete.setOnClickListener(new OnClickListener() {
+
             @Override
             public void onClick(View arg0) {
+
                 new AlertDialog.Builder(PlaylistSongActivity.this).setTitle("删除列表").setMessage("确定彻底移除此列表？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                     @Override

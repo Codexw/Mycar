@@ -795,7 +795,7 @@ int id ivControl 0x7f0d0079
 int id ivHome 0x7f0d0073
 int id ivMe 0x7f0d007c
 int id ivSearch 0x7f0d0076
-int id iv_back 0x7f0d01d5
+int id iv_back 0x7f0d01d6
 int id iv_list 0x7f0d00af
 int id iv_loc 0x7f0d00ad
 int id iv_map_traffic 0x7f0d0156
@@ -803,6 +803,7 @@ int id iv_register_title_back 0x7f0d00a4
 int id lab_address 0x7f0d0116
 int id lab_info 0x7f0d0118
 int id layoutTab 0x7f0d0071
+int id left_tv_delete 0x7f0d01d3
 int id line 0x7f0d0070
 int id line1 0x7f0d01c0
 int id line3 0x7f0d01c4
@@ -985,7 +986,7 @@ int id textView2 0x7f0d0149
 int id time 0x7f0d01c1
 int id titbar 0x7f0d010c
 int id title 0x7f0d0034
-int id title_name 0x7f0d01d6
+int id title_name 0x7f0d01d7
 int id title_template 0x7f0d0037
 int id titlebar 0x7f0d011a
 int id topPanel 0x7f0d0036
@@ -994,13 +995,13 @@ int id tvControl 0x7f0d007a
 int id tvHome 0x7f0d0074
 int id tvMe 0x7f0d007d
 int id tvSearch 0x7f0d0077
-int id tv_add 0x7f0d01d4
+int id tv_add 0x7f0d01d5
 int id tv_addr 0x7f0d0063
 int id tv_area 0x7f0d0062
 int id tv_back 0x7f0d00b8
-int id tv_bd09ll 0x7f0d01d7
+int id tv_bd09ll 0x7f0d01d8
 int id tv_clear 0x7f0d01d2
-int id tv_delete 0x7f0d01d3
+int id tv_delete 0x7f0d01d4
 int id tv_distance 0x7f0d0061
 int id tv_edit 0x7f0d01d1
 int id tv_finish 0x7f0d00b9

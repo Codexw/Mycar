@@ -1994,7 +1994,7 @@ containing a value of this type.
         public static final int ivHome=0x7f0d0073;
         public static final int ivMe=0x7f0d007c;
         public static final int ivSearch=0x7f0d0076;
-        public static final int iv_back=0x7f0d01d5;
+        public static final int iv_back=0x7f0d01d6;
         public static final int iv_list=0x7f0d00af;
         public static final int iv_loc=0x7f0d00ad;
         public static final int iv_map_traffic=0x7f0d0156;
@@ -2002,6 +2002,7 @@ containing a value of this type.
         public static final int lab_address=0x7f0d0116;
         public static final int lab_info=0x7f0d0118;
         public static final int layoutTab=0x7f0d0071;
+        public static final int left_tv_delete=0x7f0d01d3;
         public static final int line=0x7f0d0070;
         public static final int line1=0x7f0d01c0;
         public static final int line3=0x7f0d01c4;
@@ -2184,7 +2185,7 @@ containing a value of this type.
         public static final int time=0x7f0d01c1;
         public static final int titbar=0x7f0d010c;
         public static final int title=0x7f0d0034;
-        public static final int title_name=0x7f0d01d6;
+        public static final int title_name=0x7f0d01d7;
         public static final int title_template=0x7f0d0037;
         public static final int titlebar=0x7f0d011a;
         public static final int topPanel=0x7f0d0036;
@@ -2193,13 +2194,13 @@ containing a value of this type.
         public static final int tvHome=0x7f0d0074;
         public static final int tvMe=0x7f0d007d;
         public static final int tvSearch=0x7f0d0077;
-        public static final int tv_add=0x7f0d01d4;
+        public static final int tv_add=0x7f0d01d5;
         public static final int tv_addr=0x7f0d0063;
         public static final int tv_area=0x7f0d0062;
         public static final int tv_back=0x7f0d00b8;
-        public static final int tv_bd09ll=0x7f0d01d7;
+        public static final int tv_bd09ll=0x7f0d01d8;
         public static final int tv_clear=0x7f0d01d2;
-        public static final int tv_delete=0x7f0d01d3;
+        public static final int tv_delete=0x7f0d01d4;
         public static final int tv_distance=0x7f0d0061;
         public static final int tv_edit=0x7f0d01d1;
         public static final int tv_finish=0x7f0d00b9;
