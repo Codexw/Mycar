@@ -268,16 +268,16 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\allview_refresh_head.xml"
     },
     {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\csy_activity_result.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\csy_activity_result.xml"
+    },
+    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_simple_dropdown_hint.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_simple_dropdown_hint.xml"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search_map.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\activity_search_map.xml"
-    },
-    {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\csy_activity_result.xml",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\csy_activity_result.xml"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",

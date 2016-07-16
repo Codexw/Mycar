@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="我的车辆"
+                    android:text="车辆信息"
                     android:textSize="18sp"/>
 
 
@@ -124,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="我的订单"
+                    android:text="订单"
                     android:textSize="16dp"/>
 
             </LinearLayout>
@@ -158,7 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="音乐列表"
+                    android:text="音乐下载"
                     android:textSize="16dp"/>
 
 
@@ -187,7 +187,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="退出登录"
+                    android:text="退出"
                     android:textSize="16dp"/>
 
 
