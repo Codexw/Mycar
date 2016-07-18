@@ -213,6 +213,7 @@
         <service android:name=".me.FriendNotificationService"/>
 
         <activity android:name=".activity.RegisterLawsActivity"></activity>
+        <activity android:name=".activity.OfflineMapActivity2"/>
     </application>
 
 </manifest>

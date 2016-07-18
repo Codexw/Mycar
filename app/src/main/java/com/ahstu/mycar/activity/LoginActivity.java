@@ -94,16 +94,22 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else if (et_password.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                 } else {
+                    progress = new ProgressDialog(LoginActivity.this);
+                    progress.setMessage("正在登陆...");
+                    progress.setCanceledOnTouchOutside(false);
+                    try {
+                        progress.show();//偶尔会打印出异常
+                    } catch (Exception e) {
+                        Log.e("LoginActivityProgress", e.toString());
+                    }
+
                     final User user = new User();
                     user.setUsername(et_username.getText().toString());
                     user.setPassword(et_password.getText().toString());
                     user.login(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
-                            progress = new ProgressDialog(LoginActivity.this);
-                            progress.setMessage("正在登陆...");
-                            progress.setCanceledOnTouchOutside(false);
-                            progress.show();//偶尔会打印出异常
+
                             //更新当前登录用户的设备号
                             BmobQuery<User> queryInstallation = new BmobQuery<User>();
                             queryInstallation.addWhereEqualTo("username", et_username.getText().toString());
@@ -210,10 +216,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                         }
 
-
                         @Override
                         public void onFailure(int i, String s) {
-
+                            progress.dismiss();
                             if (i == 9016) {
                                 Toast.makeText(LoginActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
                             } else if (i == 101) {

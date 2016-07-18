@@ -3,36 +3,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="10dip">
+                android:padding="5dip">
 
-    <TextView
-        android:id="@+id/cityName"
+    <LinearLayout
+        android:id="@id/ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="城市名 "/>
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="城市名 "
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:text="aaa"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/size"
+        android:id="@+id/tv_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cityName"
-        android:text="aaa"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/ll"
         android:textColor="#FF0000"/>
 
     <Button
-        android:id="@+id/display2"
+        android:id="@+id/download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:visibility="visible"
-        android:text="查看"/>
+        android:layout_centerVertical="true"
+        android:text="下载"
+        android:visibility="visible"/>
 
     <Button
-        android:id="@+id/remove2"
+        android:id="@+id/pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:visibility="gone"
-        android:text="删除"/>
+        android:text="暂停"
+        android:visibility="gone"/>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentBottom="true"
+        android:max="100"
+        android:progress="10"
+        android:progressDrawable="@drawable/progressbar"
+        android:visibility="gone"/>
 </RelativeLayout>

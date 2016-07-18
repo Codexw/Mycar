@@ -26,10 +26,9 @@
                 android:background="@drawable/back"/>
 
             <RadioGroup
-                android:layout_width="200dip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="10dip"
+                android:layout_centerInParent="true"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -41,9 +40,7 @@
                     android:background="@drawable/song_list_rb_bg"
                     android:button="@null"
                     android:checked="true"
-                    android:gravity="center"
-                    android:paddingBottom="6dip"
-                    android:paddingTop="6dip"
+                    android:padding="8dp"
                     android:text="歌单列表"
                     android:textColor="@color/song_title_text_sel"
                     android:textSize="14sp"/>
@@ -56,9 +53,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/all_song_rb_bg"
                     android:button="@null"
-                    android:gravity="center"
-                    android:paddingBottom="6dip"
-                    android:paddingTop="6dip"
+                    android:padding="8dp"
                     android:text="全部音乐"
                     android:textColor="@color/song_title_text_sel"
                     android:textSize="14sp"/>

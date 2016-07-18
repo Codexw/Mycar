@@ -48,7 +48,8 @@ public class MeInfoFragment extends Fragment {
     private MusicPlayService mService;
 
     @Override
-    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState
+    ) {
         super.onViewCreated(view, savedInstanceState);
         application = (MyApplication) getActivity().getApplication();
         mService = application.getmService();

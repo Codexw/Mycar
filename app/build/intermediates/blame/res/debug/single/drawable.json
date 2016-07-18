@@ -232,6 +232,10 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\main_icon_roadcondition_off.png"
     },
     {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\progressbar.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\progressbar.xml"
+    },
+    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mapfragment_loc.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\mapfragment_loc.xml"
     },

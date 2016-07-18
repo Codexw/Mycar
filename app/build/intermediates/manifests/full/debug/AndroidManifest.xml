@@ -216,6 +216,7 @@
         <service android:name="com.ahstu.mycar.me.FriendNotificationService" />
 
         <activity android:name="com.ahstu.mycar.activity.RegisterLawsActivity" />
+        <activity android:name="com.ahstu.mycar.activity.OfflineMapActivity2" />
         <activity android:name="com.xys.libzxing.zxing.activity.CaptureActivity" />
     </application>
 

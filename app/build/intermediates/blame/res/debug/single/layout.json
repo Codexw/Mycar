@@ -256,16 +256,20 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\carinformation.xml",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\carinformation.xml"
-    },
-    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\carinformation.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\carinformation.xml"
+    },
+    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\allview_refresh_head.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\allview_refresh_head.xml"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\offlinemap_test.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\offlinemap_test.xml"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\csy_activity_result.xml",
@@ -350,6 +354,10 @@
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\offlinemap_item_test.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\layout\\offlinemap_item_test.xml"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",

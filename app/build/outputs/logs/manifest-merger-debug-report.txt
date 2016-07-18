@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:2:1-218:12
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:2:1-219:12
 	package
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:4:11-36
 		INJECTED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml
@@ -151,7 +151,7 @@ ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xm
 	android:anyDensity
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:50:9-34
 application
-ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:56:5-216:19
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:56:5-217:19
 MERGED from [com.android.support:appcompat-v7:22.2.1] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\MyCar\libzxing\unspecified\AndroidManifest.xml:14:5-18:19
@@ -453,6 +453,10 @@ activity#com.ahstu.mycar.activity.RegisterLawsActivity
 ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:215:9-76
 	android:name
 		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:215:19-64
+activity#com.ahstu.mycar.activity.OfflineMapActivity2
+ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:216:9-65
+	android:name
+		ADDED from F:\Android_Studio_Workspace\Car\MyCar\app\src\main\AndroidManifest.xml:216:19-63
 activity#com.xys.libzxing.zxing.activity.CaptureActivity
 ADDED from [MyCar:libzxing:unspecified] F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\exploded-aar\MyCar\libzxing\unspecified\AndroidManifest.xml:17:9-84
 	android:name
