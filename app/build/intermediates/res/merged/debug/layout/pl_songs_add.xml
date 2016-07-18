@@ -32,12 +32,14 @@
             Android:id="@+id/songName"
             Android:layout_width="wrap_content"
             Android:layout_height="wrap_content"
+            Android:text="abbbbbbbbbbbbbbb"
             Android:textSize="18sp" />
 
         <TextView
             Android:id="@+id/singerName"
             Android:layout_width="wrap_content"
             Android:layout_height="wrap_content"
+            Android:text="aaaaaaaaaaa"
             Android:textSize="12sp" />
     </LinearLayout>
 

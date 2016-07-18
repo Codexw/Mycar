@@ -74,7 +74,7 @@ public class PlaylistSongActivity extends Activity {
         initView();
         iv_back.setVisibility(View.VISIBLE);
         initListener();
-        
+
 
         Intent intent = getIntent();
         String songlist_name = intent.getStringExtra("listname");
@@ -91,7 +91,7 @@ public class PlaylistSongActivity extends Activity {
             //判断是不是从添加列表界面跳过来的，是的话就点击一下添加歌曲按钮，跳到添加歌曲界面
             boolean addSong = intent.getBooleanExtra("autoAddSong", false);
             if (addSong) {
-                String playlistName = intent.getStringExtra("playListName");
+                String playlistName = intent.getStringExtra("listname");
                 title_name.setText(playlistName);
                 long listId = MusicUtils.getPlayListId(PlaylistSongActivity.this, playlistName);
                 playlistId = listId;

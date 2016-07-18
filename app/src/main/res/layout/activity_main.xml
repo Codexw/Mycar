@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/content_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/line" />
+        android:layout_above="@+id/line"/>
 
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_above="@+id/layoutTab"
-        android:background="#cccccc" />
+        android:background="#cccccc"/>
 
     <LinearLayout
         android:id="@+id/layoutTab"
@@ -35,7 +35,7 @@
                 android:id="@+id/ivHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/nav_home_image" />
+                android:background="@drawable/nav_home_image"/>
 
             <TextView
                 android:id="@+id/tvHome"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="地图"
                 android:textColor="@color/nav_home_text"
-                android:textSize="12dp" />
+                android:textSize="12dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +58,7 @@
                 android:id="@+id/ivSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/nav_find_image" />
+                android:background="@drawable/nav_find_image"/>
 
             <TextView
                 android:id="@+id/tvSearch"
@@ -69,14 +69,14 @@
                 android:gravity="center"
                 android:text="线路"
                 android:textColor="@color/nav_find_text"
-                android:textSize="12dp" />
+                android:textSize="12dp"/>
 
         </LinearLayout>
 
         <View
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_weight="0" />
+            android:layout_weight="0"/>
 
         <LinearLayout
             android:id="@+id/LLControl"
@@ -90,7 +90,7 @@
                 android:id="@+id/ivControl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/nav_friend_image" />
+                android:background="@drawable/nav_friend_image"/>
 
             <TextView
                 android:id="@+id/tvControl"
@@ -101,7 +101,7 @@
                 android:gravity="center"
                 android:text="车辆控制"
                 android:textColor="@color/nav_friend_text"
-                android:textSize="12dp" />
+                android:textSize="12dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -116,7 +116,7 @@
                 android:id="@+id/ivMe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/nav_personal_image" />
+                android:background="@drawable/nav_personal_image"/>
 
             <TextView
                 android:id="@+id/tvMe"
@@ -127,7 +127,7 @@
                 android:gravity="center"
                 android:text="我的"
                 android:textColor="@color/nav_personal_text"
-                android:textSize="12dp" />
+                android:textSize="12dp"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -137,7 +137,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/layoutTab"
-        android:background="#00FFFFFF" />
+        android:background="#00FFFFFF"/>
 
     <ImageView
         android:id="@+id/imgAdd"
@@ -146,6 +146,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:src="@drawable/music_menu_btstyle" />
+        android:src="@drawable/music_menu_btstyle"/>
 
 </RelativeLayout>

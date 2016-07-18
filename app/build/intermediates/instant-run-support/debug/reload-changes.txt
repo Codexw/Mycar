@@ -1,2 +1,3 @@
-CHANGED,E:\Android\Demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$3$override.class
-CHANGED,E:\Android\Demo\Car\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\music\PlaylistSongActivity$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\music\MusicMainActivity$6$override.class
