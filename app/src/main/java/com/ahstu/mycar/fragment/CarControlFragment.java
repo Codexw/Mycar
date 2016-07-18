@@ -148,7 +148,9 @@ public class CarControlFragment extends Fragment {
                         roundProgressBar.setBox_point(car.getCar_gas());
                         roundProgressBar.update();
                         DatabaseHelper data = new DatabaseHelper(getActivity(), "node.db", null, 1);
-                        SQLiteDatabase db = data.getWritableDatabase();
+                        try {
+                            SQLiteDatabase db = data.getWritableDatabase();
+                        
                         ContentValues value = new ContentValues();
                         if (car.getCar_start() == false) {
                             value.put("car_start", 0);
@@ -201,6 +203,9 @@ public class CarControlFragment extends Fragment {
                         }
                         db.update("carinfo", value, "car_number=?", new String[]{s});
                         db.close();
+                        } catch (Exception e) {
+
+                        }
                     }
                 }
 

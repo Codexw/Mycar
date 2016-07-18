@@ -126,6 +126,7 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
                             editor.putString("name", register_username.getText().toString());
                             editor.putString("password", register_password.getText().toString());
                             editor.commit();
+
                             SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
                             SharedPreferences.Editor edit = share.edit();
                             edit.putString("number", "浙CN20F6(测试车辆)");

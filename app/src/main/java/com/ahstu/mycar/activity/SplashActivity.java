@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -152,11 +153,11 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
                                 user.update(SplashActivity.this, user.getObjectId(), new UpdateListener() {
                                     @Override
                                     public void onSuccess() {
-
                                     }
 
                                     @Override
                                     public void onFailure(int i, String s) {
+                                        Log.e("splashavtivity160", s + i + "21111111111111111111111111");
                                     }
                                 });
                             }

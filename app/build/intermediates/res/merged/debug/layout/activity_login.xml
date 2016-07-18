@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/head"/>
+        android:src="@drawable/head" />
 
     <RelativeLayout
         android:id="@+id/user"
@@ -40,12 +40,12 @@
                 android:inputType="text"
                 android:maxLength="13"
                 android:padding="5dp"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/line"/>
+                android:background="@color/line" />
 
             <EditText
                 android:id="@+id/et_password"
@@ -58,7 +58,7 @@
                 android:inputType="textPassword"
                 android:maxLength="13"
                 android:padding="5dp"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
         <Button
             android:id="@+id/btn_login"
@@ -71,9 +71,37 @@
             android:background="@drawable/login_button"
             android:text="登录"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
     </RelativeLayout>
 
+
+    <ImageView
+        android:id="@+id/qq_login_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/qq_login"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00ffffff"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        />
+    <Button
+        android:layout_toRightOf="@id/qq_login_sign"
+        android:id="@+id/btn_third_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="第三方登录"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_marginBottom="10dp"
+        android:background="#00ffffff"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        />
     <Button
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
@@ -85,6 +113,6 @@
         android:background="#00ffffff"
         android:text="注册"
         android:textColor="@color/blue"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
 </RelativeLayout>

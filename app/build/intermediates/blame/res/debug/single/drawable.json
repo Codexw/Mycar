@@ -48,12 +48,12 @@
         "source": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_dialog_material_background_dark.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg.xml",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\all_song_rb_bg.xml"
-    },
-    {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\previous_bt.png",
         "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\previous_bt.png"
+    },
+    {
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg.xml",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\all_song_rb_bg.xml"
     },
     {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
@@ -392,12 +392,12 @@
         "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\btn_mapfragment_loc.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_false.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\check_box_false.png"
-    },
-    {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\charge.png",
         "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\charge.png"
+    },
+    {
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_false.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\check_box_false.png"
     },
     {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame.xml",
@@ -410,6 +410,10 @@
     {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_icon_roadcondition_on.png",
         "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\main_icon_roadcondition_on.png"
+    },
+    {
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\qq_login.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\qq_login.png"
     },
     {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\map_my_location_icon.png",

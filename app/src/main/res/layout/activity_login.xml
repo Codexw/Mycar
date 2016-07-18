@@ -74,6 +74,33 @@
             android:textSize="20dp" />
     </RelativeLayout>
 
+
+    <ImageView
+        android:id="@+id/qq_login_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00ffffff"
+        android:src="@drawable/qq_login"
+        android:textColor="@color/blue"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_third_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/qq_login_sign"
+        android:background="#00ffffff"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="第三方登录"
+        android:textColor="@color/blue"
+        android:textSize="16sp" />
     <Button
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
