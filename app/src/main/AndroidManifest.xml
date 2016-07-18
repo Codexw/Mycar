@@ -70,7 +70,6 @@
             android:name="com.thinkland.juheapi.openid"
             android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
 
-
         <activity
             android:name="c.b.a.A"
             android:configChanges="orientation|keyboardHidden|navigation"
@@ -83,7 +82,7 @@
             android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name=".activity.SplashActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

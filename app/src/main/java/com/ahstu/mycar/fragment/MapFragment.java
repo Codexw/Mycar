@@ -296,11 +296,8 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
                                 @Override
                                 public void onSuccess(List<User> list) {
-                                    Log.e("MapFragment299", "aaaaaaaaaaaaaaaaaaaaaaaaaaa");
                                     if (list != null) {
-                                        Log.e("MapFragment301", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-                                        if (list.size() > 0) {
-                                            Log.e("MapFragment303", "ccccccccccccccccc");
+                                        if (list.size() >= 1) {
                                             User user = list.get(0);
                                             user.setLat(mLatitude);
                                             user.setLon(mLongitude);
@@ -312,7 +309,7 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
 
                                                 @Override
                                                 public void onFailure(int i, String s) {
-                                                    Log.i("MapFragment315", "分享位置后更新自己的位置失败");
+                                                    Log.i("MapFragment315", "分享位置后更新自己的位置失败" + s + i);
                                                 }
                                             });
                                         }
@@ -333,11 +330,8 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                                 userLocationBmobQuery.findObjects(getActivity(), new FindListener<User>() {
                                     @Override
                                     public void onSuccess(List<User> list) {
-                                        Log.e("carOne", "caraaaaaaaaaaaaaaaaaaa");
                                         if (list != null) {
-                                            Log.e("carTwo", "carbbbbbbbbbbbbbbbbbbb");
-                                            if (list.size() > 0) {
-                                                Log.e("carTwo", "carccccccccccccccccccccccc");
+                                            if (list.size() >= 1) {
                                                 User user = list.get(0);
                                                 tv.setText(user.getUsername());
                                                 mBitmap = BitmapDescriptorFactory.fromView(tv);

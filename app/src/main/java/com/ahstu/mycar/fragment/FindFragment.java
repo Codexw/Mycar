@@ -245,7 +245,6 @@ public class FindFragment extends Fragment implements View.OnClickListener {
                     Intent i = new Intent();
                     i.setClass(getActivity(), CarQueryActivity.class);
                     startActivity(i);
-
                 }
                 break;
             case R.id.btn_station:

@@ -86,7 +86,7 @@
             android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name="com.ahstu.mycar.activity.SplashActivity"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

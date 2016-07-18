@@ -78,7 +78,7 @@ public class OfflineCityAdapter extends BaseAdapter {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                mOffline.pause(e.cityID);
+//                mOffline.pause(e.cityID);
 //                int cityid = Integer.parseInt(cidView.getText().toString());
 //                mOffline.pause(cityid);
                 Toast.makeText(mContext, "暂停下载离线地图. cityid: ", Toast.LENGTH_SHORT)

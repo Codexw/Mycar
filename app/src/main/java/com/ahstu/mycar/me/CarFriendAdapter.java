@@ -26,10 +26,12 @@ interface FriendAdpterOnItemClick {
 public class CarFriendAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<User> friendNameList;
+    private Context mContext;
     private FriendAdpterOnItemClick friendAdpterOnclick;
 //    private ArrayList<String> str;
 
     public CarFriendAdapter(Context context, List<User> str) {
+        mContext = context;
         mInflater = LayoutInflater.from(context);
         friendNameList = str;
     }

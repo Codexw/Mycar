@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/icon_mark"
         android:gravity="center"
+        android:maxEms="2"
+        android:singleLine="true"
         android:paddingBottom="10dp"
         android:textColor="@android:color/white"/>
 
