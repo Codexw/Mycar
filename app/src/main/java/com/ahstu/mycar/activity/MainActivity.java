@@ -397,9 +397,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener, M
     protected void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
-        if (mService.isPlay()) {
-            mService.pausePlay();
+        try {
+            if (mService.isPlay()) {
+                mService.pausePlay();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     @Override

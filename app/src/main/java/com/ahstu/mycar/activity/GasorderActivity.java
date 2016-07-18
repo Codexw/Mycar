@@ -1,6 +1,7 @@
 package com.ahstu.mycar.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -31,8 +32,11 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -53,6 +57,9 @@ public class GasorderActivity extends Activity {
     String[] gasprice;
     long h_number;
     String name;
+    ProgressDialog progress;
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +136,13 @@ public class GasorderActivity extends Activity {
                 } else {
                     String ss = gas_price.getText().toString().trim();
                     double sum = Double.parseDouble(ss.substring(0, ss.length() - 3));
-                    double cot = Double.parseDouble(editText.getText().toString().trim());
+                    double cot = 0;
+                    try {
+                        cot = Double.parseDouble(editText.getText().toString().trim());
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(GasorderActivity.this, "输入格式不对", Toast.LENGTH_SHORT).show();
+
+                    }
                     NumberFormat format = NumberFormat.getCurrencyInstance();
                     format.setMaximumFractionDigits(2);
                     format.setMinimumFractionDigits(1);
@@ -147,6 +160,10 @@ public class GasorderActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                progress = new ProgressDialog(GasorderActivity.this);
+                progress.setMessage("正在提交。。。");
+                progress.setCanceledOnTouchOutside(false);
+                progress.show();
                 //获取用户名
                 SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
                 name = sp.getString("name", "");
@@ -172,68 +189,109 @@ public class GasorderActivity extends Activity {
                     final String a = gas_price.getText().toString().trim();
                     final String b = editText.getText().toString();
                     //订单信息保存在服务器中
-                    User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
-                    final Order order = new Order();
-                    order.setUser(user);
-                    order.setStationname(station_name.getText().toString());
-                    order.setCtype(ctype);
-                    order.setGasprice(Double.valueOf(a.substring(0, a.length() - 3)));
-                    order.setCarnumber(carnumber);
-                    order.setGascount(Double.valueOf(b));
-                    order.setCountprice(count.getText().toString());
-                    order.setTime(time);
-                    order.setState(0);
-                    order.save(GasorderActivity.this, new SaveListener() {
-                        @Override
-                        public void onSuccess() {
-                            values.put("time", time);
-                            values.put("stationname", station_name.getText().toString());
-                            values.put("username", name);
-                            values.put("ctype", ctype);
+                    user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
 
-                            values.put("gasprice", Double.valueOf(a.substring(0, a.length() - 3)));
+                    if (user == null) {
+                        BmobQuery<User> qquser_query = new BmobQuery<User>();
+                        qquser_query.addWhereEqualTo("username", name);
+                        qquser_query.findObjects(GasorderActivity.this, new FindListener<User>() {
 
-                            values.put("gascount", Double.valueOf(b));
-                            values.put("carnumber", carnumber);
-                            values.put("countprice", count.getText().toString());
-                            values.put("state", 0);
-                            values.put("ordernumber", order.getObjectId().toString());
-                            h_number = data.insert("gasorder", null, values);
+                            @Override
+                            public void onSuccess(List<User> list) {
+                                user = list.get(0);
+                                final Order order = new Order();
+                                order.setUser(user);
+                                order.setStationname(station_name.getText().toString());
+                                order.setCtype(ctype);
+                                order.setGasprice(Double.valueOf(a.substring(0, a.length() - 3)));
+                                order.setCarnumber(carnumber);
+                                order.setGascount(Double.valueOf(b));
+                                order.setCountprice(count.getText().toString());
+                                order.setTime(time);
+                                order.setState(0);
+                                order.save(GasorderActivity.this, new SaveListener() {
+                                    @Override
+                                    public void onSuccess() {
+                                        values.put("time", time);
+                                        values.put("stationname", station_name.getText().toString());
+                                        values.put("username", name);
+                                        values.put("ctype", ctype);
 
-                            data.close();
-                            Intent intent = new Intent(GasorderActivity.this, OrderviewActivity.class);
-                            intent.putExtra("h_number", h_number + "");
-                            intent.putExtra("objectid", order.getObjectId().toString());
-                            startActivity(intent);
-                            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
-                            finish();
-                        }
+                                        values.put("gasprice", Double.valueOf(a.substring(0, a.length() - 3)));
 
-                        @Override
-                        public void onFailure(int i, String s) {
+                                        values.put("gascount", Double.valueOf(b));
+                                        values.put("carnumber", carnumber);
+                                        values.put("countprice", count.getText().toString());
+                                        values.put("state", 0);
+                                        values.put("ordernumber", order.getObjectId().toString());
+                                        h_number = data.insert("gasorder", null, values);
 
-                        }
-                    });
-                    //订单信息保存在本地
-//                    values.put("time", time);
-//                    values.put("stationname", station_name.getText().toString());
-//                    values.put("username", name);
-//                    values.put("ctype", ctype);
-//                    
-//                    values.put("gasprice", Double.valueOf(a.substring(0, a.length() - 3)));
-//                    
-//                    values.put("gascount", Double.valueOf(b));
-//                    values.put("carnumber", carnumber);
-//                    values.put("countprice", count.getText().toString());
-//                    values.put("state",0);
-//                    //values.put("ordernumber",order.getObjectId().toString());
-//                    long h_number = data.insert("gasorder", null, values);
-//                    
-//                    data.close();
+                                        data.close();
+                                        Intent intent = new Intent(GasorderActivity.this, OrderviewActivity.class);
+                                        intent.putExtra("h_number", h_number + "");
+                                        intent.putExtra("objectid", order.getObjectId().toString());
+                                        startActivity(intent);
+                                        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
+                                        finish();
+                                    }
 
+                                    @Override
+                                    public void onFailure(int i, String s) {
 
-                    // finish();
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError(int i, String s) {
+
+                            }
+                        });
+                    } else {
+                        final Order order = new Order();
+                        order.setUser(user);
+                        order.setStationname(station_name.getText().toString());
+                        order.setCtype(ctype);
+                        order.setGasprice(Double.valueOf(a.substring(0, a.length() - 3)));
+                        order.setCarnumber(carnumber);
+                        order.setGascount(Double.valueOf(b));
+                        order.setCountprice(count.getText().toString());
+                        order.setTime(time);
+                        order.setState(0);
+                        order.save(GasorderActivity.this, new SaveListener() {
+                            @Override
+                            public void onSuccess() {
+                                values.put("time", time);
+                                values.put("stationname", station_name.getText().toString());
+                                values.put("username", name);
+                                values.put("ctype", ctype);
+
+                                values.put("gasprice", Double.valueOf(a.substring(0, a.length() - 3)));
+
+                                values.put("gascount", Double.valueOf(b));
+                                values.put("carnumber", carnumber);
+                                values.put("countprice", count.getText().toString());
+                                values.put("state", 0);
+                                values.put("ordernumber", order.getObjectId().toString());
+                                h_number = data.insert("gasorder", null, values);//会崩
+
+                                data.close();
+                                Intent intent = new Intent(GasorderActivity.this, OrderviewActivity.class);
+                                intent.putExtra("h_number", h_number + "");
+                                intent.putExtra("objectid", order.getObjectId().toString());
+                                startActivity(intent);
+                                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                inputMethodManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
+                                finish();
+                            }
+
+                            @Override
+                            public void onFailure(int i, String s) {
+
+                            }
+                        });
+                    }
 
                 }
 

@@ -10,6 +10,15 @@ public class User extends BmobUser {
     private String myInstallation;
     private double mLat;
     private double mLon;
+    private String openId;
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 
     public String getMyInstallation() {
         return myInstallation;

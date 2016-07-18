@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
     >
 
@@ -23,7 +23,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/back"/>
+                android:background="@drawable/back" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                     android:padding="8dp"
                     android:text="歌单列表"
                     android:textColor="@color/song_title_text_sel"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/btn_allSongs"
@@ -56,7 +56,7 @@
                     android:padding="8dp"
                     android:text="全部音乐"
                     android:textColor="@color/song_title_text_sel"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
             </RadioGroup>
 
             <ImageView
@@ -67,7 +67,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/new_song_list"/>
+                android:background="@drawable/new_song_list" />
         </RelativeLayout>
 
 
@@ -89,7 +89,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
     </LinearLayout>
 
 </LinearLayout>

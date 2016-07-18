@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <include layout="@layout/title"/>
+    <include layout="@layout/title" />
     <!--<RelativeLayout
         android:id="@+id/rlt"
         android:layout_width="fill_parent"
@@ -49,14 +49,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="编辑"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="|"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tv_clear"
@@ -65,14 +65,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="清空歌曲"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/left_tv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="|"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tv_delete"
@@ -81,7 +82,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="删除此列表"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -100,7 +101,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="返回"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
 
         <TextView
@@ -110,7 +111,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="添加"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
     </LinearLayout>
 
     <ListView

@@ -1,49 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="10dip">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dip">
 
     <TextView
-        android:id="@+id/downCityName"
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:text="已下载城市 "/>
+        android:layout_weight="1"
+        android:text="已下载城市 " />
 
     <TextView
         android:id="@+id/update"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/downCityName"
+        android:layout_weight="1"
         android:text=""
-        android:textColor="#FF0000"/>
+        android:textColor="#FF0000" />
 
     <TextView
         android:id="@+id/ratio"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/update"
-        android:text=""/>
+        android:layout_weight="1"
+        android:text="" />
 
     <Button
         android:id="@+id/display"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/remove"
-        android:text="查看"/>
+        android:layout_weight="1"
+        android:text="查看" />
 
     <Button
         android:id="@+id/remove"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:text="删除"/>
+        android:layout_weight="1"
+        android:text="删除" />
 
-</RelativeLayout>
+</LinearLayout>

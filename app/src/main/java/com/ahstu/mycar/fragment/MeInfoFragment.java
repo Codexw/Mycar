@@ -3,6 +3,8 @@ package com.ahstu.mycar.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,9 +22,11 @@ import com.ahstu.mycar.activity.LoginActivity;
 import com.ahstu.mycar.activity.MeorderActivity;
 import com.ahstu.mycar.activity.MyApplication;
 import com.ahstu.mycar.bean.User;
+import com.ahstu.mycar.me.CircularImage;
 import com.ahstu.mycar.music.MusicDownloadActivity;
 import com.ahstu.mycar.music.MusicPlayService;
 
+import java.io.File;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -43,6 +47,7 @@ public class MeInfoFragment extends Fragment {
     TextView username;
     String name;
     private Button btn_exit;
+    private CircularImage headPicture;
 
     private MyApplication application;
     private MusicPlayService mService;
@@ -65,14 +70,40 @@ public class MeInfoFragment extends Fragment {
     }
 
     void initview() {
+
+
         SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
         name = sp.getString("name", "");
+        headPicture = (CircularImage) view.findViewById(R.id.cover_user_photo);//用户头像图片初始化
+
+        headPicture.setImageResource(R.drawable.head);
+        username = (TextView) view.findViewById(R.id.username);
+        username.setText(name);
+        
         me_mycar = (LinearLayout) view.findViewById(R.id.me_mycar);
         me_myform = (LinearLayout) view.findViewById(R.id.me_myform);
         me_music = (LinearLayout) view.findViewById(R.id.me_music);
         exit = (LinearLayout) view.findViewById(R.id.exit);
-        username = (TextView) view.findViewById(R.id.username);
-        username.setText(name);
+
+        if (name.startsWith("qq") && name.length() == 6)
+            headPicture.setImageBitmap(getDiskBitmap("/sdcard/mycarmusic/" + name + ".jpg"));
+        
+    }
+
+    //读取本地图片头像
+    private Bitmap getDiskBitmap(String pathString) {
+        Bitmap bitmap = null;
+        try {
+            File file = new File(pathString);
+            if (file.exists()) {
+                bitmap = BitmapFactory.decodeFile(pathString);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception  
+        }
+
+
+        return bitmap;
     }
 
     void click() {
@@ -152,5 +183,15 @@ public class MeInfoFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden) {
+            headPicture.setImageBitmap(getDiskBitmap("/sdcard/mycarmusic/" + name + ".jpg"));
+            if (getDiskBitmap("/sdcard/mycarmusic/" + name + ".jpg") == null)
+                headPicture.setImageResource(R.drawable.head);
+        }
+        super.onHiddenChanged(hidden);
     }
 }
