@@ -104,7 +104,6 @@ public class OfflineMapActivity2 extends Activity {
 
     /**
      * 将下载任务添加至下载队列
-     *
      * @param pos
      * @param cityId
      */

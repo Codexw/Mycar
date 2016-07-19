@@ -162,139 +162,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else if (et_password.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                 } else {
-                    try {
-                        progress = new ProgressDialog(LoginActivity.this);
-                        progress.setMessage("正在登陆...");
-                        progress.setCanceledOnTouchOutside(false);
-                        progress.show();//偶尔会打印出异常
-                    } catch (Exception e) {
-                        Log.e("LoginActivityProgress", e.toString());
-                    }
-
-                    final User user = new User();
-                    user.setUsername(et_username.getText().toString());
-                    user.setPassword(et_password.getText().toString());
-                    user.login(context, new SaveListener() {
-                        @Override
-                        public void onSuccess() {
-
-                            //更新当前登录用户的设备号
-                            BmobQuery<User> queryInstallation = new BmobQuery<User>();
-                            queryInstallation.addWhereEqualTo("username", et_username.getText().toString());
-                            queryInstallation.setLimit(1);
-                            queryInstallation.findObjects(LoginActivity.this, new FindListener<User>() {
-                                @Override
-                                public void onSuccess(List<User> list) {
-                                    for (User userIns : list) {
-                                        userIns.setMyInstallation(BmobInstallation.getInstallationId(LoginActivity.this));
-                                        userIns.update(LoginActivity.this, userIns.getObjectId(), new UpdateListener() {
-                                            @Override
-                                            public void onSuccess() {
-                                            }
-
-                                            @Override
-                                            public void onFailure(int i, String s) {
-                                            }
-                                        });
-                                    }
-                                }
-
-                                @Override
-                                public void onError(int i, String s) {
-
-                                }
-                            });
-
-
-                            //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
-                            final User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
-                            BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
-                            query.addWhereEqualTo("user", user);
-                            query.order("-updatedAt");
-                            query.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
-                                @Override
-                                public void onSuccess(List<Carinfomation> list) {
-
-                                    for (int i = 0; i < list.size(); i++) {
-                                        Carinfomation carinfomation = list.get(i);
-                                        new Asyntask().execute(carinfomation);
-                                    }
-                                }
-
-                                @Override
-                                public void onError(int i, String s) {
-                                }
-
-                            });
-
-                            //从服务器获取订单信息
-                            BmobQuery<Order> orderquery = new BmobQuery<Order>();
-                            orderquery.addWhereEqualTo("user", user);
-                            orderquery.order("-updatedAt");
-                            orderquery.findObjects(LoginActivity.this, new FindListener<Order>() {
-                                @Override
-                                public void onSuccess(List<Order> list) {
-                                    DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
-                                    SQLiteDatabase db = helper.getWritableDatabase();
-                                    for (int i = list.size() - 1; i >= 0; i--) {
-                                        Order order = new Order();
-                                        order = list.get(i);
-                                        ContentValues values = new ContentValues();
-                                        values.put("stationname", order.getStationname());
-                                        values.put("carnumber", order.getCarnumber());
-                                        values.put("username", user.getUsername().toString());
-                                        values.put("ctype", order.getCtype());
-                                        values.put("gascount", order.getGascount());
-                                        values.put("countprice", order.getCountprice());
-                                        values.put("gasprice", order.getGasprice());
-                                        values.put("time", order.getTime());
-                                        values.put("ordernumber", order.getObjectId());
-                                        values.put("state", order.getState());
-                                        db.insert("gasorder", null, values);
-
-                                    }
-//                                    try {
-//                                        progress.dismiss();//java.lang.IllegalArgumentException: View not attached to window manager 会崩
-//                                    }
-//                                    catch(Exception e)
-//                                    { 
-//                                        
-//                                    }
-                                    db.close();
-                                }
-
-                                @Override
-                                public void onError(int i, String s) {
-
-                                }
-                            });
-
-
-                            //登录成功就将用户的信息保存到本地sharepreference数据库中
-                            SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
-                            //存入数据
-                            SharedPreferences.Editor editor = sp.edit();
-                            editor.putString("name", et_username.getText().toString());
-                            editor.putString("password", et_password.getText().toString());
-                            editor.commit();
-
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
-                            finish();
-
-                        }
-
-                        @Override
-                        public void onFailure(int i, String s) {
-                            progress.dismiss();
-                            if (i == 9016) {
-                                Toast.makeText(LoginActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
-                            } else if (i == 101) {
-                                Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
-                            } else
-                                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    loginSuccess(et_username.getText().toString(), et_password.getText().toString());
                 }
                 break;
             case R.id.btn_register:
@@ -310,6 +178,137 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 //                }
                 break;
         }
+    }
+
+
+    public void loginSuccess(final String username, final String password) {
+        try {
+            progress = new ProgressDialog(LoginActivity.this);
+            progress.setMessage("正在登陆...");
+            progress.setCanceledOnTouchOutside(false);
+
+            progress.show();//偶尔会打印出异常
+        } catch (Exception e) {
+            Log.e("LoginActivityProgress", e.toString());
+        }
+        final User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.login(context, new SaveListener() {
+            @Override
+            public void onSuccess() {
+
+                //更新当前登录用户的设备号
+                BmobQuery<User> queryInstallation = new BmobQuery<User>();
+                queryInstallation.addWhereEqualTo("username", username);
+                queryInstallation.setLimit(1);
+                queryInstallation.findObjects(LoginActivity.this, new FindListener<User>() {
+                    @Override
+                    public void onSuccess(List<User> list) {
+                        for (User userIns : list) {
+                            userIns.setMyInstallation(BmobInstallation.getInstallationId(LoginActivity.this));
+                            userIns.update(LoginActivity.this, userIns.getObjectId(), new UpdateListener() {
+                                @Override
+                                public void onSuccess() {
+                                }
+
+                                @Override
+                                public void onFailure(int i, String s) {
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+
+                    }
+                });
+
+
+                //用户登录的时候，查询数据库，把车辆数据存放在本地数据库中。
+                final User user = BmobUser.getCurrentUser(getApplicationContext(), User.class);
+                BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
+                query.addWhereEqualTo("user", user);
+                query.order("-updatedAt");
+                query.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
+                    @Override
+                    public void onSuccess(List<Carinfomation> list) {
+
+                        for (int i = 0; i < list.size(); i++) {
+                            Carinfomation carinfomation = list.get(i);
+                            new Asyntask().execute(carinfomation);
+                        }
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+                    }
+
+                });
+
+                //从服务器获取订单信息
+                BmobQuery<Order> orderquery = new BmobQuery<Order>();
+                orderquery.addWhereEqualTo("user", user);
+                orderquery.order("-updatedAt");
+                orderquery.findObjects(LoginActivity.this, new FindListener<Order>() {
+                    @Override
+                    public void onSuccess(List<Order> list) {
+                        DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
+                        SQLiteDatabase db = helper.getWritableDatabase();
+                        for (int i = list.size() - 1; i >= 0; i--) {
+                            Order order = new Order();
+                            order = list.get(i);
+                            ContentValues values = new ContentValues();
+                            values.put("stationname", order.getStationname());
+                            values.put("carnumber", order.getCarnumber());
+                            values.put("username", username);
+                            values.put("ctype", order.getCtype());
+                            values.put("gascount", order.getGascount());
+                            values.put("countprice", order.getCountprice());
+                            values.put("gasprice", order.getGasprice());
+                            values.put("time", order.getTime());
+                            values.put("ordernumber", order.getObjectId());
+                            values.put("state", order.getState());
+                            db.insert("gasorder", null, values);
+
+                        }
+                        db.close();
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+
+                    }
+                });
+
+
+                //登录成功就将用户的信息保存到本地sharepreference数据库中
+                SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
+                //存入数据
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("name", username);
+                editor.putString("password", password);
+                editor.commit();
+
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+                finish();
+
+            }
+
+
+            @Override
+            public void onFailure(int i, String s) {
+                progress.dismiss();
+                if (i == 9016) {
+                    Toast.makeText(LoginActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
+                } else if (i == 101) {
+                    Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // 动画效果
@@ -383,7 +382,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     //保存头像图片到本地
     public void savePicture(Bitmap bitmap) {
-        String pictureName = "/sdcard/mycarmusic/qq" + openId.substring(0, 4) + ".jpg";
+        String pictureName = "/sdcard/Mycar/bnav/cache/qq" + openId.substring(0, 4) + ".jpg";
         File file = new File(pictureName);
         FileOutputStream out;
         try {
@@ -492,7 +491,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             value.put("car_number", carinfomation.getCar_number());
             value.put("car_brand", carinfomation.getCar_brand());
             value.put("car_model", carinfomation.getCar_model());
-            // value.put("car_sign", carinfomation.getCar_sign()); //圖片加載出現bug，由於網絡問題
+            // value.put("car_sign", carinfomation.getCar_sign()); //
             value.put("car_enginerno", carinfomation.getCar_enginerno());
             value.put("car_level", carinfomation.getCar_level());
             value.put("car_mile", carinfomation.getCar_mile());
@@ -573,7 +572,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
 //			Util.showResultDialog(MainActivity.this, response.toString(), "登录成功");
-            Toast.makeText(LoginActivity.this, "账号登录成功", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(LoginActivity.this, "账号登录成功", Toast.LENGTH_SHORT).show();
             doComplete((JSONObject) response);
 
             updateUserInfo();
@@ -626,108 +625,19 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             //Toast.makeText(CarinformationActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
                         }
                     });
+
+                    loginSuccess(username, openId);
                 }
 
                 @Override
                 public void onFailure(int i, String s) {
                     if (i == 202) {
-
-                        BmobQuery<User> qquser_query = new BmobQuery<User>();
-                        qquser_query.addWhereEqualTo("username", username);
-                        qquser_query.findObjects(LoginActivity.this, new FindListener<User>() {
-                            @Override
-                            public void onSuccess(List<User> list) {
-
-                                qqusery = list.get(0);
-                                BmobQuery<Carinfomation> query = new BmobQuery<Carinfomation>();
-                                query.addWhereEqualTo("user", qqusery);
-                                query.findObjects(LoginActivity.this, new FindListener<Carinfomation>() {
-
-                                    @Override
-                                    public void onSuccess(List<Carinfomation> list) {
-                                        for (int i = 0; i < list.size(); i++) {
-                                            Carinfomation carinfomation = list.get(i);
-
-                                            new Asyntask().execute(carinfomation);
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(int i, String s) {
-                                    }
-
-                                });
-
-
-                                //从服务器获取订单信息
-                                BmobQuery<Order> orderquery = new BmobQuery<Order>();
-                                orderquery.addWhereEqualTo("user", qqusery);
-                                orderquery.order("-updatedAt");
-                                orderquery.findObjects(LoginActivity.this, new FindListener<Order>() {
-                                    @Override
-                                    public void onSuccess(List<Order> list) {
-                                        DatabaseHelper helper = new DatabaseHelper(LoginActivity.this, "node.db", null, 1);
-                                        SQLiteDatabase db = helper.getWritableDatabase();
-                                        for (int i = list.size() - 1; i >= 0; i--) {
-                                            Order order = new Order();
-                                            order = list.get(i);
-                                            ContentValues values = new ContentValues();
-                                            values.put("stationname", order.getStationname());
-                                            values.put("carnumber", order.getCarnumber());
-                                            values.put("username", qqusery.getUsername());
-                                            values.put("ctype", order.getCtype());
-                                            values.put("gascount", order.getGascount());
-                                            values.put("countprice", order.getCountprice());
-                                            values.put("gasprice", order.getGasprice());
-                                            values.put("time", order.getTime());
-                                            values.put("ordernumber", order.getObjectId());
-                                            values.put("state", order.getState());
-                                            db.insert("gasorder", null, values);
-
-                                        }
-//                                    try {
-//                                        progress.dismiss();//java.lang.IllegalArgumentException: View not attached to window manager 会崩
-//                                    }
-//                                    catch(Exception e)
-//                                    { 
-//                                        
-//                                    }
-                                        db.close();
-                                    }
-
-                                    @Override
-                                    public void onError(int i, String s) {
-
-                                    }
-                                });
-
-
-                            }
-
-                            @Override
-                            public void onError(int i, String s) {
-                            }
-
-                        });
-
+                        loginSuccess(username, openId);
+                        return;
                     } else
                         Toast.makeText(context, "注册失败" + s + i, Toast.LENGTH_SHORT).show();  //调试
                 }
             });
-
-
-            //qq验证成功就将用户的信息保存到本地数据库中
-            SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
-            //存入数据
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putString("name", username);
-            editor.putString("password", openId);
-
-//            Toast.makeText(LoginActivity.this,username,Toast.LENGTH_SHORT).show();
-            editor.commit();
-
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
         }
 
         protected void doComplete(JSONObject values) {

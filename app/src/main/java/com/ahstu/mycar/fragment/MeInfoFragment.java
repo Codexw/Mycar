@@ -85,7 +85,7 @@ public class MeInfoFragment extends Fragment {
         exit = (LinearLayout) view.findViewById(R.id.exit);
 
         if (name.startsWith("qq") && name.length() == 6)
-            headPicture.setImageBitmap(getDiskBitmap("/sdcard/mycarmusic/" + name + ".jpg"));
+            headPicture.setImageBitmap(getDiskBitmap("/sdcard/Mycar/bnav/cache/" + name + ".jpg"));
         
     }
 
@@ -189,8 +189,8 @@ public class MeInfoFragment extends Fragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
-            headPicture.setImageBitmap(getDiskBitmap("/sdcard/mycarmusic/" + name + ".jpg"));
-            if (getDiskBitmap("/sdcard/mycarmusic/" + name + ".jpg") == null)
+            headPicture.setImageBitmap(getDiskBitmap("/sdcard/Mycar/bnav/cache/" + name + ".jpg"));
+            if (getDiskBitmap("/sdcard/Mycar/bnav/cache/" + name + ".jpg") == null)
                 headPicture.setImageResource(R.drawable.head);
         }
         super.onHiddenChanged(hidden);
