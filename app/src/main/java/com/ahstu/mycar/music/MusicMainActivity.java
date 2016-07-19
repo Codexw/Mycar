@@ -208,7 +208,7 @@ public class MusicMainActivity extends Activity {
 
                     isReturePlaylist = true;
                     Intent it = new Intent();
-                    it.putExtra("playListName", name);
+                    it.putExtra("listname", name);
                     it.putExtra("autoAddSong", true);
                     it.setClass(MusicMainActivity.this, PlaylistSongActivity.class);
                     startActivity(it);

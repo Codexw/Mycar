@@ -392,12 +392,12 @@
         "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\btn_mapfragment_loc.xml"
     },
     {
-        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\charge.png",
-        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\charge.png"
-    },
-    {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_false.png",
         "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\check_box_false.png"
+    },
+    {
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\charge.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\drawable\\charge.png"
     },
     {
         "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\frame.xml",
