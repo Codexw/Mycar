@@ -162,10 +162,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else if (et_password.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                 } else {
-                    progress = new ProgressDialog(LoginActivity.this);
-                    progress.setMessage("正在登陆...");
-                    progress.setCanceledOnTouchOutside(false);
                     try {
+                        progress = new ProgressDialog(LoginActivity.this);
+                        progress.setMessage("正在登陆...");
+                        progress.setCanceledOnTouchOutside(false);
                         progress.show();//偶尔会打印出异常
                     } catch (Exception e) {
                         Log.e("LoginActivityProgress", e.toString());
