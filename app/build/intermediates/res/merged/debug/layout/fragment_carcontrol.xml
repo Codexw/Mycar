@@ -429,13 +429,12 @@
                                     android:layout_height="match_parent"
                                     android:layout_alignParentRight="true"
                                     android:gravity="center"/>
-
                             </RelativeLayout>
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="@color/dark_grey"></View>
+                                android:background="@color/dark_grey"/>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"

@@ -71,7 +71,6 @@ public class MeInfoFragment extends Fragment {
 
     void initview() {
 
-
         SharedPreferences sp = getActivity().getSharedPreferences("User", getActivity().MODE_PRIVATE);
         name = sp.getString("name", "");
         headPicture = (CircularImage) view.findViewById(R.id.cover_user_photo);//用户头像图片初始化
@@ -122,6 +121,8 @@ public class MeInfoFragment extends Fragment {
                 BmobQuery<User> queryInstallation = new BmobQuery<User>();
                 queryInstallation.addWhereEqualTo("username", name);
                 queryInstallation.setLimit(1);
+                Log.e("MeInfo", name);
+
                 queryInstallation.findObjects(mContext, new FindListener<User>() {
                     @Override
                     public void onSuccess(List<User> list) {
