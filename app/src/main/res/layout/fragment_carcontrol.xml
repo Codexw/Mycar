@@ -161,6 +161,7 @@
                                 android:layout_marginRight="10dp">
 
                                 <TextView
+                                    android:id="@+id/tv"
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     android:gravity="center_vertical"
@@ -169,10 +170,10 @@
 
                                 <TextView
                                     android:id="@+id/car_set_number"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_alignParentRight="true"
-                                    android:gravity="center_vertical"
+                                    android:layout_toRightOf="@id/tv"
+                                    android:gravity="center"
                                     android:text="12346"
                                     android:textSize="18dp"/>
 
@@ -379,22 +380,20 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="@color/dark_grey"></View>
+                                android:background="@color/dark_grey"/>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp">
+                                android:layout_marginRight="20dp">
 
                                 <TextView
                                     android:layout_width="100dp"
                                     android:layout_height="match_parent"
                                     android:gravity="center_vertical"
                                     android:text="车灯状况"
-                                    android:textSize="18dp"
-
-                                    />
+                                    android:textSize="18dp"/>
 
                                 <TextView
                                     android:id="@+id/car_control_light"
@@ -415,7 +414,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp">
+                                android:layout_marginRight="20dp">
 
                                 <TextView
                                     android:layout_width="100dp"
@@ -442,7 +441,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp">
+                                android:layout_marginRight="20dp">
 
                                 <TextView
                                     android:layout_width="100dp"

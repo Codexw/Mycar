@@ -1,0 +1,14 @@
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\music\MusicMainActivity$4$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\fragment\MeInfoFragment$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\fragment\MapFragment$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\music\ListViewAdapter$ViewHolder$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\R$id$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\GasorderActivity$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\adapter\PriceListAdapter$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\adapter\ListGridViewAdapter$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\me\FriendNotificationService$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\activity\MapMenuActivity$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\fragment\FindFragment$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\fragment\CarControlFragment$override.class
+CHANGED,F:\Android_Studio_Workspace\Car\MyCar\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\ahstu\mycar\music\MusicMainActivity$override.class
