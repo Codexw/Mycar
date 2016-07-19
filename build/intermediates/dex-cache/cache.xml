@@ -12,7 +12,7 @@
         jar="E:\Android\Demo\Car\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="9da19d810a9bf0db0947e4a2de10f2f6ff7c7272">
+        sha1="7b4545b63289af64e37b605aaae610262bf14bd1">
         <dex dex="E:\Android\Demo\Car\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_c207f0f7469425d380f673cde853b58f9ff5fd08.jar" />
     </item>
     <item
@@ -75,7 +75,7 @@
         jar="E:\Android\Demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\jars\libs\zxing.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="a2e0c2df1a181f0624dc963ce67fe6bf0a6dcdb4">
+        sha1="5b0845e6849237c6a8e948ea269f4e29bb6b56f0">
         <dex dex="E:\Android\Demo\Car\app\build\intermediates\pre-dexed\debug\zxing_8404a91e2ce396feb6e72d0b39bda766314efd49.jar" />
     </item>
     <item
@@ -124,7 +124,7 @@
         jar="E:\Android\Demo\Car\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="1ced4e50bea74ab7f3322248387af9f9e0d0eb00">
+        sha1="798061977af0654ae87edb0bad33690d250a3e3b">
         <dex dex="E:\Android\Demo\Car\app\build\intermediates\pre-dexed\debug\instant-run_f354cb1b9a7624f43875e8b185601391202c13e0.jar" />
     </item>
     <item

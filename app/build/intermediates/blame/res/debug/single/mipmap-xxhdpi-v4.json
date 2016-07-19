@@ -1,10 +1,10 @@
 [
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\notification_head.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\mipmap-xxhdpi\\notification_head.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\notification_head.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-xxhdpi\\notification_head.png"
     },
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "E:\\Android\\Demo\\Car\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "E:\\Android\\Demo\\Car\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }
 ]

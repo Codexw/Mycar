@@ -15,23 +15,6 @@ public class OfflineMapCityBean {
 
     private Flag flag = Flag.NO_STATUS;
 
-    /**
-     * 下载的状态：无状态，暂停，正在下载
-     *
-     * @author zhy
-     */
-    public enum Flag {
-        NO_STATUS, PAUSE, DOWNLOADING
-    }
-
-    public Flag getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Flag flag) {
-        this.flag = flag;
-    }
-
     public OfflineMapCityBean() {
     }
 
@@ -40,6 +23,14 @@ public class OfflineMapCityBean {
         this.cityCode = cityCode;
         this.progress = progress;
         this.size = size;
+    }
+
+    public Flag getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Flag flag) {
+        this.flag = flag;
     }
 
     public String getCityName() {
@@ -72,5 +63,14 @@ public class OfflineMapCityBean {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    /**
+     * 下载的状态：无状态，暂停，正在下载
+     *
+     * @author zhy
+     */
+    public enum Flag {
+        NO_STATUS, PAUSE, DOWNLOADING
     }
 }
