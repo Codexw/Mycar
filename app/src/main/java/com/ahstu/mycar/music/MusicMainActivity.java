@@ -135,11 +135,11 @@ public class MusicMainActivity extends Activity {
                 List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                 for (int i = 0; i < songs.size(); i++) {
                     Map<String, Object> map = new HashMap<String, Object>();
-                    map.put("songName", "歌曲名: " + songs.get(i).getName());
+                    map.put("songName", songs.get(i).getName());
                     if (songs.get(i).getSingerName().equals("<unknown>")) {
                         map.put("singerName", "未知歌手");
                     } else {
-                        map.put("singerName", "歌手: " + songs.get(i).getSingerName());
+                        map.put("singerName", songs.get(i).getSingerName());
                     }
                     listItems.add(map);
                 }

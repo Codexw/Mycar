@@ -74,7 +74,7 @@ public class PlaylistSongActivity extends Activity {
         initView();
         iv_back.setVisibility(View.VISIBLE);
         initListener();
-        
+
 
         Intent intent = getIntent();
         String songlist_name = intent.getStringExtra("listname");

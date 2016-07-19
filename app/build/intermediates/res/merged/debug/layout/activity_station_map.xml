@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:clickable="true" />
+        android:clickable="true"/>
 
     <RelativeLayout
         android:id="@+id/register_title_bar"
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="附近加油站"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <ImageView
             android:id="@+id/iv_list"
@@ -37,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:src="@drawable/station_list" />
+            android:src="@drawable/station_list"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -64,14 +64,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawableRight="@drawable/v_dotted_line"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <View
@@ -79,7 +79,7 @@
             android:layout_height="1px"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:background="@color/dark_grey" />
+            android:background="@color/dark_grey"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -91,7 +91,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/tv_price_b"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"/>
         </LinearLayout>
     </LinearLayout>
 
