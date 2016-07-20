@@ -13,14 +13,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ahstu.mycar.R;
 import com.ahstu.mycar.adapter.RadioAdapter;
 import com.ahstu.mycar.bean.Carinfomation;
-import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.bean.Carmodel;
+import com.ahstu.mycar.bean.User;
 import com.ahstu.mycar.sql.DatabaseHelper;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +42,7 @@ public class CarListActivity extends Activity {
     ListView carlist;
     ImageView image;
     LinearLayout linear1, linear2;
-
+    Bundle bundle;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_activity_list);
@@ -79,11 +83,47 @@ public class CarListActivity extends Activity {
             case 0:
                 if (resultCode == RESULT_OK) {
 
-                    final Bundle bundle = data.getExtras();
-                    Intent intent = new Intent();
-                    intent.putExtras(bundle);
-                    intent.setClass(CarListActivity.this, CarinformationActivity.class);
-                    startActivity(intent);
+                    final Bundle bundles = data.getExtras();
+                    String s = bundles.getString("result");
+                    if (s.equals("")) {
+                        Toast.makeText(this, "扫描失败", Toast.LENGTH_SHORT).show();
+                    } else if (s.contains("car_")) {
+                        try {
+                            JSONObject content = new JSONObject(s);
+                            bundle = new Bundle();
+                            bundle.putString("car_number", content.getString("car_number"));
+                            bundle.putString("car_sign", content.getString("car_sign"));
+                            bundle.putString("car_brand", content.getString("car_brand"));
+                            bundle.putString("car_model", content.getString("car_model"));
+                            bundle.putString("car_enginerno", content.getString("car_enginerno"));
+                            bundle.putString("car_frame", content.getString("car_frame"));
+                            bundle.putInt("car_box", content.getInt("car_box"));
+                            bundle.putString("car_level", content.getString("car_level"));
+                            bundle.putInt("car_mile", content.getInt("car_mile"));
+                            bundle.putInt("car_gas", content.getInt("car_gas"));
+                            bundle.putString("car_enginerstate", content.getString("car_enginerstate"));
+                            bundle.putString("car_shiftstate", content.getString("car_shiftstate"));
+                            bundle.putString("car_light", content.getString("car_light"));
+                            bundle.putBoolean("car_start", content.getBoolean("car_start"));
+                            bundle.putBoolean("car_air", content.getBoolean("car_air"));
+                            bundle.putBoolean("car_door", content.getBoolean("car_door"));
+                            bundle.putBoolean("car_lock", content.getBoolean("car_lock"));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Intent intent = new Intent();
+                        intent.putExtras(bundle);
+                        intent.setClass(CarListActivity.this, CarinformationActivity.class);
+                        startActivity(intent);
+                        // Toast.makeText(this,"扫描成功",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent();
+                        intent.putExtras(bundles);
+                        intent.setClass(CarListActivity.this, ScanresultActivity.class);
+                        startActivity(intent);
+
+                    }
                 }
                 break;
         }

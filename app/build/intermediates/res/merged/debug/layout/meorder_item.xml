@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
 
     >
 
@@ -13,7 +13,7 @@
         android:layout_marginLeft="5dp"
         android:gravity="center"
         android:text="加油站名称"
-        android:textSize="18dp"/>
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/order_item_text3"
@@ -24,7 +24,7 @@
         android:layout_toRightOf="@id/order_item_text1"
         android:gravity="center"
         android:text="车油类型"
-        android:textSize="18dp"/>
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/order_item_text4"
@@ -36,7 +36,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="订单状态"
-        android:textSize="18dp"/>
+        android:textSize="18dp" />
 
     <TextView
 
@@ -49,5 +49,5 @@
         android:gravity="center"
         android:paddingRight="5dp"
         android:text="时间"
-        android:textSize="10dp"/>
+        android:textSize="10dp" />
 </RelativeLayout>

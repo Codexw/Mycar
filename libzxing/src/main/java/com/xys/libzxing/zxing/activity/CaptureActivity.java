@@ -16,7 +16,6 @@
 package com.xys.libzxing.zxing.activity;
 
 import android.app.Activity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,9 +39,6 @@ import com.xys.libzxing.zxing.decode.DecodeThread;
 import com.xys.libzxing.zxing.utils.BeepManager;
 import com.xys.libzxing.zxing.utils.CaptureActivityHandler;
 import com.xys.libzxing.zxing.utils.InactivityTimer;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -162,33 +158,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         Intent resultIntent = new Intent();
         bundle.putInt("width", mCropRect.width());
         bundle.putInt("height", mCropRect.height());
-
-        try {
-            JSONObject content = new JSONObject(rawResult.getText());
-            bundle.putString("car_number", content.getString("car_number"));
-            bundle.putString("car_sign", content.getString("car_sign"));
-            bundle.putString("car_brand", content.getString("car_brand"));
-            bundle.putString("car_model", content.getString("car_model"));
-            bundle.putString("car_enginerno", content.getString("car_enginerno"));
-            bundle.putString("car_frame", content.getString("car_frame"));
-            bundle.putInt("car_box", content.getInt("car_box"));
-            bundle.putString("car_level", content.getString("car_level"));
-            bundle.putInt("car_mile", content.getInt("car_mile"));
-            bundle.putInt("car_gas", content.getInt("car_gas"));
-            bundle.putString("car_enginerstate", content.getString("car_enginerstate"));
-            bundle.putString("car_shiftstate", content.getString("car_shiftstate"));
-            bundle.putString("car_light", content.getString("car_light"));
-            bundle.putBoolean("car_start", content.getBoolean("car_start"));
-            bundle.putBoolean("car_door", content.getBoolean("car_door"));
-            bundle.putBoolean("car_air", content.getBoolean("car_air"));
-            bundle.putBoolean("car_lock", content.getBoolean("car_lock"));
-
-            resultIntent.putExtras(bundle);
-            this.setResult(RESULT_OK, resultIntent);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //this.setResult(RESULT_OK, resultIntent);
+        bundle.putString("result", rawResult.getText());
+        resultIntent.putExtras(bundle);
+        this.setResult(RESULT_OK, resultIntent);
         CaptureActivity.this.finish();
     }
 

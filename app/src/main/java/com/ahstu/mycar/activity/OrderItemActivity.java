@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +58,9 @@ public class OrderItemActivity extends Activity {
     private String station_name, station_style;
     private Double total_price;
     private int PLUGINVERSION = 7;
+    private RadioGroup pay_type;
+    private boolean pay_state = false;
+    private LinearLayout not_paid_linear;
 
 
     @Override
@@ -81,6 +86,8 @@ public class OrderItemActivity extends Activity {
         erweima = (ImageView) findViewById(R.id.info_erweima);
         meorder_back = (ImageView) findViewById(R.id.meorderback);
         paid_btn = (Button) findViewById(R.id.not_paid_btn);
+        pay_type = (RadioGroup) findViewById(R.id.notpay_type);
+        not_paid_linear = (LinearLayout) findViewById(R.id.not_paid_linear);
 
     }
 
@@ -121,7 +128,7 @@ public class OrderItemActivity extends Activity {
                 info_state.setText("待支付");
             else if (state == 1) {
                 info_state.setText("已支付");
-                paid_btn.setVisibility(View.GONE);
+                not_paid_linear.setVisibility(View.GONE);
             }
             JSONObject json = new JSONObject();
             try {
@@ -147,6 +154,15 @@ public class OrderItemActivity extends Activity {
                 finish();
             }
         });
+        pay_type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (pay_type.getCheckedRadioButtonId() == R.id.notpay_wxpay)
+                    pay_state = false;
+                else
+                    pay_state = true;
+            }
+        });
         paid_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,7 +178,7 @@ public class OrderItemActivity extends Activity {
                 }
 
                 //订单支付
-                BP.pay("加油站订单支付", station_name + " " + station_style, total_price, true
+                BP.pay("加油站订单支付", station_name + " " + station_style, total_price, pay_state
                         , new PListener() {
 
                             @Override

@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.ahstu.mycar">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ahstu.mycar">
     <!-- 使用开源包 -->
-    <uses-sdk tools:overrideLibrary="com.xys.libzxing"/>
+    <uses-sdk tools:overrideLibrary="com.xys.libzxing" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 监听网络的变化 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 设备休眠 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- sd卡存储 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 摄像头 -->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <!-- 通知震动 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="android.permission.ACCESS_GPS"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
     <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
-    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <!-- 来电消音 -->
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="cn.bmob.permission.push"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="cn.bmob.permission.push" />
     <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 推送所需的权限 -->
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
     <!-- SDK2.1新增获取用户位置信息 -->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="false"
         android:resizeable="true"
-        android:smallScreens="true"/>
+        android:smallScreens="true" />
 
     <application
         android:name=".activity.MyApplication"
@@ -67,153 +67,156 @@
         <!-- 百度sdk开发秘钥 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="E4uS5WyvGueNNOj1s2tawub6YwxTHWbr"/>
+            android:value="cm3t1Bp56TFxrVYKEr7NQuj4B4fUEkDH" />
         <!-- 聚合openid -->
         <meta-data
             android:name="com.thinkland.juheapi.openid"
-            android:value="JH6bbab71326043ab6bbbbb6d70ba94028"/>
+            android:value="JH6bbab71326043ab6bbbbb6d70ba94028" />
 
         <activity
             android:name="c.b.a.A"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name="c.b.a.B"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent"/>
+            android:theme="@android:style/Theme.Translucent" />
         <activity
             android:name=".activity.SplashActivity"
             android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RegisterPhoneActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RegisterUserMsgActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SearchLatLonActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.StationInfoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.StationListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".music.MusicMainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".music.AddSongtoPlaylistActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".music.PlaylistSongActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BDSearchGuideActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BDStationGuideActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CarQueryActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CityListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ProvinceListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WeizhangResultActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CarinformationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CarListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MeCarActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.GasorderActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MeorderActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.OrderItemActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MapMenuActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".music.MusicDownloadActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.StationMapActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".me.SearchFriendActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.OrderviewActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.OfflineMapActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BaseMapActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
             android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent222222"/>
+                <data android:scheme="tencent222222" />
                 <!-- 100380359 100381104 222222 -->
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ScanresultActivity"
+            android:screenOrientation="portrait" />
 
-        <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
-        <service android:name=".music.MusicPlayService"/>
+        <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
+        <service android:name=".music.MusicPlayService" />
 
         <!-- 百度地图定位的service -->
         <service
             android:name="com.baidu.location.f"
-            android:enabled="true"/>
+            android:enabled="true" />
         <service
             android:name="cn.bmob.push.lib.service.PushService"
             android:exported="true"
             android:label="PushService">
             <intent-filter>
-                <action android:name="cn.bmob.push.lib.service.PushService"/>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
         </service>
 
@@ -221,22 +224,23 @@
             <intent-filter>
 
                 <!-- 系统启动完成后会调用 -->
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- 解锁完成后会调用 -->
-                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
                 <!-- 监听网络连通性 -->
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
         <receiver android:name=".me.PushMessageReceiver">
             <intent-filter>
-                <action android:name="cn.bmob.push.action.MESSAGE"/>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".me.FriendNotificationService"/>
+        <service android:name=".me.FriendNotificationService" />
 
         <activity android:name=".activity.RegisterLawsActivity"></activity>
+        <activity android:name=".activity.OfflineMapActivity2" />
     </application>
 
 </manifest>
