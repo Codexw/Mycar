@@ -14,14 +14,15 @@ import com.ahstu.mycar.R;
 public class ScanresultActivity extends Activity {
     TextView result;
     ImageView scan_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
         final Bundle bundle = getIntent().getExtras();
-        String s=bundle.getString("result");
-        result=(TextView)findViewById(R.id.scan_result);
-        scan_back=(ImageView)findViewById(R.id.scan_back);
+        String s = bundle.getString("result");
+        result = (TextView) findViewById(R.id.scan_result);
+        scan_back = (ImageView) findViewById(R.id.scan_back);
         scan_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,5 +31,5 @@ public class ScanresultActivity extends Activity {
         });
         result.setText(s);
     }
-    
+
 }

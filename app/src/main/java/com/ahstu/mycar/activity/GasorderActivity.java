@@ -160,10 +160,7 @@ public class GasorderActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                progress = new ProgressDialog(GasorderActivity.this);
-                progress.setMessage("正在提交。。。");
-                progress.setCanceledOnTouchOutside(false);
-                progress.show();
+
                 //获取用户名
                 SharedPreferences sp = getSharedPreferences("User", MODE_PRIVATE);
                 name = sp.getString("name", "");
@@ -185,7 +182,10 @@ public class GasorderActivity extends Activity {
 
 
                 } else {
-
+                    progress = new ProgressDialog(GasorderActivity.this);
+                    progress.setMessage("正在提交。。。");
+                    progress.setCanceledOnTouchOutside(false);
+                    progress.show();
                     final String a = gas_price.getText().toString().trim();
                     final String b = editText.getText().toString();
                     //订单信息保存在服务器中

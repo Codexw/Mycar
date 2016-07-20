@@ -1,22 +1,22 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:2:1-243:12
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:2:1-245:12
 	package
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:4:11-36
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:4:5-30
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:3:11-57
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:3:5-51
 	xmlns:android
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 uses-sdk
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:6:5-57
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:6:5-58
 MERGED from [com.android.support:appcompat-v7:22.2.1] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:22.2.1] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\AndroidManifest.xml:7:5-9:41
@@ -29,125 +29,125 @@ MERGED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediat
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:8:5-66
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:8:5-67
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:8:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:10:5-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:10:5-79
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:10:22-76
 uses-permission#android.permission.CHANGE_NETWORK_STATE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:11:5-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:11:5-79
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:11:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:12:5-75
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:12:5-76
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:12:22-73
 uses-permission#android.permission.WAKE_LOCK
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:14:5-67
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:14:5-68
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:14:22-65
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:15:5-74
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:15:5-75
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:15:22-72
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:17:5-79
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:17:5-80
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:17:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:18:5-80
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:18:5-81
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:18:22-78
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:19:5-83
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:19:5-84
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:19:22-81
 uses-permission#android.permission.CAMERA
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:21:5-64
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:21:5-65
 MERGED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\AndroidManifest.xml:11:5-65
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:21:22-62
 uses-permission#android.permission.VIBRATE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:23:5-65
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:23:5-66
 MERGED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\AndroidManifest.xml:12:5-66
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:23:22-63
 uses-permission#com.android.launcher.permission.READ_SETTINGS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:24:5-84
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:24:5-85
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:24:22-82
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:25:5-75
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:25:5-76
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:25:22-73
 uses-permission#android.permission.GET_TASKS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:26:5-67
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:26:5-68
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:26:22-65
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:27:5-72
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:27:5-73
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:27:22-70
 uses-permission#android.permission.BAIDU_LOCATION_SERVICE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:28:5-80
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:28:5-81
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:28:22-78
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:29:5-80
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:29:5-81
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:29:22-78
 uses-permission#android.permission.ACCES_MOCK_LOCATION
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:30:5-77
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:30:5-78
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:30:22-75
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:31:5-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:31:5-79
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:31:22-76
 uses-permission#android.permission.ACCESS_GPS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:33:5-68
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:33:5-69
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:33:22-66
 uses-permission#android.permission.BROADCAST_STICKY
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:35:5-74
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:35:5-75
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:35:22-72
 uses-permission#android.permission.PROCESS_OUTGOING_CALLS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:37:5-80
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:37:5-81
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:37:22-78
 uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:38:5-79
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:38:5-80
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:38:22-77
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:39:5-70
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:39:5-71
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:39:22-68
 uses-permission#cn.bmob.permission.push
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:40:5-62
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:40:5-63
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:40:22-60
 uses-permission#android.permission.RECEIVE_USER_PRESENT
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:44:5-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:44:5-79
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:44:22-76
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:45:5-80
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:45:5-81
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:45:22-78
 uses-permission#android.permission.INTERACT_ACROSS_USERS_FULL
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:48:5-84
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:48:5-85
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:48:22-82
 uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:50:5-88
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:50:5-89
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:50:22-86
 supports-screens
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:52:5-57:38
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:52:5-57:39
 	android:largeScreens
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:54:9-36
 	android:smallScreens
@@ -159,7 +159,7 @@ ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:52:5-57:38
 	android:anyDensity
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:53:9-34
 application
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:59:5-241:19
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:59:5-243:19
 MERGED from [com.android.support:appcompat-v7:22.2.1] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\AndroidManifest.xml:14:5-18:19
@@ -176,19 +176,19 @@ MERGED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediat
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:60:9-47
 meta-data#com.baidu.lbsapi.API_KEY
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:68:9-70:63
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:68:9-70:64
 	android:value
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:70:13-61
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:69:13-52
 meta-data#com.thinkland.juheapi.openid
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:72:9-74:65
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:72:9-74:66
 	android:value
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:74:13-63
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:73:13-56
 activity#c.b.a.A
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:76:9-81:69
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:76:9-81:70
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:80:13-47
 	android:exported
@@ -200,7 +200,7 @@ ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:76:9-81:69
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:77:13-35
 activity#c.b.a.B
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:82:9-85:63
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:82:9-85:64
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:84:13-49
 	android:theme
@@ -216,189 +216,189 @@ ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:86:9-94:20
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:89:13-93:29
 action#android.intent.action.MAIN
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:90:17-68
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:90:17-69
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:90:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:92:17-76
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:92:17-77
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:92:27-74
 activity#com.ahstu.mycar.activity.LoginActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:95:9-97:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:95:9-97:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:97:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:96:13-51
 activity#com.ahstu.mycar.activity.MainActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:98:9-100:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:98:9-100:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:100:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:99:13-50
 activity#com.ahstu.mycar.activity.RegisterPhoneActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:101:9-103:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:101:9-103:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:103:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:102:13-59
 activity#com.ahstu.mycar.activity.RegisterUserMsgActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:104:9-106:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:104:9-106:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:106:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:105:13-61
 activity#com.ahstu.mycar.activity.SearchLatLonActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:107:9-109:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:107:9-109:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:109:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:108:13-58
 activity#com.ahstu.mycar.activity.StationInfoActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:110:9-112:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:110:9-112:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:112:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:111:13-57
 activity#com.ahstu.mycar.activity.StationListActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:113:9-115:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:113:9-115:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:115:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:114:13-57
 activity#com.ahstu.mycar.music.MusicMainActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:116:9-118:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:116:9-118:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:118:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:117:13-52
 activity#com.ahstu.mycar.music.AddSongtoPlaylistActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:119:9-121:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:119:9-121:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:121:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:120:13-60
 activity#com.ahstu.mycar.music.PlaylistSongActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:122:9-124:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:122:9-124:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:124:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:123:13-55
 activity#com.ahstu.mycar.activity.BDSearchGuideActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:125:9-127:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:125:9-127:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:127:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:126:13-59
 activity#com.ahstu.mycar.activity.BDStationGuideActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:128:9-130:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:128:9-130:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:130:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:129:13-60
 activity#com.ahstu.mycar.activity.CarQueryActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:131:9-133:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:131:9-133:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:133:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:132:13-54
 activity#com.ahstu.mycar.activity.CityListActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:134:9-136:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:134:9-136:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:136:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:135:13-54
 activity#com.ahstu.mycar.activity.ProvinceListActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:137:9-139:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:137:9-139:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:139:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:138:13-58
 activity#com.ahstu.mycar.activity.WeizhangResultActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:140:9-142:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:140:9-142:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:142:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:141:13-60
 activity#com.ahstu.mycar.activity.CarinformationActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:143:9-145:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:143:9-145:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:145:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:144:13-60
 activity#com.ahstu.mycar.activity.CarListActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:146:9-148:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:146:9-148:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:148:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:147:13-53
 activity#com.ahstu.mycar.activity.MeCarActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:149:9-151:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:149:9-151:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:151:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:150:13-51
 activity#com.ahstu.mycar.activity.GasorderActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:152:9-154:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:152:9-154:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:154:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:153:13-54
 activity#com.ahstu.mycar.activity.MeorderActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:155:9-157:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:155:9-157:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:157:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:156:13-53
 activity#com.ahstu.mycar.activity.OrderItemActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:158:9-160:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:158:9-160:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:160:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:159:13-55
 activity#com.ahstu.mycar.activity.MapMenuActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:161:9-163:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:161:9-163:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:163:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:162:13-53
 activity#com.ahstu.mycar.music.MusicDownloadActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:164:9-166:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:164:9-166:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:166:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:165:13-56
 activity#com.ahstu.mycar.activity.StationMapActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:167:9-169:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:167:9-169:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:169:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:168:13-56
 activity#com.ahstu.mycar.me.SearchFriendActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:170:9-172:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:170:9-172:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:172:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:171:13-52
 activity#com.ahstu.mycar.activity.OrderviewActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:173:9-175:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:173:9-175:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:175:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:174:13-55
 activity#com.ahstu.mycar.activity.OfflineMapActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:176:9-178:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:176:9-178:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:178:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:177:13-56
 activity#com.ahstu.mycar.activity.BaseMapActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:179:9-181:51
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:179:9-181:52
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:181:13-49
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:180:13-53
 activity#com.tencent.connect.common.AssistActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:183:9-187:74
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:183:9-187:75
 	android:screenOrientation
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:186:13-47
 	android:configChanges
@@ -418,89 +418,95 @@ ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:189:9-202:20
 intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
 ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:193:13-201:29
 action#android.intent.action.VIEW
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:194:17-68
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:194:17-69
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:194:25-66
 category#android.intent.category.DEFAULT
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:196:17-75
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:196:17-76
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:196:27-73
 category#android.intent.category.BROWSABLE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:197:17-77
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:197:17-78
 	android:name
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:197:27-75
 data
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:199:17-55
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:199:17-56
 	android:scheme
 		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:199:23-53
+activity#com.ahstu.mycar.activity.ScanresultActivity
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:203:9-204:51
+	android:screenOrientation
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:204:13-49
+	android:name
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:203:19-62
 service#com.cheshouye.api.client.WeizhangIntentService
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:204:9-81
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:206:9-82
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:204:18-79
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:206:18-79
 service#com.ahstu.mycar.music.MusicPlayService
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:205:9-58
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:207:9-59
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:205:18-56
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:207:18-56
 service#com.baidu.location.f
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:208:9-210:37
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:210:9-212:38
 	android:enabled
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:210:13-35
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:212:13-35
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:209:13-48
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:211:13-48
 service#cn.bmob.push.lib.service.PushService
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:211:9-218:19
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:213:9-220:19
 	android:label
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:214:13-40
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:216:13-40
 	android:exported
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:213:13-36
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:215:13-36
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:212:13-64
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:214:13-64
 intent-filter#cn.bmob.push.lib.service.PushService
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:215:13-217:29
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:217:13-219:29
 action#cn.bmob.push.lib.service.PushService
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:216:17-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:218:17-79
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:216:25-76
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:218:25-76
 receiver#cn.bmob.push.PushReceiver
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:220:9-230:20
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:222:9-232:20
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:220:19-59
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:222:19-59
 intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:221:13-229:29
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:223:13-231:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:224:17-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:226:17-79
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:224:25-76
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:226:25-76
 action#android.intent.action.USER_PRESENT
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:226:17-76
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:228:17-77
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:226:25-74
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:228:25-74
 action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:228:17-78
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:230:17-79
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:228:25-76
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:230:25-76
 receiver#com.ahstu.mycar.me.PushMessageReceiver
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:231:9-235:20
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:233:9-237:20
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:231:19-57
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:233:19-57
 intent-filter#cn.bmob.push.action.MESSAGE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:232:13-234:29
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:234:13-236:29
 action#cn.bmob.push.action.MESSAGE
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:233:17-69
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:235:17-70
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:233:25-67
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:235:25-67
 service#com.ahstu.mycar.me.FriendNotificationService
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:237:9-64
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:239:9-65
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:237:18-62
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:239:18-62
 activity#com.ahstu.mycar.activity.RegisterLawsActivity
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:239:9-76
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:241:9-76
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:239:19-64
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:241:19-64
 activity#com.ahstu.mycar.activity.OfflineMapActivity2
-ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:240:9-65
+ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:242:9-66
 	android:name
-		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:240:19-63
+		ADDED from E:\Android\Demo\Car\app\src\main\AndroidManifest.xml:242:19-63
 activity#com.xys.libzxing.zxing.activity.CaptureActivity
 ADDED from [Car:libzxing:unspecified] E:\Android\Demo\Car\app\build\intermediates\exploded-aar\Car\libzxing\unspecified\AndroidManifest.xml:17:9-84
 	android:name

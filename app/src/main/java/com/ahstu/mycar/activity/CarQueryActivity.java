@@ -54,6 +54,7 @@ public class CarQueryActivity extends Activity {
             updateUI();
         }
     };
+    String number;
     private ProgressBar bar;
 
     @Override
@@ -66,8 +67,8 @@ public class CarQueryActivity extends Activity {
         weizhangIntent.putExtra("appKey", "62fdfbce0fd98c355994140f850d2353");
         startService(weizhangIntent);
         SharedPreferences share = getSharedPreferences("text", MODE_PRIVATE);
-        String number = share.getString("number", "");
-        number = number.substring(0, 7);
+        number = share.getString("number", "");
+        // number = number.substring(0, 7);
         DatabaseHelper helper = new DatabaseHelper(CarQueryActivity.this, "node.db", null, 1);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.query("carinfo", new String[]{"car_number", "car_enginerno", "car_frame"}, "car_number=?", new String[]{number}, null, null, null);
@@ -158,7 +159,7 @@ public class CarQueryActivity extends Activity {
                         car.setChejia_no(chejia_number.substring(chejia_number.length() - classno));
                     }
 
-                    car.setChepai_no(chepainumber);
+                    car.setChepai_no(number.substring(0, 7));
 
                     frame.setVisibility(View.VISIBLE);
                     result_null.setVisibility(View.GONE);

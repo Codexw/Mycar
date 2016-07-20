@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
             android:id="@+id/bmapView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:clickable="true"/>
+            android:clickable="true" />
 
 
         <Button
@@ -24,7 +24,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="平面地图"/>
+            android:text="平面地图" />
 
         <Button
             android:id="@+id/btn_map_site"
@@ -35,7 +35,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="卫星地图"/>
+            android:text="卫星地图" />
 
 
         <Button
@@ -47,7 +47,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="普通模式"/>
+            android:text="普通模式" />
 
         <Button
             android:id="@+id/btn_map_mode_compass"
@@ -58,7 +58,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="罗盘模式"/>
+            android:text="罗盘模式" />
 
         <Button
             android:id="@+id/btn_map_menu"
@@ -69,7 +69,7 @@
             android:layout_marginTop="3dp"
             android:background="@drawable/login_button"
             android:padding="3dp"
-            android:text="地图菜单"/>
+            android:text="地图菜单" />
 
         <ImageView
             android:id="@+id/iv_map_traffic"
@@ -82,7 +82,7 @@
             android:background="@drawable/btn_mapfragment_loc"
             android:padding="5dp"
             android:scaleType="centerInside"
-            android:src="@drawable/main_icon_roadcondition_off"/>
+            android:src="@drawable/main_icon_roadcondition_off" />
 
         <ImageView
             android:id="@+id/iv_loc"
@@ -94,7 +94,7 @@
             android:layout_marginLeft="5dp"
             android:background="@drawable/btn_mapfragment_loc"
             android:padding="10dp"
-            android:src="@mipmap/location"/>
+            android:src="@mipmap/location" />
 
 
     </RelativeLayout>

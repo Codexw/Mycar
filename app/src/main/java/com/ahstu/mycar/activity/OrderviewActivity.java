@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ public class OrderviewActivity extends Activity {
     private String count_price;
     private String station, type;
     private int PLUGINVERSION = 7;
+    private RadioGroup pay_type;
+    private boolean pay_state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,16 @@ public class OrderviewActivity extends Activity {
             }
         });
 
+        pay_type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (pay_type.getCheckedRadioButtonId() == R.id.wxpay)
+                    pay_state = false;
+                else
+                    pay_state = true;
+            }
+        });
+
         order_pay_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +86,7 @@ public class OrderviewActivity extends Activity {
                 }
 
                 //订单支付
-                BP.pay("加油站订单支付", station + "  " + type, Double.parseDouble(count_price), true
+                BP.pay("加油站订单支付", station + "  " + type, Double.parseDouble(count_price), pay_state
                         , new PListener() {
 
                             @Override
@@ -144,7 +157,8 @@ public class OrderviewActivity extends Activity {
         car_number = (TextView) findViewById(R.id.order_pay_car_number);
         order_time = (TextView) findViewById(R.id.order_pay_time);
         order_pay_bt = (Button) findViewById(R.id.order_paid_btn);
-
+        pay_type = (RadioGroup) findViewById(R.id.pay_type);
+        
 
         DatabaseHelper helper = new DatabaseHelper(OrderviewActivity.this, "node.db", null, 1);
         SQLiteDatabase data = helper.getReadableDatabase();

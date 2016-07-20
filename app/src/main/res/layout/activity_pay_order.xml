@@ -276,30 +276,77 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/dark_grey" />
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:text="支付方式:"
+                        android:textSize="18sp" />
+
+                    <RadioGroup
+                        android:id="@+id/pay_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/wxpay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="微信"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/alipay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="支付宝"
+                            android:textSize="18sp" />
+
+
+                    </RadioGroup>
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/order_paid_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/login_button"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:text="确认支付" />
-            </RelativeLayout>
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:text="如支付遇到问题，请联系QQ客服\n417849147或致电13013025835"/>
+                android:text="如支付遇到问题，请联系QQ客服\n417849147或致电13013025835" />
 
         </LinearLayout>
     </ScrollView>

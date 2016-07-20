@@ -269,6 +269,24 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
         }
     }
 
+    //支持离线地图列表数据更新
+    public void dataChange() {
+        for (OfflineMapCityBean cityBean : allCitiesBean) {
+            // 获取热闹城市列表
+            localMapList = mOffline.getAllUpdateInfo();
+            if (localMapList != null)//有下载记录则查找进度
+            {
+                for (MKOLUpdateElement ele : localMapList) {
+                    if (ele.cityID == cityBean.getCityCode()) {
+                        cityBean.setProgress(ele.ratio);
+                    }
+                }
+            }
+        }
+        aAdapter.notifyDataSetChanged();
+//        hAdapter.notifyDataSetChanged();
+    }
+
     /**
      * 离线地图管理列表适配器
      */
@@ -337,24 +355,6 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
                 }
             });
         }
-    }
-
-    //支持离线地图列表数据更新
-    public void dataChange() {
-        for (OfflineMapCityBean cityBean : allCitiesBean) {
-            // 获取热闹城市列表
-            localMapList = mOffline.getAllUpdateInfo();
-            if (localMapList != null)//有下载记录则查找进度
-            {
-                for (MKOLUpdateElement ele : localMapList) {
-                    if (ele.cityID == cityBean.getCityCode()) {
-                        cityBean.setProgress(ele.ratio);
-                    }
-                }
-            }
-        }
-        aAdapter.notifyDataSetChanged();
-//        hAdapter.notifyDataSetChanged();
     }
 
     /**

@@ -201,6 +201,9 @@
                 <!-- 100380359 100381104 222222 -->
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.ahstu.mycar.activity.ScanresultActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service android:name="com.ahstu.mycar.music.MusicPlayService" />
