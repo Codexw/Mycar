@@ -96,7 +96,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/carsign"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/head" />
 
 
             </RelativeLayout>

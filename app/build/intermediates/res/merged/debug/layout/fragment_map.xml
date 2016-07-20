@@ -22,7 +22,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="3dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:padding="3dp"
             android:text="平面地图" />
 
@@ -33,7 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="3dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:padding="3dp"
             android:text="卫星地图" />
 
@@ -45,7 +45,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="3dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:padding="3dp"
             android:text="普通模式" />
 
@@ -56,7 +56,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="3dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:padding="3dp"
             android:text="罗盘模式" />
 
@@ -67,7 +67,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="3dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:padding="3dp"
             android:text="地图菜单" />
 

@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:text="预约加油"
             android:textColor="@color/white" />
 

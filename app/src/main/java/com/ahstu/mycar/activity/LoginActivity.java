@@ -66,7 +66,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     public static Tencent mTencent;
     //    private static boolean isServerSideLogin = false;
     private static String openId;
-    ProgressDialog progress;
+    private ProgressDialog progress;
     IUiListener loginListener = new BaseUiListener() {
         @Override
         protected void doComplete(JSONObject values) {
@@ -84,11 +84,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private Button btnRegister;
     private RelativeLayout rlQQLogin;
     private UserInfo mInfo;
-    private double mLatitude;
-    private double mLongitude;
+    private User qqusery;
     private LocationClient mLocationClient;
     private MyLocationListener myLocationListener;
-    private User qqusery;
+    private double mLatitude;
+    private double mLongitude;
 
     public static void initOpenidAndToken(JSONObject jsonObject) {
         try {
@@ -106,15 +106,17 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mLatitude = 0;
+        mLatitude = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.context = this;
         mTencent = Tencent.createInstance("222222", this);
         initView();
-        initLocation();
         initClick();
         // 动画效果
         init();
+        initLocation();
     }
 
     /**
@@ -149,6 +151,33 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         option.setScanSpan(1000);// 设置扫描间隔，单位毫秒，当<1000(1s)时，定时定位无效
         mLocationClient.setLocOption(option);//将上面option中的设置加载
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!mLocationClient.isStarted()) {
+            mLocationClient.start();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //停止地图定位
+        mLocationClient.stop();
+    }
+
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            if (location == null) {
+                return;
+            }
+            mLatitude = location.getLatitude();
+            mLongitude = location.getLongitude();
+        }
+    }
+
 
     /**
      * 处理点击事件
@@ -207,6 +236,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     public void onSuccess(List<User> list) {
                         for (User userIns : list) {
                             userIns.setMyInstallation(BmobInstallation.getInstallationId(LoginActivity.this));
+                            userIns.setLat(mLatitude);
+                            userIns.setLon(mLongitude);
                             userIns.update(LoginActivity.this, userIns.getObjectId(), new UpdateListener() {
                                 @Override
                                 public void onSuccess() {
@@ -549,16 +580,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    public class MyLocationListener implements BDLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            if (location == null) {
-                return;
-            }
-            mLatitude = location.getLatitude();
-            mLongitude = location.getLongitude();
-        }
-    }
 
     private class BaseUiListener implements IUiListener {
 

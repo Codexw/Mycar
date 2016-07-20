@@ -34,7 +34,7 @@
                 android:id="@+id/carcontrol_text"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:background="@drawable/login_button"
+                android:background="@drawable/btn"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="请先添加车辆"

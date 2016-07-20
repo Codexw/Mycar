@@ -12,10 +12,12 @@
     <!-- 蓝色 -->
     <!--<color name="blue">#3385FF</color>-->
     <color name="blue">#499BF7</color>
-    <color name="bluepress">#289bda</color>
+    <color name="bluepress">#4995f7</color>
 
     <color name="dark">#dcdcdc</color>  <!--浅灰色 -->
     <color name="dark_grey">#cccccc</color>  <!--深灰色 -->
+    <color name="touming">#00ffffff</color>  <!--深灰色 -->
+
     <color name="translucent">#cc808080</color>
     <color name="csy_row_on">#fff0f0f0</color>
     <color name="csy_text">#ff555555</color>

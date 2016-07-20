@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/song_download_btstyle"
+            android:background="@drawable/btn"
             android:gravity="center"
             android:padding="5dp"
             android:text="下载"

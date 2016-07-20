@@ -1,6 +1,7 @@
 package com.ahstu.mycar.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -40,13 +41,14 @@ import cn.bmob.v3.listener.SaveListener;
  */
 public class RegisterUserMsgActivity extends Activity implements View.OnClickListener {
     private Context context;
-    private String register_phone_num;
     private ImageView register_title_back;
     private EditText register_username;
     private EditText register_password;
     private EditText register_password_again;
     private Button register_button;
     private LocationClient mLocationClient;
+    private ProgressDialog progress;
+    private String register_phone_num;
     private MyLocationListener myLocationListener;
     private double mLatitude;
     private double mLongitude;
@@ -108,6 +110,11 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
                     register_password_again.setText("");
 
                 } else {
+                    progress = new ProgressDialog(RegisterUserMsgActivity.this);
+                    progress.setMessage("注册中，请稍后...");
+                    progress.setCanceledOnTouchOutside(false);
+                    progress.show();
+                    
                     final User user = new User();
                     user.setUsername(register_username.getText().toString());
                     user.setPassword(register_password.getText().toString());
@@ -168,6 +175,7 @@ public class RegisterUserMsgActivity extends Activity implements View.OnClickLis
 
                         @Override
                         public void onFailure(int i, String s) {
+                            progress.dismiss();
                             if (i == 202)
                                 Toast.makeText(context, "用户名已存在，请重新输入", Toast.LENGTH_SHORT).show();
                             else

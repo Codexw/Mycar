@@ -157,7 +157,7 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
 
                                     @Override
                                     public void onFailure(int i, String s) {
-                                        Log.e("splashavtivity160", s + i + "21111111111111111111111111");
+                                        Log.e("splashavtivity160", s + i);
                                     }
                                 });
                             }

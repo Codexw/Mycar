@@ -14,9 +14,9 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:interpolator="@android:anim/decelerate_interpolator"
+     android:interpolator="@android:anim/decelerate_interpolator"
 
-    android:zAdjustment="top">
+     android:zAdjustment="top">
 
     <!-- 指定动画对象的缩放因子和播放时间
 
@@ -42,7 +42,7 @@
         android:pivotY="50%p"
         android:toXScale="2.0"
 
-        android:toYScale="2.0" />
+        android:toYScale="2.0"/>
 
     <!-- 定义动画对象的透明度，该动画在动画缩放之后播放。
 
@@ -58,6 +58,6 @@
         android:duration="@android:integer/config_mediumAnimTime"
         android:fromAlpha="1.0"
 
-        android:toAlpha="0" />
+        android:toAlpha="0"/>
 
 </set>

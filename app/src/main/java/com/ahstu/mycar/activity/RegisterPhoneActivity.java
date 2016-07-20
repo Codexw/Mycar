@@ -1,12 +1,14 @@
 package com.ahstu.mycar.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -44,6 +46,8 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
     private Context context;
     private TimeCount time;
     private CheckBox mCheckBox;
+    private ProgressDialog progress;
+
     TextWatcher mTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -140,7 +144,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                                         if (e == null) {
                                             Toast.makeText(context, "验证码已发送", Toast.LENGTH_SHORT).show();
 
-                                            //更改获取验证码的button
+                                            //更改获取验证码的button显示内容
                                             time = new TimeCount(60000, 1000);
                                             time.start();
 
@@ -187,6 +191,15 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                 } else if (et_register_code.getText().toString().isEmpty()) {
                     Toast.makeText(context, "请输入验证码", Toast.LENGTH_SHORT).show();
                 } else {
+                    try {
+                        progress = new ProgressDialog(RegisterPhoneActivity.this);
+                        progress.setMessage("正在验证手机号...");
+                        progress.setCanceledOnTouchOutside(false);
+
+                        progress.show();//偶尔会打印出异常
+                    } catch (Exception e) {
+                        Log.e("RegisterPhoneProgress", e.toString());
+                    }
                     //验证验证码
                     BmobSMS.verifySmsCode(context, et_phoneNum.getText().toString(), et_register_code.getText().toString(), new VerifySMSCodeListener() {
                         @Override
@@ -198,6 +211,7 @@ public class RegisterPhoneActivity extends Activity implements View.OnClickListe
                                 startActivity(i);
 
                             } else {
+                                progress.dismiss();
                                 Toast.makeText(context, "验证失败,请重新获取验证码", Toast.LENGTH_SHORT).show();
                             }
                         }

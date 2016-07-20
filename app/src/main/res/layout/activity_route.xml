@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true" />
+        android:clickable="true"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/back_icon_normal" />
+            android:src="@drawable/back_icon_normal"/>
 
         <Button
             android:id="@+id/btn_search"
@@ -30,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="5dp"
-            android:background="@drawable/login_button"
+            android:background="@drawable/btn"
             android:text="搜索"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/et"
@@ -41,7 +41,7 @@
             android:layout_toLeftOf="@id/btn_search"
             android:layout_toRightOf="@id/back"
             android:background="@null"
-            android:hint="请输入地址" />
+            android:hint="请输入地址"/>
     </RelativeLayout>
 
 </RelativeLayout>

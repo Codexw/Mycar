@@ -22,8 +22,8 @@
         <TextView
             android:id="@+id/size"
             android:layout_width="wrap_content"
-            android:text="aaa"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="aaa"/>
     </LinearLayout>
 
     <TextView
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/ll"
+        android:layout_marginLeft="10dp"
         android:text=""
         android:textColor="#FF0000"/>
 
@@ -40,7 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
         android:layout_centerVertical="true"
+        android:background="@drawable/btn"
         android:text="下载"
         android:visibility="visible"/>
 
@@ -49,6 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/song_download_btstyle"
         android:text="暂停"
         android:visibility="gone"/>
 

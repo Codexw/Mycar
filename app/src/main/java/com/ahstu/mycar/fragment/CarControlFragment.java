@@ -150,59 +150,59 @@ public class CarControlFragment extends Fragment {
                         DatabaseHelper data = new DatabaseHelper(getActivity(), "node.db", null, 1);
                         try {
                             SQLiteDatabase db = data.getWritableDatabase();
-                        
-                        ContentValues value = new ContentValues();
-                        if (car.getCar_start() == false) {
-                            value.put("car_start", 0);
-                            car_start_state = 0;
-                            car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            start_set.setText("已关闭");
-                        } else {
-                            value.put("car_start", 1);
-                            car_start_state = 1;
-                            car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            start_set.setText("已开启");
-                        }
-                        if (car.getCar_door() == false) {
-                            value.put("car_door", 0);
-                            car_door_state = 0;
-                            car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            door_set.setText("已关闭");
 
-                        } else {
-                            value.put("car_door", 1);
-                            car_door_state = 1;
-                            car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            door_set.setText("已开启");
+                            ContentValues value = new ContentValues();
+                            if (car.getCar_start() == false) {
+                                value.put("car_start", 0);
+                                car_start_state = 0;
+                                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                                start_set.setText("已关闭");
+                            } else {
+                                value.put("car_start", 1);
+                                car_start_state = 1;
+                                car_start_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                                start_set.setText("已开启");
+                            }
+                            if (car.getCar_door() == false) {
+                                value.put("car_door", 0);
+                                car_door_state = 0;
+                                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                                door_set.setText("已关闭");
 
-                        }
-                        if (car.getCar_lock() == false) {
+                            } else {
+                                value.put("car_door", 1);
+                                car_door_state = 1;
+                                car_door_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                                door_set.setText("已开启");
 
-                            value.put("car_lock", 0);
-                            car_lock_state = 0;
-                            car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            lock_set.setText("已关闭");
-                        } else {
-                            value.put("car_lock", 1);
-                            car_lock_state = 1;
-                            car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            lock_set.setText("已开启");
-                        }
+                            }
+                            if (car.getCar_lock() == false) {
 
-                        if (car.getCar_air() == false) {
+                                value.put("car_lock", 0);
+                                car_lock_state = 0;
+                                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                                lock_set.setText("已关闭");
+                            } else {
+                                value.put("car_lock", 1);
+                                car_lock_state = 1;
+                                car_lock_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                                lock_set.setText("已开启");
+                            }
 
-                            value.put("car_air", 0);
-                            car_air_state = 0;
-                            car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
-                            air_set.setText("已关闭");
-                        } else {
-                            value.put("car_air", 1);
-                            car_air_state = 1;
-                            car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
-                            air_set.setText("已开启");
-                        }
-                        db.update("carinfo", value, "car_number=?", new String[]{s});
-                        db.close();
+                            if (car.getCar_air() == false) {
+
+                                value.put("car_air", 0);
+                                car_air_state = 0;
+                                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_false));
+                                air_set.setText("已关闭");
+                            } else {
+                                value.put("car_air", 1);
+                                car_air_state = 1;
+                                car_air_set_false.setBackgroundDrawable(getResources().getDrawable(R.drawable.check_box_true));
+                                air_set.setText("已开启");
+                            }
+                            db.update("carinfo", value, "car_number=?", new String[]{s});
+                            db.close();
                         } catch (Exception e) {
 
                         }
@@ -272,7 +272,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -302,7 +302,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -342,7 +342,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -374,7 +374,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
 
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
@@ -412,7 +412,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -442,7 +442,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -507,7 +507,7 @@ public class CarControlFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), "网速较慢", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "网速较慢，请刷新", Toast.LENGTH_SHORT).show();
                     }
                     DatabaseHelper helper = new DatabaseHelper(getActivity(), "node.db", null, 1);
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -540,7 +540,7 @@ public class CarControlFragment extends Fragment {
             new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    // 控件刷新完毕了哦！
+                    // 控件刷新完毕
                     pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
                     onHiddenChanged(false);
 
