@@ -116,7 +116,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
             allCitiesBean.add(cityBean);
         }
         ListView allCityList = (ListView) findViewById(R.id.allcitylist);
-        aAdapter = new OfflineCityAdapter(allCitiesBean);
+        aAdapter = new OfflineCityAdapter();
         allCityList.setAdapter(aAdapter);
 
         LinearLayout cl = (LinearLayout) findViewById(R.id.citylist_layout);
@@ -129,10 +129,12 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
      * 切换至城市列表
      */
     public void clickCityListButton(View view) {
+        dataChange();
         LinearLayout cl = (LinearLayout) findViewById(R.id.citylist_layout);
         LinearLayout lm = (LinearLayout) findViewById(R.id.localmap_layout);
         lm.setVisibility(View.GONE);
         cl.setVisibility(View.VISIBLE);
+
     }
 
     /**
@@ -267,24 +269,6 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
         }
     }
 
-    //支持离线地图列表数据更新
-    public void dataChange(ArrayList<OfflineMapCityBean> list) {
-        for (OfflineMapCityBean cityBean : list) {
-            // 获取热闹城市列表
-            localMapList = mOffline.getAllUpdateInfo();
-            if (localMapList != null)//有下载记录则查找进度
-            {
-                for (MKOLUpdateElement ele : localMapList) {
-                    if (ele.cityID == cityBean.getCityCode()) {
-                        cityBean.setProgress(ele.ratio);
-                    }
-                }
-            }
-        }
-        aAdapter.notifyDataSetChanged();
-//        hAdapter.notifyDataSetChanged();
-    }
-
     /**
      * 离线地图管理列表适配器
      */
@@ -339,6 +323,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
                 public void onClick(View arg0) {
                     mOffline.remove(e.cityID);
                     updateView();
+//                    dataChange();
                 }
             });
             display.setOnClickListener(new OnClickListener() {
@@ -354,24 +339,42 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
         }
     }
 
+    //支持离线地图列表数据更新
+    public void dataChange() {
+        for (OfflineMapCityBean cityBean : allCitiesBean) {
+            // 获取热闹城市列表
+            localMapList = mOffline.getAllUpdateInfo();
+            if (localMapList != null)//有下载记录则查找进度
+            {
+                for (MKOLUpdateElement ele : localMapList) {
+                    if (ele.cityID == cityBean.getCityCode()) {
+                        cityBean.setProgress(ele.ratio);
+                    }
+                }
+            }
+        }
+        aAdapter.notifyDataSetChanged();
+//        hAdapter.notifyDataSetChanged();
+    }
+
     /**
      * 支持离线地图的城市列表适配器
      */
     public class OfflineCityAdapter extends BaseAdapter {
-        private ArrayList<OfflineMapCityBean> list = null;
-
-        public OfflineCityAdapter(ArrayList<OfflineMapCityBean> list) {
-            this.list = list;
-        }
+//        private ArrayList<OfflineMapCityBean> list = null;
+//
+//        public OfflineCityAdapter(ArrayList<OfflineMapCityBean> list) {
+//            this.list = list;
+//        }
 
         @Override
         public int getCount() {
-            return list.size();
+            return allCitiesBean.size();
         }
 
         @Override
         public Object getItem(int index) {
-            return list.get(index);
+            return allCitiesBean.get(index);
         }
 
         @Override
@@ -381,7 +384,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
 
         @Override
         public View getView(int index, View view, ViewGroup arg2) {
-            OfflineMapCityBean bean = list.get(index);
+            OfflineMapCityBean bean = allCitiesBean.get(index);
             view = mInflater.inflate(R.layout.offline_cities_list, null);
             initViewItem(view, bean);
             return view;
@@ -398,8 +401,16 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
                 tvProgress.setText(bean.getProgress() + "%");
 //                progressBar.setProgress(bean.getProgress());
 //                progressBar.setVisibility(View.VISIBLE);
+//                if (mOffline.start(bean.getCityCode())){
                 pause.setVisibility(View.VISIBLE);
                 download.setVisibility(View.GONE);
+//                    System.out.println("点击暂停aaaaaaaaaaaaaa");
+//                }
+//                if (mOffline.pause(bean.getCityCode())){
+//                    pause.setVisibility(View.GONE);
+//                    download.setVisibility(View.VISIBLE);
+//                    System.out.println("点击开始bbbbbbbbbbbbbbbb");
+//                }
             } else if (bean.getProgress() == 100) {
                 tvProgress.setText("已下载");
                 pause.setVisibility(View.VISIBLE);
@@ -417,7 +428,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
                     Toast.makeText(mContext, "暂停下载离线地图", Toast.LENGTH_SHORT).show();
                     download.setVisibility(View.VISIBLE);
                     pause.setVisibility(View.GONE);
-                    dataChange(list);
+                    dataChange();
                 }
             });
             download.setOnClickListener(new View.OnClickListener() {
@@ -428,7 +439,7 @@ public class OfflineMapActivity extends Activity implements MKOfflineMapListener
                     Toast.makeText(mContext, "开始下载离线地图", Toast.LENGTH_SHORT).show();
                     pause.setVisibility(View.VISIBLE);
                     download.setVisibility(View.GONE);
-                    dataChange(list);
+                    dataChange();
                 }
             });
         }

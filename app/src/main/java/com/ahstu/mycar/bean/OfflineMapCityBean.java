@@ -24,6 +24,15 @@ public class OfflineMapCityBean {
         this.progress = progress;
         this.size = size;
     }
+    /**
+     * 下载的状态：无状态，暂停，正在下载
+     *
+     * @author zhy
+     */
+    public enum Flag {
+        NO_STATUS, PAUSE, DOWNLOADING
+
+    }
 
     public Flag getFlag() {
         return flag;
@@ -63,14 +72,5 @@ public class OfflineMapCityBean {
 
     public void setSize(int size) {
         this.size = size;
-    }
-
-    /**
-     * 下载的状态：无状态，暂停，正在下载
-     *
-     * @author zhy
-     */
-    public enum Flag {
-        NO_STATUS, PAUSE, DOWNLOADING
     }
 }

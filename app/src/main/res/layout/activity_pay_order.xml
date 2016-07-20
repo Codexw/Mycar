@@ -294,6 +294,12 @@
                     android:text="确认支付" />
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="如支付遇到问题，请联系QQ客服\n417849147或致电13013025835"/>
 
         </LinearLayout>
     </ScrollView>
