@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/ll"
+        android:text=""
         android:textColor="#FF0000"/>
 
     <Button

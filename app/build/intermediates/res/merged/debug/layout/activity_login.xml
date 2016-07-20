@@ -60,6 +60,7 @@
                 android:padding="5dp"
                 android:textSize="16sp"/>
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
@@ -74,33 +75,33 @@
             android:textSize="20dp"/>
     </RelativeLayout>
 
-
-    <ImageView
-        android:id="@+id/qq_login_sign"
+    <RelativeLayout
+        android:id="@+id/qq_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="18dp"
-        android:layout_marginLeft="10dp"
-        android:background="#00ffffff"
-        android:src="@drawable/qq_login"
-        android:textColor="@color/blue"
-        android:textSize="16sp"/>
+        android:layout_marginBottom="10dp">
 
-    <Button
-        android:id="@+id/btn_third_load"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_toRightOf="@id/qq_login_sign"
-        android:background="#00ffffff"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="第三方登录"
-        android:textColor="@color/blue"
-        android:textSize="16sp"/>
+        <ImageView
+            android:id="@+id/qq_login_sign"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/share_icon_qq_selector"/>
+
+        <TextView
+            android:id="@+id/btn_third_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/qq_login_sign"
+            android:layout_marginLeft="5dp"
+            android:background="#00ffffff"
+            android:text="QQ登录"
+            android:layout_centerVertical="true"
+            android:textColor="@color/blue"
+            android:textSize="16sp"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_register"

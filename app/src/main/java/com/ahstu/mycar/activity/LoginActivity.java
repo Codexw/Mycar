@@ -20,6 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.ahstu.mycar.R;
@@ -81,7 +82,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText et_password;
     private Button btnLogin;
     private Button btnRegister;
-    private Button btn_third_load;
+    private RelativeLayout rlQQLogin;
     private UserInfo mInfo;
     private double mLatitude;
     private double mLongitude;
@@ -122,7 +123,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void initClick() {
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
-        btn_third_load.setOnClickListener(this);
+        rlQQLogin.setOnClickListener(this);
     }
 
     /**
@@ -133,8 +134,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         et_password = (EditText) findViewById(R.id.et_password);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnRegister = (Button) findViewById(R.id.btn_register);
-        btn_third_load = (Button) findViewById(R.id.btn_third_load);
-
+        rlQQLogin = (RelativeLayout) findViewById(R.id.qq_login);
     }
 
     private void initLocation() {
@@ -168,7 +168,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.btn_register:
                 startActivity(new Intent(LoginActivity.this, RegisterPhoneActivity.class));
                 break;
-            case R.id.btn_third_load:
+            case R.id.qq_login:
 //                if (!mTencent.isSessionValid()) {
                 mTencent.login(LoginActivity.this, "all", loginListener);
 //                    isServerSideLogin = false;

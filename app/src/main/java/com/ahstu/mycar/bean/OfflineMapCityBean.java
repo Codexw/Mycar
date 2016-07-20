@@ -30,7 +30,7 @@ public class OfflineMapCityBean {
      * @author zhy
      */
     public enum Flag {
-        NO_STATUS, PAUSE, DOWNLOADING
+        CONTINUE, PAUSE, DOWNLOADING, NO_STATUS
 
     }
 
