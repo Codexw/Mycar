@@ -204,6 +204,10 @@
             android:name=".activity.ScanresultActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".activity.RegisterLawsActivity"
+            android:screenOrientation="portrait"/>
+
         <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
         <service android:name=".music.MusicPlayService"/>
 
@@ -239,8 +243,7 @@
 
         <service android:name=".me.FriendNotificationService"/>
 
-        <activity android:name=".activity.RegisterLawsActivity"></activity>
-        <activity android:name=".activity.OfflineMapActivity2"/>
+
     </application>
 
 </manifest>

@@ -204,6 +204,9 @@
         <activity
             android:name="com.ahstu.mycar.activity.ScanresultActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ahstu.mycar.activity.RegisterLawsActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
         <service android:name="com.ahstu.mycar.music.MusicPlayService" />
@@ -240,8 +243,6 @@
 
         <service android:name="com.ahstu.mycar.me.FriendNotificationService" />
 
-        <activity android:name="com.ahstu.mycar.activity.RegisterLawsActivity" />
-        <activity android:name="com.ahstu.mycar.activity.OfflineMapActivity2" />
         <activity android:name="com.xys.libzxing.zxing.activity.CaptureActivity" />
     </application>
 
