@@ -49,6 +49,7 @@ import cn.bmob.v3.listener.FindListener;
 
 /**
  * @author 吴天洛 2016/4/25
+ *         主界面控制
  */
 
 public class MainActivity extends FragmentActivity implements OnClickListener, MusicMenuListener {

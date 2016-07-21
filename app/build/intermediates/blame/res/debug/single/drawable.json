@@ -68,10 +68,6 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\new_song_list.xml"
     },
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btp.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_list_btp.png"
-    },
-    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_false.png",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\check_box_false.png"
     },
@@ -106,10 +102,6 @@
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable\\abc_textfield_search_material.xml"
-    },
-    {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btn.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_list_btn.png"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_box_true.png",
@@ -214,14 +206,6 @@
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\all_song_rb_bg_n.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\all_song_rb_bg_n.xml"
-    },
-    {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btstyle.xml",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_list_btstyle.xml"
-    },
-    {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\qq_login.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\qq_login.png"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_bg.xml",
@@ -394,10 +378,6 @@
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\play_bt.png",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\play_bt.png"
-    },
-    {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\music_menu.png"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",

@@ -41,6 +41,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by xuning on 2016/5/20.
+ * 功能：下订单
  */
 public class GasorderActivity extends Activity {
     TextView station_name;
@@ -149,7 +150,7 @@ public class GasorderActivity extends Activity {
                     count.setText(format.format(sum * cot));
 
                 }
-            }   
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {

@@ -37,6 +37,7 @@ public class BDSearchGuideActivity extends Activity {
     /*
      * 对于导航模块有两种方式来实现发起导航 1：使用通用接口来实现 2：使用传统接口来实现
      */
+
     // 是否使用通用接口
     private boolean useCommonInterface = true;
     private Handler hd = null;

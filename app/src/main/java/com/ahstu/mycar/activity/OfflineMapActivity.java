@@ -25,6 +25,10 @@ import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 
 import java.util.ArrayList;
 
+/**
+ * @author 吴天洛
+ *         功能：离线地图
+ */
 public class OfflineMapActivity extends Activity implements MKOfflineMapListener {
 
     private MKOfflineMap mOffline = null;

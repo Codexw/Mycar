@@ -11,7 +11,8 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 
 /**
- * 演示MapView的基本用法
+ * @author 吴天洛
+ *         功能：演示MapView的基本用法
  */
 public class BaseMapActivity extends Activity {
 
@@ -45,21 +46,18 @@ public class BaseMapActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        // activity 暂停时同时暂停地图控件
         mMapView.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // activity 恢复时同时恢复地图控件
         mMapView.onResume();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // activity 销毁时同时销毁地图控件
         mMapView.onDestroy();
     }
 

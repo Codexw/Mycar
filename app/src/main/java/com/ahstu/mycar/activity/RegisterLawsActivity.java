@@ -7,6 +7,10 @@ import android.webkit.WebView;
 
 import com.ahstu.mycar.R;
 
+/**
+ * @author 吴天洛
+ *         功能：法律条例
+ */
 public class RegisterLawsActivity extends Activity {
     private WebView mWebView;
 
