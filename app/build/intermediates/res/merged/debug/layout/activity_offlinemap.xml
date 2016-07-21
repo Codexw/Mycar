@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/city_list"
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"/>
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
                 android:onClick="clickCityListButton"
                 android:padding="8dp"
                 android:text="城市列表"
-                android:textColor="@color/song_title_text_sel" />
+                android:textColor="@color/song_title_text_sel"/>
 
             <RadioButton
                 android:id="@+id/localButton"
@@ -45,7 +45,7 @@
                 android:onClick="clickLocalMapListButton"
                 android:padding="8dp"
                 android:text="下载管理"
-                android:textColor="@color/song_title_text_sel" />
+                android:textColor="@color/song_title_text_sel"/>
         </RadioGroup>
     </RelativeLayout>
 
@@ -61,48 +61,48 @@
             android:layout_marginLeft="10dp"
             android:text="热门城市"
             android:textSize="16dp"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/dark"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <ListView
             android:id="@+id/hotcitylist"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="全国"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/dark" />
+            android:background="@color/dark"/>
 
         <ListView
             android:id="@+id/allcitylist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/localmap_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+                  android:id="@+id/localmap_layout"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
 
         <ListView
             android:id="@+id/localmaplist"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

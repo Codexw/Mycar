@@ -333,7 +333,14 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                                         if (list != null) {
                                             if (list.size() >= 1) {
                                                 User user = list.get(0);
-                                                tv.setText(user.getUsername());
+
+                                                if (user.getUsername().length() >= 4) {
+                                                    tv.setText(user.getUsername().substring(0, 3) + "..");
+                                                    tv.setTextSize(10);
+                                                } else {
+                                                    tv.setText(user.getUsername());
+                                                }
+
                                                 mBitmap = BitmapDescriptorFactory.fromView(tv);
                                                 mMaker.setIcon(mBitmap);
                                                 LatLng latLng = new LatLng(user.getLat(), user.getLon());
@@ -356,7 +363,17 @@ public class MapFragment extends Fragment implements OnClickListener, AppCompatC
                                     public void onSuccess(List<User> list) {
                                         if (list != null) {
                                             User user = list.get(0);
-                                            tv.setText(user.getUsername());
+
+                                            if (user.getUsername().length() >= 2) {
+                                                tv.setTextSize(10);
+                                            }
+
+                                            if (user.getUsername().length() >= 4) {
+                                                tv.setText(user.getUsername().substring(0, 3) + "...");
+                                            } else {
+                                                tv.setText(user.getUsername());
+                                            }
+
                                             mBitmap = BitmapDescriptorFactory.fromView(tv);
                                             mMaker.setIcon(mBitmap);
                                             LatLng latLng = new LatLng(user.getLat(), user.getLon());

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/back" />
+            android:background="@drawable/back"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="订单详情"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/order_submit" />
+                    android:src="@drawable/order_submit"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,14 +58,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@id/order_submit"
                     android:text="订单提交成功"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <View
 
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/dark_grey" />
+                android:background="@color/dark_grey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="加油站: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_station_name"
@@ -87,7 +87,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
@@ -103,7 +103,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="加油类型: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_type"
@@ -129,7 +129,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="加油单价: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_price"
@@ -156,7 +156,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="加油数量: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_number"
@@ -182,7 +182,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="加油总价: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_count"
@@ -208,7 +208,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="用户姓名: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_username"
@@ -216,7 +216,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
@@ -232,7 +232,7 @@
                     android:layout_marginLeft="2dp"
                     android:gravity="center"
                     android:text="车牌号码: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_car_number"
@@ -258,7 +258,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="订单时间: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/order_pay_time"
@@ -266,7 +266,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
             </LinearLayout>
 
@@ -274,7 +274,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/dark_grey" />
+                android:background="@color/dark_grey"/>
 
 
             <LinearLayout
@@ -293,7 +293,7 @@
                         android:layout_gravity="center_vertical"
                         android:gravity="center"
                         android:text="支付方式:"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"/>
 
                     <RadioGroup
                         android:id="@+id/pay_type"
@@ -311,7 +311,7 @@
                             android:layout_weight="1"
                             android:checked="true"
                             android:text="微信"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"/>
 
                         <RadioButton
                             android:id="@+id/alipay"
@@ -320,7 +320,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="支付宝"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"/>
 
 
                     </RadioGroup>
@@ -337,7 +337,7 @@
                     android:background="@drawable/btn"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:text="确认支付" />
+                    android:text="确认支付"/>
             </LinearLayout>
 
 
@@ -346,7 +346,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:text="如支付遇到问题，请联系QQ客服\n417849147或致电13013025835" />
+                android:text="如支付遇到问题，请联系QQ客服\n417849147或致电13013025835"/>
 
         </LinearLayout>
     </ScrollView>

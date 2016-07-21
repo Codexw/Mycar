@@ -8,7 +8,7 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:interpolator="@android:anim/decelerate_interpolator">
+     android:interpolator="@android:anim/decelerate_interpolator">
 
     <!-- 声明动画对象进入屏幕时的缩放动画，
 
@@ -24,6 +24,6 @@
         android:pivotY="50%p"
         android:toXScale="1.0"
 
-        android:toYScale="1.0" />
+        android:toYScale="1.0"/>
 
 </set>

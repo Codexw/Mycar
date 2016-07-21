@@ -4,12 +4,12 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\next_button.9.png"
     },
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_pullup_icon_big.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_pullup_icon_big.png"
-    },
-    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_mark.png",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\icon_mark.png"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\allview_pullup_icon_big.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\allview_pullup_icon_big.png"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_menu_btn.png",
@@ -28,12 +28,12 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\shape.xml"
     },
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\car1.png",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\car1.png"
-    },
-    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_change_start_end.png",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\ic_change_start_end.png"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\car1.png",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\car1.png"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\add_friend.png",
@@ -60,12 +60,12 @@
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\songlist_bt.png"
     },
     {
-        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list.xml",
-        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\new_song_list.xml"
-    },
-    {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weizhang.xml",
         "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\weizhang.xml"
+    },
+    {
+        "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\new_song_list.xml",
+        "source": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\src\\main\\res\\drawable\\new_song_list.xml"
     },
     {
         "merged": "F:\\Android_Studio_Workspace\\Car\\MyCar\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\music_list_btp.png",
