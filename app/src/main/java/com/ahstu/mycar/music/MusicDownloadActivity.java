@@ -116,7 +116,7 @@ public class MusicDownloadActivity extends Activity implements AdpterOnItemClick
             // 设置通知栏标题
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
             // 控制系统通知是否由下载管理器发布，而此下载正在运行或何时完成
-            request.setTitle("Mycar");
+            request.setTitle(musicMessageArrayList.get(postion).getSong_name());
             request.setDescription("正在下载...");
             request.setAllowedOverRoaming(false);// 是否同意漫游状态下 执行操作
             // 设置文件存放目录
